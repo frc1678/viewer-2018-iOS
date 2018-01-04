@@ -233,7 +233,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         //let autoKeys = [
         //Some stuff is not needed
         
-        
         //]
         
         let teleKeysMini : [String] = [
@@ -247,6 +246,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         
         /** Keys relating to Teleoperated to be displayed on teamDetails */
         //let teleKeys = [
+        
         
         //]
         
@@ -755,3 +755,4 @@ extension String {
         return  String(self.characters.prefix(ind)) + string + String(self.characters.suffix(self.characters.count-ind))
     }
 }
+
