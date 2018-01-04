@@ -56,11 +56,9 @@
 		19B0384B1E2DE55B006E25A2 /* TeamInMatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B038481E2DE55B006E25A2 /* TeamInMatchData.swift */; };
 		20B97B0927CBDC12735F6F22 /* Pods_Current_Match.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0394ACA1B0BF4AF13EA11B /* Pods_Current_Match.framework */; };
 		8C25A7CC1E33F2790012A23E /* CalculatedTeamInMatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C25A7CB1E33F2790012A23E /* CalculatedTeamInMatchData.swift */; };
-		8C286C531FB40D6E003FA84F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C286C521FB40D6E003FA84F /* GoogleService-Info.plist */; };
 		8C5868711E34254E0056EA17 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C58686C1E34254E0056EA17 /* Storyboard.storyboard */; };
 		8C65E7921FD0FEA6000E71A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C65E7911FD0FEA6000E71A2 /* GoogleService-Info.plist */; };
-		8C865CA61FFECFD1007D0127 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD3CEA81E34074000B328A1 /* NotificationCenter.framework */; };
-		8C865CB01FFECFD1007D0127 /* TeamInfo.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8C865CA51FFECFD0007D0127 /* TeamInfo.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8C865CB51FFED69B007D0127 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C865CB41FFED69B007D0127 /* GoogleService-Info.plist */; };
 		8CBD712D1E354696009C0206 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD3CEA81E34074000B328A1 /* NotificationCenter.framework */; };
 		8CBD71301E354696009C0206 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBD712F1E354696009C0206 /* TodayViewController.swift */; };
 		8CBD71371E354696009C0206 /* Current Match.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8CBD712C1E354696009C0206 /* Current Match.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -72,13 +70,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8C865CAE1FFECFD1007D0127 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 19B037AD1E2C5739006E25A2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8C865CA41FFECFD0007D0127;
-			remoteInfo = TeamInfo;
-		};
 		8CBD71351E354696009C0206 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 19B037AD1E2C5739006E25A2 /* Project object */;
@@ -96,7 +87,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				8CBD71371E354696009C0206 /* Current Match.appex in Embed App Extensions */,
-				8C865CB01FFECFD1007D0127 /* TeamInfo.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,13 +161,12 @@
 		19B038481E2DE55B006E25A2 /* TeamInMatchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamInMatchData.swift; sourceTree = "<group>"; };
 		763F6CE09D211CAEC3E4C000 /* Pods-CurrentMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrentMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CurrentMatch/Pods-CurrentMatch.debug.xcconfig"; sourceTree = "<group>"; };
 		8C25A7CB1E33F2790012A23E /* CalculatedTeamInMatchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatedTeamInMatchData.swift; sourceTree = "<group>"; };
-		8C286C521FB40D6E003FA84F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8C58686D1E34254E0056EA17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Storyboard.storyboard; sourceTree = "<group>"; };
 		8C58687E1E3426200056EA17 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8C58688C1E3426970056EA17 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C58688E1E342EFE0056EA17 /* ExtensionPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionPrefixHeader.pch; sourceTree = "<group>"; };
 		8C65E7911FD0FEA6000E71A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8C865CA51FFECFD0007D0127 /* TeamInfo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TeamInfo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C865CB41FFED69B007D0127 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8CBD712C1E354696009C0206 /* Current Match.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Current Match.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBD712F1E354696009C0206 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8CBD71341E354696009C0206 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -201,14 +190,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF1525F6C6F8117FF8E51A47 /* Pods_ios_viewer.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8C865CA21FFECFD0007D0127 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8C865CA61FFECFD1007D0127 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +223,6 @@
 			children = (
 				19B037B51E2C5739006E25A2 /* ios-viewer.app */,
 				8CBD712C1E354696009C0206 /* Current Match.appex */,
-				8C865CA51FFECFD0007D0127 /* TeamInfo.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -293,8 +273,8 @@
 		19B038371E2DD70C006E25A2 /* Plists */ = {
 			isa = PBXGroup;
 			children = (
+				8C865CB41FFED69B007D0127 /* GoogleService-Info.plist */,
 				19B037C41E2C5739006E25A2 /* Info.plist */,
-				8C286C521FB40D6E003FA84F /* GoogleService-Info.plist */,
 			);
 			name = Plists;
 			sourceTree = "<group>";
@@ -450,29 +430,11 @@
 			);
 			dependencies = (
 				8CBD71361E354696009C0206 /* PBXTargetDependency */,
-				8C865CAF1FFECFD1007D0127 /* PBXTargetDependency */,
 			);
 			name = "ios-viewer";
 			productName = "ios-viewer";
 			productReference = 19B037B51E2C5739006E25A2 /* ios-viewer.app */;
 			productType = "com.apple.product-type.application";
-		};
-		8C865CA41FFECFD0007D0127 /* TeamInfo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8C865CB31FFECFD1007D0127 /* Build configuration list for PBXNativeTarget "TeamInfo" */;
-			buildPhases = (
-				8C865CA11FFECFD0007D0127 /* Sources */,
-				8C865CA21FFECFD0007D0127 /* Frameworks */,
-				8C865CA31FFECFD0007D0127 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = TeamInfo;
-			productName = TeamInfo;
-			productReference = 8C865CA51FFECFD0007D0127 /* TeamInfo.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 		8CBD712B1E354696009C0206 /* Current Match */ = {
 			isa = PBXNativeTarget;
@@ -517,11 +479,6 @@
 							};
 						};
 					};
-					8C865CA41FFECFD0007D0127 = {
-						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = S2C8988WQX;
-						ProvisioningStyle = Automatic;
-					};
 					8CBD712B1E354696009C0206 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = S2C8988WQX;
@@ -544,7 +501,6 @@
 			targets = (
 				19B037B41E2C5739006E25A2 /* ios-viewer */,
 				8CBD712B1E354696009C0206 /* Current Match */,
-				8C865CA41FFECFD0007D0127 /* TeamInfo */,
 			);
 		};
 /* End PBXProject section */
@@ -563,20 +519,13 @@
 				19B037C31E2C5739006E25A2 /* LaunchScreen.storyboard in Resources */,
 				8CBD71421E4695BE009C0206 /* Settings.bundle in Resources */,
 				8CBD71401E356CD1009C0206 /* CC 2017 Logo.png in Resources */,
-				8C286C531FB40D6E003FA84F /* GoogleService-Info.plist in Resources */,
+				8C865CB51FFED69B007D0127 /* GoogleService-Info.plist in Resources */,
 				19B037EA1E2C586C006E25A2 /* MatchTableViewCell.xib in Resources */,
 				19B037D31E2C581C006E25A2 /* FirstPick.storyboard in Resources */,
 				190DFE501E308BE300477B6D /* TIMDTableViewCell.xib in Resources */,
 				19B037C01E2C5739006E25A2 /* Assets.xcassets in Resources */,
 				19B037D61E2C581C006E25A2 /* SecondPick.storyboard in Resources */,
 				19B037D51E2C581C006E25A2 /* Schedule.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8C865CA31FFECFD0007D0127 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,13 +663,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8C865CA11FFECFD0007D0127 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8CBD71281E354696009C0206 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -732,11 +674,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8C865CAF1FFECFD1007D0127 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8C865CA41FFECFD0007D0127 /* TeamInfo */;
-			targetProxy = 8C865CAE1FFECFD1007D0127 /* PBXContainerItemProxy */;
-		};
 		8CBD71361E354696009C0206 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8CBD712B1E354696009C0206 /* Current Match */;
@@ -910,60 +847,6 @@
 			};
 			name = Release;
 		};
-		8C865CB11FFECFD1007D0127 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S2C8988WQX;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TeamInfo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.citruscircuits.ios-viewer.TeamInfo";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		8C865CB21FFECFD1007D0127 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S2C8988WQX;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TeamInfo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.citruscircuits.ios-viewer.TeamInfo";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		8CBD71381E354696009C0206 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0562B80EE4C07093F7297E43 /* Pods-Current Match.debug.xcconfig */;
@@ -1009,15 +892,6 @@
 			buildConfigurations = (
 				19B037C81E2C5739006E25A2 /* Debug */,
 				19B037C91E2C5739006E25A2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8C865CB31FFECFD1007D0127 /* Build configuration list for PBXNativeTarget "TeamInfo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8C865CB11FFECFD1007D0127 /* Debug */,
-				8C865CB21FFECFD1007D0127 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
