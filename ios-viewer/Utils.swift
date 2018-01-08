@@ -319,7 +319,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         /** Data collected by SEALS */
         let sealKeys = [
             "pitDidDemonstrateCheesecakePotential",
-            "SEALSNotes"
+            "pitSEALSNotes"
         ]
         
         /** Human readable names for CTIMD keys */
