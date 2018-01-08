@@ -331,6 +331,12 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                     notesCell.selectionStyle = UITableViewCellSelectionStyle.none
                     cell = notesCell
                     
+                } else if Utils.teamDetailsKeys.longTextCells.contains(dataKey) {
+                    let notesCell: ResizableNotesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TeamInMatchDetailStringCell", for: indexPath) as! ResizableNotesTableViewCell
+                    notesCell.titleLabel?.text = Utils.humanReadableNames[dataKey]
+                    notesCell.notesLabel.text = team!.SEALSNotes
+                    notesCell.selectionStyle = UITableViewCellSelectionStyle.none
+                    cell = notesCell
                 } else if Utils.teamDetailsKeys.unrankedCells.contains(dataKey) || dataKey.contains("pit") { //pit keys
                     //get cell
                     let unrankedCell: UnrankedTableViewCell = tableView.dequeueReusableCell(withIdentifier: "UnrankedCell", for: indexPath) as! UnrankedTableViewCell
@@ -338,9 +344,9 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                     //titleLabel is the humanReadable version of dataKey
                     unrankedCell.titleLabel.text = Utils.humanReadableNames[dataKey]
                     
-                    if "\(dataPoint)".isEmpty || (dataPoint as? Float != nil && dataPoint as! Float == 0.0) {
+                    if "\(dataPoint)".isEmpty /*|| (dataPoint as? Float != nil && dataPoint as! Float == 0.0)*/ {
                         unrankedCell.detailLabel.text = ""
-                    } else if dataKey == "pitOrganization" { //In the pit scout, the selector is indexed 0 to 4, this translates it back in to what those numbers mean.
+                       } else if dataKey == "pitOrganization" { //In the pit scout, the selector is indexed 0 to 4, this translates it back in to what those numbers mean.
                         unrankedCell.detailLabel!.text! = (team?.pitOrganization) ?? ""
                     } else if dataKey == "pitProgrammingLanguage" {
                         unrankedCell.detailLabel!.text! = (team?.pitProgrammingLanguage) ?? ""

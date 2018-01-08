@@ -7,19 +7,54 @@
 //
 
 import UIKit
+import Firebase
 
 class OverallSecondPickAbilityViewController: ArrayTableViewController {
     
     var teamNumber  = -1
     var team : Team!
+    var inPicklist = false
+    var secondPicklist: [Int] = []
+    var firebase: DatabaseReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector:#selector(OverallSecondPickAbilityViewController.reloadTableView), name:NSNotification.Name(rawValue: "updateLeftTable"), object:nil)
+        self.tableView.isEditing = false
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Picklist", style: .plain, target: self, action: #selector(toggleInPicklist))
+        firebase = Database.database().reference()
+        firebase!.child("SecondPicklist").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let unwrapped = snapshot as? [Int] {
+                if unwrapped == [] {
+                    for i in self.firebaseFetcher.getOverallSecondPickList() {
+                        self.secondPicklist.append(i.number)
+                    }
+                    self.firebase!.child("SecondPicklist").setValue(self.secondPicklist)
+                } else {
+                    self.secondPicklist = unwrapped
+                }
+            }
+        })
     }
     
     func reloadTableView(_ note: Notification) {
         tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObject = self.secondPicklist[sourceIndexPath.row]
+        secondPicklist.remove(at: sourceIndexPath.row)
+        secondPicklist.insert(movedObject, at: destinationIndexPath.row)
+        NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(secondPicklist)")
+        // To check for correctness enable: self.tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -39,6 +74,9 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
             multiCell!.scoreLabel!.text = ""
         }
         multiCell!.rankLabel!.text = "\(self.firebaseFetcher.rankOfTeam(team!, withCharacteristic: "calculatedData.allRotorsAbility"))"
+        if inPicklist {
+            
+        }
     }
    
     
@@ -60,5 +98,13 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
     override func filteredArray(forSearchText text: String!, inScope scope: Int) -> [Any]! {
         return self.firebaseFetcher.filteredTeamsForSearchString(text)
     }
-   
+    
+    func toggleInPicklist() {
+        self.inPicklist = !self.inPicklist
+        self.tableView.isEditing = self.inPicklist
+        if !self.inPicklist {
+            firebase!.child("SecondPicklist").setValue(secondPicklist)
+            tableView.reloadData()
+        }
+    }
 }

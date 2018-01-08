@@ -31,6 +31,8 @@
     }
 }
 
+BOOL inPicklist = NO;
+
 - (NSString *)cellIdentifier {
     return MULTI_CELL_IDENTIFIER;
 }
@@ -65,6 +67,9 @@
     return @"updatedLeftTable";
 }
 
+- (IBAction)togglePicklistMode:(id)sender {
+    inPicklist = !inPicklist;
+}
 
 
 @end

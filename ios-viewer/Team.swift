@@ -22,6 +22,7 @@ public final class Team: NSObject {
     static let pitAllImageURLs = "pitAllImageURLs"
     static let pitDriveTrain = "pitDriveTrain"
     static let pitDidDemonstrateCheesecakePotential = "pitDidDemonstrateCheesecakePotential"
+    static let SEALSNotes = "SEALSNotes"
   }
 
   // MARK: Properties
@@ -32,9 +33,10 @@ public final class Team: NSObject {
   public var pitAvailableWeight: Int = -1
   public var calculatedData: CalculatedTeamData?
   public var pitSelectedImageName: String?
-    public var pitAllImageURLs: [String: String]?
+  public var pitAllImageURLs: [String: String]?
   public var pitDriveTrain: String?
   public var pitDidDemonstrateCheesecakePotential: Bool? = false
+  public var SEALSNotes: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -59,6 +61,7 @@ public final class Team: NSObject {
     pitAllImageURLs = json[SerializationKeys.pitAllImageURLs].dictionaryObject as! [String: String]?
     pitDriveTrain = json[SerializationKeys.pitDriveTrain].string
     pitDidDemonstrateCheesecakePotential = json[SerializationKeys.pitDidDemonstrateCheesecakePotential].boolValue
+    SEALSNotes = json[SerializationKeys.SEALSNotes].stringValue
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -74,7 +77,8 @@ public final class Team: NSObject {
     if let value = calculatedData { dictionary[SerializationKeys.calculatedData] = value.dictionaryRepresentation() }
     if let value = pitSelectedImageName { dictionary[SerializationKeys.pitSelectedImageName] = value }
     if let value = pitAllImageURLs { dictionary[SerializationKeys.pitAllImageURLs] = value }
-
+    if let value = SEALSNotes { dictionary[SerializationKeys.SEALSNotes] = value }
+    
     dictionary[SerializationKeys.pitDriveTrain] = pitDriveTrain
     dictionary[SerializationKeys.pitDidDemonstrateCheesecakePotential] = pitDidDemonstrateCheesecakePotential
     return dictionary

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -143,7 +143,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="r1None" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chr-8L-2Pu">
-                                                    <rect key="frame" x="189.5" y="11" width="50" height="10"/>
+                                                    <rect key="frame" x="182.5" y="14" width="50" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="kya-Gs-R70"/>
                                                     </constraints>
@@ -152,7 +152,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="r1Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xyc-Dq-9Yt">
-                                                    <rect key="frame" x="8" y="11" width="50" height="10"/>
+                                                    <rect key="frame" x="15" y="14" width="50" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="QF3-ot-pe1"/>
                                                     </constraints>
@@ -187,7 +187,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="r2None" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aT-u4-jcz">
-                                                    <rect key="frame" x="189" y="11" width="50" height="10"/>
+                                                    <rect key="frame" x="182" y="14" width="50" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="agM-wg-LKi"/>
                                                     </constraints>
@@ -196,7 +196,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="r2Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FEO-zU-Pd7">
-                                                    <rect key="frame" x="8" y="11" width="50" height="10"/>
+                                                    <rect key="frame" x="15" y="14" width="50" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="VK8-mB-EGE"/>
                                                     </constraints>
@@ -231,7 +231,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="r3None" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFU-zw-Cnv">
-                                                    <rect key="frame" x="189.5" y="11" width="50" height="10"/>
+                                                    <rect key="frame" x="182.5" y="14" width="50" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="kzw-hj-Y7I"/>
                                                     </constraints>
@@ -240,7 +240,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="r3Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tF2-RN-1Tc">
-                                                    <rect key="frame" x="8" y="11" width="50" height="10"/>
+                                                    <rect key="frame" x="15" y="14" width="50" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="F1D-OM-w7y"/>
                                                     </constraints>
@@ -275,7 +275,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="b1None" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcM-Fo-yqo">
-                                                    <rect key="frame" x="189.5" y="11" width="50" height="10"/>
+                                                    <rect key="frame" x="182.5" y="14" width="50" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="Rfy-oa-eKy"/>
                                                     </constraints>
@@ -284,7 +284,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="b1Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="quS-mL-hOI">
-                                                    <rect key="frame" x="8" y="11" width="50" height="10"/>
+                                                    <rect key="frame" x="15" y="14" width="50" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="eaD-AM-jvD"/>
                                                     </constraints>
@@ -319,7 +319,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="b2None" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFs-vl-7Uk">
-                                                    <rect key="frame" x="189" y="11" width="50" height="10"/>
+                                                    <rect key="frame" x="182" y="14" width="50" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="QvU-Op-lNI"/>
                                                     </constraints>
@@ -328,7 +328,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="b2Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u6K-Sm-Aqu">
-                                                    <rect key="frame" x="8" y="11" width="50" height="10"/>
+                                                    <rect key="frame" x="15" y="14" width="50" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="jUb-Il-JB9"/>
                                                     </constraints>
@@ -363,7 +363,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="b3None" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BqL-g9-7Yl" userLabel="Value Label">
-                                                    <rect key="frame" x="189.5" y="11" width="50" height="10"/>
+                                                    <rect key="frame" x="182.5" y="14" width="50" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="Q8i-Ae-nOL"/>
                                                     </constraints>
@@ -372,7 +372,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="b3Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FJP-g7-6ir">
-                                                    <rect key="frame" x="8" y="11" width="50" height="10"/>
+                                                    <rect key="frame" x="15" y="14" width="50" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="8vk-Rf-5dd"/>
                                                     </constraints>

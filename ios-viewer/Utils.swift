@@ -125,6 +125,10 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "superNotes"
         ]
         
+        let longTextCells : [String] = [
+            "SEALSNotes"
+        ]
+        
         let unrankedCells = [
             "selectedImageURL",
             "otherUrls"
@@ -171,6 +175,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
                     "Status",
                     //superKeys,
                     //pitKeys,
+                    //"SEALS"
                 ]
             }
             return [
@@ -182,6 +187,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
                 //"End Game",
                 "Super Scout",
                 "Pit Scout",
+                "SEALS"
             ]
             
         }
@@ -198,6 +204,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
                     statusKeysMini,
                     //superKeys,
                     //pitKeys,
+                    //sealKeys
                 ]
             }
             return [
@@ -209,6 +216,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
                 //endGame,
                 superKeys,
                 pitKeys,
+                sealKeys
             ]
             
         }
@@ -303,10 +311,15 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         /** Keys relating to the data the pit scout collects to be displayed on teamDetails */
         let pitKeys = [
             "pitDriveTrain",
-            "pitDidDemonstrateCheesecakePotential",
             "pitAvailableWeight",
             //"pitOrganization",
             "pitProgrammingLanguage"
+        ]
+        
+        /** Data collected by SEALS */
+        let sealKeys = [
+            "pitDidDemonstrateCheesecakePotential",
+            "SEALSNotes"
         ]
         
         /** Human readable names for CTIMD keys */
@@ -460,6 +473,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
     /** A dictionary with datapoints as keys and Human Readable Names as indices */
     static let humanReadableNames = [
         "superNotes": "Super Scout Notes",
+        "SEALSNotes" : "SEALS Notes",
         //"calculatedData.avgGearsPlacedByLiftAuto.allianceWall": "Avg. Center Gears",
         //"calculatedData.avgGearsPlacedByLiftAuto.hpStation": "Avg. HP Side Gears",
         //"calculatedData.avgGearsPlacedByLiftAuto.boiler": "Avg. Boiler Side Gears",
@@ -512,7 +526,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "pitAvailableWeight" : "Avail. Weight",
         "pitOrganization" : "Pit Organization",
         "pitDidUseStandardTankDrive" : "Has Normal Tank Drivetrain",
-        "pitDidDemonstrateCheesecakePotential": "Can Accommodate Cheesecake",
+        "pitDidDemonstrateCheesecakePotential": "Cheesecakable",
         //"rankBallControl" : "Ball Control Rank",
         "rankDefense" : "Defense Rank",
         "rankAgility" : "Agility Rank",
