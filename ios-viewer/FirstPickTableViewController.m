@@ -69,6 +69,7 @@ BOOL inPicklist = NO;
 
 - (IBAction)togglePicklistMode:(id)sender {
     inPicklist = !inPicklist;
+    
 }
 
 

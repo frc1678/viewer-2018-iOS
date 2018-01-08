@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <UserNotifications/UserNotifications.h>
+@import Firebase;
 
 @class FirebaseDataFetcher;
 @interface AppDelegate: NSObject <UIApplicationDelegate>

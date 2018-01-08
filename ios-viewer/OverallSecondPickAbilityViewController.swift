@@ -20,11 +20,11 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector:#selector(OverallSecondPickAbilityViewController.reloadTableView), name:NSNotification.Name(rawValue: "updateLeftTable"), object:nil)
-        self.tableView.isEditing = false
+        self.tableView.isEditing = self.inPicklist
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Picklist", style: .plain, target: self, action: #selector(toggleInPicklist))
         firebase = Database.database().reference()
         firebase!.child("SecondPicklist").observeSingleEvent(of: .value, with: { (snapshot) in
-            if let unwrapped = snapshot as? [Int] {
+            if let unwrapped = snapshot.value as? [Int] {
                 if unwrapped == [] {
                     for i in self.firebaseFetcher.getOverallSecondPickList() {
                         self.secondPicklist.append(i.number)
@@ -33,6 +33,11 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
                 } else {
                     self.secondPicklist = unwrapped
                 }
+            } else {
+                for i in self.firebaseFetcher.getOverallSecondPickList() {
+                    self.secondPicklist.append(i.number)
+                }
+                self.firebase!.child("SecondPicklist").setValue(self.secondPicklist)
             }
         })
     }
@@ -81,7 +86,11 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
    
     
     override func loadDataArray(_ shouldForce: Bool) -> [Any]! {
-        return self.firebaseFetcher.getOverallSecondPickList()
+        if !self.inPicklist {
+            return self.firebaseFetcher.getOverallSecondPickList()
+        }
+        let sortedTeams = firebaseFetcher.getTeamsFromNumbers(secondPicklist)
+        return sortedTeams
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -104,7 +113,12 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         self.tableView.isEditing = self.inPicklist
         if !self.inPicklist {
             firebase!.child("SecondPicklist").setValue(secondPicklist)
-            tableView.reloadData()
-        }
+        } /*else {
+            for i in loadDataArray(true) {
+
+            }
+        }*/
+        self.dataArray = loadDataArray(false)
+        self.tableView.reloadData()
     }
 }
