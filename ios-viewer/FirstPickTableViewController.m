@@ -13,25 +13,31 @@
 
 @interface FirstPickTableViewController ()
 
+@property (strong, nonatomic) FIRDatabaseReference *ref;
+
 @end
 
 @implementation FirstPickTableViewController
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)path forData:(id)data inTableView:(UITableView *)tableView {
-    Team *team = data;
-    MultiCellTableViewCell *multiCell = (MultiCellTableViewCell *)cell;
-    
-    multiCell.rankLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.firebaseFetcher rankOfTeam:team withCharacteristic:@"calculatedData.firstPickAbility"]];
-    multiCell.teamLabel.text = [NSString stringWithFormat:@"%ld", (long)team.number];
-    if(team.calculatedData.firstPickAbility != -1.0) {
-        multiCell.scoreLabel.text = [NSString stringWithFormat:@"%@",
-                                     [Utils roundValue:team.calculatedData.firstPickAbility toDecimalPlaces:2]];
-    } else {
-        multiCell.scoreLabel.text = @"";
-    }
+- (void)viewDidLoad {
+    self.ref = [[FIRDatabase database] reference];
+    [self.ref observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        if ([snapshot childSnapshotForPath:@"FirstPicklist"].value) {
+            if ([[snapshot childSnapshotForPath:@"FirstPicklist"].value isEmpty]) {
+                firstPicklist = [NSMutableArray arrayWithArray:[self.firebaseFetcher getFirstPickList]];
+                [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
+            } else {
+                firstPicklist = snapshot.value;
+            }
+        } else {
+            NSMutableArray *firstPick = [NSMutableArray arrayWithArray:[self.firebaseFetcher getFirstPickList]];
+            for (int i = 0; i < sizeof(firstPick)/sizeof(firstPick[0]); i++) {
+                [firstPicklist addObject:firstPick[i]];
+            }
+            [[self.ref child:@"SecondPicklist"] setValue:firstPicklist];
+        }
+    }];
 }
-
-BOOL inPicklist = NO;
 
 - (NSString *)cellIdentifier {
     return MULTI_CELL_IDENTIFIER;
@@ -52,6 +58,23 @@ BOOL inPicklist = NO;
     }
 }
 
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)path forData:(id)data inTableView:(UITableView *)tableView {
+    Team *team = data;
+    MultiCellTableViewCell *multiCell = (MultiCellTableViewCell *)cell;
+    
+    multiCell.rankLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.firebaseFetcher rankOfTeam:team withCharacteristic:@"calculatedData.firstPickAbility"]];
+    multiCell.teamLabel.text = [NSString stringWithFormat:@"%ld", (long)team.number];
+    if(team.calculatedData.firstPickAbility != -1.0) {
+        multiCell.scoreLabel.text = [NSString stringWithFormat:@"%@",
+                                     [Utils roundValue:team.calculatedData.firstPickAbility toDecimalPlaces:2]];
+    } else {
+        multiCell.scoreLabel.text = @"";
+    }
+}
+
+BOOL inPicklist = NO;
+NSMutableArray *firstPicklist = nil;
+
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -69,7 +92,12 @@ BOOL inPicklist = NO;
 
 - (IBAction)togglePicklistMode:(id)sender {
     inPicklist = !inPicklist;
-    
+    [self.tableView setEditing:true animated:false];
+    if(!inPicklist) {
+        [[self.ref child:@"SecondPicklist"] setValue:firstPicklist];
+    }
+    self.dataArray = [self loadDataArray:false];
+    [self.tableView reloadData];
 }
 
 
