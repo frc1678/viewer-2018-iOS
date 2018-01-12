@@ -22,8 +22,8 @@
 - (void)viewDidLoad {
     self.ref = [[FIRDatabase database] reference];
     [self.ref observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        if ([snapshot childSnapshotForPath:@"FirstPicklist"].value) {
-            if ([[snapshot childSnapshotForPath:@"FirstPicklist"].value isEmpty]) {
+        if ([snapshot childSnapshotForPath:@"FirstPicklist"] != nil) {
+            if ([[snapshot childSnapshotForPath:@"FirstPicklist"] exists]) {
                 firstPicklist = [NSMutableArray arrayWithArray:[self.firebaseFetcher getFirstPickList]];
                 [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
             } else {
@@ -39,12 +39,19 @@
     }];
 }
 
-- (NSString *)cellIdentifier {
-    return MULTI_CELL_IDENTIFIER;
+- (NSArray *) loadDataArray:(BOOL)shouldForce {
+    if (!inPicklist) {
+        if(self.firebaseFetcher == nil) {
+            NSLog(@"STUPID");
+        }
+        return [self.firebaseFetcher getFirstPickList];
+    }
+    NSArray *sortedTeams = [self.firebaseFetcher getTeamsFromNumbers:firstPicklist];
+    return sortedTeams;
 }
 
-- (NSArray *)loadDataArray:(BOOL)shouldForce {
-    return [self.firebaseFetcher getFirstPickList];
+- (NSString *)cellIdentifier {
+    return MULTI_CELL_IDENTIFIER;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -70,6 +77,18 @@
     } else {
         multiCell.scoreLabel.text = @"";
     }
+}
+
+- (void) tableView:(UITableView *) moveRowAt:(NSIndexPath *)sourceIndexPath to:(NSIndexPath *)destinationIndexPath {
+    Team *movedObject = firstPicklist[sourceIndexPath.row];
+    [firstPicklist removeObjectAtIndex:sourceIndexPath.row];
+    [firstPicklist insertObject:movedObject atIndex:destinationIndexPath.row];
+    // NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(secondPicklist)")
+    // To check for correctness enable: self.tableView.reloadData()
+}
+
+-(UITableViewCellEditingStyle) tableView:(UITableView *) editingStyleForRowAt:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleNone;
 }
 
 BOOL inPicklist = NO;
