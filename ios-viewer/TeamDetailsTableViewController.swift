@@ -334,7 +334,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                 } else if Utils.teamDetailsKeys.longTextCells.contains(dataKey) {
                     let notesCell: ResizableNotesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TeamInMatchDetailStringCell", for: indexPath) as! ResizableNotesTableViewCell
                     notesCell.titleLabel?.text = Utils.humanReadableNames[dataKey]
-                    notesCell.notesLabel.text = team!.SEALSNotes
+                    notesCell.notesLabel.text = team!.pitSEALSNotes
                     notesCell.selectionStyle = UITableViewCellSelectionStyle.none
                     cell = notesCell
                 } else if Utils.teamDetailsKeys.unrankedCells.contains(dataKey) || dataKey.contains("pit") { //pit keys
