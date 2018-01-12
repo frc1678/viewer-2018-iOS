@@ -20,7 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-viewer/ArrayTableViewController.m"
-            timestampString = "511551655.97331"
+            timestampString = "537139638.358933"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "207"
@@ -36,7 +36,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-viewer/ScheduleTableViewController.m"
-            timestampString = "532055839.816591"
+            timestampString = "537419815.938714"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "211"
@@ -52,7 +52,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-viewer/ScheduleTableViewController.m"
-            timestampString = "532055839.816719"
+            timestampString = "537419815.938817"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "213"
@@ -68,7 +68,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-viewer/ScheduleTableViewController.m"
-            timestampString = "532055839.816815"
+            timestampString = "537419815.938894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "214"
@@ -164,7 +164,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-viewer/FirebaseDataFetcher.swift"
-            timestampString = "536809148.102721"
+            timestampString = "537338330.513572"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "400"
@@ -208,17 +208,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ios-viewer/FirstPickTableViewController.m"
-            timestampString = "536809934.609341"
+            filePath = "ios-viewer/OverallSecondPickAbilityViewController.swift"
+            timestampString = "537419815.939119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "-togglePicklistMode:"
-            landmarkType = "7">
+            startingLineNumber = "115"
+            endingLineNumber = "115">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -228,61 +226,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-viewer/OverallSecondPickAbilityViewController.swift"
-            timestampString = "537061664.321003"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "toggleInPicklist()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ios-viewer/OverallSecondPickAbilityViewController.swift"
-            timestampString = "537061664.321068"
+            timestampString = "537419815.939526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ios_viewer.OverallSecondPickAbilityViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "ios-viewer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/carterluck/Documents/Robotics/xcode%20projects/viewer-2018-iOS/ios-viewer/OverallSecondPickAbilityViewController.swift"
-                  timestampString = "536808937.328841"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "1964">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in ios_viewer.OverallSecondPickAbilityViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "ios-viewer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/carterluck/Documents/Robotics/xcode%20projects/viewer-2018-iOS/ios-viewer/OverallSecondPickAbilityViewController.swift"
-                  timestampString = "536808937.331674"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -292,7 +242,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-viewer/OverallSecondPickAbilityViewController.swift"
-            timestampString = "537061664.321119"
+            timestampString = "537419815.939827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -308,45 +258,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-viewer/OverallSecondPickAbilityViewController.swift"
-            timestampString = "537061664.32117"
+            timestampString = "537419815.940127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ios_viewer.OverallSecondPickAbilityViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "ios-viewer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/carterluck/Documents/Robotics/xcode%20projects/viewer-2018-iOS/ios-viewer/OverallSecondPickAbilityViewController.swift"
-                  timestampString = "536808937.343114"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "1964">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in ios_viewer.OverallSecondPickAbilityViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "ios-viewer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/carterluck/Documents/Robotics/xcode%20projects/viewer-2018-iOS/ios-viewer/OverallSecondPickAbilityViewController.swift"
-                  timestampString = "536808937.345678"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -356,11 +274,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios-viewer/TeamDetailsTableViewController.swift"
-            timestampString = "537127762.725872"
+            timestampString = "537421046.829321"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,6 +296,162 @@
             startingLineNumber = "94"
             endingLineNumber = "94"
             landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-viewer/OverallSecondPickAbilityViewController.swift"
+            timestampString = "537419815.940466"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-viewer/OverallSecondPickAbilityViewController.swift"
+            timestampString = "537419815.940767"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-viewer/OverallSecondPickAbilityViewController.swift"
+            timestampString = "537419815.941066"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "reloadTableView(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-viewer/OverallSecondPickAbilityViewController.swift"
+            timestampString = "537419815.941367"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-viewer/OverallSecondPickAbilityViewController.swift"
+            timestampString = "537419815.941905"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-viewer/OverallSecondPickAbilityViewController.swift"
+            timestampString = "537419815.942276"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "OverallSecondPickAbilityViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-viewer/FirebaseDataFetcher.swift"
+            timestampString = "537338330.515385"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
+            landmarkName = "getFirstPickList()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_viewer.FirebaseDataFetcher.getFirstPickList() -&gt; Swift.Array&lt;ios_viewer.Team&gt;"
+                  moduleName = "ios-viewer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/carterluck/Documents/Robotics/xcode%20projects/viewer-2018-iOS/ios-viewer/FirebaseDataFetcher.swift"
+                  timestampString = "537421047.641008"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "460"
+                  endingLineNumber = "460"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (ios_viewer.Team, ios_viewer.Team) -&gt; Swift.Bool in ios_viewer.FirebaseDataFetcher.getFirstPickList() -&gt; Swift.Array&lt;ios_viewer.Team&gt;"
+                  moduleName = "ios-viewer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/carterluck/Documents/Robotics/xcode%20projects/viewer-2018-iOS/ios-viewer/FirebaseDataFetcher.swift"
+                  timestampString = "537421047.6435"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "460"
+                  endingLineNumber = "460"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-viewer/FirstPickTableViewController.m"
+            timestampString = "537421046.82962"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "-loadDataArray:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
