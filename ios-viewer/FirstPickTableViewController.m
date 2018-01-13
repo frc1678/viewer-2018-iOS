@@ -20,6 +20,7 @@
 @implementation FirstPickTableViewController
 
 - (void)viewDidLoad {
+    self.firebaseFetcher = [AppDelegate getAppDelegate].firebaseFetcher;
     self.ref = [[FIRDatabase database] reference];
     [self.ref observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if ([snapshot childSnapshotForPath:@"FirstPicklist"] != nil) {

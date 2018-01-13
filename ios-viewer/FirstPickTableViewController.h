@@ -9,5 +9,5 @@
 #import "ArrayTableViewController.h"
 
 @interface FirstPickTableViewController : ArrayTableViewController
-
+@property (strong, nonatomic) FirebaseDataFetcher *firebaseFetcher;
 @end
