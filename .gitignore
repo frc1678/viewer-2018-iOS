@@ -5,7 +5,7 @@
 ## User settings
 .viewer-2018-iOS.xcworkspace/xcuserdata/
 .DS_Store
-.ios-viewer.xcworkspace/xcuserdata/
+ios-viewer.xcworkspace/xcuserdata/
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
