@@ -79,6 +79,9 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
             multiCell!.scoreLabel!.text = ""
         }
         multiCell!.rankLabel!.text = "\(self.firebaseFetcher.rankOfTeam(team!, withCharacteristic: "calculatedData.allRotorsAbility"))"
+        if inPicklist {
+            
+        }
     }
    
     
