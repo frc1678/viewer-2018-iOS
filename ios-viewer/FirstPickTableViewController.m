@@ -44,7 +44,8 @@
         if(self.firebaseFetcher == nil) {
             NSLog(@"STUPID");
         }
-        return [self.firebaseFetcher getFirstPickList];
+        NSArray *tempFirstPick = [self.firebaseFetcher getFirstPickList];
+        return tempFirstPick;
     }
     NSArray *sortedTeams = [self.firebaseFetcher getTeamsFromNumbers:firstPicklist];
     return sortedTeams;
