@@ -141,7 +141,7 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
         [ac addAction:[UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSArray * textfields = ac.textFields;
             UITextField * password = textfields[0];
-            if ([password.text  isEqual: @"cArterRox*88"]) {
+            if ([password.text  isEqual: @"cArterRox&88"]) {
                 inPicklist = !inPicklist;
                 [self.tableView setEditing:(BOOL *)inPicklist animated:false];
                 self.editing = inPicklist;

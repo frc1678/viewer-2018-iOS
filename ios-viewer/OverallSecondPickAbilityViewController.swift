@@ -116,7 +116,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
             
             let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
                 let answer = ac.textFields![0].text
-                if answer == "cArterRox*88" {
+                if answer == "cArterRox&88" {
                     self.inPicklist = !self.inPicklist
                     self.tableView.isEditing = self.inPicklist
                     if !self.inPicklist {
