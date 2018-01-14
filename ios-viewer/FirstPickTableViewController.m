@@ -20,22 +20,26 @@
 @implementation FirstPickTableViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     self.firebaseFetcher = [AppDelegate getAppDelegate].firebaseFetcher;
     self.ref = [[FIRDatabase database] reference];
     [self.ref observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        if ([snapshot childSnapshotForPath:@"FirstPicklist"] != nil) {
-            if ([[snapshot childSnapshotForPath:@"FirstPicklist"] exists]) {
-                firstPicklist = [NSMutableArray arrayWithArray:[self.firebaseFetcher getFirstPickList]];
-                [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
-            } else {
-                firstPicklist = snapshot.value;
+        if ([[snapshot childSnapshotForPath:@"FirstPicklist"] exists]) {
+            NSMutableArray<Team *> *tempPicklist = [NSMutableArray arrayWithArray:[self.firebaseFetcher getFirstPickList]];
+            firstPicklist = [NSMutableArray new];
+            for(int i = 0; i < [tempPicklist count]; i++) {
+                NSNumber *tempNum = @(tempPicklist[i].number);
+                [firstPicklist addObject:tempNum];
             }
+            //[[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
         } else {
+            firstPicklist = [NSMutableArray new];
             NSMutableArray *firstPick = [NSMutableArray arrayWithArray:[self.firebaseFetcher getFirstPickList]];
-            for (int i = 0; i < sizeof(firstPick)/sizeof(firstPick[0]); i++) {
-                [firstPicklist addObject:firstPick[i]];
+            for (int i = 0; i < [firstPick count]; i++) {
+                NSNumber *teamNum = @(((Team *)firstPick[i]).number);
+                [firstPicklist addObject: teamNum];
             }
-            [[self.ref child:@"SecondPicklist"] setValue:firstPicklist];
+            [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
         }
     }];
 }
@@ -49,10 +53,13 @@
         tempFirstPick = [self.firebaseFetcher getFirstPickList];
         return tempFirstPick;
     }
-    NSArray *sortedTeams = [self.firebaseFetcher getTeamsFromNumbers:firstPicklist];
-    return sortedTeams;
+    NSMutableArray *sortedTeams = [NSMutableArray new];
+    for(int i = 0; i < [firstPicklist count]; i++) {
+        [sortedTeams addObject:[self.firebaseFetcher getTeam:[firstPicklist[i] integerValue]]];
+    }
+    return (NSArray *)sortedTeams;
 }
-
+//[[]]
 - (NSString *)cellIdentifier {
     return MULTI_CELL_IDENTIFIER;
 }
@@ -95,7 +102,7 @@
 }
 
 BOOL inPicklist = NO;
-NSMutableArray *firstPicklist = nil;
+NSMutableArray<NSNumber *> *firstPicklist = nil;
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -114,9 +121,9 @@ NSMutableArray *firstPicklist = nil;
 
 - (IBAction)togglePicklistMode:(id)sender {
     inPicklist = !inPicklist;
-    [self.tableView setEditing:true animated:false];
+    [self.tableView setEditing:inPicklist animated:false];
     if(!inPicklist) {
-        [[self.ref child:@"SecondPicklist"] setValue:firstPicklist];
+        [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
     }
     self.dataArray = [self loadDataArray:false];
     [self.tableView reloadData];
