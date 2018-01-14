@@ -131,14 +131,40 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
 }
 
 - (void)toggleInPicklist {
-    inPicklist = !inPicklist;
-    [self.tableView setEditing:(BOOL *)inPicklist animated:false];
-    self.editing = inPicklist;
-    if(!inPicklist) {
-        [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
+    if(!inPicklist){
+        UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Password" message:@"Please enter the password for access to picklists." preferredStyle:UIAlertControllerStyleAlert];
+        [ac addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+            textField.placeholder = @"password";
+            textField.textColor = [UIColor blueColor];
+            textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        }];
+        
+        [ac addAction:[UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSArray * textfields = ac.textFields;
+            UITextField * password = textfields[0];
+            if ([password.text  isEqual: @"..."]) {
+                inPicklist = !inPicklist;
+                [self.tableView setEditing:(BOOL *)inPicklist animated:false];
+                self.editing = inPicklist;
+                if(!inPicklist) {
+                    [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
+                }
+                self.dataArray = [self loadDataArray:false];
+                [self.tableView reloadData];
+            }
+            
+        }]];
+        [self presentViewController:ac animated:YES completion:nil];
+    } else {
+        inPicklist = !inPicklist;
+        [self.tableView setEditing:(BOOL *)inPicklist animated:false];
+        self.editing = inPicklist;
+        if(!inPicklist) {
+            [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
+        }
+        self.dataArray = [self loadDataArray:false];
+        [self.tableView reloadData];
     }
-    self.dataArray = [self loadDataArray:false];
-    [self.tableView reloadData];
 }
 
 

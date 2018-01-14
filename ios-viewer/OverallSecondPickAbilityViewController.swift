@@ -110,16 +110,35 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
     }
     
     func toggleInPicklist() {
-        self.inPicklist = !self.inPicklist
-        self.tableView.isEditing = self.inPicklist
         if !self.inPicklist {
-            firebase!.child("SecondPicklist").setValue(secondPicklist)
-        } /*else {
-            for i in loadDataArray(true) {
-
+            let ac = UIAlertController(title: "Password", message: "Please enter the password for access to picklists.", preferredStyle: .alert)
+            ac.addTextField()
+            
+            let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
+                let answer = ac.textFields![0].text
+                if answer == "..." {
+                    self.inPicklist = !self.inPicklist
+                    self.tableView.isEditing = self.inPicklist
+                    if !self.inPicklist {
+                        self.firebase!.child("SecondPicklist").setValue(self.secondPicklist)
+                    }
+                    self.dataArray = self.loadDataArray(false)
+                    self.tableView.reloadData()
+                }
+                // do something interesting with "answer" here
             }
-        }*/
-        self.dataArray = loadDataArray(false)
-        self.tableView.reloadData()
+            
+            ac.addAction(submitAction)
+            
+            present(ac, animated: true)
+        } else {
+            self.inPicklist = !self.inPicklist
+            self.tableView.isEditing = self.inPicklist
+            if !self.inPicklist {
+                firebase!.child("SecondPicklist").setValue(secondPicklist)
+            }
+            self.dataArray = loadDataArray(false)
+            self.tableView.reloadData()
+        }
     }
 }
