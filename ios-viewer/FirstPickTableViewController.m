@@ -23,6 +23,7 @@
     [super viewDidLoad];
     self.firebaseFetcher = [AppDelegate getAppDelegate].firebaseFetcher;
     self.ref = [[FIRDatabase database] reference];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Picklist" style:UIBarButtonItemStylePlain target:self action:@selector(toggleInPicklist)];
     [self.ref observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         if ([[snapshot childSnapshotForPath:@"FirstPicklist"] exists]) {
             NSMutableArray<Team *> *tempPicklist = [NSMutableArray arrayWithArray:[self.firebaseFetcher getFirstPickList]];
@@ -42,6 +43,10 @@
             [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
         }
     }];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
 - (NSArray *) loadDataArray:(BOOL)shouldForce {
@@ -78,6 +83,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)path forData:(id)data inTableView:(UITableView *)tableView {
     Team *team = data;
     MultiCellTableViewCell *multiCell = (MultiCellTableViewCell *)cell;
+    multiCell.showsReorderControl = YES;
     
     multiCell.rankLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.firebaseFetcher rankOfTeam:team withCharacteristic:@"calculatedData.firstPickAbility"]];
     multiCell.teamLabel.text = [NSString stringWithFormat:@"%ld", (long)team.number];
@@ -89,15 +95,20 @@
     }
 }
 
-- (void) tableView:(UITableView *) moveRowAt:(NSIndexPath *)sourceIndexPath to:(NSIndexPath *)destinationIndexPath {
-    Team *movedObject = firstPicklist[sourceIndexPath.row];
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    NSNumber *movedObject = firstPicklist[sourceIndexPath.row];
     [firstPicklist removeObjectAtIndex:sourceIndexPath.row];
     [firstPicklist insertObject:movedObject atIndex:destinationIndexPath.row];
+    [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
     // NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(secondPicklist)")
     // To check for correctness enable: self.tableView.reloadData()
 }
 
--(UITableViewCellEditingStyle) tableView:(UITableView *) editingStyleForRowAt:(NSIndexPath *)indexPath {
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewCellEditingStyleNone;
 }
 
@@ -119,9 +130,10 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
     return @"updatedLeftTable";
 }
 
-- (IBAction)togglePicklistMode:(id)sender {
+- (void)toggleInPicklist {
     inPicklist = !inPicklist;
-    [self.tableView setEditing:inPicklist animated:false];
+    [self.tableView setEditing:(BOOL *)inPicklist animated:false];
+    self.editing = inPicklist;
     if(!inPicklist) {
         [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
     }

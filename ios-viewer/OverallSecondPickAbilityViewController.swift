@@ -51,6 +51,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         secondPicklist.remove(at: sourceIndexPath.row)
         secondPicklist.insert(movedObject, at: destinationIndexPath.row)
         NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(secondPicklist)")
+        firebase?.child("SecondPicklist").setValue(self.secondPicklist)
         // To check for correctness enable: self.tableView.reloadData()
     }
     
