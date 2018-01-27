@@ -162,7 +162,13 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.disabledPercentage",
             "calculatedData.incapacitatedPercentage",
             "pitCanCheesecake",
-            "calculatedData.canScoreBothSwitchSidesAuto"
+            "calculatedData.canScoreBothSwitchSidesAuto",
+            "didMakeAutoRun",
+            "crossedAutoZone",
+            "didGetDisabled",
+            "wasIncapacitated",
+            "calculatedData.didClimb",
+            "didPark"
         ]
         
         
@@ -310,13 +316,12 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "avgDrivingAbility" : "calculatedData.drivingAbility",
             "avgDefense" : "rankDefense",
             //RScore super data
-            /* //Uncomment when calculations are up on firebase
             "RScoreDrivingAbility" : "calculatedData.drivingAbility",
             "RScoreAgility" : "rankAgility",
             "RScoreDefense" : "rankDefense",
             "RScoreSpeed" : "rankSpeed",
             "RScoreTorque" : "rankTorque",
-            */
+ 
             //Misc
             "actualNumRPs" : "calculatedData.numRPs",
             "numAutoPoints" : "calculatedData.numAutoPoints",
@@ -416,7 +421,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "numExchangeInput",
         "numGroundIntakeTele",
         "numHumanPortalIntakeTele",
-        "climb",
+        "calculatedData.didClimb",
         "didPark"
     ]
     
@@ -619,6 +624,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "calculatedData.numAllianceSwitchSuccessTele" : "Successful SW Cubes Tele",
         "calculatedData.numScaleSuccessTele" : "Successful SC Cubes Tele",
         "calculatedData.numOpponentSwitchSuccessTele" : "Successful SWO Cubes Tele",
+        "calculatedData.didClimb" : "Climbed",
     ]
     
     /**

@@ -57,17 +57,28 @@ class TIMDDetailsViewController: UITableViewController {
             }
             if value != nil {
                 //set the value label
-                if let stringValue = value as? String {
+                
+                print(value is Bool)
+                if value is String {
+                    let stringValue = value as! String
                     cell.valueLabel.text = stringValue
-                } else if let boolValue = value as? Bool {
+                } else if Utils.teamDetailsKeys.boolValues.contains(key) && value is Bool {
+                    let boolValue = value as! Bool
                     cell.valueLabel.text = Utils.boolToString(b: boolValue)
-                } else if let intValue = value as? Int {
+                } else if value is Int {
+                    let intValue = value as! Int
                     cell.valueLabel.text = String(describing: intValue)
-                } else if let floatValue = value as? Float {
+                } else if value is Float {
+                    let floatValue = value as! Float
                     cell.valueLabel.text = String(describing: floatValue)
+                } else if value is Climb {
+                    let climbValue = value as! Climb
+                    cell.valueLabel.text = Utils.boolToString(b: climbValue.didSucceed)
                 } else {
                     //problems
+                    print("AHHH")
                 }
+                
             } else {
                 cell.valueLabel.text = "None"
             }
