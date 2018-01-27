@@ -68,6 +68,8 @@ class TIMDDetailsViewController: UITableViewController {
                 } else {
                     //problems
                 }
+            } else {
+                cell.valueLabel.text = "None"
             }
         }
         return cell
