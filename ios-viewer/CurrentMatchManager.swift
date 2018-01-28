@@ -55,7 +55,7 @@ class CurrentMatchManager: NSObject {
         }
     }
     
-    var starredMatchesArray = [String]() {
+    @objc var starredMatchesArray = [String]() {
         didSet {
             cache.set(value: NSKeyedArchiver.archivedData(withRootObject: starredMatchesArray), key: "starredMatches")
         }

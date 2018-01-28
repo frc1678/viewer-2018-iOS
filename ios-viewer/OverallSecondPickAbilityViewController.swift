@@ -35,7 +35,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         }
     }
     
-    func reloadTableView(_ note: Notification) {
+    @objc func reloadTableView(_ note: Notification) {
         tableView.reloadData()
     }
     
@@ -102,7 +102,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         return self.firebaseFetcher.filteredTeamsForSearchString(text)
     }
     
-    func toggleInPicklist() {
+    @objc func toggleInPicklist() {
         if !self.inPicklist {
             let ac = UIAlertController(title: "Password", message: "Please enter the password for access to picklists.", preferredStyle: .alert)
             ac.addTextField()

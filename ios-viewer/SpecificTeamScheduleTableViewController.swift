@@ -23,7 +23,7 @@ class SpecificTeamScheduleTableViewController : ScheduleTableViewController {
         return self.firebaseFetcher.getMatchesForTeamWithNumber(self.teamNumber)
     }
     
-    func starAll() {
+    @objc func starAll() {
         var starredMatches: [String] = firebaseFetcher.currentMatchManager.starredMatchesArray
         var teamMatchNums: [String] = []
         for i in self.dataArray {

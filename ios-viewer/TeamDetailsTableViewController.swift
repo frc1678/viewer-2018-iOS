@@ -188,7 +188,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
     }
     
     //Image is tapped
-    func didTapImage(_ recognizer: UITapGestureRecognizer) {
+    @objc func didTapImage(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == UIGestureRecognizerState.recognized {
             //navigate to image browser
             let nav = UINavigationController(rootViewController: self.photoBrowser)
@@ -830,7 +830,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
         
     }
     
-    func reloadTableView(_ note: Notification) {
+    @objc func reloadTableView(_ note: Notification) {
         if note.name.rawValue == "updateLeftTable" {
             if let t = note.object as? Team {
                 if t.number == team?.number {
@@ -843,7 +843,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
     }
     
     //Rankable row has been long-pressed, perform segue
-    func rankingDetailsSegue(_ gesture: UIGestureRecognizer) {
+    @objc func rankingDetailsSegue(_ gesture: UIGestureRecognizer) {
         
         if(gesture.state == UIGestureRecognizerState.began) {
             let p = gesture.location(in: self.tableView)

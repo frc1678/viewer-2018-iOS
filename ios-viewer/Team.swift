@@ -30,9 +30,9 @@ public final class Team: NSObject {
   // MARK: Properties
   public var name: String?
   public var pitDriveTrain: String?
-  public var number: Int = -1
-  public var calculatedData: CalculatedTeamData?
-    public var pitAllImageUrls: [String: String]?
+  @objc public var number: Int = -1
+  @objc public var calculatedData: CalculatedTeamData?
+  public var pitAllImageUrls: [String: String]?
   public var pitSEALsNotes: String?
   public var pitCanCheesecake: Bool? = false
   public var pitSelectedImage: String?

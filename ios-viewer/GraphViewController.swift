@@ -150,7 +150,8 @@ class GraphViewController: UIViewController, JBBarChartViewDataSource, JBBarChar
             let fraction = ((values.max()! - min(values.min()!, 0.0)) / (values[Int(index)] - min(values.min()!, 0.0)))
             return negativeColor.withAlphaComponent((fraction * 0.3 + 0.2) * CGFloat(negativeMultiplier))
         } else {
-            return color.withAlphaComponent(((values[Int(index)] - min(values.min()!, 0.0)) / (values.max()! - min(values.min()!, 0.0))) * 0.5 + 0.5)
+            let a = (values[Int(index)] - min(values.min()!, 0.0)) / (values.max()! - min(values.min()!, 0.0))
+            return color.withAlphaComponent(a * 0.5 + 0.5)
         }
     }
     

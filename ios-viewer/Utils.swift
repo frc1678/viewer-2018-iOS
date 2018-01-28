@@ -635,7 +635,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
      - parameter value: Input value
      - parameter numDecimalPlaces: Number of decimal places
      */
-    class func roundValue(_ value: Float, toDecimalPlaces numDecimalPlaces: Int) -> String {
+    @objc class func roundValue(_ value: Float, toDecimalPlaces numDecimalPlaces: Int) -> String {
         let val = value as NSNumber
         let f = NumberFormatter()
         f.numberStyle = NumberFormatter.Style.decimal

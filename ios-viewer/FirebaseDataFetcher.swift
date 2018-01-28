@@ -41,7 +41,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     var NSCounter = -2
     var hasUpdatedMatchOnSetup = false
     var firstCurrentMatchUpdate = true
-    let currentMatchManager : CurrentMatchManager
+    @objc let currentMatchManager : CurrentMatchManager
     
     var matchCounter = 0
     var TIMDCounter = 0
@@ -57,7 +57,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     let devToken = "j1r2wo3RUPMeUZosxwvVSFEFVcrXuuMAGjk6uPOc"
     let stratDevToken = "IMXOxXD3FjOOUoMGJlkAK5pAtn89mGIWAEnaKJhP"
     //array of all matches
-    var matches = [Match]()
+    @objc var matches = [Match]()
     //array of all TIMDs
     var teamInMatches = [TeamInMatchData]()
     //image urls
@@ -394,7 +394,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         Gets an array of team objects
         - parameter teamNums: Array of team numbers
     */
-    func getTeamsFromNumbers(_ teamNums: [Int]?) -> [Team] {
+    @objc func getTeamsFromNumbers(_ teamNums: [Int]?) -> [Team] {
         var teams = [Team]()
         if teamNums != nil {
             for teamNum in teamNums! {
@@ -505,7 +505,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     }*/
     
     /** Get list of teams sorted by seed */
-    func seedList() -> [Team] {
+    @objc func seedList() -> [Team] {
         return teams.sorted { $0.calculatedData!.actualSeed < $1.calculatedData!.actualSeed }
     }
     
@@ -533,7 +533,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         - parameter team: Team to find rank for
         - parameter withCharacteristic: Characteristic to rank by
     */
-    func rankOfTeam(_ team: Team, withCharacteristic: String) -> Int {
+    @objc func rankOfTeam(_ team: Team, withCharacteristic: String) -> Int {
         var counter = 0
         //sort teams by the characteristic
         let sortedTeams : [Team] = self.getSortedListbyString(withCharacteristic)
@@ -941,7 +941,7 @@ class NotificationManager : NSObject {
         }
     }
     
-    func notify(_ timer : Timer) {
+    @objc func notify(_ timer : Timer) {
         for (noteName, specialObject) in self.notificationNamesToPost {
             postNotification(noteName, specialObject: specialObject)
         }

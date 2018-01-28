@@ -34,25 +34,25 @@ public final class Match: NSObject {
   }
 
   // MARK: Properties
-  public var redAllianceTeamNumbers: [Int]?
+  @objc public var redAllianceTeamNumbers: [Int]?
     public var blueCubesForPowerup: [String:Int]?
   public var blueDidFaceBoss: Bool? = false
   public var blueCubesInVaultFinal: [String:Int]?
     public var redSwitch: [String:String]?
   public var redDidFaceBoss: Bool? = false
-  public var number: Int = -1
-  public var calculatedData: CalculatedMatchData?
+  @objc public var number: Int = -1
+  @objc public var calculatedData: CalculatedMatchData?
   public var foulPointsGainedRed: Int?
   public var blueDidAutoQuest: Bool? = false
   public var redDidAutoQuest: Bool? = false
   public var redCubesInVaultFinal: [String:Int]?
-  public var blueAllianceTeamNumbers: [Int]?
+  @objc public var blueAllianceTeamNumbers: [Int]?
   public var redCubesForPowerup: [String:Int]?
     public var scale: [String:String]?
-  public var blueScore: Int = -1
+  @objc public var blueScore: Int = -1
   public var blueSwitch: [String:String]?
   public var foulPointsGainedBlue: Int?
-  public var redScore: Int = -1
+  @objc public var redScore: Int = -1
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.

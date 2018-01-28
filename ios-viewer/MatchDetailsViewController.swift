@@ -13,10 +13,10 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
     //get firebase fetcher
     var firebaseFetcher = AppDelegate.getAppDelegate().firebaseFetcher;
     
-    var matchNumber = -1
+    @objc var matchNumber = -1
     
     
-    var match: Match? = nil {
+    @objc var match: Match? = nil {
         didSet {
             updateUI()
         }
@@ -337,10 +337,10 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         var attString : NSAttributedString
         let withOrAgainst = playWithAgainstOrBothWithTeam(number: number)
         switch withOrAgainst {
-        case .With : attString = NSAttributedString(string: withOrAgainst.rawValue, attributes: [NSForegroundColorAttributeName: UIColor.green])
-        case .Against : attString = NSAttributedString(string: withOrAgainst.rawValue, attributes: [NSForegroundColorAttributeName: UIColor.orange])
-        case .Both : attString = NSAttributedString(string: withOrAgainst.rawValue, attributes: [NSForegroundColorAttributeName: UIColor.brown])
-        case .Neither : attString = NSAttributedString(string: withOrAgainst.rawValue, attributes: [NSForegroundColorAttributeName: UIColor.gray])
+        case .With : attString = NSAttributedString(string: withOrAgainst.rawValue, attributes: [NSAttributedStringKey.foregroundColor: UIColor.green])
+        case .Against : attString = NSAttributedString(string: withOrAgainst.rawValue, attributes: [NSAttributedStringKey.foregroundColor: UIColor.orange])
+        case .Both : attString = NSAttributedString(string: withOrAgainst.rawValue, attributes: [NSAttributedStringKey.foregroundColor: UIColor.brown])
+        case .Neither : attString = NSAttributedString(string: withOrAgainst.rawValue, attributes: [NSAttributedStringKey.foregroundColor: UIColor.gray])
         }
         return attString
     }
@@ -392,7 +392,7 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         
         return nil
     }
-    func checkRes(_ notification:Notification) {
+    @objc func checkRes(_ notification:Notification) {
         if notification.name._rawValue == "updateLeftTable" {
             if self.match == nil {
                 self.match = self.firebaseFetcher?.matches[self.matchNumber - 2] //Why the -2???
