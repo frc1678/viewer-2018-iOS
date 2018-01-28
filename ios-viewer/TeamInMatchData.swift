@@ -77,7 +77,7 @@ public final class TeamInMatchData: NSObject {
   public var scaleAttemptTele: [Attempt]?
   public var allianceSwitchAttemptTele: [Attempt]?
   public var calculatedData: CalculatedTeamInMatchData?
-  public var superNotes: String?
+  @objc public var superNotes: String?
   public var didGetIncapacitated: Bool? = false
   public var numGroundPyramidIntakeTele: Int?
   public var numElevatedPyramidIntakeTele: Int?

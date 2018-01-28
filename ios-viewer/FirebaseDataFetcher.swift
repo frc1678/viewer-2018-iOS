@@ -64,8 +64,8 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     var imageUrls = [Int: String]()
     var allTheData = NSDictionary()
     //picklists
-    var picklistPassword = ""
-    var firstPicklist = [Int]()
+    @objc var picklistPassword = ""
+    @objc var firstPicklist = [Int]()
     var secondPicklist = [Int]()
 
     let firebase : DatabaseReference
@@ -360,7 +360,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         Gets team object given team number
         - parameter teamNum: Number of the team
     */
-    func getTeam(_ teamNum: Int) -> Team? {
+    @objc func getTeam(_ teamNum: Int) -> Team? {
         //filter to end up with only the team(s) with the given number
         let myTeams = teams.filter { $0.number == teamNum }
         if myTeams.count == 1 { return myTeams[0] }
@@ -479,7 +479,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     
     // MARK: Rank
     /** Returns first pick list */
-    func getFirstPickList() -> [Team] {
+    @objc func getFirstPickList() -> [Team] {
         //sorts teams by first pick ability
         return teams.sorted { $0.calculatedData?.firstPickAbility > $1.calculatedData!.firstPickAbility }
     }
@@ -680,7 +680,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         Filters general searches
         - parameter searchString: String to filter results by
     */
-    func filteredTeamsForSearchString(_ searchString: String) -> [Team] {
+    @objc func filteredTeamsForSearchString(_ searchString: String) -> [Team] {
         var filteredTeams = [Team]()
         for team in self.teams {
             //if team number contains search field

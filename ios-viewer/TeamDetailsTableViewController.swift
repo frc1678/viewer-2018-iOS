@@ -27,7 +27,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var seed: UILabel!
     @IBOutlet weak var predictedSeed: UILabel!
     
-    var team: Team? = nil {
+    @objc var team: Team? = nil {
         didSet {
             num = self.team?.number
             updateTitleAndTopInfo()
