@@ -16,30 +16,23 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
     var inPicklist = false
     var secondPicklist: [Int] = []
     var firebase: DatabaseReference?
+    var fbpassword: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector:#selector(OverallSecondPickAbilityViewController.reloadTableView), name:NSNotification.Name(rawValue: "updateLeftTable"), object:nil)
         self.tableView.isEditing = self.inPicklist
+        self.fbpassword = firebaseFetcher.picklistPassword
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Picklist", style: .plain, target: self, action: #selector(toggleInPicklist))
         firebase = Database.database().reference()
-        firebase!.child("SecondPicklist").observeSingleEvent(of: .value, with: { (snapshot) in
-            if let unwrapped = snapshot.value as? [Int] {
-                if unwrapped == [] {
-                    for i in self.firebaseFetcher.getOverallSecondPickList() {
-                        self.secondPicklist.append(i.number)
-                    }
-                    self.firebase!.child("SecondPicklist").setValue(self.secondPicklist)
-                } else {
-                    self.secondPicklist = unwrapped
-                }
-            } else {
-                for i in self.firebaseFetcher.getOverallSecondPickList() {
-                    self.secondPicklist.append(i.number)
-                }
-                self.firebase!.child("SecondPicklist").setValue(self.secondPicklist)
+        if firebaseFetcher.secondPicklist == [] {
+            for i in self.firebaseFetcher.getOverallSecondPickList() {
+                self.secondPicklist.append(i.number)
             }
-        })
+            self.firebase!.child("SecondPicklist").setValue(self.secondPicklist)
+        } else {
+            self.secondPicklist = firebaseFetcher.secondPicklist
+        }
     }
     
     func reloadTableView(_ note: Notification) {
@@ -116,7 +109,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
             
             let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
                 let answer = ac.textFields![0].text
-                if answer == "cArterRox&88" {
+                if answer == self.fbpassword {
                     self.inPicklist = !self.inPicklist
                     self.tableView.isEditing = self.inPicklist
                     if !self.inPicklist {

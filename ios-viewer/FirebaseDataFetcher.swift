@@ -63,7 +63,11 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     //image urls
     var imageUrls = [Int: String]()
     var allTheData = NSDictionary()
-    
+    //picklists
+    var picklistPassword = ""
+    var firstPicklist = [Int]()
+    var secondPicklist = [Int]()
+
     let firebase : DatabaseReference
     
     override init() {
@@ -80,8 +84,26 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         
        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
             self.getAllTheData()
+            self.getPicks()
         }
         
+    }
+    
+    /** Gets the picklist password. */
+    func getPicks() {
+        self.firebase.observeSingleEvent(of: .value, with: { (snapshot) -> Void in
+            if let password = snapshot.childSnapshot(forPath: "PicklistPassword").value as? String, snapshot.childSnapshot(forPath: "PicklistPassword").value as? String != "" {
+                self.picklistPassword = password
+            } else {
+                self.firebase.child("PicklistPassword").setValue("password")
+            }
+            if let firstPicks = snapshot.childSnapshot(forPath: "FirstPicklist").value as? [Int] {
+                self.firstPicklist = firstPicks
+            }
+            if let secondPicks = snapshot.childSnapshot(forPath: "SecondPicklist").value as? [Int] {
+                self.secondPicklist = secondPicks
+            }
+        })
     }
     
     /** 
@@ -299,7 +321,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
             
             let m : [String: Any] = ["num":self.currentMatchManager.currentMatch, "redTeams": currentMatchFetch?.redAllianceTeamNumbers ?? [0,0,0], "blueTeams": currentMatchFetch?.blueAllianceTeamNumbers ?? [0,0,0]]
             UserDefaults.standard.set(m, forKey: "match")
-            })
+        })
         
     }
     

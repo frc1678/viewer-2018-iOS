@@ -36,16 +36,17 @@
     NSString *token = [defaults valueForKey:@"NotificationToken"];
     //if there are starred matches
     if(self.firebaseFetcher.currentMatchManager.starredMatchesArray != nil && [self.firebaseFetcher.currentMatchManager.starredMatchesArray count]){
-        //if app token exists
-        if(token != nil) {
-            //remove all starred matches for this app on the firebase
-            [[[[[[FIRDatabase database] reference] child: @"AppTokens"] child:token] child: @"StarredMatches"] setValue:nil];
-        }
+        
         NSMutableArray *intMatches = [[NSMutableArray alloc] init];
         //iterate thru cached starred matches
         for(NSString *item in self.firebaseFetcher.currentMatchManager.starredMatchesArray) {
             //add the match number
             [intMatches addObject:[NSNumber numberWithInt:[item integerValue]]];
+        }
+        //if app token exists
+        if(token != nil) {
+            //remove all starred matches for this app on the firebase BUT WHY
+            [[[[[[FIRDatabase database] reference] child: @"AppTokens"] child:token] child: @"StarredMatches"] setValue:nil];
         }
         //add all of the starred matches back
         for(NSNumber *item in intMatches) {

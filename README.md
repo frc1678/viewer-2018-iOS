@@ -9,6 +9,7 @@ The 2018 iOS Viewer app, ran on any iPhone, 5s or newer, that runs iOS 11.2 or l
 ## Use Notes
 Tap on the selected image for a team to view all images. Tap on a team's datapoint to see a graph of their performance in that field for every match they've participated in so far, or long press to see a list of teams sorted by that datapoint. When looking at a list of robots sorted by a datapoint, do a "rotating" gesture (two fingers rotating the same direction) to reverse the sort of the list.
 Tap on a match to get basic information on the teams in the match, and long press one to "star" it. Starred matches will send you notifications when they are approaching.
+Press the Picklist button on the top right of the First or Second Pick view to enter Picklist mode. First you must enter the password. Then, use the reorder views on the right side of the table to move the cells.
 
 ## Style Guide
 

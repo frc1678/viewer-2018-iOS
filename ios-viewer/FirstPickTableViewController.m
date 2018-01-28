@@ -19,30 +19,25 @@
 
 @implementation FirstPickTableViewController
 
+NSString *fbpassword = @"";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.firebaseFetcher = [AppDelegate getAppDelegate].firebaseFetcher;
     self.ref = [[FIRDatabase database] reference];
+    fbpassword = self.firebaseFetcher.picklistPassword;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Picklist" style:UIBarButtonItemStylePlain target:self action:@selector(toggleInPicklist)];
-    [self.ref observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        if ([[snapshot childSnapshotForPath:@"FirstPicklist"] exists]) {
-            NSMutableArray<Team *> *tempPicklist = [NSMutableArray arrayWithArray:[self.firebaseFetcher getFirstPickList]];
-            firstPicklist = [NSMutableArray new];
-            for(int i = 0; i < [tempPicklist count]; i++) {
-                NSNumber *tempNum = @(tempPicklist[i].number);
-                [firstPicklist addObject:tempNum];
-            }
-            //[[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
-        } else {
-            firstPicklist = [NSMutableArray new];
-            NSMutableArray *firstPick = [NSMutableArray arrayWithArray:[self.firebaseFetcher getFirstPickList]];
-            for (int i = 0; i < [firstPick count]; i++) {
-                NSNumber *teamNum = @(((Team *)firstPick[i]).number);
-                [firstPicklist addObject: teamNum];
-            }
-            [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
+    if (self.firebaseFetcher.firstPicklist.count == 0) {
+        NSMutableArray<Team *> *tempPicklist = [NSMutableArray arrayWithArray:[self.firebaseFetcher getFirstPickList]];
+        firstPicklist = [NSMutableArray new];
+        for(int i = 0; i < [tempPicklist count]; i++) {
+            NSNumber *tempNum = @(tempPicklist[i].number);
+            [firstPicklist addObject:tempNum];
         }
-    }];
+        //[[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
+    } else {
+        firstPicklist = self.firebaseFetcher.firstPicklist;
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -141,7 +136,7 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
         [ac addAction:[UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSArray * textfields = ac.textFields;
             UITextField * password = textfields[0];
-            if ([password.text  isEqual: @"cArterRox&88"]) {
+            if ([password.text  isEqual: fbpassword]) {
                 inPicklist = !inPicklist;
                 [self.tableView setEditing:(BOOL *)inPicklist animated:false];
                 self.editing = inPicklist;
