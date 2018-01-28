@@ -421,7 +421,8 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "numExchangeInput",
         "numGroundIntakeTele",
         "numHumanPortalIntakeTele",
-        "calculatedData.didClimb",
+        "climb",
+        //"calculatedData.didClimb",
         "didPark"
     ]
     

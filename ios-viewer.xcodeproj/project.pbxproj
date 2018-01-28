@@ -60,6 +60,11 @@
 		8C25A7CC1E33F2790012A23E /* CalculatedTeamInMatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C25A7CB1E33F2790012A23E /* CalculatedTeamInMatchData.swift */; };
 		8C5868711E34254E0056EA17 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C58686C1E34254E0056EA17 /* Storyboard.storyboard */; };
 		8C65E7921FD0FEA6000E71A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C65E7911FD0FEA6000E71A2 /* GoogleService-Info.plist */; };
+		8CA2B79E201E41360074DF21 /* SoloClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B79D201E41350074DF21 /* SoloClimb.swift */; };
+		8CA2B7A2201E41510074DF21 /* ActiveLift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B79F201E41500074DF21 /* ActiveLift.swift */; };
+		8CA2B7A3201E41510074DF21 /* PassiveClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A0201E41510074DF21 /* PassiveClimb.swift */; };
+		8CA2B7A4201E41510074DF21 /* AssistedLift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A1201E41510074DF21 /* AssistedLift.swift */; };
+		8CA2B7A6201E54FE0074DF21 /* ClimbParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A5201E54FD0074DF21 /* ClimbParent.swift */; };
 		8CBD712D1E354696009C0206 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD3CEA81E34074000B328A1 /* NotificationCenter.framework */; };
 		8CBD71301E354696009C0206 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBD712F1E354696009C0206 /* TodayViewController.swift */; };
 		8CBD71371E354696009C0206 /* Current Match.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8CBD712C1E354696009C0206 /* Current Match.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -170,6 +175,11 @@
 		8C58688E1E342EFE0056EA17 /* ExtensionPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionPrefixHeader.pch; sourceTree = "<group>"; };
 		8C65E7911FD0FEA6000E71A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8CA2B79C201D13320074DF21 /* Current Match.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Current Match.entitlements"; sourceTree = "<group>"; };
+		8CA2B79D201E41350074DF21 /* SoloClimb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoloClimb.swift; sourceTree = "<group>"; };
+		8CA2B79F201E41500074DF21 /* ActiveLift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveLift.swift; sourceTree = "<group>"; };
+		8CA2B7A0201E41510074DF21 /* PassiveClimb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassiveClimb.swift; sourceTree = "<group>"; };
+		8CA2B7A1201E41510074DF21 /* AssistedLift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistedLift.swift; sourceTree = "<group>"; };
+		8CA2B7A5201E54FD0074DF21 /* ClimbParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClimbParent.swift; sourceTree = "<group>"; };
 		8CBD712C1E354696009C0206 /* Current Match.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Current Match.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBD712F1E354696009C0206 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8CBD71341E354696009C0206 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -324,7 +334,12 @@
 				8C25A7CB1E33F2790012A23E /* CalculatedTeamInMatchData.swift */,
 				190DFE3D1E30697500477B6D /* CalculatedTeamData.swift */,
 				190DFE431E306A1700477B6D /* CalculatedMatchData.swift */,
+				8CA2B7A5201E54FD0074DF21 /* ClimbParent.swift */,
 				8C0200B62011988600A75272 /* Climb.swift */,
+				8CA2B79F201E41500074DF21 /* ActiveLift.swift */,
+				8CA2B7A1201E41510074DF21 /* AssistedLift.swift */,
+				8CA2B7A0201E41510074DF21 /* PassiveClimb.swift */,
+				8CA2B79D201E41350074DF21 /* SoloClimb.swift */,
 				190DFE451E30703E00477B6D /* Match.swift */,
 				19B038481E2DE55B006E25A2 /* TeamInMatchData.swift */,
 				190DFE471E3079D000477B6D /* Team.swift */,
@@ -635,12 +650,15 @@
 			files = (
 				190DFE3E1E30697500477B6D /* CalculatedTeamData.swift in Sources */,
 				19B038131E2C5891006E25A2 /* GraphViewController.swift in Sources */,
+				8CA2B7A4201E41510074DF21 /* AssistedLift.swift in Sources */,
 				19B038151E2C5891006E25A2 /* ArrayTableViewController.m in Sources */,
 				19B038051E2C5891006E25A2 /* FirebaseDataFetcher.swift in Sources */,
 				19B037E81E2C586C006E25A2 /* SpecificTeamScheduleTableViewController.swift in Sources */,
 				19B0384B1E2DE55B006E25A2 /* TeamInMatchData.swift in Sources */,
 				190DFE4A1E308B7700477B6D /* TIMDScheduleViewController.swift in Sources */,
+				8CA2B79E201E41360074DF21 /* SoloClimb.swift in Sources */,
 				190DFE481E3079D000477B6D /* Team.swift in Sources */,
+				8CA2B7A3201E41510074DF21 /* PassiveClimb.swift in Sources */,
 				19B037EE1E2C586C006E25A2 /* OverallSecondPickAbilityViewController.swift in Sources */,
 				8C25A7CC1E33F2790012A23E /* CalculatedTeamInMatchData.swift in Sources */,
 				190DFE4E1E308BDC00477B6D /* TIMDTableViewCell.swift in Sources */,
@@ -649,6 +667,7 @@
 				19B038141E2C5891006E25A2 /* CurrentMatchManager.swift in Sources */,
 				19B038171E2C5891006E25A2 /* NotesTableViewController.swift in Sources */,
 				19B038161E2C5891006E25A2 /* SortedRankTableViewController.swift in Sources */,
+				8CA2B7A6201E54FE0074DF21 /* ClimbParent.swift in Sources */,
 				19B0380A1E2C5891006E25A2 /* Utils.swift in Sources */,
 				19B0382E1E2C58D3006E25A2 /* UIColor+HexString.m in Sources */,
 				19B038111E2C5891006E25A2 /* Reflectable.swift in Sources */,
@@ -670,6 +689,7 @@
 				19B038061E2C5891006E25A2 /* TeamDetailsTableViewController.swift in Sources */,
 				190DFE441E306A1700477B6D /* CalculatedMatchData.swift in Sources */,
 				19B038331E2C5919006E25A2 /* main.m in Sources */,
+				8CA2B7A2201E41510074DF21 /* ActiveLift.swift in Sources */,
 				19B038321E2C5919006E25A2 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

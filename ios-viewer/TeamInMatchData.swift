@@ -55,7 +55,7 @@ public final class TeamInMatchData: NSObject {
   public var rankDefense: Int?
   public var numGroundIntakeTele: Int?
   public var numCubesFumbledTele: Int?
-  public var climb: Climb?
+  public var climb: [Climb]?
   public var numBadDecisions: Int?
   public var matchNumber: Int?
   public var numElevatedPyramidIntakeAuto: Int?
@@ -106,7 +106,7 @@ public final class TeamInMatchData: NSObject {
     rankDefense = json[SerializationKeys.rankDefense].int
     numGroundIntakeTele = json[SerializationKeys.numGroundIntakeTele].int
     numCubesFumbledTele = json[SerializationKeys.numCubesFumbledTele].int
-    climb = Climb(json: json[SerializationKeys.climb])
+    if let items = json[SerializationKeys.climb].array { climb = items.map { Climb(json: $0) } }
     numBadDecisions = json[SerializationKeys.numBadDecisions].int
     matchNumber = json[SerializationKeys.matchNumber].int
     numElevatedPyramidIntakeAuto = json[SerializationKeys.numElevatedPyramidIntakeAuto].int
@@ -150,7 +150,7 @@ public final class TeamInMatchData: NSObject {
     if let value = rankDefense { dictionary[SerializationKeys.rankDefense] = value }
     if let value = numGroundIntakeTele { dictionary[SerializationKeys.numGroundIntakeTele] = value }
     if let value = numCubesFumbledTele { dictionary[SerializationKeys.numCubesFumbledTele] = value }
-    if let value = climb { dictionary[SerializationKeys.climb] = value.dictionaryRepresentation() }
+    if let value = climb { dictionary[SerializationKeys.climb] = value.map { $0.dictionaryRepresentation() } }
     if let value = numBadDecisions { dictionary[SerializationKeys.numBadDecisions] = value }
     if let value = matchNumber { dictionary[SerializationKeys.matchNumber] = value }
     if let value = numElevatedPyramidIntakeAuto { dictionary[SerializationKeys.numElevatedPyramidIntakeAuto] = value }
@@ -192,7 +192,7 @@ public final class TeamInMatchData: NSObject {
     self.rankDefense = aDecoder.decodeObject(forKey: SerializationKeys.rankDefense) as? Int
     self.numGroundIntakeTele = aDecoder.decodeObject(forKey: SerializationKeys.numGroundIntakeTele) as? Int
     self.numCubesFumbledTele = aDecoder.decodeObject(forKey: SerializationKeys.numCubesFumbledTele) as? Int
-    self.climb = aDecoder.decodeObject(forKey: SerializationKeys.climb) as? Climb
+    self.climb = aDecoder.decodeObject(forKey: SerializationKeys.climb) as? [Climb]
     self.numBadDecisions = aDecoder.decodeObject(forKey: SerializationKeys.numBadDecisions) as? Int
     self.matchNumber = aDecoder.decodeObject(forKey: SerializationKeys.matchNumber) as? Int
     self.numElevatedPyramidIntakeAuto = aDecoder.decodeObject(forKey: SerializationKeys.numElevatedPyramidIntakeAuto) as? Int

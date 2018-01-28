@@ -82,7 +82,8 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         self.notificationManager.notifications.append(NotificationManager.Notification(name: "updateLeftTable"))
         //self.notificationManager.notifications.append(NotificationManager.Notification(name: "currentMatchUpdated"))
         
-       DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+        //retrieve data
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
             self.getAllTheData()
             self.getPicks()
         }
