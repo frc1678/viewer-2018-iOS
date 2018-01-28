@@ -357,6 +357,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "pitDriveTrain",
             "pitClimberType",
             "pitAvailableWeight",
+            "pitMaxHeight",
             "pitProgrammingLanguage"
         ]
         
@@ -626,6 +627,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "calculatedData.numScaleSuccessTele" : "Successful SC Cubes Tele",
         "calculatedData.numOpponentSwitchSuccessTele" : "Successful SWO Cubes Tele",
         "calculatedData.didClimb" : "Climbed",
+        "pitMaxHeight" : "Max. Height",
     ]
     
     /**

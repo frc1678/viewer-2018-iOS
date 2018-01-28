@@ -39,8 +39,8 @@ public final class Team: NSObject {
   public var numMatchesPlayed: Int?
   public var pitClimberType: String?
   public var pitProgrammingLanguage: String?
-  public var pitAvailableWeight: Int = -1
-  public var pitMaxHeight: Int?
+  public var pitAvailableWeight: Float = -1
+  public var pitMaxHeight: Float?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -66,8 +66,8 @@ public final class Team: NSObject {
     numMatchesPlayed = json[SerializationKeys.numMatchesPlayed].int
     pitClimberType = json[SerializationKeys.pitClimberType].string
     pitProgrammingLanguage = json[SerializationKeys.pitProgrammingLanguage].string
-    pitAvailableWeight = json[SerializationKeys.pitAvailableWeight].intValue
-    pitMaxHeight = json[SerializationKeys.pitMaxHeight].int
+    pitAvailableWeight = json[SerializationKeys.pitAvailableWeight].floatValue
+    pitMaxHeight = json[SerializationKeys.pitMaxHeight].float
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -86,6 +86,7 @@ public final class Team: NSObject {
     if let value = pitClimberType { dictionary[SerializationKeys.pitClimberType] = value }
     if let value = pitProgrammingLanguage { dictionary[SerializationKeys.pitProgrammingLanguage] = value }
     if let value = pitMaxHeight { dictionary[SerializationKeys.pitMaxHeight] = value }
+    dictionary[SerializationKeys.pitAvailableWeight] = pitAvailableWeight
     return dictionary
   }
 
@@ -102,8 +103,8 @@ public final class Team: NSObject {
     self.numMatchesPlayed = aDecoder.decodeObject(forKey: SerializationKeys.numMatchesPlayed) as? Int
     self.pitClimberType = aDecoder.decodeObject(forKey: SerializationKeys.pitClimberType) as? String
     self.pitProgrammingLanguage = aDecoder.decodeObject(forKey: SerializationKeys.pitProgrammingLanguage) as? String
-    self.pitAvailableWeight = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvailableWeight) as? Int)!
-    self.pitMaxHeight = aDecoder.decodeObject(forKey: SerializationKeys.pitMaxHeight) as? Int
+    self.pitAvailableWeight = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvailableWeight) as? Float)!
+    self.pitMaxHeight = aDecoder.decodeObject(forKey: SerializationKeys.pitMaxHeight) as? Float
   }
 
   public func encode(with aCoder: NSCoder) {
