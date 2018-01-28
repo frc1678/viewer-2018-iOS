@@ -84,7 +84,9 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
     static let teamDetailsKeys = TeamDetailsKeys()
     struct TeamDetailsKeys {
         
-        let yesNoKeys : [String] = []
+        let yesNoKeys : [String] = [
+            "calculatedData.canScoreBothSwitchSidesAuto"
+        ]
         
         let abilityKeys = [
             "calculatedData.firstPickAbility",
@@ -168,7 +170,8 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "didGetDisabled",
             "wasIncapacitated",
             "calculatedData.didClimb",
-            "didPark"
+            "didPark",
+            "calculatedData.canScoreBothSwitchSidesAuto",
         ]
         
         

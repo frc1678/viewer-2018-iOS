@@ -47,6 +47,14 @@ class SortedRankTableViewController: ArrayTableViewController {
                 if let value = team.calculatedData!.value(forKeyPath: propPath) {
                     multiCell.scoreLabel!.text = "\(Float(roundValue(value as AnyObject?, toDecimalPlaces: 2))! * 100)%"
                 }
+            } else if Utils.teamDetailsKeys.yesNoKeys.contains(translatedKeyPath) {
+                if let value = team.calculatedData!.value(forKeyPath: propPath) {
+                    if value as! Bool {
+                        multiCell.scoreLabel!.text = "Yes"
+                    } else {
+                        multiCell.scoreLabel!.text = "No"
+                    }
+                }
             } else {
                 if let value = team.calculatedData!.value(forKeyPath: propPath) {
                     multiCell.scoreLabel!.text = roundValue(value as AnyObject?, toDecimalPlaces: 2)
