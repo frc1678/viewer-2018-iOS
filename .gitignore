@@ -3,12 +3,13 @@
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## User settings
-.ios-viewer.xcworkspace/xcuserdata/
-.viewer-2018-iOS.xcworkspace/xcuserdata/
+.ios-viewer.xcworkspace/xcuserdata/*
+.viewer-2018-iOS.xcworkspace/xcuserdata/*
 .DS_Store
-ios-viewer.xcworkspace/xcuserdata/
-viewer-2018-iOS.xcworkspace/xcuserdata/
-viewer-2018-iOS/ios-viewer.xcworkspace/xcuserdata/
+ios-viewer.xcworkspace/xcuserdata/*
+viewer-2018-iOS.xcworkspace/xcuserdata/*
+viewer-2018-iOS/ios-viewer.xcworkspace/xcuserdata/*
+.viewer-2018-iOS/ios-viewer.xcworkspace/xcuserdata/*
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
