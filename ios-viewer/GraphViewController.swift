@@ -114,18 +114,18 @@ class GraphViewController: UIViewController, JBBarChartViewDataSource, JBBarChar
                 mainDisplayText = "\(displayTitleWithoutAvg)\(percentageValueOf(values[Int(index)] as AnyObject?))"
             } else if Utils.boolGraphs.contains(Utils.findKeyForValue(graphTitle)!) {
                 if Bool(truncating: Int(values[Int(index)]) as NSNumber) {
-                    mainDisplayText = "\(displayTitle): Yes"
+                    mainDisplayText = "\(displayTitleWithoutAvg)Yes"
                 } else {
-                    mainDisplayText = "\(displayTitle): No"
+                    mainDisplayText = "\(displayTitleWithoutAvg)No"
                 }
             } else {
                 mainDisplayText = "\(displayTitleWithoutAvg)\(roundValue(values[Int(index)] as AnyObject?, toDecimalPlaces: 2))"
             }
         } else if Utils.boolGraphs.contains(Utils.findKeyForValue(graphTitle)!) {
             if Bool(truncating: Int(newValuesArray[Int(index)]) as! NSNumber) {
-                mainDisplayText = "\(displayTitleWithoutAvg): Yes"
+                mainDisplayText = "\(displayTitleWithoutAvg)Yes"
             } else {
-                mainDisplayText = "\(displayTitleWithoutAvg): No"
+                mainDisplayText = "\(displayTitleWithoutAvg)No"
             }
         } else {
             mainDisplayText = "\(displayTitleWithoutAvg)\(newValuesArray[Int(index)])"

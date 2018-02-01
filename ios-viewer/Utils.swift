@@ -407,11 +407,11 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
     
     /** Keys that should be booleans in graphs */
     static let boolGraphs = [
-        "calculatedData.didClimb",
-        "calculatedData.isDysfunctional",
-        "didPark",
-        "didGetIncapacitated",
-        "didGetDisabled"
+        "calculatedData.climbPercentage",
+        "calculatedData.dysfunctionalPercentage",
+        //"calculatedData.park", //FALSE doesn't exist
+        "calculatedData.incapacitatedPercentage",
+        "calculatedData.disabledPercentage",
     ]
     
     // MARK: TIMD keys
