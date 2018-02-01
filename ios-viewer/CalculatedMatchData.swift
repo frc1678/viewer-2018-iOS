@@ -28,7 +28,7 @@ public final class CalculatedMatchData: NSObject {
   public var actualBlueRPs: Int?
   public var predictedRedAutoQuest: Bool? = false
   public var predictedRedRPs: Float?
-  public var predictedBlueScore: Float = -1
+  @objc public var predictedBlueScore: Float = -1
   public var actualRedRPs: Int?
   public var predictedBlueAutoQuest: Bool? = false
   public var predictedBlueRPs: Float?

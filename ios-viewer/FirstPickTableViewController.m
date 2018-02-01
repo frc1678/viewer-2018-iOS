@@ -127,6 +127,18 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
 
 - (void)toggleInPicklist {
     if(!inPicklist){
+        fbpassword = self.firebaseFetcher.picklistPassword;
+        if (self.firebaseFetcher.firstPicklist.count == 0) {
+            NSMutableArray<Team *> *tempPicklist = [NSMutableArray arrayWithArray:[self.firebaseFetcher getFirstPickList]];
+            firstPicklist = [NSMutableArray new];
+            for(int i = 0; i < [tempPicklist count]; i++) {
+                NSNumber *tempNum = @(tempPicklist[i].number);
+                [firstPicklist addObject:tempNum];
+            }
+            //[[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
+        } else {
+            firstPicklist = self.firebaseFetcher.firstPicklist;
+        }
         UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Password" message:@"Please enter the password for access to picklists." preferredStyle:UIAlertControllerStyleAlert];
         [ac addTextFieldWithConfigurationHandler:^(UITextField *textField) {
             textField.placeholder = @"Password";
@@ -136,7 +148,7 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
         [ac addAction:[UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSArray * textfields = ac.textFields;
             UITextField * password = textfields[0];
-            if ([password.text  isEqual: fbpassword]) {
+            if ([password.text isEqual: fbpassword]) {
                 inPicklist = !inPicklist;
                 [self.tableView setEditing:(BOOL *)inPicklist animated:false];
                 self.editing = inPicklist;

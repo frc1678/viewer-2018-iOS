@@ -405,7 +405,14 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
     static let statusKeys = ["uploadedData.incapacitated", "uploadedData.disabled"]
     static let miscKeys = ["uploadedData.miscellaneousNotes"]
     
-    
+    /** Keys that should be booleans in graphs */
+    static let boolGraphs = [
+        "calculatedData.didClimb",
+        "calculatedData.isDysfunctional",
+        "didPark",
+        "didGetIncapacitated",
+        "didGetDisabled"
+    ]
     
     // MARK: TIMD keys
     /** Keys relating to the Autonomous period to be displayed in the TIMD view */

@@ -84,8 +84,8 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         
         //retrieve data
         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-            self.getAllTheData()
             self.getPicks()
+            self.getAllTheData()
         }
         
     }
@@ -95,6 +95,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         self.firebase.observeSingleEvent(of: .value, with: { (snapshot) -> Void in
             if let password = snapshot.childSnapshot(forPath: "PicklistPassword").value as? String, snapshot.childSnapshot(forPath: "PicklistPassword").value as? String != "" {
                 self.picklistPassword = password
+                print("done: \(self.picklistPassword)")
             } else {
                 self.firebase.child("PicklistPassword").setValue("password")
             }

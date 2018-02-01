@@ -104,6 +104,15 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
     
     @objc func toggleInPicklist() {
         if !self.inPicklist {
+            self.fbpassword = firebaseFetcher.picklistPassword
+            if firebaseFetcher.secondPicklist == [] {
+                for i in self.firebaseFetcher.getOverallSecondPickList() {
+                    self.secondPicklist.append(i.number)
+                }
+                self.firebase!.child("SecondPicklist").setValue(self.secondPicklist)
+            } else {
+                self.secondPicklist = firebaseFetcher.secondPicklist
+            }
             let ac = UIAlertController(title: "Password", message: "Please enter the password for access to picklists.", preferredStyle: .alert)
             ac.addTextField()
             
