@@ -25,6 +25,8 @@ public final class Team: NSObject {
     static let pitProgrammingLanguage = "pitProgrammingLanguage"
     static let pitAvailableWeight = "pitAvailableWeight"
     static let pitMaxHeight = "pitMaxHeight"
+    static let firstPicklistPosition = "firstPicklistPosition"
+    static let secondPicklistPosition = "secondPicklistPosition"
   }
 
   // MARK: Properties
@@ -41,6 +43,8 @@ public final class Team: NSObject {
   public var pitProgrammingLanguage: String?
   public var pitAvailableWeight: Float = -1
   public var pitMaxHeight: Float?
+    public var firstPicklistPosition: Int?
+    public var secondPicklistPosition: Int?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -68,6 +72,8 @@ public final class Team: NSObject {
     pitProgrammingLanguage = json[SerializationKeys.pitProgrammingLanguage].string
     pitAvailableWeight = json[SerializationKeys.pitAvailableWeight].floatValue
     pitMaxHeight = json[SerializationKeys.pitMaxHeight].float
+    firstPicklistPosition = json[SerializationKeys.firstPicklistPosition].int
+    secondPicklistPosition = json[SerializationKeys.secondPicklistPosition].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -87,6 +93,8 @@ public final class Team: NSObject {
     if let value = pitProgrammingLanguage { dictionary[SerializationKeys.pitProgrammingLanguage] = value }
     if let value = pitMaxHeight { dictionary[SerializationKeys.pitMaxHeight] = value }
     dictionary[SerializationKeys.pitAvailableWeight] = pitAvailableWeight
+    if let value = firstPicklistPosition { dictionary[SerializationKeys.firstPicklistPosition] = value }
+    if let value = secondPicklistPosition { dictionary[SerializationKeys.secondPicklistPosition] = value }
     return dictionary
   }
 
@@ -105,6 +113,8 @@ public final class Team: NSObject {
     self.pitProgrammingLanguage = aDecoder.decodeObject(forKey: SerializationKeys.pitProgrammingLanguage) as? String
     self.pitAvailableWeight = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvailableWeight) as? Float)!
     self.pitMaxHeight = aDecoder.decodeObject(forKey: SerializationKeys.pitMaxHeight) as? Float
+    self.firstPicklistPosition = aDecoder.decodeObject(forKey: SerializationKeys.firstPicklistPosition) as? Int
+    self.secondPicklistPosition = aDecoder.decodeObject(forKey: SerializationKeys.secondPicklistPosition) as? Int
   }
 
   public func encode(with aCoder: NSCoder) {
@@ -121,6 +131,8 @@ public final class Team: NSObject {
     aCoder.encode(pitProgrammingLanguage, forKey: SerializationKeys.pitProgrammingLanguage)
     aCoder.encode(pitAvailableWeight, forKey: SerializationKeys.pitAvailableWeight)
     aCoder.encode(pitMaxHeight, forKey: SerializationKeys.pitMaxHeight)
+    aCoder.encode(firstPicklistPosition, forKey: SerializationKeys.firstPicklistPosition)
+    aCoder.encode(secondPicklistPosition, forKey: SerializationKeys.secondPicklistPosition)
   }
 
 }

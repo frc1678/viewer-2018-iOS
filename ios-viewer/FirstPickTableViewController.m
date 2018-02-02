@@ -33,6 +33,7 @@ NSString *fbpassword = @"";
         for(int i = 0; i < [tempPicklist count]; i++) {
             NSNumber *tempNum = @(tempPicklist[i].number);
             [firstPicklist addObject:tempNum];
+            [[[[self.ref child:@"Teams"] child:[tempNum stringValue]] child:@"firstPicklistPosition"] setValue:[NSNumber numberWithInt:i]];
         }
         //[[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
     } else {
@@ -96,9 +97,18 @@ NSString *fbpassword = @"";
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     NSNumber *movedObject = firstPicklist[sourceIndexPath.row];
-    [firstPicklist removeObjectAtIndex:sourceIndexPath.row];
+    [firstPicklist removeObjectAtIndex: sourceIndexPath.row];
     [firstPicklist insertObject:movedObject atIndex:destinationIndexPath.row];
     [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
+    if(sourceIndexPath.row > destinationIndexPath.row) {
+        for(int j = destinationIndexPath.row; j <= sourceIndexPath.row; j++){
+            [[[[self.ref child:@"Teams"] child: [firstPicklist[j] stringValue]] child:@"firstPicklistPosition"] setValue:[NSNumber numberWithInteger:j]];
+        }
+    } else {
+        for(int j = sourceIndexPath.row; j <= destinationIndexPath.row; j++){
+            [[[[self.ref child:@"Teams"] child: [firstPicklist[j] stringValue]] child:@"firstPicklistPosition"] setValue:[NSNumber numberWithInteger:j]];
+        }
+    }
     // NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(secondPicklist)")
     // To check for correctness enable: self.tableView.reloadData()
 }
@@ -130,14 +140,15 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
         fbpassword = self.firebaseFetcher.picklistPassword;
         if (self.firebaseFetcher.firstPicklist.count == 0) {
             NSMutableArray<Team *> *tempPicklist = [NSMutableArray arrayWithArray:[self.firebaseFetcher getFirstPickList]];
-            firstPicklist = [NSMutableArray new];
+            NSMutableArray *tempFirstPicklist = [[NSMutableArray alloc] init];
             for(int i = 0; i < [tempPicklist count]; i++) {
                 NSNumber *tempNum = @(tempPicklist[i].number);
-                [firstPicklist addObject:tempNum];
+                [tempFirstPicklist addObject:tempNum];
             }
+            firstPicklist = tempFirstPicklist;
             //[[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
         } else {
-            firstPicklist = self.firebaseFetcher.firstPicklist;
+            firstPicklist = [[NSMutableArray alloc] initWithArray: self.firebaseFetcher.firstPicklist];
         }
         UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Password" message:@"Please enter the password for access to picklists." preferredStyle:UIAlertControllerStyleAlert];
         [ac addTextFieldWithConfigurationHandler:^(UITextField *textField) {

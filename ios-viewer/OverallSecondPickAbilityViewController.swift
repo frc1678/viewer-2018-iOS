@@ -45,6 +45,15 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         secondPicklist.insert(movedObject, at: destinationIndexPath.row)
         NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(secondPicklist)")
         firebase?.child("SecondPicklist").setValue(self.secondPicklist)
+        if sourceIndexPath.row < destinationIndexPath.row {
+            for j in sourceIndexPath.row...destinationIndexPath.row {
+                firebase?.child("Teams").child(String(describing:secondPicklist[j])).child("secondPicklistPosition").setValue(j)
+            }
+        } else {
+            for j in destinationIndexPath.row...sourceIndexPath.row {
+                firebase?.child("Teams").child(String(describing:secondPicklist[j])).child("secondPickPosition").setValue(j)
+            }
+        }
         // To check for correctness enable: self.tableView.reloadData()
     }
     
@@ -106,8 +115,10 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         if !self.inPicklist {
             self.fbpassword = firebaseFetcher.picklistPassword
             if firebaseFetcher.secondPicklist == [] {
-                for i in self.firebaseFetcher.getOverallSecondPickList() {
-                    self.secondPicklist.append(i.number)
+                let fbSecondPicklist = self.firebaseFetcher.getOverallSecondPickList()
+                for i in 0..<self.firebaseFetcher.getOverallSecondPickList().count {
+                    self.secondPicklist.append(fbSecondPicklist[i].number)
+                    firebase?.child("Teams").child(String(describing: fbSecondPicklist[i].number)).child("secondPicklistPosition").setValue(i)
                 }
                 self.firebase!.child("SecondPicklist").setValue(self.secondPicklist)
             } else {
