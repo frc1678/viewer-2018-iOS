@@ -87,6 +87,7 @@ NSString *fbpassword = @"";
     NSNumber *movedObject = firstPicklist[sourceIndexPath.row];
     [firstPicklist removeObjectAtIndex: sourceIndexPath.row];
     [firstPicklist insertObject:movedObject atIndex:destinationIndexPath.row];
+    self.firebaseFetcher.firstPicklist = firstPicklist;
     [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
     if(sourceIndexPath.row > destinationIndexPath.row) {
         for(int j = destinationIndexPath.row; j <= sourceIndexPath.row; j++){
@@ -156,6 +157,7 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
                     [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
                 }
                 self.dataArray = [self loadDataArray:false];
+                self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reset" style:UIBarButtonItemStylePlain target:self action:@selector(clearPicklist)];
                 [self.tableView reloadData];
             }
             
@@ -170,9 +172,25 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
             [[self.ref child:@"FirstPicklist"] setValue:firstPicklist];
         }
         self.dataArray = [self loadDataArray:false];
+        self.navigationItem.leftBarButtonItem = nil;
         [self.tableView reloadData];
     }
 }
 
+-(void)clearPicklist {
+    NSMutableArray<NSNumber *> *tempPicklist = [[NSMutableArray alloc] init];
+    for(Team *i in [self.firebaseFetcher getFirstPickList]) {
+        [tempPicklist addObject:[NSNumber numberWithInt:i.number]];
+    }
+    [[self.ref child:@"FirstPicklist"] setValue:tempPicklist];
+    self.firebaseFetcher.firstPicklist = tempPicklist;
+    firstPicklist = tempPicklist;
+    for(int i = 0; i < tempPicklist.count; i++) {
+        NSString* myNewString = [NSString stringWithFormat:@"%@", tempPicklist[i]];
+        [[[[self.ref child:@"Teams"] child: myNewString] child:@"secondPicklistPosition"] setValue: [NSNumber numberWithInt:i]];
+    }
+    self.dataArray = [self loadDataArray:false];
+    [self.tableView reloadData];
+}
 
 @end

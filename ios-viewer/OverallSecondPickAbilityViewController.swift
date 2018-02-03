@@ -44,6 +44,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         secondPicklist.remove(at: sourceIndexPath.row)
         secondPicklist.insert(movedObject, at: destinationIndexPath.row)
         NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(secondPicklist)")
+        firebaseFetcher.secondPicklist = secondPicklist
         firebase?.child("SecondPicklist").setValue(self.secondPicklist)
         if sourceIndexPath.row < destinationIndexPath.row {
             for j in sourceIndexPath.row...destinationIndexPath.row {
@@ -51,7 +52,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
             }
         } else {
             for j in destinationIndexPath.row...sourceIndexPath.row {
-                firebase?.child("Teams").child(String(describing:secondPicklist[j])).child("secondPickPosition").setValue(j)
+                firebase?.child("Teams").child(String(describing:secondPicklist[j])).child("secondPicklistPosition").setValue(j)
             }
         }
         // To check for correctness enable: self.tableView.reloadData()
@@ -136,6 +137,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
                         self.firebase!.child("SecondPicklist").setValue(self.secondPicklist)
                     }
                     self.dataArray = self.loadDataArray(false)
+                    self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(self.clearPicklist))
                     self.tableView.reloadData()
                 }
                 // do something interesting with "answer" here
@@ -151,7 +153,23 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
                 firebase!.child("SecondPicklist").setValue(secondPicklist)
             }
             self.dataArray = loadDataArray(false)
+            self.navigationItem.leftBarButtonItem = nil
             self.tableView.reloadData()
         }
+    }
+    
+    func clearPicklist() {
+        var tempPicklist : [Int] = []
+        for i in self.firebaseFetcher.getOverallSecondPickList() {
+            tempPicklist.append(i.number)
+        }
+        firebase?.child("SecondPicklist").setValue(tempPicklist)
+        self.firebaseFetcher.secondPicklist = tempPicklist
+        self.secondPicklist = tempPicklist
+        for i in 0..<tempPicklist.count {
+            firebase?.child("Teams").child(String(describing: tempPicklist[i])).child("secondPicklistPosition").setValue(i)
+        }
+        self.dataArray = loadDataArray(false)
+        self.tableView.reloadData()
     }
 }
