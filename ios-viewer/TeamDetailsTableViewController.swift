@@ -344,7 +344,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                     //titleLabel is the humanReadable version of dataKey
                     unrankedCell.titleLabel.text = Utils.humanReadableNames[dataKey]
                     
-                    if "\(dataPoint)".isEmpty /*|| (dataPoint as? Float != nil && dataPoint as! Float == 0.0)*/ {
+                    if "\(String(describing: dataPoint))".isEmpty /*|| (dataPoint as? Float != nil && dataPoint as! Float == 0.0)*/ {
                         unrankedCell.detailLabel.text = ""
                        } /*else if dataKey == "pitOrganization" { //In the pit scout, the selector is indexed 0 to 4, this translates it back in to what those numbers mean.
                         unrankedCell.detailLabel!.text! = (team?.pitOrganization) ?? ""
@@ -713,7 +713,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
         else if segue.identifier == "TGraph" {
             let graphViewController = segue.destination as! GraphViewController
             
-            if let teamNum = team?.number {
+            if (team?.number) != nil {
                 let indexPath = sender as! IndexPath
                 let cell = tableView.cellForRow(at: indexPath) as! MultiCellTableViewCell
                 graphViewController.graphTitle = "\(cell.teamLabel!.text!)"

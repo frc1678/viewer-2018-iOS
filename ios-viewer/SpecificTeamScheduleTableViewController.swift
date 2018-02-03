@@ -11,7 +11,7 @@ import Firebase
 
 class SpecificTeamScheduleTableViewController : ScheduleTableViewController {
     
-    var teamNumber : Int = -1
+    @objc var teamNumber : Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()

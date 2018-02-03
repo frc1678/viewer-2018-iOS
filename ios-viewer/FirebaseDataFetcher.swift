@@ -511,7 +511,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     }
     
     /** Get list of teams sorted by predicted seed */
-    func predSeedList() -> [Team] {
+    @objc func predSeedList() -> [Team] {
         return teams.sorted { $0.calculatedData!.predictedSeed < $1.calculatedData!.predictedSeed }
     }
     

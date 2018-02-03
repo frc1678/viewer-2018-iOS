@@ -187,4 +187,9 @@ class GraphViewController: UIViewController, JBBarChartViewDataSource, JBBarChar
         negativeMultiplier = Double(sender.value)
         graph.reloadData()
     }
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        super.didRotate(from: fromInterfaceOrientation)
+        viewDidAppear(false)
+    }
 }
