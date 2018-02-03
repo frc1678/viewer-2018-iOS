@@ -43,8 +43,8 @@ public final class Team: NSObject {
   public var pitProgrammingLanguage: String?
   public var pitAvailableWeight: Float = -1
   public var pitMaxHeight: Float?
-    public var firstPicklistPosition: Int?
-    public var secondPicklistPosition: Int?
+    public var firstPicklistPosition: Int = -1
+    public var secondPicklistPosition: Int = -1
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -72,8 +72,8 @@ public final class Team: NSObject {
     pitProgrammingLanguage = json[SerializationKeys.pitProgrammingLanguage].string
     pitAvailableWeight = json[SerializationKeys.pitAvailableWeight].floatValue
     pitMaxHeight = json[SerializationKeys.pitMaxHeight].float
-    firstPicklistPosition = json[SerializationKeys.firstPicklistPosition].int
-    secondPicklistPosition = json[SerializationKeys.secondPicklistPosition].int
+    firstPicklistPosition = json[SerializationKeys.firstPicklistPosition].intValue
+    secondPicklistPosition = json[SerializationKeys.secondPicklistPosition].intValue
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -93,8 +93,8 @@ public final class Team: NSObject {
     if let value = pitProgrammingLanguage { dictionary[SerializationKeys.pitProgrammingLanguage] = value }
     if let value = pitMaxHeight { dictionary[SerializationKeys.pitMaxHeight] = value }
     dictionary[SerializationKeys.pitAvailableWeight] = pitAvailableWeight
-    if let value = firstPicklistPosition { dictionary[SerializationKeys.firstPicklistPosition] = value }
-    if let value = secondPicklistPosition { dictionary[SerializationKeys.secondPicklistPosition] = value }
+    dictionary[SerializationKeys.firstPicklistPosition] = firstPicklistPosition
+    dictionary[SerializationKeys.secondPicklistPosition] = secondPicklistPosition
     return dictionary
   }
 
@@ -113,8 +113,8 @@ public final class Team: NSObject {
     self.pitProgrammingLanguage = aDecoder.decodeObject(forKey: SerializationKeys.pitProgrammingLanguage) as? String
     self.pitAvailableWeight = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvailableWeight) as? Float)!
     self.pitMaxHeight = aDecoder.decodeObject(forKey: SerializationKeys.pitMaxHeight) as? Float
-    self.firstPicklistPosition = aDecoder.decodeObject(forKey: SerializationKeys.firstPicklistPosition) as? Int
-    self.secondPicklistPosition = aDecoder.decodeObject(forKey: SerializationKeys.secondPicklistPosition) as? Int
+    self.firstPicklistPosition = (aDecoder.decodeObject(forKey: SerializationKeys.firstPicklistPosition) as? Int)!
+    self.secondPicklistPosition = (aDecoder.decodeObject(forKey: SerializationKeys.secondPicklistPosition) as? Int)!
   }
 
   public func encode(with aCoder: NSCoder) {

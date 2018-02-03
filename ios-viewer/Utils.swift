@@ -125,6 +125,8 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "Multi-Side Auto",
             "Total # of Good Decisions",
             "Total # of Bad Decisions",
+            "First Picklist Position",
+            "Second Picklist Position",
         ]
         
         /** Values that should be displayed as long text cells */
@@ -138,7 +140,9 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         
         let unrankedCells = [
             "selectedImageURL",
-            "otherUrls"
+            "otherUrls",
+            "firstPicklistPosition",
+            "secondPicklistPosition",
         ]
         
         /** Values to be displayed as percentages. */
@@ -201,7 +205,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             }
             return [
                 "Default",
-                //"High Level",
+                "High Level",
                 "Status",
                 "Autonomous",
                 "Teleoperated",
@@ -230,7 +234,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             }
             return [
                 defaultKeys,
-                //highLevel,
+                highLevel,
                 statusKeys,
                 autoKeys,
                 teleKeys,
@@ -249,10 +253,10 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         ]
         
         let highLevel : [String] = [ //not needed
-            /*"calculatedData.firstPickAbility",
+            "calculatedData.firstPickAbility",
              "calculatedData.secondPickAbility",
-             "calculatedData.avgKeyShotTime",
-             "calculatedData.avgHopperShotTime"*/
+             "firstPicklistPosition",
+             "secondPicklistPosition",
         ]
         
         //let autoKeysMini = [
@@ -638,6 +642,8 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "calculatedData.numOpponentSwitchSuccessTele" : "Successful SWO Cubes Tele",
         "calculatedData.didClimb" : "Climbed",
         "pitMaxHeight" : "Max. Height",
+        "firstPicklistPosition" : "First Picklist Position",
+        "secondPicklistPosition" : "Second Picklist Position",
     ]
     
     /**

@@ -91,7 +91,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     }
     
     /** Gets the picklist password. */
-    func getPicks() {
+    @objc func getPicks() {
         self.firebase.observeSingleEvent(of: .value, with: { (snapshot) -> Void in
             if let password = snapshot.childSnapshot(forPath: "PicklistPassword").value as? String, snapshot.childSnapshot(forPath: "PicklistPassword").value as? String != "" {
                 self.picklistPassword = password
