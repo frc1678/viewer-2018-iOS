@@ -29,7 +29,6 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
             for i in self.firebaseFetcher.getOverallSecondPickList() {
                 self.secondPicklist.append(i.number)
             }
-            self.firebase!.child("SecondPicklist").setValue(self.secondPicklist)
         } else {
             self.secondPicklist = firebaseFetcher.secondPicklist
         }
@@ -45,16 +44,6 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         secondPicklist.insert(movedObject, at: destinationIndexPath.row)
         NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(secondPicklist)")
         firebaseFetcher.secondPicklist = secondPicklist
-        firebase?.child("SecondPicklist").setValue(self.secondPicklist)
-        if sourceIndexPath.row < destinationIndexPath.row {
-            for j in sourceIndexPath.row...destinationIndexPath.row {
-                firebase?.child("Teams").child(String(describing:secondPicklist[j])).child("secondPicklistPosition").setValue(j)
-            }
-        } else {
-            for j in destinationIndexPath.row...sourceIndexPath.row {
-                firebase?.child("Teams").child(String(describing:secondPicklist[j])).child("secondPicklistPosition").setValue(j)
-            }
-        }
         // To check for correctness enable: self.tableView.reloadData()
     }
     
@@ -116,45 +105,27 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         if !self.inPicklist {
             self.fbpassword = firebaseFetcher.picklistPassword
             if firebaseFetcher.secondPicklist == [] {
-                let fbSecondPicklist = self.firebaseFetcher.getOverallSecondPickList()
-                for i in 0..<self.firebaseFetcher.getOverallSecondPickList().count {
-                    self.secondPicklist.append(fbSecondPicklist[i].number)
-                    firebase?.child("Teams").child(String(describing: fbSecondPicklist[i].number)).child("secondPicklistPosition").setValue(i)
+                let aSecondPicklist = self.firebaseFetcher.getOverallSecondPickList()
+                self.secondPicklist = []
+                for i in aSecondPicklist {
+                    self.secondPicklist.append(i.number)
                 }
-                self.firebase!.child("SecondPicklist").setValue(self.secondPicklist)
             } else {
                 self.secondPicklist = firebaseFetcher.secondPicklist
             }
-            let ac = UIAlertController(title: "Password", message: "Please enter the password for access to picklists.", preferredStyle: .alert)
-            ac.addTextField()
-            
-            let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
-                let answer = ac.textFields![0].text
-                if answer == self.fbpassword {
-                    self.inPicklist = !self.inPicklist
-                    self.tableView.isEditing = self.inPicklist
-                    if !self.inPicklist {
-                        self.firebase!.child("SecondPicklist").setValue(self.secondPicklist)
-                    }
-                    self.dataArray = self.loadDataArray(false)
-                    self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(self.clearPicklist))
-                    self.tableView.reloadData()
-                }
-                // do something interesting with "answer" here
-            }
-            
-            ac.addAction(submitAction)
-            
-            present(ac, animated: true)
+            self.inPicklist = !self.inPicklist
+            self.tableView.isEditing = self.inPicklist
+            self.dataArray = self.loadDataArray(false)
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(self.clearPicklist))
+            self.tableView.reloadData()
+            self.navigationItem.title = "Offline Picklist"
         } else {
             self.inPicklist = !self.inPicklist
             self.tableView.isEditing = self.inPicklist
-            if !self.inPicklist {
-                firebase!.child("SecondPicklist").setValue(secondPicklist)
-            }
             self.dataArray = loadDataArray(false)
             self.navigationItem.leftBarButtonItem = nil
             self.tableView.reloadData()
+            self.navigationItem.title = "Second Pick"
         }
     }
     
@@ -163,12 +134,8 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         for i in self.firebaseFetcher.getOverallSecondPickList() {
             tempPicklist.append(i.number)
         }
-        firebase?.child("SecondPicklist").setValue(tempPicklist)
         self.firebaseFetcher.secondPicklist = tempPicklist
         self.secondPicklist = tempPicklist
-        for i in 0..<tempPicklist.count {
-            firebase?.child("Teams").child(String(describing: tempPicklist[i])).child("secondPicklistPosition").setValue(i)
-        }
         self.dataArray = loadDataArray(false)
         self.tableView.reloadData()
     }

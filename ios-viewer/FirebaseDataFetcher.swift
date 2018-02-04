@@ -99,11 +99,11 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
             } else {
                 self.firebase.child("PicklistPassword").setValue("password")
             }
-            if let firstPicks = snapshot.childSnapshot(forPath: "FirstPicklist").value as? [Int] {
+            if let firstPicks = snapshot.childSnapshot(forPath: "picklist").value as? [Int] {
                 self.firstPicklist = firstPicks
             }
-            if let secondPicks = snapshot.childSnapshot(forPath: "SecondPicklist").value as? [Int] {
-                self.secondPicklist = secondPicks
+            for i in self.getOverallSecondPickList() {
+                self.secondPicklist.append(i.number)
             }
         })
     }
