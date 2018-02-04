@@ -71,7 +71,7 @@ class TIMDDetailsViewController: UITableViewController {
                 } else if value is Float {
                     let floatValue = value as! Float
                     cell.valueLabel.text = String(describing: floatValue)
-                    //So these are all of the stupid types, like 2018's climb, 2017's shottimesforboiler... things that are more complex types but since they're JSON we can't directly cast them. So first we cast them to [String: NSObject].
+                //So these are all of the stupid types, like 2018's climb, 2017's shottimesforboiler... things that are more complex types but since they're JSON we can't directly cast them. So first we cast them to [String: NSObject].
                 } else if let dictValue = value as? [[String: NSObject]] {
                     let climbValue = dictValue[0]
                     if ((climbValue["activeLift"] as? ActiveLift)?.numRobotsLifted)! > 0 {
