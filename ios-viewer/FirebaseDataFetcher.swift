@@ -553,7 +553,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     }
     
     /** See rankOfTeam, reverses */
-    func reverseRankOfTeam(_ team: Team, withCharacteristic:String) -> Int {
+    @objc func reverseRankOfTeam(_ team: Team, withCharacteristic:String) -> Int {
         var counter = 0
         let sortedTeams : [Team] = self.getSortedListbyString(withCharacteristic).reversed()
         

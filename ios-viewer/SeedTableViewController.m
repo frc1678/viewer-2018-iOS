@@ -26,7 +26,7 @@
     
     if(team.calculatedData.actualSeed != nil){
         //get the rank where higher numbers are on the top
-        multiCell.rankLabel.text = [NSString stringWithFormat:@"%ld", [self.firebaseFetcher rankOfTeam:team withCharacteristic:@"calculatedData.actualSeed"]];
+        multiCell.rankLabel.text = [NSString stringWithFormat:@"%ld", [self.firebaseFetcher reverseRankOfTeam:team withCharacteristic:@"calculatedData.actualSeed"]];
     } else {
         multiCell.rankLabel.text = @"NA";
     }
