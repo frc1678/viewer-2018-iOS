@@ -37,7 +37,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
     @objc func reloadTableView(_ note: Notification) {
         tableView.reloadData()
     }
-    
+    /** Tell the app what to do when you move a row */
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedObject = self.secondPicklist[sourceIndexPath.row]
         secondPicklist.remove(at: sourceIndexPath.row)
@@ -48,18 +48,22 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         // To check for correctness enable: self.tableView.reloadData()
     }
     
+    //no - at the left side of cells
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .none
     }
     
+    //dont make space for the - at the left side of cells
     override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return false
     }
     
+    //segue when you tap on a team
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: "TeamDetails", sender: tableView.cellForRow(at: indexPath))
     }
+    
     override func configureCell(_ cell: UITableViewCell!, at path: IndexPath!, forData data: Any!, in tableView: UITableView!) {
         let multiCell = cell as? MultiCellTableViewCell
         let team = data as? Team
@@ -73,16 +77,16 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
             multiCell!.scoreLabel!.text = ""
         }
         multiCell!.rankLabel!.text = "\(self.firebaseFetcher.rankOfTeam(team!, withCharacteristic: "calculatedData.secondPickAbility"))"
-        if inPicklist {
-            
-        }
     }
    
     
     override func loadDataArray(_ shouldForce: Bool) -> [Any]! {
+        //if we aren't in the picklist mode
         if !self.inPicklist {
+            //just look at the secondpicklist from fb
             return self.firebaseFetcher.getOverallSecondPickList()
         }
+        //use user-generated picklist, and this function makes it super easy to turn it into an array of teams!
         let sortedTeams = firebaseFetcher.getTeamsFromNumbers(secondPicklist)
         return sortedTeams
     }
@@ -103,6 +107,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
     }
     
     @objc func toggleInPicklist() {
+        //if we trying to get INTO the picklist
         if !self.inPicklist {
             self.fbpassword = firebaseFetcher.picklistPassword
             if firebaseFetcher.secondPicklist == [] {

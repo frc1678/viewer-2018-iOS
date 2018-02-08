@@ -648,7 +648,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         Filters matches according to the search string when set to matches
         - parameter searchString: String to filter results by
     */
-    func filteredMatchesForMatchSearchString(_ searchString:String) -> [Match] {
+    @objc func filteredMatchesForMatchSearchString(_ searchString:String) -> [Match] {
         var filteredMatches = [Match]()
         for match in self.matches  {
             //if the match contains the search field
