@@ -44,6 +44,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         secondPicklist.insert(movedObject, at: destinationIndexPath.row)
         NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(secondPicklist)")
         firebaseFetcher.secondPicklist = secondPicklist
+        self.dataArray = self.loadDataArray(false)
         // To check for correctness enable: self.tableView.reloadData()
     }
     
@@ -129,7 +130,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         }
     }
     
-    func clearPicklist() {
+    @objc func clearPicklist() {
         var tempPicklist : [Int] = []
         for i in self.firebaseFetcher.getOverallSecondPickList() {
             tempPicklist.append(i.number)

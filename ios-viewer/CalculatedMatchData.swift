@@ -33,7 +33,7 @@ public final class CalculatedMatchData: NSObject {
   public var predictedBlueAutoQuest: Bool? = false
   public var predictedBlueRPs: Float?
   public var blueWinChance: Float?
-  public var predictedRedScore: Float = -1
+  @objc public var predictedRedScore: Float = -1
   public var redWinChance: Float?
 
   // MARK: SwiftyJSON Initializers
