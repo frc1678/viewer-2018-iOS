@@ -26,6 +26,7 @@ NSString *fbpassword = @"";
     [self.firebaseFetcher getPicks];
     self.firebaseFetcher = [AppDelegate getAppDelegate].firebaseFetcher;
     self.ref = [[FIRDatabase database] reference];
+    fbpassword = self.firebaseFetcher.picklistPassword;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Picklist" style:UIBarButtonItemStylePlain target:self action:@selector(toggleInPicklist)];
 }
 
