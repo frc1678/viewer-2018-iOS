@@ -83,7 +83,7 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         //cell.valueLabel.preferredMaxLayoutWidth = 50
         
         //detect which tableView it is
-        switch tableView {
+        /*switch tableView {
         case r1TableView :
             /* if indexPath.row == tableKeys.count {
                 //set final row to Future Match Status
@@ -145,7 +145,7 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
                 } else {
                     cell.valueLabel.text = String(describing: Utils.unwrap(any: blueTeams?[1].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
                 }
-            //}
+            }
         case b3TableView :
             /*if indexPath.row == tableKeys.count {
                 cell.datapointLabel.text = "Future Match Status"
@@ -160,6 +160,43 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
             //}
         default :
             break
+        }*/
+        
+        var tableNum = -1
+        var teams: [Team]?
+        
+        switch tableView {
+        case r1TableView:
+            tableNum = 0
+            teams = redTeams
+        case r2TableView:
+            tableNum = 1
+            teams = redTeams
+        case r3TableView:
+            tableNum = 2
+            teams = redTeams
+        case b1TableView:
+            tableNum = 0
+            teams = blueTeams
+        case b2TableView:
+            tableNum = 1
+            teams = blueTeams
+        case b3TableView:
+            tableNum = 2
+            teams = blueTeams
+        default:
+            break
+        }
+        
+        /*if indexPath.row == tableKeys.count {
+            cell.datapointLabel.text = "Future Match Status"
+            cell.valueLabel.attributedText = withAgainstAttributedStringForTeam(number: (blueTeams?[2].number)!)
+        } else {*/
+        if Utils.teamDetailsKeys.percentageValues.contains("calculatedData.\(tableKeys[indexPath.row])") {
+            //If the value is a percentage, multiply float by 100 and add %
+            cell.valueLabel.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[tableNum].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
+        } else {
+            cell.valueLabel.text = String(describing: Utils.unwrap(any: teams?[tableNum].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
         }
         
         //if it's a float, round to the nearest hundreth

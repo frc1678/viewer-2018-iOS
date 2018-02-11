@@ -45,8 +45,8 @@ public final class Team: NSObject {
   public var pitAvailableWeight: Float = -1
   public var pitMaxHeight: Float?
     public var picklistPosition: Int = -1
-    public var pitRampTimes: [TimedData] = []
-    public var pitDriveTimes: [TimedData] = []
+    public var pitRampTimes: [TimedData]?
+    public var pitDriveTimes: [TimedData]?
     
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -75,8 +75,8 @@ public final class Team: NSObject {
     pitAvailableWeight = json[SerializationKeys.pitAvailableWeight].floatValue
     pitMaxHeight = json[SerializationKeys.pitMaxHeight].float
     picklistPosition = json[SerializationKeys.picklistPosition].intValue
-    pitRampTimes = (json[SerializationKeys.pitRampTimes].dictionaryObject as! [TimedData]?)!
-    pitDriveTimes = (json[SerializationKeys.pitDriveTimes].dictionaryObject as! [TimedData]?)!
+    pitRampTimes = json[SerializationKeys.pitRampTimes].dictionaryObject as! [TimedData]?
+    pitDriveTimes = json[SerializationKeys.pitDriveTimes].dictionaryObject as! [TimedData]?
 }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -118,8 +118,8 @@ public final class Team: NSObject {
     self.pitAvailableWeight = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvailableWeight) as? Float)!
     self.pitMaxHeight = aDecoder.decodeObject(forKey: SerializationKeys.pitMaxHeight) as? Float
     self.picklistPosition = (aDecoder.decodeObject(forKey: SerializationKeys.picklistPosition) as? Int)!
-    self.pitRampTimes = (aDecoder.decodeObject(forKey: SerializationKeys.pitRampTimes) as? [TimedData])!
-    self.pitDriveTimes = (aDecoder.decodeObject(forKey: SerializationKeys.pitDriveTimes) as? [TimedData])!
+    self.pitRampTimes = aDecoder.decodeObject(forKey: SerializationKeys.pitRampTimes) as? [TimedData]
+    self.pitDriveTimes = aDecoder.decodeObject(forKey: SerializationKeys.pitDriveTimes) as? [TimedData]
     }
 
   public func encode(with aCoder: NSCoder) {
