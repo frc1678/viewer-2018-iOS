@@ -60,7 +60,6 @@
 		8C25A7CC1E33F2790012A23E /* CalculatedTeamInMatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C25A7CB1E33F2790012A23E /* CalculatedTeamInMatchData.swift */; };
 		8C5868711E34254E0056EA17 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C58686C1E34254E0056EA17 /* Storyboard.storyboard */; };
 		8C65E7921FD0FEA6000E71A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C65E7911FD0FEA6000E71A2 /* GoogleService-Info.plist */; };
-		8C756C4D202FBCC400CE3DE0 /* TimedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C756C4C202FBCC300CE3DE0 /* TimedData.swift */; };
 		8CA2B79E201E41360074DF21 /* SoloClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B79D201E41350074DF21 /* SoloClimb.swift */; };
 		8CA2B7A2201E41510074DF21 /* ActiveLift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B79F201E41500074DF21 /* ActiveLift.swift */; };
 		8CA2B7A3201E41510074DF21 /* PassiveClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A0201E41510074DF21 /* PassiveClimb.swift */; };
@@ -175,7 +174,6 @@
 		8C58688C1E3426970056EA17 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C58688E1E342EFE0056EA17 /* ExtensionPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionPrefixHeader.pch; sourceTree = "<group>"; };
 		8C65E7911FD0FEA6000E71A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8C756C4C202FBCC300CE3DE0 /* TimedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedData.swift; sourceTree = "<group>"; };
 		8CA2B79C201D13320074DF21 /* Current Match.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Current Match.entitlements"; sourceTree = "<group>"; };
 		8CA2B79D201E41350074DF21 /* SoloClimb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoloClimb.swift; sourceTree = "<group>"; };
 		8CA2B79F201E41500074DF21 /* ActiveLift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveLift.swift; sourceTree = "<group>"; };
@@ -344,7 +342,6 @@
 				8CA2B79D201E41350074DF21 /* SoloClimb.swift */,
 				190DFE451E30703E00477B6D /* Match.swift */,
 				19B038481E2DE55B006E25A2 /* TeamInMatchData.swift */,
-				8C756C4C202FBCC300CE3DE0 /* TimedData.swift */,
 				190DFE471E3079D000477B6D /* Team.swift */,
 				19B037FC1E2C5891006E25A2 /* Reflectable.swift */,
 			);
@@ -687,7 +684,6 @@
 				19B037E71E2C586C006E25A2 /* ScheduleTableViewController.m in Sources */,
 				8C0200B52011987C00A75272 /* Attempt.swift in Sources */,
 				190DFE461E30703E00477B6D /* Match.swift in Sources */,
-				8C756C4D202FBCC400CE3DE0 /* TimedData.swift in Sources */,
 				19B037ED1E2C586C006E25A2 /* FirstPickTableViewController.m in Sources */,
 				19B038281E2C58D3006E25A2 /* MultiCellTableViewCell.m in Sources */,
 				19B038081E2C5891006E25A2 /* MatchDetailsViewController.swift in Sources */,
