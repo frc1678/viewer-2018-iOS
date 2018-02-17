@@ -28,6 +28,7 @@ public final class Team: NSObject {
     static let picklistPosition = "picklistPosition"
     static let pitRampTimes = "pitRampTimes"
     static let pitDriveTimes = "pitDriveTimes"
+    static let pitDriveTest = "pitDriveTest"
   }
 
   // MARK: Properties
@@ -45,6 +46,7 @@ public final class Team: NSObject {
   public var pitAvailableWeight: Float = -1
   public var pitMaxHeight: Float?
     public var picklistPosition: Int = -1
+    public var pitDriveTest: String?
     
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -73,6 +75,7 @@ public final class Team: NSObject {
     pitAvailableWeight = json[SerializationKeys.pitAvailableWeight].floatValue
     pitMaxHeight = json[SerializationKeys.pitMaxHeight].float
     picklistPosition = json[SerializationKeys.picklistPosition].intValue
+    pitDriveTest = json[SerializationKeys.pitDriveTest].string
 }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -93,6 +96,7 @@ public final class Team: NSObject {
     if let value = pitMaxHeight { dictionary[SerializationKeys.pitMaxHeight] = value }
     dictionary[SerializationKeys.pitAvailableWeight] = pitAvailableWeight
     dictionary[SerializationKeys.picklistPosition] = picklistPosition
+    if let value = pitDriveTest { dictionary[SerializationKeys.pitDriveTest] = value }
     return dictionary
   }
 
@@ -112,6 +116,7 @@ public final class Team: NSObject {
     self.pitAvailableWeight = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvailableWeight) as? Float)!
     self.pitMaxHeight = aDecoder.decodeObject(forKey: SerializationKeys.pitMaxHeight) as? Float
     self.picklistPosition = (aDecoder.decodeObject(forKey: SerializationKeys.picklistPosition) as? Int)!
+    self.pitDriveTest = aDecoder.decodeObject(forKey: SerializationKeys.pitDriveTest) as? String
     }
 
   public func encode(with aCoder: NSCoder) {
@@ -129,6 +134,7 @@ public final class Team: NSObject {
     aCoder.encode(pitAvailableWeight, forKey: SerializationKeys.pitAvailableWeight)
     aCoder.encode(pitMaxHeight, forKey: SerializationKeys.pitMaxHeight)
     aCoder.encode(picklistPosition, forKey: SerializationKeys.picklistPosition)
+    aCoder.encode(pitDriveTest, forKey: SerializationKeys.pitDriveTest)
   }
 
 }

@@ -362,7 +362,8 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "pitClimberType",
             "pitAvailableWeight",
             "pitMaxHeight",
-            "pitProgrammingLanguage"
+            "pitProgrammingLanguage",
+            "pitDriveTest",
         ]
         
         /** Data collected by SEALS */
@@ -642,6 +643,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "calculatedData.didClimb" : "Climbed",
         "pitMaxHeight" : "Max. Height",
         "picklistPosition" : "Picklist Position",
+        "pitDriveTest" : "Pit Drive Test",
     ]
     
     /**
