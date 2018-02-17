@@ -170,6 +170,9 @@
     if([segue.identifier  isEqual: @"citrusSchedule"]) {
         SpecificTeamScheduleTableViewController *dest = (SpecificTeamScheduleTableViewController *)segue.destinationViewController;
         dest.teamNumber = 1678;
+    } else if ([segue.identifier isEqual: @"slackSegue"]) {
+        SlackTableViewController *dest = (SlackTableViewController *)segue.destinationViewController;
+        //init dest
     } else {
     MatchTableViewCell *cell = sender;
     MatchDetailsViewController *detailController = (MatchDetailsViewController *)segue.destinationViewController;

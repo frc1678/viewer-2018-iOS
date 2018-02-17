@@ -25,6 +25,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Schedule" id="NKq-ai-GQN">
+                        <barButtonItem key="leftBarButtonItem" title="Slack" id="yJl-oP-clb" userLabel="Slack">
+                            <connections>
+                                <segue destination="adL-op-Chr" kind="show" identifier="slackSegue" id="BUD-kF-P9h"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="1678" id="05e-XD-yOJ">
                             <connections>
                                 <action selector="ourScheduleTapped:" destination="GTR-t1-4au" id="svP-S3-qJn"/>
@@ -499,6 +504,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nNz-IT-NPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1797.5999999999999" y="-2553.3733133433284"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="rjU-jZ-ce5">
+            <objects>
+                <tableViewController id="adL-op-Chr" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xey-HJ-2SY">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="975"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1T4-Ij-mPg">
+                                <rect key="frame" x="0.0" y="28" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1T4-Ij-mPg" id="JVd-od-l9f">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="adL-op-Chr" id="x41-pp-3JJ"/>
+                            <outlet property="delegate" destination="adL-op-Chr" id="wfB-SI-XvL"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bMf-7d-EQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="776" y="-3445"/>
         </scene>
         <!--Specific Team Schedule Table View Controller-->
         <scene sceneID="ihy-8G-753">
