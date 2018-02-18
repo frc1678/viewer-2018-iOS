@@ -60,7 +60,6 @@
     //NSString *deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
     NSString *deviceTokenString = [deviceToken hexString];
     NSLog(@"%@", deviceTokenString);
-    [[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:deviceTokenString] child:@"Token"] setValue: deviceTokenString];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setValue:deviceTokenString forKey:@"NotificationToken"];
     [defaults synchronize];
