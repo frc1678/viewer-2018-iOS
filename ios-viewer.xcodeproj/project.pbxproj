@@ -61,6 +61,9 @@
 		8C5868711E34254E0056EA17 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C58686C1E34254E0056EA17 /* Storyboard.storyboard */; };
 		8C65E7921FD0FEA6000E71A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C65E7911FD0FEA6000E71A2 /* GoogleService-Info.plist */; };
 		8CA0E2102038A335002EFB02 /* SlackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0E20F2038A335002EFB02 /* SlackTableViewController.swift */; };
+		8CA0E2132038A5F3002EFB02 /* SlackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0E2112038A5F3002EFB02 /* SlackTableViewCell.swift */; };
+		8CA0E2142038A5F3002EFB02 /* SlackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CA0E2122038A5F3002EFB02 /* SlackTableViewCell.xib */; };
+		8CA0E2162039ECD1002EFB02 /* SlackProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0E2152039ECD1002EFB02 /* SlackProfile.swift */; };
 		8CA2B79E201E41360074DF21 /* SoloClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B79D201E41350074DF21 /* SoloClimb.swift */; };
 		8CA2B7A2201E41510074DF21 /* ActiveLift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B79F201E41500074DF21 /* ActiveLift.swift */; };
 		8CA2B7A3201E41510074DF21 /* PassiveClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A0201E41510074DF21 /* PassiveClimb.swift */; };
@@ -176,6 +179,9 @@
 		8C58688E1E342EFE0056EA17 /* ExtensionPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionPrefixHeader.pch; sourceTree = "<group>"; };
 		8C65E7911FD0FEA6000E71A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8CA0E20F2038A335002EFB02 /* SlackTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackTableViewController.swift; sourceTree = "<group>"; };
+		8CA0E2112038A5F3002EFB02 /* SlackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackTableViewCell.swift; sourceTree = "<group>"; };
+		8CA0E2122038A5F3002EFB02 /* SlackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlackTableViewCell.xib; sourceTree = "<group>"; };
+		8CA0E2152039ECD1002EFB02 /* SlackProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlackProfile.swift; sourceTree = "<group>"; };
 		8CA2B79C201D13320074DF21 /* Current Match.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Current Match.entitlements"; sourceTree = "<group>"; };
 		8CA2B79D201E41350074DF21 /* SoloClimb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoloClimb.swift; sourceTree = "<group>"; };
 		8CA2B79F201E41500074DF21 /* ActiveLift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveLift.swift; sourceTree = "<group>"; };
@@ -346,6 +352,7 @@
 				190DFE451E30703E00477B6D /* Match.swift */,
 				19B038481E2DE55B006E25A2 /* TeamInMatchData.swift */,
 				190DFE471E3079D000477B6D /* Team.swift */,
+				8CA0E2152039ECD1002EFB02 /* SlackProfile.swift */,
 				19B037FC1E2C5891006E25A2 /* Reflectable.swift */,
 			);
 			name = Models;
@@ -376,6 +383,8 @@
 			children = (
 				190DFE4D1E308BDC00477B6D /* TIMDTableViewCell.swift */,
 				190DFE4F1E308BE300477B6D /* TIMDTableViewCell.xib */,
+				8CA0E2112038A5F3002EFB02 /* SlackTableViewCell.swift */,
+				8CA0E2122038A5F3002EFB02 /* SlackTableViewCell.xib */,
 				19B038181E2C58D3006E25A2 /* ResizableNotesTableViewCell.swift */,
 				19B038191E2C58D3006E25A2 /* UnrankedTableViewCell.swift */,
 				19B0381A1E2C58D3006E25A2 /* MultiCellTableViewCell.h */,
@@ -549,6 +558,7 @@
 				8CBD71421E4695BE009C0206 /* Settings.bundle in Resources */,
 				8CBD71401E356CD1009C0206 /* CC 2017 Logo.png in Resources */,
 				8C21B4ED20197EB60031225F /* GoogleService-Info.plist in Resources */,
+				8CA0E2142038A5F3002EFB02 /* SlackTableViewCell.xib in Resources */,
 				19B037EA1E2C586C006E25A2 /* MatchTableViewCell.xib in Resources */,
 				19B037D31E2C581C006E25A2 /* FirstPick.storyboard in Resources */,
 				190DFE501E308BE300477B6D /* TIMDTableViewCell.xib in Resources */,
@@ -652,6 +662,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CA0E2162039ECD1002EFB02 /* SlackProfile.swift in Sources */,
 				190DFE3E1E30697500477B6D /* CalculatedTeamData.swift in Sources */,
 				19B038131E2C5891006E25A2 /* GraphViewController.swift in Sources */,
 				8CA2B7A4201E41510074DF21 /* AssistedLift.swift in Sources */,
@@ -659,6 +670,7 @@
 				19B038051E2C5891006E25A2 /* FirebaseDataFetcher.swift in Sources */,
 				19B037E81E2C586C006E25A2 /* SpecificTeamScheduleTableViewController.swift in Sources */,
 				19B0384B1E2DE55B006E25A2 /* TeamInMatchData.swift in Sources */,
+				8CA0E2132038A5F3002EFB02 /* SlackTableViewCell.swift in Sources */,
 				190DFE4A1E308B7700477B6D /* TIMDScheduleViewController.swift in Sources */,
 				8CA2B79E201E41360074DF21 /* SoloClimb.swift in Sources */,
 				190DFE481E3079D000477B6D /* Team.swift in Sources */,

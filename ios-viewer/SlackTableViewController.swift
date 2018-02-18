@@ -8,17 +8,24 @@
 
 import UIKit
 
-class SlackTableViewController: UITableViewCell {
-
+class SlackTableViewController: UITableViewController {
+    
+    let firebaseFetcher = AppDelegate.getAppDelegate().firebaseFetcher
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (self.firebaseFetcher?.slackProfiles.count)!
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "slackTableViewCell", for: indexPath) as? SlackTableViewCell
+        cell?.displayNameLabel?.text = self.firebaseFetcher?.slackProfiles[indexPath.row].displayName
+        cell?.slackUsernameLabel?.text = self.firebaseFetcher?.slackProfiles[indexPath.row].username
+        return cell!
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
