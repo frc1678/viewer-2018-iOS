@@ -108,7 +108,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         self.firebase.observeSingleEvent(of: .value, with: { (snapshot) -> Void in
             if let password = snapshot.childSnapshot(forPath: "PicklistPassword").value as? String, snapshot.childSnapshot(forPath: "PicklistPassword").value as? String != "" {
                 self.picklistPassword = password
-                print("done: \(self.picklistPassword)")
+                print("Done getting picklist and password. Password is \(self.picklistPassword)")
             } else {
                 self.firebase.child("PicklistPassword").setValue("password")
             }
@@ -223,7 +223,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
             matchReference.observe(.childChanged, with: { [unowned self] snapshot in
                 //increase matchCounter
                 self.matchCounter += 1
-                print(self.currentMatchManager.currentMatch)
+                print("Current Match: \(self.currentMatchManager.currentMatch)")
                 //once again, future me: test commenting out this line
                 self.currentMatchManager.currentMatch = self.currentMatchManager.currentMatch
                 //gets the match number
@@ -345,7 +345,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         - parameter team: Team for which TIMDs are to be retrieved
     */
     func getTIMDataForTeam(_ team: Team) -> [TeamInMatchData] {
-        print(self.teamInMatches.filter { $0.teamNumber == team.number })
+        print("All TIMDs for our team: \(self.teamInMatches.filter { $0.teamNumber == team.number })")
         return self.teamInMatches.filter { $0.teamNumber == team.number }
     }
     
@@ -366,7 +366,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
                 return correctTIMDs[0]
             }
         }
-        print("Problem geting TIMData")
+        print("Problem geting TIMData. There was not exactly 1 match for the specifications.")
         return nil
     }
     
@@ -673,7 +673,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     }
     
     /** Filters matches according to the search string when set to teams. See filteredMatchesForMatchSearchString */
-    func filteredMatchesforTeamSearchString(_ searchString: String) -> [Match] {
+    @objc func filteredMatchesforTeamSearchString(_ searchString: String) -> [Match] {
         var filteredMatches = [Match]()
         for match in self.matches  {
             for teamNum in match.redAllianceTeamNumbers! {

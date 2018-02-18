@@ -31,11 +31,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         //check if firebase has been configured
         if !TodayViewController.isAlreadyLaunchedOnce {
             //print how many firebase instances are open
-            print(FirebaseApp.allApps?.keys.count)
+            print("We got \(FirebaseApp.allApps?.keys.count) firebase apps")
             FirebaseApp.configure()
             TodayViewController.isAlreadyLaunchedOnce = true
             //FIRDatabase.database().persistenceEnabled = true
-            print(FirebaseApp.allApps?.keys.count)
+            print("We got \(FirebaseApp.allApps?.keys.count) firebase apps")
         }
     }
     

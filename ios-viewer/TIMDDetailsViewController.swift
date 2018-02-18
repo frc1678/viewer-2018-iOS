@@ -53,12 +53,12 @@ class TIMDDetailsViewController: UITableViewController {
                 value = ((TIMD.value(forKeyPath: "calculatedData") as! CalculatedTeamInMatchData).dictionaryRepresentation() as NSDictionary).object(forKey: key.replacingOccurrences(of: "calculatedData.", with: ""))
             } else {
                 value = (TIMD.dictionaryRepresentation() as NSDictionary).object(forKey: key)
-                print(key)
+                print("Key: \(key)")
             }
             if value != nil {
                 //set the value label
                 
-                print(value is Bool)
+                print("Is Value Bool? \(value is Bool)")
                 if value is String {
                     let stringValue = value as! String
                     cell.valueLabel.text = stringValue

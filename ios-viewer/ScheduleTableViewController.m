@@ -236,7 +236,7 @@
     return @[@"One", @"Two", @"Three"];
 }
 
-//I HATE HOW WE'RE DOING THIS. REDOING IT NOW.
+//aha! new system is better
 -(void)handleLongPressGesture:(UILongPressGestureRecognizer *)sender {
     if(UIGestureRecognizerStateBegan == sender.state) {
         

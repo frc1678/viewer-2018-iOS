@@ -52,7 +52,7 @@ class CurrentMatchManager: NSObject {
         }
     }
     
-    var currentMatch = 0 {
+    @objc var currentMatch = 0 {
         didSet {
             if currentMatch != oldValue && currentMatch != -1 {
                 if let currentMatchFetch = AppDelegate.getAppDelegate().firebaseFetcher.getMatch(currentMatch) {
