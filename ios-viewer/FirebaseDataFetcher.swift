@@ -67,7 +67,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     @objc var picklistPassword = ""
     @objc var firstPicklist = [Int]()
     var secondPicklist = [Int]()
-    var slackProfiles = [SlackProfile]()
+    var slackProfiles = [String:SlackProfile]()
 
     let firebase : DatabaseReference
     
@@ -85,6 +85,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         
         //retrieve data
         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+            self.getSlackProfiles()
             self.getPicks()
             self.getAllTheData()
         }
@@ -94,7 +95,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     /** Gets the slack profiles on firebase. */
     func getSlackProfiles() {
         self.firebase.observeSingleEvent(of: .value, with: { (snapshot) -> Void in
-            if let profiles = snapshot.childSnapshot(forPath: "SlackProfiles").value as? [SlackProfile] {
+            if let profiles = snapshot.childSnapshot(forPath: "SlackProfiles").value as? [String: SlackProfile] {
                 self.slackProfiles = profiles
             } else {
                 print("Problem getting slack profiles: Profiles not castable")

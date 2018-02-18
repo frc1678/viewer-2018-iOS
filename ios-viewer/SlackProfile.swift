@@ -12,17 +12,17 @@ public final class SlackProfile: NSObject {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
-    static let username = "username"
+    static let name = "name"
     static let starredMatches = "starredMatches"
     static let appToken = "appToken"
-    static let displayName = "displayName"
+    static let tag = "tag"
   }
 
   // MARK: Properties
-    public var username: String?
+    public var name: String?
     public var starredMatches: [String:Int]?
     public var appToken: String?
-    public var displayName: String?
+    public var tag: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -37,10 +37,10 @@ public final class SlackProfile: NSObject {
   ///
   /// - parameter json: JSON object from SwiftyJSON.
   public required init(json: JSON) {
-    username = json[SerializationKeys.username].string
+    name = json[SerializationKeys.name].string
     starredMatches = json[SerializationKeys.starredMatches].dictionaryObject as? [String : Int]
     appToken = json[SerializationKeys.appToken].string
-    displayName = json[SerializationKeys.displayName].string
+    tag = json[SerializationKeys.tag].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -48,26 +48,25 @@ public final class SlackProfile: NSObject {
   /// - returns: A Key value pair containing all valid values in the object.
   public func dictionaryRepresentation() -> [String: Any] {
     var dictionary: [String: Any] = [:]
-    if let value = username { dictionary[SerializationKeys.username] = value }
+    if let value = name { dictionary[SerializationKeys.name] = value }
     dictionary[SerializationKeys.starredMatches] = starredMatches
     if let value = appToken { dictionary[SerializationKeys.appToken] = value }
-    if let value = displayName { dictionary[SerializationKeys.displayName] = value }
+    if let value = tag { dictionary[SerializationKeys.tag] = value }
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.username = aDecoder.decodeObject(forKey: SerializationKeys.username) as? String
+    self.name = aDecoder.decodeObject(forKey: SerializationKeys.name) as? String
     self.starredMatches = aDecoder.decodeObject(forKey: SerializationKeys.starredMatches) as? [String:Int]
     self.appToken = aDecoder.decodeObject(forKey: SerializationKeys.appToken) as? String
-    self.displayName = aDecoder.decodeObject(forKey: SerializationKeys.displayName) as? String
+    self.tag = aDecoder.decodeObject(forKey: SerializationKeys.tag) as? String
   }
 
   public func encode(with aCoder: NSCoder) {
-    aCoder.encode(username, forKey: SerializationKeys.username)
+    aCoder.encode(name, forKey: SerializationKeys.name)
     aCoder.encode(starredMatches, forKey: SerializationKeys.starredMatches)
     aCoder.encode(appToken, forKey: SerializationKeys.appToken)
-    aCoder.encode(displayName, forKey: SerializationKeys.displayName)
+    aCoder.encode(tag, forKey: SerializationKeys.tag)
   }
-
 }
