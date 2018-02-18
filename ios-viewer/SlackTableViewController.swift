@@ -36,6 +36,7 @@ class SlackTableViewController: UITableViewController {
             }
         }
         let newSlack = (self.firebaseFetcher?.slackProfiles as! NSDictionary).allKeys(for: Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row])[0] as? String
+        self.firebaseFetcher?.currentMatchManager.slackId = newSlack
         if existingSlack == nil {
             firebase.child("SlackProfiles").child(newSlack!).child("appToken").setValue(token)
         } else {

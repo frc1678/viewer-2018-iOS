@@ -41,6 +41,15 @@ class CurrentMatchManager: NSObject {
                 self.starredMatchesArray = [String]()
             }
         }
+        cache.fetch(key: "slackId").onSuccess { (d) -> () in
+            if let id = NSKeyedUnarchiver.unarchiveObject(with: d) as? String {
+                if self.slackId != id {
+                    self.slackId = id
+                }
+            } else {
+                self.slackId = nil
+            }
+        }
     }
     
     var currentMatch = 0 {
@@ -58,6 +67,12 @@ class CurrentMatchManager: NSObject {
     @objc var starredMatchesArray = [String]() {
         didSet {
             cache.set(value: NSKeyedArchiver.archivedData(withRootObject: starredMatchesArray), key: "starredMatches")
+        }
+    }
+    
+    @objc var slackId: String? {
+        didSet {
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: slackId), key: "slackId")
         }
     }
     

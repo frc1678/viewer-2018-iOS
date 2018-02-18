@@ -244,12 +244,40 @@
     return @[@"One", @"Two", @"Three"];
 }
 
+//I HATE HOW WE'RE DOING THIS. REDOING IT NOW.
 -(void)handleLongPressGesture:(UILongPressGestureRecognizer *)sender {
     if(UIGestureRecognizerStateBegan == sender.state) {
+        
         CGPoint p = [sender locationInView:self.tableView];
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
         MatchTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        if([self.firebaseFetcher.currentMatchManager.starredMatchesArray containsObject:cell.matchLabel.text]) {
+        NSString *slackId = self.firebaseFetcher.currentMatchManager.slackId;
+        if(slackId != nil) {
+            if([self.firebaseFetcher.currentMatchManager.starredMatchesArray containsObject:cell.matchLabel.text]) {
+                //Remove the star
+                NSMutableArray *a = [NSMutableArray arrayWithArray:self.firebaseFetcher.currentMatchManager.starredMatchesArray];
+            
+                [a removeObject:cell.matchLabel.text];
+                self.firebaseFetcher.currentMatchManager.starredMatchesArray = a;
+                cell.backgroundColor = [UIColor whiteColor];
+                [[[[[[FIRDatabase database] reference] child:@"SlackProfiles"] child:slackId] child:@"starredMatches"] setValue:a];
+            } else {
+                //Create the star
+                cell.backgroundColor = [UIColor colorWithRed:1.0 green:0.64 blue:1.0 alpha:0.6];
+                self.firebaseFetcher.currentMatchManager.starredMatchesArray = [self.firebaseFetcher.currentMatchManager.starredMatchesArray arrayByAddingObjectsFromArray:@[cell.matchLabel.text]];
+                [[[[FIRDatabase database] reference] child:@"SlackProfiles"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                    [[[[[[[FIRDatabase database] reference] child:@"SlackProfiles"] child:slackId] child:@"StarredMatches"] child:[NSString stringWithFormat:@"%lu", (unsigned long)snapshot.childrenCount]] setValue:[NSNumber numberWithInt:[cell.matchLabel.text integerValue]]];
+                }];
+            }
+        } else {
+            UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Link Slack" message:@"Please link your slack account before you star matches." preferredStyle:UIAlertControllerStyleAlert];
+            
+            [ac addAction:[UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+            }]];
+            [self presentViewController:ac animated:YES completion:nil];
+        }
+        /*if([self.firebaseFetcher.currentMatchManager.starredMatchesArray containsObject:cell.matchLabel.text]) {
             NSMutableArray *a = [NSMutableArray arrayWithArray:self.firebaseFetcher.currentMatchManager.starredMatchesArray];
     
             [a removeObject:cell.matchLabel.text];
@@ -278,7 +306,7 @@
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             NSString *token = [defaults valueForKey:@"NotificationToken"];
             [[[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:token] child:@"StarredMatches"] childByAutoId] setValue: [NSNumber numberWithInt:[cell.matchLabel.text integerValue]]];
-        }
+        }*/
     }
 }
 
