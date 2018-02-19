@@ -19,10 +19,10 @@ class SlackTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "slackTableViewCell", for: indexPath) as? SlackTableViewCell
-        cell?.displayNameLabel?.text = Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row].name
-        cell?.slackUsernameLabel?.text = Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row].tag
-        return cell!
+        let cell : SlackTableViewCell = tableView.dequeueReusableCell(withIdentifier: "slackTableViewCell", for: indexPath) as! SlackTableViewCell
+        cell.displayNameLabel.text = Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row].name
+        cell.slackUsernameLabel.text = Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row].tag
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -38,10 +38,10 @@ class SlackTableViewController: UITableViewController {
         let newSlack = (self.firebaseFetcher?.slackProfiles as! NSDictionary).allKeys(for: Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row])[0] as? String
         self.firebaseFetcher?.currentMatchManager.slackId = newSlack
         if existingSlack == nil {
-            firebase.child("SlackProfiles").child(newSlack!).child("appToken").setValue(token)
+            firebase.child("slackProfiles").child(newSlack!).child("appToken").setValue(token)
         } else {
-            firebase.child("SlackProfiles").child(existingSlack!).child("appToken").setValue(nil)
-            firebase.child("SlackProfiles").child(newSlack!).child("appToken").setValue(token)
+            firebase.child("slackProfiles").child(existingSlack!).child("appToken").setValue(nil)
+            firebase.child("slackProfiles").child(newSlack!).child("appToken").setValue(token)
         }
         self.firebaseFetcher?.getSlackProfiles()
     }

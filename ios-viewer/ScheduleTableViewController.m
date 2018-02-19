@@ -42,7 +42,7 @@
         }
         NSString *slackId = self.firebaseFetcher.currentMatchManager.slackId;
         if(slackId != nil) {
-            [[[[[[FIRDatabase database] reference] child: @"SlackProfiles"] child:slackId] child: @"StarredMatches"] setValue:intMatches];
+            [[[[[[FIRDatabase database] reference] child: @"slackProfiles"] child:slackId] child: @"starredMatches"] setValue:intMatches];
         }
     }
 
@@ -252,13 +252,13 @@
                 [a removeObject:cell.matchLabel.text];
                 self.firebaseFetcher.currentMatchManager.starredMatchesArray = a;
                 cell.backgroundColor = [UIColor whiteColor];
-                [[[[[[FIRDatabase database] reference] child:@"SlackProfiles"] child:slackId] child:@"starredMatches"] setValue:a];
+                [[[[[[FIRDatabase database] reference] child:@"slackProfiles"] child:slackId] child:@"starredMatches"] setValue:a];
             } else {
                 //Create the star
                 cell.backgroundColor = [UIColor colorWithRed:1.0 green:0.64 blue:1.0 alpha:0.6];
                 self.firebaseFetcher.currentMatchManager.starredMatchesArray = [self.firebaseFetcher.currentMatchManager.starredMatchesArray arrayByAddingObjectsFromArray:@[cell.matchLabel.text]];
-                [[[[FIRDatabase database] reference] child:@"SlackProfiles"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-                    [[[[[[[FIRDatabase database] reference] child:@"SlackProfiles"] child:slackId] child:@"StarredMatches"] child:[NSString stringWithFormat:@"%lu", (unsigned long)snapshot.childrenCount]] setValue:[NSNumber numberWithInt:[cell.matchLabel.text integerValue]]];
+                [[[[FIRDatabase database] reference] child:@"slackProfiles"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                    [[[[[[[FIRDatabase database] reference] child:@"slackProfiles"] child:slackId] child:@"starredMatches"] child:[NSString stringWithFormat:@"%lu", (unsigned long)snapshot.childrenCount]] setValue:[NSNumber numberWithInt:[cell.matchLabel.text integerValue]]];
                 }];
             }
         } else {
@@ -279,15 +279,15 @@
             NSString *token = [defaults valueForKey:@"NotificationToken"];
             //NSPredicate *isStarred = [NSPredicate predicateWithFormat:@"self.firebaseFetcher.currentMatchManager.starredMatchesArray contains[c] 'SELF'"];
             NSMutableArray *starredMatches = [[NSMutableArray alloc] init];
-            [[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:token] child:@"StarredMatches"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            [[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:token] child:@"starredMatches"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
                 for (FIRDataSnapshot *item in [snapshot children]) {
                     if ([self.firebaseFetcher.currentMatchManager.starredMatchesArray containsObject: [NSString stringWithFormat: @"%@",item.value]]) {
                         [starredMatches addObject: [NSNumber numberWithInt:[(NSString *)item.value integerValue]]];
                     }
                 }
-                [[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:token] child:@"StarredMatches"] setValue:nil];
+                [[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:token] child:@"starredMatches"] setValue:nil];
                 for (NSNumber *item in starredMatches) {
-                    [[[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:token] child:@"StarredMatches"] childByAutoId] setValue:item];
+                    [[[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:token] child:@"starredMatches"] childByAutoId] setValue:item];
                 }
             }];
             
@@ -297,7 +297,7 @@
             self.firebaseFetcher.currentMatchManager.starredMatchesArray = [self.firebaseFetcher.currentMatchManager.starredMatchesArray arrayByAddingObjectsFromArray:@[cell.matchLabel.text]];
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             NSString *token = [defaults valueForKey:@"NotificationToken"];
-            [[[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:token] child:@"StarredMatches"] childByAutoId] setValue: [NSNumber numberWithInt:[cell.matchLabel.text integerValue]]];
+            [[[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:token] child:@"starredMatches"] childByAutoId] setValue: [NSNumber numberWithInt:[cell.matchLabel.text integerValue]]];
         }*/
     }
 }

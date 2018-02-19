@@ -51,7 +51,7 @@ class SpecificTeamScheduleTableViewController : ScheduleTableViewController {
                 }
             }
             firebaseFetcher.currentMatchManager.starredMatchesArray = starredMatches
-            Database.database().reference().child("SlackProfiles").child(slackId!).child("StarredMatches").setValue(starredMatches)
+            Database.database().reference().child("slackProfiles").child(slackId!).child("starredMatches").setValue(starredMatches)
         
             viewDidLoad()
         } else {

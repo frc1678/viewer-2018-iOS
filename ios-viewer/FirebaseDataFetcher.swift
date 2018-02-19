@@ -95,7 +95,11 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     /** Gets the slack profiles on firebase. */
     func getSlackProfiles() {
         self.firebase.observeSingleEvent(of: .value, with: { (snapshot) -> Void in
-            if let profiles = snapshot.childSnapshot(forPath: "SlackProfiles").value as? [String: SlackProfile] {
+            var profiles : [String:SlackProfile] = [:]
+            for i in ((snapshot.childSnapshot(forPath: "slackProfiles").value as? [String:[String:Any]])?.values)! {
+                profiles[(snapshot.childSnapshot(forPath: "slackProfiles").value as? [String:[String:Any]] as NSDictionary?)?.allKeys(for: i)[0] as! String] = SlackProfile(json: JSON(snapshot.childSnapshot(forPath: "slackProfiles").childSnapshot(forPath: (snapshot.childSnapshot(forPath: "slackProfiles").value as? [String:[String:Any]] as NSDictionary?)?.allKeys(for: i)[0] as! String).value))
+            }
+            if profiles.count != 0 {
                 self.slackProfiles = profiles
             } else {
                 print("Problem getting slack profiles: Profiles not castable")
@@ -212,7 +216,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
             matchReference.observe(.childAdded, with: { [unowned self] snapshot in
                 //appends a match for the current snapshot to the matches
                 self.matches.append(self.makeMatchFromSnapshot(snapshot))
-                //this line seems redundant but I don't have a lightning cable to test... test this, future me!
+                //this line seems redundant but I don't have a lightning cable to test... test this, future me! FUTURE ME: I think its to call didSet
                 self.currentMatchManager.currentMatch = self.currentMatchManager.currentMatch
                 if self.hasUpdatedMatchOnSetup == false {
                     self.hasUpdatedMatchOnSetup = true

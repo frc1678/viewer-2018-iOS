@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="slackTableViewCell" id="KGk-i7-Jjw" customClass="SlackTableViewCell" customModule="ios_viewer" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="slackTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="slackTableViewCell" id="KGk-i7-Jjw" customClass="SlackTableViewCell" customModule="ios_viewer" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -37,8 +37,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="displayNameLabel" destination="1Ui-sd-7cE" id="qxj-Ob-4eh"/>
-                <outlet property="slackUsernameLabel" destination="lCc-E5-MQ8" id="sEm-ze-ruo"/>
+                <outlet property="displayNameLabel" destination="1Ui-sd-7cE" id="B65-JY-wVa"/>
+                <outlet property="slackUsernameLabel" destination="lCc-E5-MQ8" id="cGY-wF-UOs"/>
             </connections>
         </tableViewCell>
     </objects>
