@@ -70,9 +70,15 @@ class CurrentMatchManager: NSObject {
         }
     }
     
+    var preNotify: Int? {
+        didSet {
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: preNotify!), key: "preNotify")
+        }
+    }
+    
     @objc var slackId: String? {
         didSet {
-            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: slackId), key: "slackId")
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: slackId!), key: "slackId")
         }
     }
     

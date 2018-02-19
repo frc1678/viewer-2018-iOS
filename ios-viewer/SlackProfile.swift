@@ -16,6 +16,7 @@ public final class SlackProfile: NSObject {
     static let starredMatches = "starredMatches"
     static let appToken = "appToken"
     static let tag = "tag"
+    static let notifyInAdvance = "notifyInAdvance"
   }
 
   // MARK: Properties
@@ -23,6 +24,7 @@ public final class SlackProfile: NSObject {
     public var starredMatches: [String:Int]?
     public var appToken: String?
     public var tag: String?
+    public var notifyInAdvance: Int?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -41,6 +43,7 @@ public final class SlackProfile: NSObject {
     starredMatches = json[SerializationKeys.starredMatches].dictionaryObject as? [String : Int]
     appToken = json[SerializationKeys.appToken].string
     tag = json[SerializationKeys.tag].string
+    notifyInAdvance = json[SerializationKeys.notifyInAdvance].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -52,6 +55,7 @@ public final class SlackProfile: NSObject {
     dictionary[SerializationKeys.starredMatches] = starredMatches
     if let value = appToken { dictionary[SerializationKeys.appToken] = value }
     if let value = tag { dictionary[SerializationKeys.tag] = value }
+    if let value = notifyInAdvance { dictionary[SerializationKeys.notifyInAdvance] = value }
     return dictionary
   }
 
@@ -61,6 +65,7 @@ public final class SlackProfile: NSObject {
     self.starredMatches = aDecoder.decodeObject(forKey: SerializationKeys.starredMatches) as? [String:Int]
     self.appToken = aDecoder.decodeObject(forKey: SerializationKeys.appToken) as? String
     self.tag = aDecoder.decodeObject(forKey: SerializationKeys.tag) as? String
+    self.notifyInAdvance = aDecoder.decodeObject(forKey: SerializationKeys.notifyInAdvance) as? Int
   }
 
   public func encode(with aCoder: NSCoder) {
@@ -68,5 +73,6 @@ public final class SlackProfile: NSObject {
     aCoder.encode(starredMatches, forKey: SerializationKeys.starredMatches)
     aCoder.encode(appToken, forKey: SerializationKeys.appToken)
     aCoder.encode(tag, forKey: SerializationKeys.tag)
+    aCoder.encode(notifyInAdvance, forKey: SerializationKeys.notifyInAdvance)
   }
 }
