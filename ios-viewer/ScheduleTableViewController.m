@@ -258,7 +258,7 @@
                 cell.backgroundColor = [UIColor colorWithRed:1.0 green:0.64 blue:1.0 alpha:0.6];
                 self.firebaseFetcher.currentMatchManager.starredMatchesArray = [self.firebaseFetcher.currentMatchManager.starredMatchesArray arrayByAddingObjectsFromArray:@[cell.matchLabel.text]];
                 [[[[FIRDatabase database] reference] child:@"slackProfiles"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-                    [[[[[[[FIRDatabase database] reference] child:@"slackProfiles"] child:slackId] child:@"starredMatches"] child:[NSString stringWithFormat:@"%lu", (unsigned long)snapshot.childrenCount]] setValue:[NSNumber numberWithInt:[cell.matchLabel.text integerValue]]];
+                    [[[[[[[FIRDatabase database] reference] child:@"slackProfiles"] child:slackId] child:@"starredMatches"] child:[NSString stringWithFormat:@"%lu", (unsigned long)[[snapshot childSnapshotForPath:self.firebaseFetcher.currentMatchManager.slackId] childSnapshotForPath:@"starredMatches"].childrenCount]] setValue:[NSNumber numberWithInt:[cell.matchLabel.text integerValue]]];
                 }];
             }
         } else {
