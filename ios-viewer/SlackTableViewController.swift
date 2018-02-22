@@ -8,11 +8,18 @@
 
 import UIKit
 
-class SlackTableViewController: UITableViewController {
-    
-    let firebaseFetcher = AppDelegate.getAppDelegate().firebaseFetcher
+class SlackTableViewController: ArrayTableViewController {
     
     var firebase : DatabaseReference = Database.database().reference()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector:#selector(SlackTableViewController.reloadTableView), name:NSNotification.Name(rawValue: "updateLeftTable"), object:nil)
+    }
+    
+    @objc func reloadTableView(_ note: Notification) {
+        tableView.reloadData()
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (self.firebaseFetcher?.slackProfiles.count)!
@@ -23,6 +30,13 @@ class SlackTableViewController: UITableViewController {
         cell.displayNameLabel.text = Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row].name
         cell.slackUsernameLabel.text = Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row].tag
         return cell
+    }
+    
+    override func filteredArray(forSearchText text: String!, inScope scope: Int) -> [Any]! {
+        return self.firebaseFetcher?.slackProfiles.filter({ (p) -> Bool in
+            if p.value.name?.range(of: text) != nil { return true }
+            return false
+        })
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
