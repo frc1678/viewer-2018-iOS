@@ -23,21 +23,38 @@ class SlackTableViewController: ArrayTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.firebaseFetcher?.slackProfiles.count)!
+        var count = 0
+        if filteredArray != nil {
+            count = filteredArray.count
+        } else {
+            count = (self.firebaseFetcher?.slackProfiles.count)!
+        }
+        return count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : SlackTableViewCell = tableView.dequeueReusableCell(withIdentifier: "slackTableViewCell", for: indexPath) as! SlackTableViewCell
-        cell.displayNameLabel.text = Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row].name
-        cell.slackUsernameLabel.text = Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row].tag
+        if let castFiltered = filteredArray as? ([SlackProfile]!), filteredArray != nil {
+            cell.displayNameLabel.text = Array(castFiltered)[indexPath.row].name
+            cell.slackUsernameLabel.text = Array(castFiltered)[indexPath.row].tag
+        } else {
+            cell.displayNameLabel.text = Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row].name
+            cell.slackUsernameLabel.text = Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row].tag
+        }
         return cell
     }
     
     override func filteredArray(forSearchText text: String!, inScope scope: Int) -> [Any]! {
-        return self.firebaseFetcher?.slackProfiles.filter({ (p) -> Bool in
-            if p.value.name?.range(of: text) != nil { return true }
+        let filtered = self.firebaseFetcher?.slackProfiles.filter({ (p) -> Bool in
+            if p.value.name?.lowercased().range(of: text.lowercased()) != nil { return true }
+            if p.value.tag?.lowercased().range(of: text.lowercased()) != nil { return true }
             return false
         })
+        var arrayed : [Any] = []
+        for i in (filtered?.values)! {
+            arrayed.append(i)
+        }
+        return arrayed
     }
     
     override func cellIdentifier() -> String! {
