@@ -43,7 +43,11 @@
         self.searchController.searchResultsUpdater = self;
         self.searchController.dimsBackgroundDuringPresentation = NO;
         self.searchController.searchBar.delegate = self;
-        self.searchController.searchBar.keyboardType = UIKeyboardTypeNumberPad;
+        if(self.keyboardType) {
+            self.searchController.searchBar.keyboardType = *(self.keyboardType);
+        } else {
+            self.searchController.searchBar.keyboardType = UIKeyboardTypeNumberPad;
+        }
         self.searchController.searchBar.scopeButtonTitles = [self scopeButtonTitles];
         self.searchController.searchBar.frame = CGRectMake(self.searchController.searchBar.frame.origin.x, self.searchController.searchBar.frame.origin.y, self.searchController.searchBar.frame.size.width, 44.0);
         self.tableView.tableHeaderView = self.searchController.searchBar;

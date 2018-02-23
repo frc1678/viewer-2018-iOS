@@ -13,6 +13,7 @@ class SlackTableViewController: ArrayTableViewController {
     var firebase : DatabaseReference = Database.database().reference()
     
     override func viewDidLoad() {
+        self.keyboardType = UnsafeMutablePointer<UIKeyboardType>.allocate(capacity: UIKeyboardType.default.rawValue)
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector:#selector(SlackTableViewController.reloadTableView), name:NSNotification.Name(rawValue: "updateLeftTable"), object:nil)
     }
@@ -37,6 +38,10 @@ class SlackTableViewController: ArrayTableViewController {
             if p.value.name?.range(of: text) != nil { return true }
             return false
         })
+    }
+    
+    override func cellIdentifier() -> String! {
+        return "SlackTableViewCell"
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

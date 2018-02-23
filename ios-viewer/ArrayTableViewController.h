@@ -12,6 +12,7 @@
 @interface ArrayTableViewController : UITableViewController
     <UISearchResultsUpdating, UISearchBarDelegate, UITableViewDelegate>
 
+@property (nonatomic) UIKeyboardType *keyboardType;
 @property (strong, nonatomic) NSArray *dataArray;
 @property (strong, nonatomic) NSArray *filteredArray;
 @property (strong, nonatomic) FirebaseDataFetcher *firebaseFetcher;
