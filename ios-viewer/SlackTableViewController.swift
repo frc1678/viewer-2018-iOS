@@ -71,7 +71,12 @@ class SlackTableViewController: ArrayTableViewController {
                 existingSlack = (self.firebaseFetcher?.slackProfiles as! NSDictionary).allKeys(for: Array(self.firebaseFetcher!.slackProfiles.values)[i])[0] as? String
             }
         }
-        let newSlack = (self.firebaseFetcher?.slackProfiles as! NSDictionary).allKeys(for: Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row])[0] as? String
+        var newSlack: String? = ""
+        if self.filteredArray != nil {
+            newSlack = (self.firebaseFetcher?.slackProfiles as! NSDictionary).allKeys(for: self.filteredArray[indexPath.row])[0] as? String
+        } else {
+            newSlack = (self.firebaseFetcher?.slackProfiles as! NSDictionary).allKeys(for: Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row])[0] as? String
+        }
         self.firebaseFetcher?.currentMatchManager.slackId = newSlack
         let preAlert = UIAlertController(title: "Notified in Advance", message: "How many matches in advance do you want to be notified?", preferredStyle: .alert)
         preAlert.addTextField(configurationHandler: { (field) in
@@ -88,6 +93,15 @@ class SlackTableViewController: ArrayTableViewController {
                 self.firebase.child("slackProfiles").child(newSlack!).child("notifyInAdvance").setValue(self.firebaseFetcher?.currentMatchManager.preNotify)
             }
             self.firebaseFetcher?.getSlackProfiles()
+            self.firebase.child("slackProfiles").child(newSlack!).child("starredMatches").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let arrayThing = snapshot.value as? [Int] {
+                    var array2 : [String] = []
+                    for i in arrayThing {
+                        array2.append(String(describing: i))
+                    }
+                    self.firebaseFetcher.currentMatchManager.starredMatchesArray = array2
+                }
+            })
         }))
         self.present(preAlert, animated: true, completion: nil)
     }
