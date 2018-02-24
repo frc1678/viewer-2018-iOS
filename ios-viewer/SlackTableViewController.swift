@@ -93,13 +93,15 @@ class SlackTableViewController: ArrayTableViewController {
                 self.firebase.child("slackProfiles").child(newSlack!).child("notifyInAdvance").setValue(self.firebaseFetcher?.currentMatchManager.preNotify)
             }
             self.firebaseFetcher?.getSlackProfiles()
-            self.firebase.child("slackProfiles").child(newSlack!).child("starredMatches").observeSingleEvent(of: .value, with: { (snapshot) in
-                if let arrayThing = snapshot.value as? [Int] {
+            self.firebase.child("slackProfiles").child(newSlack!).observeSingleEvent(of: .value, with: { (snap) in
+                if let arrayThing = snap.childSnapshot(forPath: "starredMatches").value as? [Int] {
                     var array2 : [String] = []
                     for i in arrayThing {
                         array2.append(String(describing: i))
                     }
                     self.firebaseFetcher.currentMatchManager.starredMatchesArray = array2
+                } else {
+                    self.firebaseFetcher.currentMatchManager.starredMatchesArray = []
                 }
             })
         }))
