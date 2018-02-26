@@ -124,6 +124,8 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "SC Fail Percentage Auto",
             "Multi-Side Auto",
             "Picklist Position",
+            "Can Place High Layer Cube",
+            "SW Success % Auto",
         ]
         
         /** Values that should be displayed as long text cells */
@@ -172,6 +174,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.didClimb",
             "didPark",
             "calculatedData.canScoreBothSwitchSidesAuto",
+            "calculatedData.canPlaceHighLayerCube",
         ]
         
         
@@ -252,6 +255,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.firstPickAbility",
              "calculatedData.secondPickAbility",
              "picklistPosition",
+             "calculatedData.canPlaceHighLayerCube",
         ]
         
         //let autoKeysMini = [
@@ -263,9 +267,11 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.avgCubesPlacedInScaleAuto",
             "calculatedData.avgAllianceSwitchCubesAuto",
             "calculatedData.canScoreBothSwitchSidesAuto",
-            //"didMakeAutoRun",
             "calculatedData.switchFailPercentageAuto",
-            "calculatedData.scaleFailPercentageAuto"
+            "calculatedData.scaleFailPercentageAuto",
+            "calculatedData.avgTimeToOwnAllianceSwitchAuto",
+            "calculatedData.avgTimeToOwnScaleAuto",
+            "calculatedData.allianceSwitchSuccessPercentageAuto",
         ]
         
         let teleKeysMini : [String] = [
@@ -288,8 +294,9 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.avgNumHumanPortalIntakeTele",
             "calculatedData.avgNumGroundPortalIntakeTele",
             "calculatedData.switchFailPercentageTele",
-            "calculatedData.scaleFailPercentageTele"
-        
+            "calculatedData.scaleFailPercentageTele",
+            "calculatedData.avgNumAlliancePlatformIntakeTele",
+            "calculatedData.avgNumOpponentPlatformIntakeTele",
         ]
         
         /** Dict translating a key for a teamDetails datapoint to the key for the respective TIMD datapoint. Does not include "calculatedData." in the keys. */
@@ -299,6 +306,8 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "disabledPercentage" : "didGetDisabled",
             "dysfunctionalPercentage" : "calculatedData.isDysfunctional",
             //scoring stuff
+            "avgTimeToOwnAllianceSwitchAuto" : "timeToOwnAllianceSwitchAuto",
+            "avgTimeToOwnScaleAuto" : "timeToOwnScaleAuto",
             "avgCubesPlacedInScaleAuto" : "calculatedData.numScaleSuccessAuto",
             "avgAllianceSwitchCubesAuto" : "calculatedData.numAllianceSwitchSuccessAuto",
             "avgCubesPlacedInScaleTele" : "calculatedData.numScaleSuccessTele",
@@ -311,6 +320,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "avgNumGroundPortalIntakeTele" : "numGroundPortalIntakeTele",
             "avgClimbTime" : "calculatedData.climbTime",
             "climbPercentage" : "calculatedData.didClimb",
+            "avgNumRobotsLifted" : "numRobotsLifted",
             //super data
             "avgSpeed" : "rankSpeed",
             "avgAgility" : "rankAgility",
@@ -335,7 +345,8 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         /** Keys relating to the portions of the game that occur in the end (climbing, challenging, etc) */
         let endGame = [
             "calculatedData.climbPercentage",
-            "calculatedData.avgClimbTime"
+            "calculatedData.avgClimbTime",
+            "calculatedData.avgNumRobotsLifted",
         ]
         
         let siegeKeysMini : [String] = [
@@ -644,6 +655,15 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "pitMaxHeight" : "Max. Height",
         "picklistPosition" : "Picklist Position",
         "pitDriveTest" : "Pit Drive Test",
+        "calculatedData.avgTimeToOwnAllianceSwitchAuto" : "Avg. Time to Own SW Auto",
+        "calculatedData.avgTimeToOwnScaleAuto" : "Avg. Time to Own SC Auto",
+        "timeToOwnAllianceSwitchAuto" : "Time to Own SW Auto",
+        "timeToOwnScaleAuto" : "Time to Own SC Auto",
+        "calculatedData.avgNumRobotsLifted" : "Avg. Num Robots Lifted",
+        "numRobotsLifted" : "Num. Robots Lifted",
+        "calculatedData.avgNumOpponentPlatformIntakeTele" : "Avg. PZO Intakes Tele",
+        "calculatedData.allianceSwitchSuccessPercentageAuto" : "SW Success % Auto",
+        "calculatedData.canPlaceHighLayerCube" : "Can Place High Layer Cube",
     ]
     
     /**

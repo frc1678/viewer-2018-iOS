@@ -64,6 +64,13 @@ public final class CalculatedTeamData: NSObject {
     static let dysfunctionalPercentage = "dysfunctionalPercentage"
     static let totalNumGoodDecisions = "totalNumGoodDecisions"
     static let totalNumBadDecisions = "totalNumBadDecisions"
+    static let avgNumRobotsLifted = "avgNumRobotsLifted"
+    static let avgTimeToOwnAllianceSwitchAuto = "avgTimeToOwnAllianceSwitchAuto"
+    static let avgTimeToOwnScaleAuto = "avgTimeToOwnScaleAuto"
+    static let parkPercentage = "parkPercentage"
+    static let percentSuccessOppositeSwitchSideAuto = "percentSuccessOppositeSwitchSideAuto"
+    static let allianceSwitchSuccessPercentageAuto = "allianceSwitchSuccessPercentageAuto"
+    static let canPlaceHighLayerCube = "canPlaceHighLayerCube"
   }
 
   // MARK: Properties
@@ -119,6 +126,13 @@ public final class CalculatedTeamData: NSObject {
     @objc public var avgCubesPlacedInScaleTele: Float = -1.0
     @objc public var totalNumGoodDecisions: Int = -1
     @objc public var totalNumBadDecisions: Int = -1
+    @objc public var avgNumRobotsLifted: Float = -1.0
+    @objc public var avgTimeToOwnAllianceSwitchAuto: Float = -1.0
+    @objc public var avgTimeToOwnScaleAuto: Float = -1.0
+    @objc public var parkPercentage: Float = -1.0
+    @objc public var percentSuccessOppositeSwitchSideAuto: Float = -1.0
+    @objc public var allianceSwitchSuccessPercentageAuto: Float = -1.0
+    @objc public var canPlaceHighLayerCube: Bool = false
     
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -189,6 +203,13 @@ public final class CalculatedTeamData: NSObject {
     avgCubesPlacedInScaleTele = json[SerializationKeys.avgCubesPlacedInScaleTele].floatValue
     totalNumGoodDecisions = json[SerializationKeys.totalNumGoodDecisions].intValue
     totalNumBadDecisions = json[SerializationKeys.totalNumBadDecisions].intValue
+    avgNumRobotsLifted = json[SerializationKeys.avgNumRobotsLifted].floatValue
+    avgTimeToOwnAllianceSwitchAuto = json[SerializationKeys.avgTimeToOwnAllianceSwitchAuto].floatValue
+    avgTimeToOwnScaleAuto = json[SerializationKeys.avgTimeToOwnScaleAuto].floatValue
+    parkPercentage = json[SerializationKeys.parkPercentage].floatValue
+    percentSuccessOppositeSwitchSideAuto = json[SerializationKeys.percentSuccessOppositeSwitchSideAuto].floatValue
+    allianceSwitchSuccessPercentageAuto = json[SerializationKeys.allianceSwitchSuccessPercentageAuto].floatValue
+    canPlaceHighLayerCube = json[SerializationKeys.canPlaceHighLayerCube].boolValue
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -249,6 +270,13 @@ public final class CalculatedTeamData: NSObject {
     dictionary[SerializationKeys.avgCubesPlacedInScaleTele] = avgCubesPlacedInScaleTele
     dictionary[SerializationKeys.totalNumGoodDecisions] = totalNumGoodDecisions
     dictionary[SerializationKeys.totalNumBadDecisions] = totalNumBadDecisions
+    dictionary[SerializationKeys.avgNumRobotsLifted] = avgNumRobotsLifted
+    dictionary[SerializationKeys.avgTimeToOwnAllianceSwitchAuto] = avgTimeToOwnAllianceSwitchAuto
+    dictionary[SerializationKeys.avgTimeToOwnScaleAuto] = avgTimeToOwnScaleAuto
+    dictionary[SerializationKeys.parkPercentage] = parkPercentage
+    dictionary[SerializationKeys.percentSuccessOppositeSwitchSideAuto] = percentSuccessOppositeSwitchSideAuto
+    dictionary[SerializationKeys.allianceSwitchSuccessPercentageAuto] = allianceSwitchSuccessPercentageAuto
+    dictionary[SerializationKeys.canPlaceHighLayerCube] = canPlaceHighLayerCube
     return dictionary
   }
 
@@ -306,6 +334,13 @@ public final class CalculatedTeamData: NSObject {
     self.avgCubesPlacedInScaleTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgCubesPlacedInScaleTele) as? Float)!
     self.totalNumGoodDecisions = (aDecoder.decodeObject(forKey: SerializationKeys.totalNumGoodDecisions) as? Int)!
     self.totalNumBadDecisions = (aDecoder.decodeObject(forKey: SerializationKeys.totalNumBadDecisions) as? Int)!
+    self.avgNumRobotsLifted = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumRobotsLifted) as? Float)!
+    self.avgTimeToOwnAllianceSwitchAuto = (aDecoder.decodeObject(forKey: SerializationKeys.avgTimeToOwnAllianceSwitchAuto) as? Float)!
+    self.avgTimeToOwnScaleAuto = (aDecoder.decodeObject(forKey: SerializationKeys.avgTimeToOwnScaleAuto) as? Float)!
+    self.parkPercentage = (aDecoder.decodeObject(forKey: SerializationKeys.parkPercentage) as? Float)!
+    self.percentSuccessOppositeSwitchSideAuto = (aDecoder.decodeObject(forKey: SerializationKeys.percentSuccessOppositeSwitchSideAuto) as? Float)!
+    self.allianceSwitchSuccessPercentageAuto = (aDecoder.decodeObject(forKey: SerializationKeys.percentSuccessOppositeSwitchSideAuto) as? Float)!
+    self.canPlaceHighLayerCube = (aDecoder.decodeObject(forKey: SerializationKeys.canPlaceHighLayerCube) as? Bool)!
   }
 
   public func encode(with aCoder: NSCoder) {
@@ -361,6 +396,13 @@ public final class CalculatedTeamData: NSObject {
     aCoder.encode(avgCubesPlacedInScaleTele, forKey: SerializationKeys.avgCubesPlacedInScaleTele)
     aCoder.encode(totalNumGoodDecisions, forKey: SerializationKeys.totalNumGoodDecisions)
     aCoder.encode(totalNumBadDecisions, forKey: SerializationKeys.totalNumBadDecisions)
+    aCoder.encode(avgNumRobotsLifted, forKey: SerializationKeys.avgNumRobotsLifted)
+    aCoder.encode(avgTimeToOwnAllianceSwitchAuto, forKey: SerializationKeys.avgTimeToOwnAllianceSwitchAuto)
+    aCoder.encode(avgTimeToOwnScaleAuto, forKey: SerializationKeys.avgTimeToOwnScaleAuto)
+    aCoder.encode(parkPercentage, forKey: SerializationKeys.parkPercentage)
+    aCoder.encode(percentSuccessOppositeSwitchSideAuto, forKey: SerializationKeys.percentSuccessOppositeSwitchSideAuto)
+    aCoder.encode(allianceSwitchSuccessPercentageAuto, forKey: SerializationKeys.allianceSwitchSuccessPercentageAuto)
+    aCoder.encode(canPlaceHighLayerCube, forKey: SerializationKeys.canPlaceHighLayerCube)
   }
 
 }

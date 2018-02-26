@@ -96,13 +96,17 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     func getSlackProfiles() {
         self.firebase.observeSingleEvent(of: .value, with: { (snapshot) -> Void in
             var profiles : [String:SlackProfile] = [:]
-            for i in ((snapshot.childSnapshot(forPath: "slackProfiles").value as? [String:[String:Any]])?.values)! {
-                profiles[(snapshot.childSnapshot(forPath: "slackProfiles").value as? [String:[String:Any]] as NSDictionary?)?.allKeys(for: i)[0] as! String] = SlackProfile(json: JSON(snapshot.childSnapshot(forPath: "slackProfiles").childSnapshot(forPath: (snapshot.childSnapshot(forPath: "slackProfiles").value as? [String:[String:Any]] as NSDictionary?)?.allKeys(for: i)[0] as! String).value))
-            }
-            if profiles.count != 0 {
-                self.slackProfiles = profiles
+            if let snappy = snapshot.childSnapshot(forPath: "slackProfiles").value as? [String:[String:Any]] {
+                for i in snappy.values {
+                    profiles[(snappy as NSDictionary?)?.allKeys(for: i)[0] as! String] = SlackProfile(json: JSON(snapshot.childSnapshot(forPath: "slackProfiles").childSnapshot(forPath: (snapshot.childSnapshot(forPath: "slackProfiles").value as? [String:[String:Any]] as NSDictionary?)?.allKeys(for: i)[0] as! String).value))
+                }
+                if profiles.count != 0 {
+                    self.slackProfiles = profiles
+                } else {
+                    print("Problem getting slack profiles: Profiles not castable")
+                }
             } else {
-                print("Problem getting slack profiles: Profiles not castable")
+                print("Problem getting slack profiles: Profiles really not castable (probably nil)")
             }
         })
     }
