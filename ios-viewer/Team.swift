@@ -36,7 +36,7 @@ public final class Team: NSObject {
   public var pitDriveTrain: String?
   @objc public var number: Int = -1
   @objc public var calculatedData: CalculatedTeamData?
-  public var pitAllImageURLs: [String: String]?
+    @objc public var pitAllImageURLs: [String]?
   public var pitSEALsNotes: String?
   public var pitCanCheesecake: Bool? = false
   public var pitSelectedImage: String?
@@ -65,7 +65,9 @@ public final class Team: NSObject {
     pitDriveTrain = json[SerializationKeys.pitDriveTrain].string
     number = json[SerializationKeys.number].intValue
     calculatedData = CalculatedTeamData(json: json[SerializationKeys.calculatedData])
-    pitAllImageURLs = json[SerializationKeys.pitAllImageURLs].dictionaryObject as! [String: String]?
+    var a : [String] = []
+    for i in json[SerializationKeys.pitAllImageURLs].array! { a.append(i.string!) }
+    pitAllImageURLs = a
     pitSEALsNotes = json[SerializationKeys.pitSEALsNotes].string
     pitCanCheesecake = json[SerializationKeys.pitCanCheesecake].boolValue
     pitSelectedImage = json[SerializationKeys.pitSelectedImage].string
@@ -106,7 +108,7 @@ public final class Team: NSObject {
     self.pitDriveTrain = aDecoder.decodeObject(forKey: SerializationKeys.pitDriveTrain) as? String
     self.number = (aDecoder.decodeObject(forKey: SerializationKeys.number) as? Int)!
     self.calculatedData = aDecoder.decodeObject(forKey: SerializationKeys.calculatedData) as? CalculatedTeamData
-    self.pitAllImageURLs = aDecoder.decodeObject(forKey: SerializationKeys.pitAllImageURLs) as? [String:String]
+    self.pitAllImageURLs = aDecoder.decodeObject(forKey: SerializationKeys.pitAllImageURLs) as? [String]
     self.pitSEALsNotes = aDecoder.decodeObject(forKey: SerializationKeys.pitSEALsNotes) as? String
     self.pitCanCheesecake = aDecoder.decodeBool(forKey: SerializationKeys.pitCanCheesecake)
     self.pitSelectedImage = aDecoder.decodeObject(forKey: SerializationKeys.pitSelectedImage) as? String

@@ -76,7 +76,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                                         //team has selected image
                                         if team.pitSelectedImage != nil && team.pitSelectedImage != "" {
                                             //get url
-                                            let url = URL(string: (Array(Array(team.pitAllImageURLs!.values)).filter { $0.contains((team.pitSelectedImage!).replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "+", with: "%2B")) } )[0])!
+                                            let url = URL(string: (Array(Array(team.pitAllImageURLs!)).filter { $0.contains((team.pitSelectedImage!).replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "+", with: "%2B")) } )[0])!
                                             //set imageview
                                             imageView.hnk_setImageFromURL(url, success: { _ in
                                                 self.resetTableViewHeight()
@@ -91,7 +91,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                     //if team has urls
                     if let urls = self.team?.pitAllImageURLs {
                         //iterate thru urls
-                        for url in urls.values {
+                        for url in urls {
                             //if not all photos are downloaded
                             if self.photos.count < self.team!.pitAllImageURLs!.count {
                                 //add this photo
@@ -102,12 +102,12 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                 //if there's a selected image
                 if self.team?.pitSelectedImage != nil && self.team?.pitSelectedImage != "string" {
                     //if photos are downloaded and image view is not the same as the image for the url
-                    if self.teamSelectedImageView.image != MWPhoto(url: URL(string: (Array(Array(team.pitAllImageURLs!.values)).filter { $0.contains((team.pitSelectedImage!).replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "+", with: "%2B")) } )[0])!) && self.photos.count > 0 {
+                    if self.teamSelectedImageView.image != MWPhoto(url: URL(string: (Array(Array(team.pitAllImageURLs!)).filter { $0.contains((team.pitSelectedImage!).replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "+", with: "%2B")) } )[0])!) && self.photos.count > 0 {
                         //if photos are downloaded and the first one is not a no robot photo and it's height is greater than 0
                         if self.photos.count > 0 && self.photos[0].underlyingImage != noRobotPhoto && (self.photos[0].underlyingImage ?? UIImage()).size.height > 0 {
                             DispatchQueue.main.async(execute: { () -> Void in
                                 //selected image is the first picture
-                                let selImage = MWPhoto(url: URL(string: (Array(Array(team.pitAllImageURLs!.values)).filter { $0.contains((team.pitSelectedImage!).replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "+", with: "%2B")) } )[0])!)
+                                let selImage = MWPhoto(url: URL(string: (Array(Array(team.pitAllImageURLs!)).filter { $0.contains((team.pitSelectedImage!).replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "+", with: "%2B")) } )[0])!)
                                 selImage?.loadUnderlyingImageAndNotify()
                                 self.teamSelectedImageView.image = selImage?.underlyingImage
                                 //self.teamSelectedImageView.hnk_setImageFromURL(URL(string: (Array(Array(team.pitAllImageURLs!.values)).filter { $0.contains((team.pitSelectedImage!).replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "+", with: "%2B")) } )[0])!)
