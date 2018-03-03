@@ -66,7 +66,7 @@ public final class Team: NSObject {
     number = json[SerializationKeys.number].intValue
     calculatedData = CalculatedTeamData(json: json[SerializationKeys.calculatedData])
     var a : [String] = []
-    for i in json[SerializationKeys.pitAllImageURLs].array! { a.append(i.string!) }
+    if json[SerializationKeys.pitAllImageURLs].array != nil { for i in json[SerializationKeys.pitAllImageURLs].array! { a.append(i.string!) } }
     pitAllImageURLs = a
     pitSEALsNotes = json[SerializationKeys.pitSEALsNotes].string
     pitCanCheesecake = json[SerializationKeys.pitCanCheesecake].boolValue
