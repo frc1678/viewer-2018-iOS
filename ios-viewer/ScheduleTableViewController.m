@@ -31,6 +31,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear: animated];
+    if(self.searchbarIsEnabled) {
+        self.searchController.searchBar.frame = CGRectMake(self.searchController.searchBar.frame.origin.x, self.searchController.searchBar.frame.origin.y, self.searchController.searchBar.frame.size.width, 44.0);
+    }
     //if there are starred matches
     if(self.firebaseFetcher.currentMatchManager.starredMatchesArray != nil && [self.firebaseFetcher.currentMatchManager.starredMatchesArray count]){
         

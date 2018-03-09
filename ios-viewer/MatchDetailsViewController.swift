@@ -26,7 +26,7 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
     let mapping = ["One", "Two", "Three"]
     
     //keys for the tables
-    let tableKeys = ["dysfunctionalPercentage", "autoRunPercentage", "climbPercentage", "avgCubesSpilledTele", "avgNumExchangeInputTele", "avgCubesPlacedInScaleTele", "avgAllianceSwitchCubesAuto",]
+    let tableKeys = ["avgAllianceSwitchCubesAuto", "avgCubesPlacedInScaleAuto", "avgAllianceSwitchCubesTele","avgCubesPlacedInScaleTele", "autoRunPercentage", "climbPercentage", "avgNumExchangeInputTele", "avgCubesSpilledTele", "dysfunctionalPercentage",]
     
     
     //score labels
