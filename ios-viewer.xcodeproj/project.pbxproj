@@ -56,7 +56,6 @@
 		20B97B0927CBDC12735F6F22 /* Pods_Current_Match.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0394ACA1B0BF4AF13EA11B /* Pods_Current_Match.framework */; };
 		8C0200B52011987C00A75272 /* Attempt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0200B42011987B00A75272 /* Attempt.swift */; };
 		8C0200B72011988600A75272 /* Climb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0200B62011988600A75272 /* Climb.swift */; };
-		8C21B4ED20197EB60031225F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C21B4EC20197EB60031225F /* GoogleService-Info.plist */; };
 		8C25A7CC1E33F2790012A23E /* CalculatedTeamInMatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C25A7CB1E33F2790012A23E /* CalculatedTeamInMatchData.swift */; };
 		8C5868711E34254E0056EA17 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C58686C1E34254E0056EA17 /* Storyboard.storyboard */; };
 		8C65E7921FD0FEA6000E71A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C65E7911FD0FEA6000E71A2 /* GoogleService-Info.plist */; };
@@ -69,6 +68,7 @@
 		8CA2B7A3201E41510074DF21 /* PassiveClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A0201E41510074DF21 /* PassiveClimb.swift */; };
 		8CA2B7A4201E41510074DF21 /* AssistedLift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A1201E41510074DF21 /* AssistedLift.swift */; };
 		8CA2B7A6201E54FE0074DF21 /* ClimbParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A5201E54FD0074DF21 /* ClimbParent.swift */; };
+		8CA3DE1A20545C0400AA01CC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CA3DE1920545C0300AA01CC /* GoogleService-Info.plist */; };
 		8CBD712D1E354696009C0206 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD3CEA81E34074000B328A1 /* NotificationCenter.framework */; };
 		8CBD71301E354696009C0206 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBD712F1E354696009C0206 /* TodayViewController.swift */; };
 		8CBD71371E354696009C0206 /* Current Match.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8CBD712C1E354696009C0206 /* Current Match.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -171,7 +171,6 @@
 		763F6CE09D211CAEC3E4C000 /* Pods-CurrentMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrentMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CurrentMatch/Pods-CurrentMatch.debug.xcconfig"; sourceTree = "<group>"; };
 		8C0200B42011987B00A75272 /* Attempt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attempt.swift; sourceTree = "<group>"; };
 		8C0200B62011988600A75272 /* Climb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Climb.swift; sourceTree = "<group>"; };
-		8C21B4EC20197EB60031225F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8C25A7CB1E33F2790012A23E /* CalculatedTeamInMatchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatedTeamInMatchData.swift; sourceTree = "<group>"; };
 		8C58686D1E34254E0056EA17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Storyboard.storyboard; sourceTree = "<group>"; };
 		8C58687E1E3426200056EA17 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +187,7 @@
 		8CA2B7A0201E41510074DF21 /* PassiveClimb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassiveClimb.swift; sourceTree = "<group>"; };
 		8CA2B7A1201E41510074DF21 /* AssistedLift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistedLift.swift; sourceTree = "<group>"; };
 		8CA2B7A5201E54FD0074DF21 /* ClimbParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClimbParent.swift; sourceTree = "<group>"; };
+		8CA3DE1920545C0300AA01CC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8CBD712C1E354696009C0206 /* Current Match.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Current Match.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBD712F1E354696009C0206 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8CBD71341E354696009C0206 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -297,7 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				19B037C41E2C5739006E25A2 /* Info.plist */,
-				8C21B4EC20197EB60031225F /* GoogleService-Info.plist */,
+				8CA3DE1920545C0300AA01CC /* GoogleService-Info.plist */,
 			);
 			name = Plists;
 			sourceTree = "<group>";
@@ -557,10 +557,10 @@
 				19B037C31E2C5739006E25A2 /* LaunchScreen.storyboard in Resources */,
 				8CBD71421E4695BE009C0206 /* Settings.bundle in Resources */,
 				8CBD71401E356CD1009C0206 /* CC 2017 Logo.png in Resources */,
-				8C21B4ED20197EB60031225F /* GoogleService-Info.plist in Resources */,
 				8CA0E2142038A5F3002EFB02 /* SlackTableViewCell.xib in Resources */,
 				19B037EA1E2C586C006E25A2 /* MatchTableViewCell.xib in Resources */,
 				19B037D31E2C581C006E25A2 /* FirstPick.storyboard in Resources */,
+				8CA3DE1A20545C0400AA01CC /* GoogleService-Info.plist in Resources */,
 				190DFE501E308BE300477B6D /* TIMDTableViewCell.xib in Resources */,
 				19B037C01E2C5739006E25A2 /* Assets.xcassets in Resources */,
 				19B037D61E2C581C006E25A2 /* SecondPick.storyboard in Resources */,

@@ -69,7 +69,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     var secondPicklist = [Int]()
     var slackProfiles = [String:SlackProfile]()
 
-    let firebase : DatabaseReference
+    var firebase : DatabaseReference
     
     override init() {
         //reference to firebase
@@ -113,7 +113,8 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     
     /** Gets the picklist password. */
     @objc func getPicks() {
-        self.firebase.observeSingleEvent(of: .value, with: { (snapshot) -> Void in
+        self.firebase = Database.database().reference()
+        self.firebase.observe(.value, with: { (snapshot) -> Void in
             if let password = snapshot.childSnapshot(forPath: "PicklistPassword").value as? String, snapshot.childSnapshot(forPath: "PicklistPassword").value as? String != "" {
                 self.picklistPassword = password
                 print("Done getting picklist and password. Password is \(self.picklistPassword)")
@@ -121,6 +122,12 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
                 self.firebase.child("PicklistPassword").setValue("password")
             }
             if let firstPicks = snapshot.childSnapshot(forPath: "picklist").value as? [Int] {
+                let thingENum = snapshot.childSnapshot(forPath: "picklist").children
+                var thingArray: [Int] = []
+                for i in thingENum {
+                    thingArray.append((i as! DataSnapshot).value as! Int)
+                }
+                print(thingArray)
                 self.firstPicklist = firstPicks
             }
             for i in self.getOverallSecondPickList() {
