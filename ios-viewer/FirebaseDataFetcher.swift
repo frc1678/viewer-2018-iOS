@@ -133,6 +133,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
             for i in self.getOverallSecondPickList() {
                 self.secondPicklist.append(i.number)
             }
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "pickBoi"), object:self)
         })
     }
     
