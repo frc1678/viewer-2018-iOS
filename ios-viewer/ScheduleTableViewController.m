@@ -86,12 +86,50 @@
     for (int i = 0; i < 3; i++) {
         if(i < redTeams.count) {
             [cell setValue:[self textForScheduleLabelForType:1 forString:[NSString stringWithFormat:@"%ld", (long)((Team *)[redTeams objectAtIndex:i]).number]] forKeyPath:[NSString stringWithFormat:@"red%@Label.attributedText", [ScheduleTableViewController mappings][i]]];
+            if(((Team *)[redTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0) {
+                switch(i) {
+                    case 0:
+                        matchCell.redOneLabel.backgroundColor = [UIColor greenColor];
+                    case 1:
+                        matchCell.redTwoLabel.backgroundColor = [UIColor greenColor];
+                    case 2:
+                        matchCell.redThreeLabel.backgroundColor = [UIColor greenColor];
+                }
+            } else {
+                switch(i) {
+                    case 0:
+                        matchCell.redOneLabel.backgroundColor = [UIColor clearColor];
+                    case 1:
+                        matchCell.redTwoLabel.backgroundColor = [UIColor clearColor];
+                    case 2:
+                        matchCell.redThreeLabel.backgroundColor = [UIColor cleargColor];
+                }
+            }
         } else {
             [cell setValue:[self textForScheduleLabelForType:1 forString:[NSString stringWithFormat:@"???"]] forKeyPath:[NSString stringWithFormat:@"red%@Label.attributedText", [ScheduleTableViewController mappings][i]]];
         }
         
         if(i < blueTeams.count) {
             [cell setValue:[self textForScheduleLabelForType:1 forString:[NSString stringWithFormat:@"%ld", (long)((Team *)[blueTeams objectAtIndex:i]).number]] forKeyPath:[NSString stringWithFormat:@"blue%@Label.attributedText", [ScheduleTableViewController mappings][i]]];
+            if(((Team *)[blueTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0) {
+                switch(i) {
+                    case 0:
+                        matchCell.blueOneLabel.backgroundColor = [UIColor greenColor];
+                    case 1:
+                        matchCell.blueTwoLabel.backgroundColor = [UIColor greenColor];
+                    case 2:
+                        matchCell.blueThreeLabel.backgroundColor = [UIColor greenColor];
+                }
+            } else {
+                switch(i) {
+                    case 0:
+                        matchCell.blueOneLabel.backgroundColor = [UIColor clearColor];
+                    case 1:
+                        matchCell.blueTwoLabel.backgroundColor = [UIColor clearColor];
+                    case 2:
+                        matchCell.blueThreeLabel.backgroundColor = [UIColor clearColor];
+                }
+            }
         } else {
             [cell setValue:[self textForScheduleLabelForType:1 forString:[NSString stringWithFormat:@"???"]] forKeyPath:[NSString stringWithFormat:@"blue%@Label.attributedText", [ScheduleTableViewController mappings][i]]];
         }
