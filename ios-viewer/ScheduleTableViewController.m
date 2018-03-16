@@ -102,7 +102,7 @@
                     case 1:
                         matchCell.redTwoLabel.backgroundColor = [UIColor clearColor];
                     case 2:
-                        matchCell.redThreeLabel.backgroundColor = [UIColor cleargColor];
+                        matchCell.redThreeLabel.backgroundColor = [UIColor clearColor];
                 }
             }
         } else {
