@@ -665,6 +665,40 @@
                                     <outlet property="valueLabel" destination="IBS-fB-aK2" id="N3f-gK-EAU"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TeamInMatchDetailStringCell" rowHeight="160" id="Lvz-cP-dxI" customClass="ResizableNotesTableViewCell" customModule="ios_viewer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="320" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lvz-cP-dxI" id="NpS-OY-kSX">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="159.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgR-uN-MaO">
+                                            <rect key="frame" x="16" y="16" width="0.0" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0S-ab-vvf">
+                                            <rect key="frame" x="24" y="27" width="272" height="114"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="J0S-ab-vvf" secondAttribute="bottom" constant="8" id="1e9-yz-rwd"/>
+                                        <constraint firstItem="J0S-ab-vvf" firstAttribute="top" secondItem="lgR-uN-MaO" secondAttribute="bottom" constant="8" id="4ds-YW-XOv"/>
+                                        <constraint firstItem="J0S-ab-vvf" firstAttribute="leading" secondItem="lgR-uN-MaO" secondAttribute="leading" id="8hD-ni-bKR"/>
+                                        <constraint firstItem="lgR-uN-MaO" firstAttribute="leading" secondItem="NpS-OY-kSX" secondAttribute="leadingMargin" constant="8" id="QJB-kd-Khn"/>
+                                        <constraint firstItem="lgR-uN-MaO" firstAttribute="top" secondItem="NpS-OY-kSX" secondAttribute="topMargin" constant="8" id="Z2W-1f-2tL"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="J0S-ab-vvf" secondAttribute="trailing" constant="8" id="bAG-cT-Qgt"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="notesLabel" destination="J0S-ab-vvf" id="nIE-Ej-Yxj"/>
+                                    <outlet property="titleLabel" destination="lgR-uN-MaO" id="Yuc-gv-KvE"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="1fW-7d-q3t" id="tfZ-9u-s6G"/>

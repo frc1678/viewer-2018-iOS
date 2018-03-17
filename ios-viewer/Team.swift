@@ -48,7 +48,7 @@ public final class Team: NSObject {
   public var pitRobotDimensions: String?
     public var picklistPosition: Int = -1
     public var pitWheelDiameter: String?
-    public var pitHasCamera: Bool?
+    public var pitHasCamera: Bool? = false
     
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -80,7 +80,7 @@ public final class Team: NSObject {
     pitRobotDimensions = json[SerializationKeys.pitRobotDimensions].string
     picklistPosition = json[SerializationKeys.picklistPosition].intValue
     pitWheelDiameter = json[SerializationKeys.pitWheelDiameter].string
-    pitHasCamera = json[SerializationKeys.pitHasCamera].bool
+    pitHasCamera = json[SerializationKeys.pitHasCamera].boolValue
 }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -102,7 +102,7 @@ public final class Team: NSObject {
     dictionary[SerializationKeys.pitAvailableWeight] = pitAvailableWeight
     dictionary[SerializationKeys.picklistPosition] = picklistPosition
     if let value = pitWheelDiameter { dictionary[SerializationKeys.pitWheelDiameter] = value }
-    if let value = pitHasCamera { dictionary[SerializationKeys.pitHasCamera] = value }
+    dictionary[SerializationKeys.pitHasCamera] = pitHasCamera
     return dictionary
   }
 
