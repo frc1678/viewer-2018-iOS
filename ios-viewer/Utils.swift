@@ -175,6 +175,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "didPark",
             "calculatedData.canScoreBothSwitchSidesAuto",
             "calculatedData.canPlaceHighLayerCube",
+            "pitHasCamera",
         ]
         
         
@@ -373,15 +374,18 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "pitDriveTrain",
             "pitClimberType",
             "pitAvailableWeight",
-            "pitMaxHeight",
+            "pitRobotDimensions",
             "pitProgrammingLanguage",
-            "pitDriveTest",
+            "pitWheelDiameter",
+            "pitHasCamera",
         ]
         
         /** Data collected by SEALS */
         let sealKeys = [
             "pitCanCheesecake",
-            "pitSEALsNotes"
+            "calculatedData.pitAvgDriveTime",
+            "calculatedData.pitAvgRampTime",
+            "pitSEALsNotes",
         ]
         
         /** Human readable names for CTIMD keys */
@@ -653,7 +657,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "calculatedData.numScaleSuccessTele" : "Successful SC Cubes Tele",
         "calculatedData.numOpponentSwitchSuccessTele" : "Successful SWO Cubes Tele",
         "calculatedData.didClimb" : "Climbed",
-        "pitMaxHeight" : "Max. Height",
+        "pitRobotDimensions" : "Robot Dimensions",
         "picklistPosition" : "Picklist Position",
         "pitDriveTest" : "Pit Drive Test",
         "calculatedData.avgTimeToOwnAllianceSwitchAuto" : "Avg. Time to Own SW Auto",
@@ -665,6 +669,10 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "calculatedData.avgNumOpponentPlatformIntakeTele" : "Avg. PZO Intakes Tele",
         "calculatedData.allianceSwitchSuccessPercentageAuto" : "SW Success % Auto",
         "calculatedData.canPlaceHighLayerCube" : "Can Place High Layer Cube",
+        "calculatedData.pitAvgDriveTime" : "Avg. Drive Time",
+        "calculatedData.pitAvgRampTime" : "Avg. Ramp Time",
+        "pitHasCamera" : "Has Camera",
+        "pitWheelDiameter" : "Wheel Diameter",
     ]
     
     /**

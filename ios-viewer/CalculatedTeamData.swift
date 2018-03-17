@@ -71,7 +71,9 @@ public final class CalculatedTeamData: NSObject {
     static let percentSuccessOppositeSwitchSideAuto = "percentSuccessOppositeSwitchSideAuto"
     static let allianceSwitchSuccessPercentageAuto = "allianceSwitchSuccessPercentageAuto"
     static let canPlaceHighLayerCube = "canPlaceHighLayerCube"
-  }
+    static let pitAvgDriveTime = "pitAvgDriveTime"
+    static let pitAvgRampTime = "pitAvgRampTime"
+ }
 
   // MARK: Properties
   @objc public var avgNumCubesFumbledAuto: Float = -1.0
@@ -133,6 +135,8 @@ public final class CalculatedTeamData: NSObject {
     @objc public var percentSuccessOppositeSwitchSideAuto: Float = -1.0
     @objc public var allianceSwitchSuccessPercentageAuto: Float = -1.0
     @objc public var canPlaceHighLayerCube: Bool = false
+    @objc public var pitAvgDriveTime: Float = -1.0
+    @objc public var pitAvgRampTime: Float = -1.0
     
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -210,6 +214,8 @@ public final class CalculatedTeamData: NSObject {
     percentSuccessOppositeSwitchSideAuto = json[SerializationKeys.percentSuccessOppositeSwitchSideAuto].floatValue
     allianceSwitchSuccessPercentageAuto = json[SerializationKeys.allianceSwitchSuccessPercentageAuto].floatValue
     canPlaceHighLayerCube = json[SerializationKeys.canPlaceHighLayerCube].boolValue
+    pitAvgDriveTime = json[SerializationKeys.pitAvgDriveTime].floatValue
+    pitAvgRampTime = json[SerializationKeys.pitAvgRampTime].floatValue
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -277,6 +283,8 @@ public final class CalculatedTeamData: NSObject {
     dictionary[SerializationKeys.percentSuccessOppositeSwitchSideAuto] = percentSuccessOppositeSwitchSideAuto
     dictionary[SerializationKeys.allianceSwitchSuccessPercentageAuto] = allianceSwitchSuccessPercentageAuto
     dictionary[SerializationKeys.canPlaceHighLayerCube] = canPlaceHighLayerCube
+    dictionary[SerializationKeys.pitAvgDriveTime] = pitAvgDriveTime
+    dictionary[SerializationKeys.pitAvgRampTime] = pitAvgRampTime
     return dictionary
   }
 
@@ -341,6 +349,8 @@ public final class CalculatedTeamData: NSObject {
     self.percentSuccessOppositeSwitchSideAuto = (aDecoder.decodeObject(forKey: SerializationKeys.percentSuccessOppositeSwitchSideAuto) as? Float)!
     self.allianceSwitchSuccessPercentageAuto = (aDecoder.decodeObject(forKey: SerializationKeys.percentSuccessOppositeSwitchSideAuto) as? Float)!
     self.canPlaceHighLayerCube = (aDecoder.decodeObject(forKey: SerializationKeys.canPlaceHighLayerCube) as? Bool)!
+    self.pitAvgDriveTime = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvgDriveTime) as? Float)!
+    self.pitAvgRampTime = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvgRampTime) as? Float)!
   }
 
   public func encode(with aCoder: NSCoder) {

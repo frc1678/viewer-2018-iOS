@@ -24,11 +24,12 @@ public final class Team: NSObject {
     static let pitClimberType = "pitClimberType"
     static let pitProgrammingLanguage = "pitProgrammingLanguage"
     static let pitAvailableWeight = "pitAvailableWeight"
-    static let pitMaxHeight = "pitMaxHeight"
+    static let pitRobotDimensions = "pitRobotDimensions"
     static let picklistPosition = "picklistPosition"
     static let pitRampTimes = "pitRampTimes"
     static let pitDriveTimes = "pitDriveTimes"
-    static let pitDriveTest = "pitDriveTest"
+    static let pitWheelDiameter = "pitWheelDiameter"
+    static let pitHasCamera = "pitHasCamera"
   }
 
   // MARK: Properties
@@ -44,9 +45,10 @@ public final class Team: NSObject {
   public var pitClimberType: String?
   public var pitProgrammingLanguage: String?
   public var pitAvailableWeight: Float = -1
-  public var pitMaxHeight: Float?
+  public var pitRobotDimensions: String?
     public var picklistPosition: Int = -1
-    public var pitDriveTest: String?
+    public var pitWheelDiameter: String?
+    public var pitHasCamera: Bool?
     
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -75,9 +77,10 @@ public final class Team: NSObject {
     pitClimberType = json[SerializationKeys.pitClimberType].string
     pitProgrammingLanguage = json[SerializationKeys.pitProgrammingLanguage].string
     pitAvailableWeight = json[SerializationKeys.pitAvailableWeight].floatValue
-    pitMaxHeight = json[SerializationKeys.pitMaxHeight].float
+    pitRobotDimensions = json[SerializationKeys.pitRobotDimensions].string
     picklistPosition = json[SerializationKeys.picklistPosition].intValue
-    pitDriveTest = json[SerializationKeys.pitDriveTest].string
+    pitWheelDiameter = json[SerializationKeys.pitWheelDiameter].string
+    pitHasCamera = json[SerializationKeys.pitHasCamera].bool
 }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -95,10 +98,11 @@ public final class Team: NSObject {
     if let value = numMatchesPlayed { dictionary[SerializationKeys.numMatchesPlayed] = value }
     if let value = pitClimberType { dictionary[SerializationKeys.pitClimberType] = value }
     if let value = pitProgrammingLanguage { dictionary[SerializationKeys.pitProgrammingLanguage] = value }
-    if let value = pitMaxHeight { dictionary[SerializationKeys.pitMaxHeight] = value }
+    if let value = pitRobotDimensions { dictionary[SerializationKeys.pitRobotDimensions] = value }
     dictionary[SerializationKeys.pitAvailableWeight] = pitAvailableWeight
     dictionary[SerializationKeys.picklistPosition] = picklistPosition
-    if let value = pitDriveTest { dictionary[SerializationKeys.pitDriveTest] = value }
+    if let value = pitWheelDiameter { dictionary[SerializationKeys.pitWheelDiameter] = value }
+    if let value = pitHasCamera { dictionary[SerializationKeys.pitHasCamera] = value }
     return dictionary
   }
 
@@ -116,9 +120,10 @@ public final class Team: NSObject {
     self.pitClimberType = aDecoder.decodeObject(forKey: SerializationKeys.pitClimberType) as? String
     self.pitProgrammingLanguage = aDecoder.decodeObject(forKey: SerializationKeys.pitProgrammingLanguage) as? String
     self.pitAvailableWeight = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvailableWeight) as? Float)!
-    self.pitMaxHeight = aDecoder.decodeObject(forKey: SerializationKeys.pitMaxHeight) as? Float
+    self.pitRobotDimensions = aDecoder.decodeObject(forKey: SerializationKeys.pitRobotDimensions) as? String
     self.picklistPosition = (aDecoder.decodeObject(forKey: SerializationKeys.picklistPosition) as? Int)!
-    self.pitDriveTest = aDecoder.decodeObject(forKey: SerializationKeys.pitDriveTest) as? String
+    self.pitWheelDiameter = aDecoder.decodeObject(forKey: SerializationKeys.pitWheelDiameter) as? String
+    self.pitHasCamera = aDecoder.decodeObject(forKey: SerializationKeys.pitHasCamera) as? Bool
     }
 
   public func encode(with aCoder: NSCoder) {
@@ -134,9 +139,10 @@ public final class Team: NSObject {
     aCoder.encode(pitClimberType, forKey: SerializationKeys.pitClimberType)
     aCoder.encode(pitProgrammingLanguage, forKey: SerializationKeys.pitProgrammingLanguage)
     aCoder.encode(pitAvailableWeight, forKey: SerializationKeys.pitAvailableWeight)
-    aCoder.encode(pitMaxHeight, forKey: SerializationKeys.pitMaxHeight)
+    aCoder.encode(pitRobotDimensions, forKey: SerializationKeys.pitRobotDimensions)
     aCoder.encode(picklistPosition, forKey: SerializationKeys.picklistPosition)
-    aCoder.encode(pitDriveTest, forKey: SerializationKeys.pitDriveTest)
+    aCoder.encode(pitWheelDiameter, forKey: SerializationKeys.pitWheelDiameter)
+    aCoder.encode(pitHasCamera, forKey: SerializationKeys.pitHasCamera)
   }
 
 }

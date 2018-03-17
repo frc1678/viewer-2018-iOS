@@ -118,7 +118,7 @@ FIRDatabaseReference *firebase;
         }
     } else {
         for(int j = sourceIndexPath.row; j <= destinationIndexPath.row; j++){
-            [[[[self.ref child:@"Teams"] child: [firstPicklist[j] stringValue]] child:@"picklistPosition"] setValue:[NSNumber numberWithInteger:j]];
+            [[[[self.ref child:@"Teams"] child: [[NSNumber numberWithDouble:fabs([firstPicklist[j] doubleValue])] stringValue]] child:@"picklistPosition"] setValue:[NSNumber numberWithInteger:j]];
         }
     }
     // NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(secondPicklist)")

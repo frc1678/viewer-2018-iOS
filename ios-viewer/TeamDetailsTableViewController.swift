@@ -352,12 +352,16 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                         unrankedCell.detailLabel.text = ""
                        } /*else if dataKey == "pitOrganization" { //In the pit scout, the selector is indexed 0 to 4, this translates it back in to what those numbers mean.
                         unrankedCell.detailLabel!.text! = (team?.pitOrganization) ?? ""
-                    } */else if dataKey == "pitProgrammingLanguage" {
+                    } */else if dataKey == "pitProgrammingLanguage" { //JUST WANNA SAY this sucks
                         unrankedCell.detailLabel!.text! = (team?.pitProgrammingLanguage) ?? ""
                     } else if dataKey == "pitDriveTrain" {
                         unrankedCell.detailLabel!.text! = (team?.pitDriveTrain) ?? ""
                     } else if dataKey == "pitClimberType" {
                         unrankedCell.detailLabel!.text! = (team?.pitClimberType) ?? ""
+                    } else if dataKey == "pitWheelDiameter" {
+                        unrankedCell.detailLabel!.text! = (team?.pitWheelDiameter) ?? ""
+                    } else if dataKey == "pitRobotDimensions" {
+                        unrankedCell.detailLabel!.text! = (team?.pitRobotDimensions) ?? ""
                     //uhhh what even is this?
                     } else if Utils.teamDetailsKeys.addCommasBetweenCapitals.contains(dataKey) {
                         unrankedCell.detailLabel.text = "\(insertCommasAndSpacesBetweenCapitalsInString(roundValue(dataPoint!, toDecimalPlaces: 2)))"
