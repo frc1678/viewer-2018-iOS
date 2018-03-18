@@ -301,7 +301,19 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
                     if index <= 3 {
                         //setting the titles of the team button numbers. V Sketch
                         (value(forKey: "redTeam\(mapping[index-1])Button") as! UIButton).setTitle("\(match.redAllianceTeamNumbers![index-1])", for: UIControlState())
-
+                        if ((redTeams![index-1]).calculatedData?.dysfunctionalPercentage)! > Float(0.0) {
+                            switch index {
+                            case 1:
+                                self.redTeamOneButton.backgroundColor = UIColor.green
+                            case 2:
+                                self.redTeamTwoButton.backgroundColor = UIColor.green
+                            case 3:
+                                self.redTeamThreeButton.backgroundColor = UIColor.green
+                            default:
+                                print("This is an executable statement")
+                                //heck
+                            }
+                        }
                         
                     }
                 }
@@ -318,6 +330,19 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
                         //print(blueTeams[index].number)
                         //setting team button titles
                         (value(forKey: "blueTeam\(mapping[index - 1])Button") as! UIButton).setTitle("\(match.blueAllianceTeamNumbers![index - 1])", for: UIControlState())
+                    }
+                    if ((blueTeams![index-1]).calculatedData?.dysfunctionalPercentage)! > Float(0.0) {
+                        switch index {
+                        case 1:
+                            self.blueTeamOneButton.backgroundColor = UIColor.green
+                        case 2:
+                            self.blueTeamTwoButton.backgroundColor = UIColor.green
+                        case 3:
+                            self.blueTeamThreeButton.backgroundColor = UIColor.green
+                        default:
+                            print("This is an executable statement")
+                            //heck
+                        }
                     }
                 }
             }

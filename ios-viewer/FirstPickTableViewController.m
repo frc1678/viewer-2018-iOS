@@ -144,16 +144,11 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (inPicklist) {
-        NSMutableArray *tempArray = [NSMutableArray arrayWithArray:self.firebaseFetcher.firstPicklist];
-        tempArray[indexPath.row] = @(-1 * [self.firebaseFetcher.firstPicklist[indexPath.row] intValue]);
-        self.firebaseFetcher.firstPicklist = tempArray;
-        NSLog(@"%@",tempArray[indexPath.row]);
-        [[[firebase child:@"picklist"] child:[NSString stringWithFormat:@"%ld",(long)indexPath.row]] setValue:[NSNumber numberWithInt:([self.firebaseFetcher.firstPicklist[indexPath.row] intValue])]];
-        firstPicklist[indexPath.row] = @(-1 * [firstPicklist[indexPath.row] intValue]);
-    } else {
+    /*if (inPicklist) {
+        
+    } else {*/
         [self performSegueWithIdentifier:@"TeamDetails" sender:[tableView cellForRowAtIndexPath:indexPath]];
-    }
+    //}
 }
 
 - (NSArray *)filteredArrayForSearchText:(NSString *)searchString inScope:(NSInteger)scope
@@ -163,6 +158,22 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
 
 -(NSString *)notificationName {
     return @"updatedLeftTable";
+}
+
+-(void)handleLongPressGesture:(UILongPressGestureRecognizer *)sender {
+    if(UIGestureRecognizerStateBegan == sender.state) {
+        if(inPicklist) {
+            CGPoint p = [sender locationInView:self.tableView];
+            NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+            
+            NSMutableArray *tempArray = [NSMutableArray arrayWithArray:self.firebaseFetcher.firstPicklist];
+            tempArray[indexPath.row] = @(-1 * [self.firebaseFetcher.firstPicklist[indexPath.row] intValue]);
+            self.firebaseFetcher.firstPicklist = tempArray;
+            NSLog(@"%@",tempArray[indexPath.row]);
+            [[[firebase child:@"picklist"] child:[NSString stringWithFormat:@"%ld",(long)indexPath.row]] setValue:[NSNumber numberWithInt:([self.firebaseFetcher.firstPicklist[indexPath.row] intValue])]];
+            firstPicklist[indexPath.row] = @(-1 * [firstPicklist[indexPath.row] intValue]);
+        }
+    }
 }
 
 - (void)toggleInPicklist {
