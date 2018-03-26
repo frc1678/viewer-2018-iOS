@@ -118,14 +118,15 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "First Pick Ability",
             "Second Pick Ability",
             "Avg. Driving Ability",
-            "SW Fail Percentage Tele",
-            "SC Fail Percentage Tele",
-            "SW Fail Percentage Auto",
-            "SC Fail Percentage Auto",
-            "Multi-Side Auto",
+            "Tele SW Fail Percentage",
+            "Tele SC Fail Percentage",
+            "Auto SW Fail Percentage",
+            "Auto SC Fail Percentage",
+            "Auto Multi-Side",
             "Picklist Position",
             "Can Place High Layer Cube",
-            "SW Success % Auto",
+            "Auto SW Success %",
+            "Avg. Cubes Placed",
         ]
         
         /** Values that should be displayed as long text cells */
@@ -175,6 +176,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "didPark",
             "calculatedData.canScoreBothSwitchSidesAuto",
             "calculatedData.canPlaceHighLayerCube",
+            "canPlaceHighLayerCube",
             "pitHasCamera",
         ]
         
@@ -324,7 +326,11 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "avgNumGroundPortalIntakeTele" : "numGroundPortalIntakeTele",
             "avgClimbTime" : "calculatedData.climbTime",
             "climbPercentage" : "calculatedData.didClimb",
-            "avgNumRobotsLifted" : "numRobotsLifted",
+            "avgNumRobotsLifted" : "calculatedData.numRobotsLifted",
+            "autoRunPercentage" : "didMakeAutoRun",
+            "avgNumAlliancePlatformIntakeTele" : "calculatedData.numAlliancePlatformIntakeTele",
+            "avgNumOpponentPlatformIntakeTele" : "calculatedData.numOpponentPlatformIntakeTele",
+            "avgNumCubesSpilledTele" : "numSpilledCubesTele",
             //super data
             "avgSpeed" : "rankSpeed",
             "avgAgility" : "rankAgility",
@@ -433,6 +439,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         //"calculatedData.park", //FALSE doesn't exist
         "calculatedData.incapacitatedPercentage",
         "calculatedData.disabledPercentage",
+        "calculatedData.autoRunPercentage"
     ]
     
     // MARK: TIMD keys

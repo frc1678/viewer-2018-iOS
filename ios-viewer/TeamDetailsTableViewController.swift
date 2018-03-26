@@ -361,9 +361,9 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                     } else if dataKey == "pitWheelDiameter" {
                         unrankedCell.detailLabel!.text! = (team?.pitWheelDiameter) ?? ""
                     } else if dataKey == "pitRobotWidth" {
-                        unrankedCell.detailLabel!.text! = String(describing: team?.pitRobotWidth)
+                        unrankedCell.detailLabel!.text! = String(describing: team!.pitRobotWidth ?? 0)
                     } else if dataKey == "pitRobotLength" {
-                        unrankedCell.detailLabel!.text! = String(describing: team?.pitRobotLength)
+                        unrankedCell.detailLabel!.text! = String(describing: team!.pitRobotLength ?? 0)
                     } else if Utils.teamDetailsKeys.addCommasBetweenCapitals.contains(dataKey) {
                         unrankedCell.detailLabel.text = "\(insertCommasAndSpacesBetweenCapitalsInString(roundValue(dataPoint!, toDecimalPlaces: 2)))"
                     } else if Utils.teamDetailsKeys.boolValues.contains(dataKey) {

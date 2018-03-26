@@ -89,11 +89,11 @@
             if(((Team *)[redTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0) {
                 switch(i) {
                     case 0:
-                        matchCell.redOneLabel.backgroundColor = [UIColor greenColor];
+                        matchCell.redOneLabel.backgroundColor = [UIColor colorWithRed:0.00 green:0.75 blue:0.00 alpha:0.5];
                     case 1:
-                        matchCell.redTwoLabel.backgroundColor = [UIColor greenColor];
+                        matchCell.redTwoLabel.backgroundColor = [UIColor colorWithRed:0.00 green:0.75 blue:0.00 alpha:0.5];
                     case 2:
-                        matchCell.redThreeLabel.backgroundColor = [UIColor greenColor];
+                        matchCell.redThreeLabel.backgroundColor = [UIColor colorWithRed:0.00 green:0.75 blue:0.00 alpha:0.5];
                 }
             } else {
                 switch(i) {
@@ -114,11 +114,11 @@
             if(((Team *)[blueTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0) {
                 switch(i) {
                     case 0:
-                        matchCell.blueOneLabel.backgroundColor = [UIColor greenColor];
+                        matchCell.blueOneLabel.backgroundColor = [UIColor colorWithRed:0.00 green:0.75 blue:0.00 alpha:0.5];
                     case 1:
-                        matchCell.blueTwoLabel.backgroundColor = [UIColor greenColor];
+                        matchCell.blueTwoLabel.backgroundColor = [UIColor colorWithRed:0.00 green:0.75 blue:0.00 alpha:0.5];
                     case 2:
-                        matchCell.blueThreeLabel.backgroundColor = [UIColor greenColor];
+                        matchCell.blueThreeLabel.backgroundColor = [UIColor colorWithRed:0.00 green:0.75 blue:0.00 alpha:0.5];
                 }
             } else {
                 switch(i) {
