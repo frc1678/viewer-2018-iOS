@@ -76,7 +76,11 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         } else {
             multiCell!.scoreLabel!.text = ""
         }
-        multiCell!.rankLabel!.text = "\(self.firebaseFetcher.rankOfTeam(team!, withCharacteristic: "calculatedData.secondPickAbility"))"
+        if self.inPicklist {
+            multiCell!.rankLabel!.text = "\(team!.calculatedData?.actualSeed ?? 0)"
+        } else {
+            multiCell!.rankLabel!.text = "\(self.firebaseFetcher.rankOfTeam(team!, withCharacteristic: "calculatedData.secondPickAbility"))"
+        }
     }
    
     
