@@ -32,6 +32,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
         } else {
             self.secondPicklist = firebaseFetcher.secondPicklist
         }
+        self.tableView.allowsSelectionDuringEditing = true;
     }
     
     @objc func reloadTableView(_ note: Notification) {
@@ -127,6 +128,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
             self.tableView.isEditing = self.inPicklist
             self.dataArray = self.loadDataArray(false)
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(self.clearPicklist))
+            self.navigationItem.rightBarButtonItem?.title = "Second Pick"
             self.tableView.reloadData()
             self.navigationItem.title = "Offline Picklist"
         } else {
@@ -134,6 +136,7 @@ class OverallSecondPickAbilityViewController: ArrayTableViewController {
             self.tableView.isEditing = self.inPicklist
             self.dataArray = loadDataArray(false)
             self.navigationItem.leftBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem?.title = "Picklist"
             self.tableView.reloadData()
             self.navigationItem.title = "Second Pick"
         }

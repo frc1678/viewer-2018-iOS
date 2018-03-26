@@ -211,6 +211,7 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
                 }
                 self.dataArray = [self loadDataArray:false];
                 self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reset" style:UIBarButtonItemStylePlain target:self action:@selector(clearPicklist)];
+                self.navigationItem.rightBarButtonItem.title = @"First Pick";
                 [self.tableView reloadData];
                 self.navigationItem.title = @"Live Picklist";
             }
@@ -224,6 +225,7 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
         self.editing = inPicklist;
         self.dataArray = [self loadDataArray:false];
         self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem.title = @"Picklist";
         [self.tableView reloadData];
         self.navigationItem.title = @"First Pick";
     }
