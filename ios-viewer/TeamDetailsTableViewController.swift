@@ -360,9 +360,10 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                         unrankedCell.detailLabel!.text! = (team?.pitClimberType) ?? ""
                     } else if dataKey == "pitWheelDiameter" {
                         unrankedCell.detailLabel!.text! = (team?.pitWheelDiameter) ?? ""
-                    } else if dataKey == "pitRobotDimensions" {
-                        unrankedCell.detailLabel!.text! = (team?.pitRobotDimensions) ?? ""
-                    //uhhh what even is this?
+                    } else if dataKey == "pitRobotWidth" {
+                        unrankedCell.detailLabel!.text! = String(describing: team?.pitRobotWidth)
+                    } else if dataKey == "pitRobotLength" {
+                        unrankedCell.detailLabel!.text! = String(describing: team?.pitRobotLength)
                     } else if Utils.teamDetailsKeys.addCommasBetweenCapitals.contains(dataKey) {
                         unrankedCell.detailLabel.text = "\(insertCommasAndSpacesBetweenCapitalsInString(roundValue(dataPoint!, toDecimalPlaces: 2)))"
                     } else if Utils.teamDetailsKeys.boolValues.contains(dataKey) {
@@ -527,19 +528,19 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                 let nameText: String
                 switch (team?.number, team?.name) {
                 case (.some(let num), .some(let name)):
-                    title = "\(num)"
+                    title = "\(num) - \(name)"
                     numText = "\(num)"
                     nameText = "\(name)"
                 case (.some(let num), .none):
-                    title = "\(num)"
+                    title = "\(num) - ???"
                     numText = "\(num)"
                     nameText = "Unknown name..."
                 case (.none, .some(let name)):
-                    title = "Unkown Number"
+                    title = "??? - \(name)"
                     numText = "????"
                     nameText = "\(name)"
                 default:
-                    title = "Unknown Number"
+                    title = "??? - ???"
                     numText = "????"
                     nameText = "Unknown name..."
                 }

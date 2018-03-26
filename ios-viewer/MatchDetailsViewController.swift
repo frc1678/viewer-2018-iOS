@@ -260,7 +260,7 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         if let match = match {
             if match.number != -1 {
                 //setting title
-                title = String(describing: match.number)
+                title = "Q\(String(describing: match.number))"
             } else {
                 title = "???"
             }

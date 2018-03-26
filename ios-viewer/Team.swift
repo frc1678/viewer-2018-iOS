@@ -24,7 +24,8 @@ public final class Team: NSObject {
     static let pitClimberType = "pitClimberType"
     static let pitProgrammingLanguage = "pitProgrammingLanguage"
     static let pitAvailableWeight = "pitAvailableWeight"
-    static let pitRobotDimensions = "pitRobotDimensions"
+    static let pitRobotWidth = "pitRobotWidth"
+    static let pitRobotLength = "pitRobotLength"
     static let picklistPosition = "picklistPosition"
     static let pitRampTimes = "pitRampTimes"
     static let pitDriveTimes = "pitDriveTimes"
@@ -45,7 +46,8 @@ public final class Team: NSObject {
   public var pitClimberType: String?
   public var pitProgrammingLanguage: String?
   public var pitAvailableWeight: Float = -1
-  public var pitRobotDimensions: String?
+  public var pitRobotWidth: Float?
+    public var pitRobotLength: Float?
     public var picklistPosition: Int = -1
     public var pitWheelDiameter: String?
     public var pitHasCamera: Bool? = false
@@ -77,7 +79,8 @@ public final class Team: NSObject {
     pitClimberType = json[SerializationKeys.pitClimberType].string
     pitProgrammingLanguage = json[SerializationKeys.pitProgrammingLanguage].string
     pitAvailableWeight = json[SerializationKeys.pitAvailableWeight].floatValue
-    pitRobotDimensions = json[SerializationKeys.pitRobotDimensions].string
+    pitRobotWidth = json[SerializationKeys.pitRobotWidth].float
+    pitRobotLength = json[SerializationKeys.pitRobotLength].float
     picklistPosition = json[SerializationKeys.picklistPosition].intValue
     pitWheelDiameter = json[SerializationKeys.pitWheelDiameter].string
     pitHasCamera = json[SerializationKeys.pitHasCamera].boolValue
@@ -98,7 +101,8 @@ public final class Team: NSObject {
     if let value = numMatchesPlayed { dictionary[SerializationKeys.numMatchesPlayed] = value }
     if let value = pitClimberType { dictionary[SerializationKeys.pitClimberType] = value }
     if let value = pitProgrammingLanguage { dictionary[SerializationKeys.pitProgrammingLanguage] = value }
-    if let value = pitRobotDimensions { dictionary[SerializationKeys.pitRobotDimensions] = value }
+    if let value = pitRobotWidth { dictionary[SerializationKeys.pitRobotWidth] = value }
+    if let value = pitRobotLength { dictionary[SerializationKeys.pitRobotLength] = value }
     dictionary[SerializationKeys.pitAvailableWeight] = pitAvailableWeight
     dictionary[SerializationKeys.picklistPosition] = picklistPosition
     if let value = pitWheelDiameter { dictionary[SerializationKeys.pitWheelDiameter] = value }
@@ -120,7 +124,8 @@ public final class Team: NSObject {
     self.pitClimberType = aDecoder.decodeObject(forKey: SerializationKeys.pitClimberType) as? String
     self.pitProgrammingLanguage = aDecoder.decodeObject(forKey: SerializationKeys.pitProgrammingLanguage) as? String
     self.pitAvailableWeight = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvailableWeight) as? Float)!
-    self.pitRobotDimensions = aDecoder.decodeObject(forKey: SerializationKeys.pitRobotDimensions) as? String
+    self.pitRobotWidth = aDecoder.decodeObject(forKey: SerializationKeys.pitRobotWidth) as? Float
+    self.pitRobotLength = aDecoder.decodeObject(forKey: SerializationKeys.pitRobotLength) as? Float
     self.picklistPosition = (aDecoder.decodeObject(forKey: SerializationKeys.picklistPosition) as? Int)!
     self.pitWheelDiameter = aDecoder.decodeObject(forKey: SerializationKeys.pitWheelDiameter) as? String
     self.pitHasCamera = aDecoder.decodeObject(forKey: SerializationKeys.pitHasCamera) as? Bool
@@ -139,7 +144,8 @@ public final class Team: NSObject {
     aCoder.encode(pitClimberType, forKey: SerializationKeys.pitClimberType)
     aCoder.encode(pitProgrammingLanguage, forKey: SerializationKeys.pitProgrammingLanguage)
     aCoder.encode(pitAvailableWeight, forKey: SerializationKeys.pitAvailableWeight)
-    aCoder.encode(pitRobotDimensions, forKey: SerializationKeys.pitRobotDimensions)
+    aCoder.encode(pitRobotWidth, forKey: SerializationKeys.pitRobotWidth)
+    aCoder.encode(pitRobotLength, forKey: SerializationKeys.pitRobotLength)
     aCoder.encode(picklistPosition, forKey: SerializationKeys.picklistPosition)
     aCoder.encode(pitWheelDiameter, forKey: SerializationKeys.pitWheelDiameter)
     aCoder.encode(pitHasCamera, forKey: SerializationKeys.pitHasCamera)
