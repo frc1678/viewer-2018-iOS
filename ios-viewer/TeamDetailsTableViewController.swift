@@ -457,7 +457,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                     let matchesUntilNextMatch : String = firebaseFetcher?.matchesUntilTeamNextMatch((team?.number)!) ?? "NA"
                     
                     //label: "Matches - #  Remaining
-                    unrankedCell.titleLabel.text = (unrankedCell.titleLabel.text)! + " - (\(matchesUntilNextMatch))  Remaining: \(Utils.sp(thing: firebaseFetcher?.remainingMatchesForTeam((team?.number)!)))"
+                    unrankedCell.titleLabel.text = (unrankedCell.titleLabel.text)! + ": \(Utils.sp(thing: firebaseFetcher?.remainingMatchesForTeam((team?.number)!))) Left - Next in \(matchesUntilNextMatch)"
                 }
                 cell = unrankedCell
             }

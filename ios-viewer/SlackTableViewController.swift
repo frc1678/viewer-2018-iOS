@@ -85,12 +85,12 @@ class SlackTableViewController: ArrayTableViewController {
         preAlert.addAction(UIAlertAction(title:"Submit",style:.default,handler: { (action) in
             self.firebaseFetcher?.currentMatchManager.preNotify = Int((preAlert.textFields?[0].text)!) ?? 0
             if existingSlack == nil {
-                self.firebase.child("slackProfiles").child(newSlack!).child("appToken").setValue(token)
-                self.firebase.child("slackProfiles").child(newSlack!).child("notifyInAdvance").setValue(self.firebaseFetcher?.currentMatchManager.preNotify)
+                self.firebase.child("activeSlackProfiles").child(newSlack!).child("appToken").setValue(token)
+                self.firebase.child("activeSlackProfiles").child(newSlack!).child("notifyInAdvance").setValue(self.firebaseFetcher?.currentMatchManager.preNotify)
             } else {
-                self.firebase.child("slackProfiles").child(existingSlack!).child("appToken").setValue(nil)
-                self.firebase.child("slackProfiles").child(newSlack!).child("appToken").setValue(token)
-                self.firebase.child("slackProfiles").child(newSlack!).child("notifyInAdvance").setValue(self.firebaseFetcher?.currentMatchManager.preNotify)
+                self.firebase.child("activeSlackProfiles").child(existingSlack!).child("appToken").setValue(nil)
+                self.firebase.child("activeSlackProfiles").child(newSlack!).child("appToken").setValue(token)
+                self.firebase.child("activeSlackProfiles").child(newSlack!).child("notifyInAdvance").setValue(self.firebaseFetcher?.currentMatchManager.preNotify)
             }
             self.firebaseFetcher?.getSlackProfiles()
             self.firebase.child("slackProfiles").child(newSlack!).observeSingleEvent(of: .value, with: { (snap) in
