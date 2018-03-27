@@ -143,7 +143,7 @@
         matchCell.redScoreLabel.alpha = 1;
     } else {
         if (match.calculatedData.predictedRedScore != -1.0) {
-            matchCell.redScoreLabel.text = [Utils roundValue: match.calculatedData.predictedRedScore toDecimalPlaces:1];
+            matchCell.redScoreLabel.text = [Utils roundValue: match.calculatedData.predictedRedScore toDecimalPlaces:0];
             matchCell.redScoreLabel.alpha = .3;
         } else {
             matchCell.redScoreLabel.text = @"?";
