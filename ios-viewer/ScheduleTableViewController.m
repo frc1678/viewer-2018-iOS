@@ -56,6 +56,21 @@
     self.cacheButton.enabled = NO;
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollToCurrentMatch:) name:@"currentMatchUpdated" object:nil];
+    self.highlightDysfunc = NO;
+    UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    [self.tableView addGestureRecognizer:pinchGestureRecognizer];
+}
+
+- (void)handlePinch:(UIPinchGestureRecognizer*)recognizer {
+    if(recognizer.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"Ouch why did you pinch me");
+        [self toggleDysfuncHighlight];
+    }
+}
+
+- (void)toggleDysfuncHighlight {
+    self.highlightDysfunc = !self.highlightDysfunc;
+    [self.tableView reloadData];
 }
 
 - (void)scrollToCurrentMatch:(NSNotification*)note {
@@ -86,7 +101,7 @@
     for (int i = 0; i < 3; i++) {
         if(i < redTeams.count) {
             [cell setValue:[self textForScheduleLabelForType:1 forString:[NSString stringWithFormat:@"%ld", (long)((Team *)[redTeams objectAtIndex:i]).number]] forKeyPath:[NSString stringWithFormat:@"red%@Label.attributedText", [ScheduleTableViewController mappings][i]]];
-            if(((Team *)[redTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0) {
+            if(((Team *)[redTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0 && self.highlightDysfunc) {
                 switch(i) {
                     case 0:
                         matchCell.redOneLabel.backgroundColor = [UIColor colorWithRed:0.00 green:0.75 blue:0.00 alpha:0.5];
@@ -111,7 +126,7 @@
         
         if(i < blueTeams.count) {
             [cell setValue:[self textForScheduleLabelForType:1 forString:[NSString stringWithFormat:@"%ld", (long)((Team *)[blueTeams objectAtIndex:i]).number]] forKeyPath:[NSString stringWithFormat:@"blue%@Label.attributedText", [ScheduleTableViewController mappings][i]]];
-            if(((Team *)[blueTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0) {
+            if(((Team *)[blueTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0 && self.highlightDysfunc) {
                 switch(i) {
                     case 0:
                         matchCell.blueOneLabel.backgroundColor = [UIColor colorWithRed:0.00 green:0.75 blue:0.00 alpha:0.5];
