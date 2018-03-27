@@ -232,19 +232,30 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
 }
 
 -(void)clearPicklist {
-    NSMutableArray<NSNumber *> *tempPicklist = [[NSMutableArray alloc] init];
-    for(Team *i in [self.firebaseFetcher getFirstPickList]) {
-        [tempPicklist addObject:[NSNumber numberWithInt:i.number]];
-    }
-    [[self.ref child:@"picklist"] setValue:tempPicklist];
-    self.firebaseFetcher.firstPicklist = tempPicklist;
-    firstPicklist = tempPicklist;
-    for(int i = 0; i < tempPicklist.count; i++) {
-        NSString* myNewString = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:fabs([tempPicklist[i] doubleValue])]];
-        [[[[self.ref child:@"Teams"] child: myNewString] child:@"picklistPosition"] setValue: [NSNumber numberWithInt:i]];
-    }
-    self.dataArray = [self loadDataArray:false];
-    [self.tableView reloadData];
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Reset" message:@"Are you sure you want to reset the picklist?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [ac addAction:[UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self presentViewController:ac animated:YES completion:nil];
+        NSMutableArray<NSNumber *> *tempPicklist = [[NSMutableArray alloc] init];
+        for(Team *i in [self.firebaseFetcher getFirstPickList]) {
+            [tempPicklist addObject:[NSNumber numberWithInt:i.number]];
+        }
+        [[self.ref child:@"picklist"] setValue:tempPicklist];
+        self.firebaseFetcher.firstPicklist = tempPicklist;
+        firstPicklist = tempPicklist;
+        for(int i = 0; i < tempPicklist.count; i++) {
+            NSString* myNewString = [NSString stringWithFormat:@"%@", [NSNumber numberWithDouble:fabs([tempPicklist[i] doubleValue])]];
+            [[[[self.ref child:@"Teams"] child: myNewString] child:@"picklistPosition"] setValue: [NSNumber numberWithInt:i]];
+        }
+        self.dataArray = [self loadDataArray:false];
+        [self.tableView reloadData];
+    }]];
+    
+    [ac addAction:[UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //NOTHING
+    }]];
+    
+    [self presentViewController:ac animated:YES completion:nil];
 }
 
 @end
