@@ -26,15 +26,15 @@ class SpecificTeamScheduleTableViewController : ScheduleTableViewController {
     @objc func starAll() {
         let slackId = self.firebaseFetcher.currentMatchManager.slackId
         if slackId != nil {
-            var starredMatches: [String] = firebaseFetcher.currentMatchManager.starredMatchesArray
-            var teamMatchNums: [String] = []
+            var starredMatches: [Int] = firebaseFetcher.currentMatchManager.starredMatchesArray
+            var teamMatchNums: [Int] = []
             for i in self.dataArray {
                 if let j = i as? Match {
-                    teamMatchNums.append(String(describing: j.number))
+                    teamMatchNums.append(j.number)
                 }
             }
             if Set(teamMatchNums).isSubset(of: Set(starredMatches)) {
-                var remove : [String] = []
+                var remove : [Int] = []
                 for j in 0..<starredMatches.count {
                     if teamMatchNums.contains(starredMatches[j]){
                         remove.append(starredMatches[j])
@@ -51,7 +51,7 @@ class SpecificTeamScheduleTableViewController : ScheduleTableViewController {
                 }
             }
             firebaseFetcher.currentMatchManager.starredMatchesArray = starredMatches
-            Database.database().reference().child("slackProfiles").child(slackId!).child("starredMatches").setValue(starredMatches)
+            Database.database().reference().child("activeSlackProfiles").child(slackId!).child("starredMatches").setValue(starredMatches)
         
             viewDidLoad()
         } else {

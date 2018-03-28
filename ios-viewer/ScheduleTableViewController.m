@@ -45,7 +45,7 @@
         }
         NSString *slackId = self.firebaseFetcher.currentMatchManager.slackId;
         if(slackId != nil) {
-            [[[[[[FIRDatabase database] reference] child: @"slackProfiles"] child:slackId] child: @"starredMatches"] setValue:intMatches];
+            [[[[[[FIRDatabase database] reference] child: @"activeSlackProfiles"] child:slackId] child: @"starredMatches"] setValue:intMatches];
         }
     }
 
@@ -201,7 +201,9 @@
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(nonnull UITableViewCell *)cell forRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MatchTableViewCell *matchCell = (MatchTableViewCell *)cell;
-    if([self.firebaseFetcher.currentMatchManager.starredMatchesArray containsObject:matchCell.matchLabel.text]) {
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
+    NSNumber *myNumber = [formatter numberFromString:matchCell.matchLabel.text];
+    if([self.firebaseFetcher.currentMatchManager.starredMatchesArray containsObject:myNumber]) {
         matchCell.backgroundColor = [UIColor colorWithRed:1.0 green:0.64 blue:1.0 alpha:0.6];
     }
     else {
@@ -301,20 +303,24 @@
         MatchTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         NSString *slackId = self.firebaseFetcher.currentMatchManager.slackId;
         if(slackId != nil) {
-            if([self.firebaseFetcher.currentMatchManager.starredMatchesArray containsObject:cell.matchLabel.text]) {
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
+            NSNumber *myNumber = [formatter numberFromString:cell.matchLabel.text];
+            if([self.firebaseFetcher.currentMatchManager.starredMatchesArray containsObject:myNumber]) {
                 //Remove the star
                 NSMutableArray *a = [NSMutableArray arrayWithArray:self.firebaseFetcher.currentMatchManager.starredMatchesArray];
             
-                [a removeObject:cell.matchLabel.text];
+                [a removeObject:myNumber];
                 self.firebaseFetcher.currentMatchManager.starredMatchesArray = a;
                 cell.backgroundColor = [UIColor whiteColor];
-                [[[[[[FIRDatabase database] reference] child:@"slackProfiles"] child:slackId] child:@"starredMatches"] setValue:a];
+                [[[[[[FIRDatabase database] reference] child:@"activeSlackProfiles"] child:slackId] child:@"starredMatches"] setValue:a];
             } else {
                 //Create the star
                 cell.backgroundColor = [UIColor colorWithRed:1.0 green:0.64 blue:1.0 alpha:0.6];
-                self.firebaseFetcher.currentMatchManager.starredMatchesArray = [self.firebaseFetcher.currentMatchManager.starredMatchesArray arrayByAddingObjectsFromArray:@[cell.matchLabel.text]];
-                [[[[FIRDatabase database] reference] child:@"slackProfiles"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-                    [[[[[[[FIRDatabase database] reference] child:@"slackProfiles"] child:slackId] child:@"starredMatches"] child:[NSString stringWithFormat:@"%lu", (unsigned long)[[snapshot childSnapshotForPath:self.firebaseFetcher.currentMatchManager.slackId] childSnapshotForPath:@"starredMatches"].childrenCount]] setValue:[NSNumber numberWithInt:[cell.matchLabel.text integerValue]]];
+                NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
+                NSNumber *myNumber = [formatter numberFromString:cell.matchLabel.text];
+                self.firebaseFetcher.currentMatchManager.starredMatchesArray = [self.firebaseFetcher.currentMatchManager.starredMatchesArray arrayByAddingObject:myNumber];
+                [[[[FIRDatabase database] reference] child:@"activeSlackProfiles"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                    [[[[[[[FIRDatabase database] reference] child:@"activeSlackProfiles"] child:slackId] child:@"starredMatches"] child:[NSString stringWithFormat:@"%lu", (unsigned long)[[snapshot childSnapshotForPath:self.firebaseFetcher.currentMatchManager.slackId] childSnapshotForPath:@"starredMatches"].childrenCount]] setValue:[NSNumber numberWithInt:[cell.matchLabel.text integerValue]]];
                 }];
             }
         } else {

@@ -66,9 +66,9 @@ class SlackTableViewController: ArrayTableViewController {
         let token = defaults.value(forKey: "NotificationToken")
         var existingSlack : String?
         for i in 0..<Array(self.firebaseFetcher!.slackProfiles.values).count {
-            if Array(self.firebaseFetcher!.slackProfiles.values)[i].appToken == token as? String {
+            if Array(self.firebaseFetcher!.activeProfiles.values)[i].appToken == token as? String {
                 //this is really ugly and it will probably crash...
-                existingSlack = (self.firebaseFetcher?.slackProfiles as! NSDictionary).allKeys(for: Array(self.firebaseFetcher!.slackProfiles.values)[i])[0] as? String
+                existingSlack = (self.firebaseFetcher?.activeProfiles as! NSDictionary).allKeys(for: Array(self.firebaseFetcher!.activeProfiles.values)[i])[0] as? String
             }
         }
         var newSlack: String? = ""
@@ -88,16 +88,16 @@ class SlackTableViewController: ArrayTableViewController {
                 self.firebase.child("activeSlackProfiles").child(newSlack!).child("appToken").setValue(token)
                 self.firebase.child("activeSlackProfiles").child(newSlack!).child("notifyInAdvance").setValue(self.firebaseFetcher?.currentMatchManager.preNotify)
             } else {
-                self.firebase.child("activeSlackProfiles").child(existingSlack!).child("appToken").setValue(nil)
+                self.firebase.child("activeSlackProfiles").child(existingSlack!).setValue(nil)
                 self.firebase.child("activeSlackProfiles").child(newSlack!).child("appToken").setValue(token)
                 self.firebase.child("activeSlackProfiles").child(newSlack!).child("notifyInAdvance").setValue(self.firebaseFetcher?.currentMatchManager.preNotify)
             }
             self.firebaseFetcher?.getSlackProfiles()
-            self.firebase.child("slackProfiles").child(newSlack!).observeSingleEvent(of: .value, with: { (snap) in
+            self.firebase.child("activeSlackProfiles").child(newSlack!).observeSingleEvent(of: .value, with: { (snap) in
                 if let arrayThing = snap.childSnapshot(forPath: "starredMatches").value as? [Int] {
-                    var array2 : [String] = []
+                    var array2 : [Int] = []
                     for i in arrayThing {
-                        array2.append(String(describing: i))
+                        array2.append(i)
                     }
                     self.firebaseFetcher.currentMatchManager.starredMatchesArray = array2
                 } else {

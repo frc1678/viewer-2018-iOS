@@ -33,12 +33,12 @@ class CurrentMatchManager: NSObject {
     
     func setUp() {
         cache.fetch(key: "starredMatches").onSuccess { (d) -> () in
-            if let starred = NSKeyedUnarchiver.unarchiveObject(with: d) as? [String] {
+            if let starred = NSKeyedUnarchiver.unarchiveObject(with: d) as? [Int] {
                 if self.starredMatchesArray != starred {
                     self.starredMatchesArray = starred
                 }
             } else {
-                self.starredMatchesArray = [String]()
+                self.starredMatchesArray = [Int]()
             }
         }
         cache.fetch(key: "slackId").onSuccess { (d) -> () in
@@ -64,7 +64,7 @@ class CurrentMatchManager: NSObject {
         }
     }
     
-    @objc var starredMatchesArray = [String]() {
+    @objc var starredMatchesArray = [Int]() {
         didSet {
             cache.set(value: NSKeyedArchiver.archivedData(withRootObject: starredMatchesArray), key: "starredMatches")
         }
@@ -86,7 +86,7 @@ class CurrentMatchManager: NSObject {
         let notifyForNumMatchesAway = 2
         
         for n in 0..<notifyForNumMatchesAway {
-            if starredMatchesArray.contains(String(currentMatch + n)) {
+            if starredMatchesArray.contains(currentMatch + n) {
                 postNotification("Starred match coming up: " + String(currentMatch + n))
             }
         }

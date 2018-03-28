@@ -68,6 +68,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     @objc var firstPicklist = [Int]()
     var secondPicklist = [Int]()
     var slackProfiles = [String:SlackProfile]()
+    var activeProfiles = [String:SlackProfile]()
 
     var firebase : DatabaseReference
     
@@ -102,6 +103,18 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
                 }
                 if profiles.count != 0 {
                     self.slackProfiles = profiles
+                } else {
+                    print("Problem getting slack profiles: Profiles not castable")
+                }
+            } else {
+                print("Problem getting slack profiles: Profiles really not castable (probably nil)")
+            }
+            if let snappy = snapshot.childSnapshot(forPath: "activeSlackProfiles").value as? [String:[String:Any]] {
+                for i in snappy.values {
+                    profiles[(snappy as NSDictionary?)?.allKeys(for: i)[0] as! String] = SlackProfile(json: JSON(snapshot.childSnapshot(forPath: "activeSlackProfiles").childSnapshot(forPath: (snapshot.childSnapshot(forPath: "activeSlackProfiles").value as? [String:[String:Any]] as NSDictionary?)?.allKeys(for: i)[0] as! String).value))
+                }
+                if profiles.count != 0 {
+                    self.activeProfiles = profiles
                 } else {
                     print("Problem getting slack profiles: Profiles not castable")
                 }
