@@ -56,6 +56,8 @@
 		20B97B0927CBDC12735F6F22 /* Pods_Current_Match.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0394ACA1B0BF4AF13EA11B /* Pods_Current_Match.framework */; };
 		8C0200B52011987C00A75272 /* Attempt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0200B42011987B00A75272 /* Attempt.swift */; };
 		8C0200B72011988600A75272 /* Climb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0200B62011988600A75272 /* Climb.swift */; };
+		8C10DE96206C0A670084DC25 /* MatchDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C10DE94206C0A670084DC25 /* MatchDetailsTableViewCell.swift */; };
+		8C10DE97206C0A670084DC25 /* MatchDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C10DE95206C0A670084DC25 /* MatchDetailsTableViewCell.xib */; };
 		8C25A7CC1E33F2790012A23E /* CalculatedTeamInMatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C25A7CB1E33F2790012A23E /* CalculatedTeamInMatchData.swift */; };
 		8C5868711E34254E0056EA17 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C58686C1E34254E0056EA17 /* Storyboard.storyboard */; };
 		8C65E7921FD0FEA6000E71A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C65E7911FD0FEA6000E71A2 /* GoogleService-Info.plist */; };
@@ -171,6 +173,8 @@
 		763F6CE09D211CAEC3E4C000 /* Pods-CurrentMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrentMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CurrentMatch/Pods-CurrentMatch.debug.xcconfig"; sourceTree = "<group>"; };
 		8C0200B42011987B00A75272 /* Attempt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attempt.swift; sourceTree = "<group>"; };
 		8C0200B62011988600A75272 /* Climb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Climb.swift; sourceTree = "<group>"; };
+		8C10DE94206C0A670084DC25 /* MatchDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		8C10DE95206C0A670084DC25 /* MatchDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		8C25A7CB1E33F2790012A23E /* CalculatedTeamInMatchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatedTeamInMatchData.swift; sourceTree = "<group>"; };
 		8C58686D1E34254E0056EA17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Storyboard.storyboard; sourceTree = "<group>"; };
 		8C58687E1E3426200056EA17 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -383,6 +387,8 @@
 			children = (
 				190DFE4D1E308BDC00477B6D /* TIMDTableViewCell.swift */,
 				190DFE4F1E308BE300477B6D /* TIMDTableViewCell.xib */,
+				8C10DE94206C0A670084DC25 /* MatchDetailsTableViewCell.swift */,
+				8C10DE95206C0A670084DC25 /* MatchDetailsTableViewCell.xib */,
 				8CA0E2112038A5F3002EFB02 /* SlackTableViewCell.swift */,
 				8CA0E2122038A5F3002EFB02 /* SlackTableViewCell.xib */,
 				19B038181E2C58D3006E25A2 /* ResizableNotesTableViewCell.swift */,
@@ -556,6 +562,7 @@
 				19B037D21E2C581C006E25A2 /* Main.storyboard in Resources */,
 				19B037C31E2C5739006E25A2 /* LaunchScreen.storyboard in Resources */,
 				8CBD71421E4695BE009C0206 /* Settings.bundle in Resources */,
+				8C10DE97206C0A670084DC25 /* MatchDetailsTableViewCell.xib in Resources */,
 				8CBD71401E356CD1009C0206 /* CC 2017 Logo.png in Resources */,
 				8CA0E2142038A5F3002EFB02 /* SlackTableViewCell.xib in Resources */,
 				19B037EA1E2C586C006E25A2 /* MatchTableViewCell.xib in Resources */,
@@ -680,6 +687,7 @@
 				8C25A7CC1E33F2790012A23E /* CalculatedTeamInMatchData.swift in Sources */,
 				190DFE4E1E308BDC00477B6D /* TIMDTableViewCell.swift in Sources */,
 				19B037E91E2C586C006E25A2 /* MatchTableViewCell.m in Sources */,
+				8C10DE96206C0A670084DC25 /* MatchDetailsTableViewCell.swift in Sources */,
 				19B0382A1E2C58D3006E25A2 /* MechanismTableViewCell.swift in Sources */,
 				19B038141E2C5891006E25A2 /* CurrentMatchManager.swift in Sources */,
 				19B038171E2C5891006E25A2 /* NotesTableViewController.swift in Sources */,

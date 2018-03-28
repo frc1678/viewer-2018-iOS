@@ -23,7 +23,7 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     //used in valueforkey to iterate thru tables of similar names
-    let mapping = ["One", "Two", "Three"]
+    let mapping = ["1", "2", "3"]
     
     //keys for the tables
     let tableKeys = ["avgAllianceSwitchCubesAuto", "avgCubesPlacedInScaleAuto", "avgAllianceSwitchCubesTele","avgCubesPlacedInScaleTele", "autoRunPercentage", "climbPercentage", "avgNumExchangeInputTele", "avgCubesSpilledTele", "dysfunctionalPercentage",]
@@ -36,23 +36,18 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var bluePredictedScoreLabel: UILabel!
     
     //tables and titles
-    @IBOutlet weak var redTeamOneButton: UIButton!
-    @IBOutlet weak var r1TableView: UITableView!
     
-    @IBOutlet weak var redTeamTwoButton: UIButton!
-    @IBOutlet weak var r2TableView: UITableView!
+    @IBOutlet weak var r1Button: UIButton!
+    @IBOutlet weak var r2Button: UIButton!
+    @IBOutlet weak var r3Button: UIButton!
     
-    @IBOutlet weak var redTeamThreeButton: UIButton!
-    @IBOutlet weak var r3TableView: UITableView!
+    @IBOutlet weak var redTableView: UITableView!
     
-    @IBOutlet weak var blueTeamOneButton: UIButton!
-    @IBOutlet weak var b1TableView: UITableView!
+    @IBOutlet weak var b1Button: UIButton!
+    @IBOutlet weak var b2Button: UIButton!
+    @IBOutlet weak var b3Button: UIButton!
     
-    @IBOutlet weak var blueTeamTwoButton: UIButton!
-    @IBOutlet weak var b2TableView: UITableView!
-    
-    @IBOutlet weak var blueTeamThreeButton: UIButton!
-    @IBOutlet weak var b3TableView: UITableView!
+    @IBOutlet weak var blueTableView: UITableView!
     
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         //can't select
@@ -65,7 +60,7 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         let blueTeams = firebaseFetcher?.getTeamsFromNumbers(match?.blueAllianceTeamNumbers!)
         
         //get cell
-        let cell : TIMDTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TIMDTableCell", for: indexPath) as! TIMDTableViewCell
+        let cell : MatchDetailsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MatchDetailsCell", for: indexPath) as! MatchDetailsTableViewCell
         
         //set datapointLabel to tableKeys
         if indexPath.row != tableKeys.count {
@@ -74,11 +69,16 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         
         //setup the label stuff
         cell.datapointLabel.font = cell.datapointLabel.font.withSize(12)
-        cell.valueLabel.font = cell.valueLabel.font.withSize(12)
-        cell.datapointLabel.lineBreakMode = .byWordWrapping // or NSLineBreakMode.ByWordWrapping
-        cell.datapointLabel.numberOfLines = 0
-        cell.valueLabel.lineBreakMode = .byWordWrapping // or NSLineBreakMode.ByWordWrapping
-        cell.valueLabel.numberOfLines = 0
+        cell.team1.font = cell.team1.font.withSize(12)
+        cell.team2.font = cell.team2.font.withSize(12)
+        cell.team3.font = cell.team3.font.withSize(12) // or NSLineBreakMode.ByWordWrapping
+        cell.datapointLabel.numberOfLines = 1
+        cell.team1.lineBreakMode = .byWordWrapping // or NSLineBreakMode.ByWordWrapping
+        cell.team2.lineBreakMode = .byWordWrapping
+        cell.team3.lineBreakMode = .byWordWrapping
+        cell.team1.numberOfLines = 0
+        cell.team2.numberOfLines = 0
+        cell.team3.numberOfLines = 0
         //cell.datapointLabel.preferredMaxLayoutWidth = 50
         //cell.valueLabel.preferredMaxLayoutWidth = 50
         
@@ -162,27 +162,12 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
             break
         }*/
         
-        var tableNum = -1
         var teams: [Team]?
         
         switch tableView {
-        case r1TableView:
-            tableNum = 0
+        case redTableView:
             teams = redTeams
-        case r2TableView:
-            tableNum = 1
-            teams = redTeams
-        case r3TableView:
-            tableNum = 2
-            teams = redTeams
-        case b1TableView:
-            tableNum = 0
-            teams = blueTeams
-        case b2TableView:
-            tableNum = 1
-            teams = blueTeams
-        case b3TableView:
-            tableNum = 2
+        case blueTableView:
             teams = blueTeams
         default:
             break
@@ -194,14 +179,20 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         } else {*/
         if Utils.teamDetailsKeys.percentageValues.contains("calculatedData.\(tableKeys[indexPath.row])") {
             //If the value is a percentage, multiply float by 100 and add %
-            cell.valueLabel.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[tableNum].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
+            cell.team1.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[0].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
+            cell.team2.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[1].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
+            cell.team3.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[2].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
         } else {
-            cell.valueLabel.text = String(describing: Utils.unwrap(any: teams?[tableNum].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
+            cell.team1.text = String(describing: Utils.unwrap(any: teams?[0].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
+            cell.team2.text = String(describing: Utils.unwrap(any: teams?[1].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
+            cell.team3.text = String(describing: Utils.unwrap(any: teams?[2].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
         }
         
         //if it's a float, round to the nearest hundreth
-        if let valueLabelFloat = Float(cell.valueLabel.text!) {
-            cell.valueLabel.text = Utils.roundValue(Float(cell.valueLabel.text!)!, toDecimalPlaces: 2)
+        if let valueLabelFloat = Float(cell.team1.text!) {
+            cell.team1.text = Utils.roundValue(Float(cell.team1.text!)!, toDecimalPlaces: 2)
+            cell.team2.text = Utils.roundValue(Float(cell.team2.text!)!, toDecimalPlaces: 2)
+            cell.team3.text = Utils.roundValue(Float(cell.team3.text!)!, toDecimalPlaces: 2)
         }
         
         return cell
@@ -224,31 +215,13 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         updateUI()
        // print(self.match)
         //register table views
-        self.r1TableView.register(UINib(nibName: "TIMDTableViewCell", bundle: nil), forCellReuseIdentifier: "TIMDTableCell")
-        self.r2TableView.register(UINib(nibName: "TIMDTableViewCell", bundle: nil), forCellReuseIdentifier: "TIMDTableCell")
-        self.r3TableView.register(UINib(nibName: "TIMDTableViewCell", bundle: nil), forCellReuseIdentifier: "TIMDTableCell")
-        self.b1TableView.register(UINib(nibName: "TIMDTableViewCell", bundle: nil), forCellReuseIdentifier: "TIMDTableCell")
-        self.b2TableView.register(UINib(nibName: "TIMDTableViewCell", bundle: nil), forCellReuseIdentifier: "TIMDTableCell")
-        self.b3TableView.register(UINib(nibName: "TIMDTableViewCell", bundle: nil), forCellReuseIdentifier: "TIMDTableCell")
+        self.redTableView.register(UINib(nibName: "MatchDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "MatchDetailsCell")
+        self.blueTableView.register(UINib(nibName: "MatchDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "MatchDetailsCell")
         //register self as delegate and dataSource so it can feed data to tableviews
-        self.r1TableView.delegate = self
-        self.r1TableView.dataSource = self
-        self.r1TableView.reloadData()
-        self.r2TableView.delegate = self
-        self.r2TableView.dataSource = self
-        self.r2TableView.reloadData()
-        self.r3TableView.delegate = self
-        self.r3TableView.dataSource = self
-        self.r3TableView.reloadData()
-        self.b1TableView.delegate = self
-        self.b1TableView.dataSource = self
-        self.b1TableView.reloadData()
-        self.b2TableView.delegate = self
-        self.b2TableView.dataSource = self
-        self.b2TableView.reloadData()
-        self.b3TableView.delegate = self
-        self.b3TableView.dataSource = self
-        self.b3TableView.reloadData()
+        self.redTableView.delegate = self
+        self.redTableView.dataSource = self
+        self.blueTableView.delegate = self
+        self.blueTableView.dataSource = self
     }
     
     fileprivate func updateUI() {
@@ -300,15 +273,15 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
                 for index in 1...(redTeams?.count)! {
                     if index <= 3 {
                         //setting the titles of the team button numbers. V Sketch
-                        (value(forKey: "redTeam\(mapping[index-1])Button") as! UIButton).setTitle("\(match.redAllianceTeamNumbers![index-1])", for: UIControlState())
+                        (value(forKey: "r\(mapping[index-1])Button") as! UIButton).setTitle("\(match.redAllianceTeamNumbers![index-1])", for: UIControlState())
                         if ((redTeams![index-1]).calculatedData?.dysfunctionalPercentage)! > Float(0.0) {
                             switch index {
                             case 1:
-                                self.redTeamOneButton.backgroundColor = UIColor.green
+                                self.r1Button.backgroundColor = UIColor.green
                             case 2:
-                                self.redTeamTwoButton.backgroundColor = UIColor.green
+                                self.r2Button.backgroundColor = UIColor.green
                             case 3:
-                                self.redTeamThreeButton.backgroundColor = UIColor.green
+                                self.r3Button.backgroundColor = UIColor.green
                             default:
                                 print("This is an executable statement")
                                 //heck
@@ -329,16 +302,16 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
                     if index <= 3 {
                         //print(blueTeams[index].number)
                         //setting team button titles
-                        (value(forKey: "blueTeam\(mapping[index - 1])Button") as! UIButton).setTitle("\(match.blueAllianceTeamNumbers![index - 1])", for: UIControlState())
+                        (value(forKey: "b\(mapping[index - 1])Button") as! UIButton).setTitle("\(match.blueAllianceTeamNumbers![index - 1])", for: UIControlState())
                     }
                     if ((blueTeams![index-1]).calculatedData?.dysfunctionalPercentage)! > Float(0.0) {
                         switch index {
                         case 1:
-                            self.blueTeamOneButton.backgroundColor = UIColor.green
+                            self.b1Button.backgroundColor = UIColor.green
                         case 2:
-                            self.blueTeamTwoButton.backgroundColor = UIColor.green
+                            self.b2Button.backgroundColor = UIColor.green
                         case 3:
-                            self.blueTeamThreeButton.backgroundColor = UIColor.green
+                            self.b3Button.backgroundColor = UIColor.green
                         default:
                             print("This is an executable statement")
                             //heck
