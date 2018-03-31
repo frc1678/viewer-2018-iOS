@@ -291,10 +291,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
             if !Utils.teamDetailsKeys.defaultKeys.contains(dataKey) { //Default keys are currently just 'matchDatas' and 'TeamInMatchDatas'... if NOT a default key
                 var dataPoint = AnyObject?.init(nilLiteral: ())
                 var secondDataPoint = AnyObject?.init(nilLiteral: ())
-                /*if dataKey.contains("calculatedData.avgGearsPlacedByLiftAuto") {
-                    //This is not really used, not one of the keys
-                    dataPoint = team?.calculatedData?.avgGearsPlacedByLiftAuto?[dataKey.components(separatedBy: ".")[2]] as AnyObject
-                } else */if dataKey.contains("calculatedData") {
+                if dataKey.contains("calculatedData") {
                     dataPoint = team!.value(forKeyPath: dataKey) as AnyObject
                 } else {
                     dataPoint = (team!.dictionaryRepresentation() as NSDictionary).object(forKey: dataKey) as AnyObject
@@ -348,11 +345,9 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                     //titleLabel is the humanReadable version of dataKey
                     unrankedCell.titleLabel.text = Utils.humanReadableNames[dataKey]
                     
-                    if "\(String(describing: dataPoint))".isEmpty /*|| (dataPoint as? Float != nil && dataPoint as! Float == 0.0)*/ {
+                    if "\(String(describing: dataPoint))".isEmpty {
                         unrankedCell.detailLabel.text = ""
-                       } /*else if dataKey == "pitOrganization" { //In the pit scout, the selector is indexed 0 to 4, this translates it back in to what those numbers mean.
-                        unrankedCell.detailLabel!.text! = (team?.pitOrganization) ?? ""
-                    } */else if dataKey == "pitProgrammingLanguage" { //JUST WANNA SAY this sucks
+                    } else if dataKey == "pitProgrammingLanguage" { //JUST WANNA SAY this sucks
                         unrankedCell.detailLabel!.text! = (team?.pitProgrammingLanguage) ?? ""
                     } else if dataKey == "pitDriveTrain" {
                         unrankedCell.detailLabel!.text! = (team?.pitDriveTrain) ?? ""

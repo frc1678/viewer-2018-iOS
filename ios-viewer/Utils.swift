@@ -167,7 +167,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         let boolValues = [
             "calculatedData.disabledPercentage",
             "calculatedData.incapacitatedPercentage",
-            "pitCanCheesecake",
             "calculatedData.canScoreBothSwitchSidesAuto",
             "didMakeAutoRun",
             "crossedAutoZone",
@@ -392,7 +391,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         
         /** Data collected by SEALS */
         let sealKeys = [
-            "pitCanCheesecake",
             "calculatedData.pitAvgDriveTime",
             "calculatedData.pitAvgRampTime",
             "pitSEALsNotes",

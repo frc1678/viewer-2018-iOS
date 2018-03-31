@@ -118,6 +118,10 @@
     
 }
 
+- (void) viewDidLayoutSubview {
+    [self.searchController.searchBar sizeToFit];
+}
+
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];

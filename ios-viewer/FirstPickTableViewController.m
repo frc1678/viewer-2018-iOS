@@ -235,7 +235,6 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
     UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Reset" message:@"Are you sure you want to reset the picklist?" preferredStyle:UIAlertControllerStyleAlert];
     
     [ac addAction:[UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self presentViewController:ac animated:YES completion:nil];
         NSMutableArray<NSNumber *> *tempPicklist = [[NSMutableArray alloc] init];
         for(Team *i in [self.firebaseFetcher getFirstPickList]) {
             [tempPicklist addObject:[NSNumber numberWithInt:i.number]];

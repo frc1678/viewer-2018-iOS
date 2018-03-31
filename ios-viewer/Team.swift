@@ -18,7 +18,6 @@ public final class Team: NSObject {
     static let calculatedData = "calculatedData"
     static let pitAllImageURLs = "pitAllImageURLs"
     static let pitSEALsNotes = "pitSEALsNotes"
-    static let pitCanCheesecake = "pitCanCheesecake"
     static let pitSelectedImage = "pitSelectedImage"
     static let numMatchesPlayed = "numMatchesPlayed"
     static let pitClimberType = "pitClimberType"
@@ -40,7 +39,6 @@ public final class Team: NSObject {
   @objc public var calculatedData: CalculatedTeamData?
     @objc public var pitAllImageURLs: [String]?
   public var pitSEALsNotes: String?
-  public var pitCanCheesecake: Bool? = false
   public var pitSelectedImage: String?
   public var numMatchesPlayed: Int?
   public var pitClimberType: String?
@@ -73,7 +71,6 @@ public final class Team: NSObject {
     if json[SerializationKeys.pitAllImageURLs].array != nil { for i in json[SerializationKeys.pitAllImageURLs].array! { a.append(i.string!) } }
     pitAllImageURLs = a
     pitSEALsNotes = json[SerializationKeys.pitSEALsNotes].string
-    pitCanCheesecake = json[SerializationKeys.pitCanCheesecake].boolValue
     pitSelectedImage = json[SerializationKeys.pitSelectedImage].string
     numMatchesPlayed = json[SerializationKeys.numMatchesPlayed].int
     pitClimberType = json[SerializationKeys.pitClimberType].string
@@ -96,7 +93,6 @@ public final class Team: NSObject {
     if let value = calculatedData { dictionary[SerializationKeys.calculatedData] = value.dictionaryRepresentation() }
     if let value = pitAllImageURLs { dictionary[SerializationKeys.pitAllImageURLs] = value }
     if let value = pitSEALsNotes { dictionary[SerializationKeys.pitSEALsNotes] = value }
-    dictionary[SerializationKeys.pitCanCheesecake] = pitCanCheesecake
     if let value = pitSelectedImage { dictionary[SerializationKeys.pitSelectedImage] = value }
     if let value = numMatchesPlayed { dictionary[SerializationKeys.numMatchesPlayed] = value }
     if let value = pitClimberType { dictionary[SerializationKeys.pitClimberType] = value }
@@ -118,7 +114,6 @@ public final class Team: NSObject {
     self.calculatedData = aDecoder.decodeObject(forKey: SerializationKeys.calculatedData) as? CalculatedTeamData
     self.pitAllImageURLs = aDecoder.decodeObject(forKey: SerializationKeys.pitAllImageURLs) as? [String]
     self.pitSEALsNotes = aDecoder.decodeObject(forKey: SerializationKeys.pitSEALsNotes) as? String
-    self.pitCanCheesecake = aDecoder.decodeBool(forKey: SerializationKeys.pitCanCheesecake)
     self.pitSelectedImage = aDecoder.decodeObject(forKey: SerializationKeys.pitSelectedImage) as? String
     self.numMatchesPlayed = aDecoder.decodeObject(forKey: SerializationKeys.numMatchesPlayed) as? Int
     self.pitClimberType = aDecoder.decodeObject(forKey: SerializationKeys.pitClimberType) as? String
@@ -138,7 +133,6 @@ public final class Team: NSObject {
     aCoder.encode(calculatedData, forKey: SerializationKeys.calculatedData)
     aCoder.encode(pitAllImageURLs, forKey: SerializationKeys.pitAllImageURLs)
     aCoder.encode(pitSEALsNotes, forKey: SerializationKeys.pitSEALsNotes)
-    aCoder.encode(pitCanCheesecake, forKey: SerializationKeys.pitCanCheesecake)
     aCoder.encode(pitSelectedImage, forKey: SerializationKeys.pitSelectedImage)
     aCoder.encode(numMatchesPlayed, forKey: SerializationKeys.numMatchesPlayed)
     aCoder.encode(pitClimberType, forKey: SerializationKeys.pitClimberType)

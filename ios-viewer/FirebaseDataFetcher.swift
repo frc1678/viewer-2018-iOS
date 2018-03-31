@@ -142,6 +142,10 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
                 }
                 print(thingArray)
                 self.firstPicklist = firstPicks
+            } else {
+                for i in self.getFirstPickList() {
+                    self.firstPicklist.append(i.number)
+                }
             }
             for i in self.getOverallSecondPickList() {
                 self.secondPicklist.append(i.number)
@@ -834,9 +838,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
             var value : Any?
             if path.contains("calculatedData") {
                 value = (TIMD.calculatedData!.dictionaryRepresentation() as NSDictionary).object(forKey: path.replacingOccurrences(of: "calculatedData.", with: ""))
-            } /*else if path.contains("gearsPlacedByLiftAuto") {
-                value = TIMD.gearsPlacedByLiftAuto?[path.components(separatedBy: ".")[1]]
-            } */else {
+            } else {
                 value = (TIMD.dictionaryRepresentation() as NSDictionary).object(forKey: path)
             }
             if value != nil {
