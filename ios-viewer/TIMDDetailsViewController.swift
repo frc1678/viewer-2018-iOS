@@ -139,7 +139,7 @@ class TIMDDetailsViewController: UITableViewController {
                     }
                 
                 } else {
-                    cell.valueLabel.text = "None"
+                    cell.valueLabel.text = "No Data..."
                 }
             }
             return cell
