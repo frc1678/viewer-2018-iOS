@@ -65,7 +65,7 @@ class SlackTableViewController: ArrayTableViewController {
         let defaults = UserDefaults.standard
         let token = defaults.value(forKey: "NotificationToken")
         var existingSlack : String?
-        for i in 0..<Array(self.firebaseFetcher!.slackProfiles.values).count {
+        for i in 0..<Array(self.firebaseFetcher!.activeProfiles.values).count {
             if Array(self.firebaseFetcher!.activeProfiles.values)[i].appToken == token as? String {
                 //this is really ugly and it will probably crash...
                 existingSlack = (self.firebaseFetcher?.activeProfiles as! NSDictionary).allKeys(for: Array(self.firebaseFetcher!.activeProfiles.values)[i])[0] as? String

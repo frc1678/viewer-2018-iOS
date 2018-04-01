@@ -51,6 +51,10 @@
 
 }
 
+-(void) viewDidLayoutSubviews {
+    [self.searchController.searchBar sizeToFit];
+}
+
 - (void)viewDidLoad {
     
     self.cacheButton.enabled = NO;

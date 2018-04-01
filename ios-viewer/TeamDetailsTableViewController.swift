@@ -78,7 +78,10 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                                             //get url
                                             let url = URL(string: (Array(Array(team.pitAllImageURLs!)).filter { $0.contains((team.pitSelectedImage!).replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "+", with: "%2B")) } )[0])!
                                             //set imageview
-                                            imageView.hnk_setImageFromURL(url, success: { _ in
+                                            imageView.hnk_setImageFromURL(url, failure: { _ in
+                                                print("<reloadImage()> Failed to load image")
+                                            }, success: { _ in
+                                                print("<reloadImage()> Loaded image, reseting height...")
                                                 self.resetTableViewHeight()
                                             })
                                             
