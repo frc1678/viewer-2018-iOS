@@ -177,7 +177,7 @@
         matchCell.blueScoreLabel.alpha = 1;
     } else {
         if (match.calculatedData.predictedBlueScore != -1.0) {
-            matchCell.blueScoreLabel.text = [Utils roundValue: match.calculatedData.predictedBlueScore toDecimalPlaces:1];
+            matchCell.blueScoreLabel.text = [Utils roundValue: match.calculatedData.predictedBlueScore toDecimalPlaces:0];
         } else {
         matchCell.blueScoreLabel.text = @"?";
         }
@@ -188,6 +188,26 @@
             self.currentNumber = [matchCell.matchLabel.text integerValue];
         }
         //NSLog([NSString stringWithFormat:@"%ld",(long)self.currentNumber]);
+    }
+    if(match.redDidAutoQuest) {
+        matchCell.redAQ.alpha = 1.0;
+    } else {
+        matchCell.redAQ.alpha = 0.0;
+    }
+    if(match.blueDidAutoQuest) {
+        matchCell.blueAQ.alpha = 1.0;
+    } else {
+        matchCell.blueAQ.alpha = 0.0;
+    }
+    if(match.redDidFaceBoss) {
+        matchCell.redFTB.alpha = 1.0;
+    } else {
+        matchCell.redFTB.alpha = 0.0;
+    }
+    if(match.blueDidFaceBoss) {
+        matchCell.blueFTB.alpha = 1.0;
+    } else {
+        matchCell.blueFTB.alpha = 0.0;
     }
 }
 

@@ -36,15 +36,15 @@ public final class Match: NSObject {
   // MARK: Properties
   @objc public var redAllianceTeamNumbers: [Int]?
     public var blueCubesForPowerup: [String:Int]?
-  public var blueDidFaceBoss: Bool? = false
+  @objc public var blueDidFaceBoss: Bool = false
   public var blueCubesInVaultFinal: [String:Int]?
     public var redSwitch: [String:String]?
-  public var redDidFaceBoss: Bool? = false
+  @objc public var redDidFaceBoss: Bool = false
   @objc public var number: Int = -1
   @objc public var calculatedData: CalculatedMatchData?
   public var foulPointsGainedRed: Int?
-  public var blueDidAutoQuest: Bool? = false
-  public var redDidAutoQuest: Bool? = false
+  @objc public var blueDidAutoQuest: Bool = false
+  @objc public var redDidAutoQuest: Bool = false
   public var redCubesInVaultFinal: [String:Int]?
   @objc public var blueAllianceTeamNumbers: [Int]?
   public var redCubesForPowerup: [String:Int]?

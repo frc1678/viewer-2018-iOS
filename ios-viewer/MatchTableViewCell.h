@@ -20,6 +20,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *redScoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *blueScoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *slash;
+@property (weak, nonatomic) IBOutlet UIImageView *redAQ;
+@property (weak, nonatomic) IBOutlet UIImageView *redFTB;
+@property (weak, nonatomic) IBOutlet UIImageView *blueAQ;
+@property (weak, nonatomic) IBOutlet UIImageView *blueFTB;
 
 - (NSArray *)teamFields;
 

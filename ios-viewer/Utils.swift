@@ -445,7 +445,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
     /** Keys relating to the Autonomous period to be displayed in the TIMD view */
     static let TIMDAutoKeys : [String] = [
         "didMakeAutoRun",
-        "didCrossAutoZone",
         "numCubesFumbledAuto",
         "calculatedData.numAllianceSwitchCubeSuccessAuto",
         "calculatedData.numScaleSuccessAuto"
@@ -466,8 +465,8 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
     
     /** Keys relating to the status of a robot to be displayed in the TIMD view */
     static let TIMDStatusKeys = [
-        "didStartDisabled",
-        "didBecomeIncapacitated"
+        "didGetDisabled",
+        "didGetIncapacitated"
     ]
     
     /** Keys relating to the data Super Scouts collect to be displayed in the TIMD view */

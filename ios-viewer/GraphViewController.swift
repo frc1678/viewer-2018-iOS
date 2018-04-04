@@ -108,7 +108,7 @@ class GraphViewController: UIViewController, JBBarChartViewDataSource, JBBarChar
     func barChartView(_ barChartView: JBBarChartView!, didSelectBarAt index: UInt) {
         let mainDisplayText : String
         //get title without certain key words
-        let displayTitleWithoutAvg = displayTitle.replacingOccurrences(of: "Avg. ", with: "").replacingOccurrences(of: " Consistency", with: "").replacingOccurrences(of: " Percentage", with: "")
+        let displayTitleWithoutAvg = displayTitle.replacingOccurrences(of: "Avg. ", with: "").replacingOccurrences(of: " Consistency", with: "").replacingOccurrences(of: " Percentage", with: "").replacingOccurrences(of: " %", with: "")
         if newValuesArray.count == 0 {
             if isPercentageGraph {
                 mainDisplayText = "\(displayTitleWithoutAvg)\(percentageValueOf(values[Int(index)] as AnyObject?))"

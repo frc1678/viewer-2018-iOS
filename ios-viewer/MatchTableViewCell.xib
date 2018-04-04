@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -117,29 +118,69 @@
                         <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ufw-CK-ha4" userLabel="rRP1">
+                        <rect key="frame" x="206" y="27" width="4" height="4"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="4" id="Jbx-cr-bIx"/>
+                            <constraint firstAttribute="width" secondItem="Ufw-CK-ha4" secondAttribute="height" multiplier="1:1" id="yiP-Bl-EBU"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z6B-rg-B4l" userLabel="bRP1">
+                        <rect key="frame" x="257" y="27" width="4" height="4"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="4" id="725-Sd-CMY"/>
+                            <constraint firstAttribute="width" secondItem="Z6B-rg-B4l" secondAttribute="height" multiplier="1:1" id="SaY-nq-82v"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="esL-Pj-Qnk" userLabel="rRP2">
+                        <rect key="frame" x="214" y="27" width="4" height="4"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="esL-Pj-Qnk" secondAttribute="height" multiplier="1:1" id="1Mh-MH-24P"/>
+                            <constraint firstAttribute="width" constant="4" id="Kg5-vs-GK7"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VH3-2Q-bfa" userLabel="bRP2">
+                        <rect key="frame" x="265" y="27" width="4" height="4"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="VH3-2Q-bfa" secondAttribute="height" multiplier="1:1" id="Gtj-R5-Pav"/>
+                            <constraint firstAttribute="width" constant="4" id="kVm-oO-KsW"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="qHn-2d-fTw" secondAttribute="bottom" constant="-5" id="0k2-G4-dES"/>
                     <constraint firstAttribute="bottomMargin" secondItem="ugd-Yu-aS1" secondAttribute="bottom" constant="1" id="1Wq-aG-LA4"/>
                     <constraint firstItem="fPN-hW-WXZ" firstAttribute="leading" secondItem="Tar-dk-wKH" secondAttribute="trailing" id="2SW-TL-STj"/>
+                    <constraint firstItem="Ufw-CK-ha4" firstAttribute="leading" secondItem="5wi-a7-UVk" secondAttribute="leading" id="2W4-EO-3JF"/>
                     <constraint firstItem="VPm-Xn-ch4" firstAttribute="centerY" secondItem="Tar-dk-wKH" secondAttribute="centerY" id="2Zo-jH-J2Q"/>
                     <constraint firstItem="ugd-Yu-aS1" firstAttribute="leading" secondItem="qHn-2d-fTw" secondAttribute="trailing" constant="12" id="5Uv-pt-ngQ"/>
                     <constraint firstAttribute="centerY" secondItem="5wi-a7-UVk" secondAttribute="centerY" id="7FF-q5-qhy"/>
+                    <constraint firstItem="Z6B-rg-B4l" firstAttribute="leading" secondItem="g71-4F-Zjg" secondAttribute="leading" id="7iX-yk-D8x"/>
                     <constraint firstAttribute="centerY" secondItem="qIz-Pn-faH" secondAttribute="centerY" id="9bZ-8p-ihW"/>
                     <constraint firstItem="VPm-Xn-ch4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="AmG-RG-Re0"/>
                     <constraint firstItem="ugd-Yu-aS1" firstAttribute="baseline" secondItem="qHn-2d-fTw" secondAttribute="baseline" id="CNk-Fr-P3x"/>
+                    <constraint firstItem="g71-4F-Zjg" firstAttribute="top" secondItem="Z6B-rg-B4l" secondAttribute="bottom" id="Dot-Y5-j6k"/>
                     <constraint firstItem="fka-TF-t2u" firstAttribute="baseline" secondItem="i4h-1f-hU4" secondAttribute="baseline" id="EOg-CR-8xK"/>
                     <constraint firstItem="fPN-hW-WXZ" firstAttribute="baseline" secondItem="qHn-2d-fTw" secondAttribute="baseline" id="FPk-3i-0Cs"/>
+                    <constraint firstItem="5wi-a7-UVk" firstAttribute="top" secondItem="Ufw-CK-ha4" secondAttribute="bottom" id="FhU-6j-Yps"/>
                     <constraint firstItem="fka-TF-t2u" firstAttribute="leading" secondItem="i4h-1f-hU4" secondAttribute="trailing" constant="12" id="Fx1-Ub-wRq"/>
                     <constraint firstItem="fka-TF-t2u" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-5" id="HNQ-yY-USy"/>
                     <constraint firstItem="g71-4F-Zjg" firstAttribute="leading" secondItem="qIz-Pn-faH" secondAttribute="trailing" constant="8" id="HnP-yB-13s"/>
                     <constraint firstItem="qHn-2d-fTw" firstAttribute="leading" secondItem="fPN-hW-WXZ" secondAttribute="trailing" constant="12" id="HoP-vV-YNK"/>
                     <constraint firstItem="fka-TF-t2u" firstAttribute="baseline" secondItem="i4h-1f-hU4" secondAttribute="baseline" constant="18" id="Ldp-C1-J58"/>
+                    <constraint firstItem="esL-Pj-Qnk" firstAttribute="leading" secondItem="Ufw-CK-ha4" secondAttribute="trailing" constant="4" id="MrF-qg-wUe"/>
                     <constraint firstItem="JC6-Be-zR8" firstAttribute="baseline" secondItem="fka-TF-t2u" secondAttribute="baseline" id="NgJ-Ta-zKo"/>
                     <constraint firstItem="5wi-a7-UVk" firstAttribute="centerY" secondItem="5RJ-1T-X6A" secondAttribute="centerY" id="PCT-KA-tVv"/>
                     <constraint firstAttribute="centerY" secondItem="g71-4F-Zjg" secondAttribute="centerY" id="PW6-gQ-Npg"/>
+                    <constraint firstItem="VH3-2Q-bfa" firstAttribute="leading" secondItem="Z6B-rg-B4l" secondAttribute="trailing" constant="4" id="QM0-D0-AfA"/>
                     <constraint firstItem="5RJ-1T-X6A" firstAttribute="width" secondItem="Tar-dk-wKH" secondAttribute="width" id="Se0-to-om8"/>
                     <constraint firstAttribute="trailingMargin" secondItem="g71-4F-Zjg" secondAttribute="trailing" constant="-8" id="Uo8-g7-FE1"/>
+                    <constraint firstItem="g71-4F-Zjg" firstAttribute="top" secondItem="VH3-2Q-bfa" secondAttribute="bottom" id="W1t-PW-WvB"/>
+                    <constraint firstItem="5wi-a7-UVk" firstAttribute="top" secondItem="esL-Pj-Qnk" secondAttribute="bottom" id="Yt8-OV-CFa"/>
                     <constraint firstAttribute="centerY" secondItem="VPm-Xn-ch4" secondAttribute="centerY" id="a1h-Y8-dya"/>
                     <constraint firstItem="JC6-Be-zR8" firstAttribute="leading" secondItem="fka-TF-t2u" secondAttribute="trailing" constant="12" id="hSq-Is-F5Y"/>
                     <constraint firstItem="Tar-dk-wKH" firstAttribute="leading" secondItem="VPm-Xn-ch4" secondAttribute="trailing" id="mt5-Hj-Dsl"/>
@@ -159,18 +200,22 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="blueAQ" destination="Z6B-rg-B4l" id="yjg-XL-h3K"/>
+                <outlet property="blueFTB" destination="VH3-2Q-bfa" id="pn7-6n-XJI"/>
                 <outlet property="blueOneLabel" destination="fPN-hW-WXZ" id="svw-3q-ded"/>
                 <outlet property="blueScoreLabel" destination="g71-4F-Zjg" id="OMy-Aq-bjj"/>
                 <outlet property="blueThreeLabel" destination="ugd-Yu-aS1" id="Hfw-mm-fZd"/>
                 <outlet property="blueTwoLabel" destination="qHn-2d-fTw" id="KtT-sX-FT1"/>
                 <outlet property="matchLabel" destination="VPm-Xn-ch4" id="V74-BH-EJI"/>
+                <outlet property="redAQ" destination="Ufw-CK-ha4" id="77V-RX-hl8"/>
+                <outlet property="redFTB" destination="esL-Pj-Qnk" id="ELR-yK-dJM"/>
                 <outlet property="redOneLabel" destination="i4h-1f-hU4" id="XwM-Oc-ymg"/>
                 <outlet property="redScoreLabel" destination="5wi-a7-UVk" id="2j2-YJ-QAI"/>
                 <outlet property="redThreeLabel" destination="JC6-Be-zR8" id="Rkz-mz-OvW"/>
                 <outlet property="redTwoLabel" destination="fka-TF-t2u" id="lL8-3y-G1f"/>
                 <outlet property="slash" destination="qIz-Pn-faH" id="BTU-cc-gjM"/>
             </connections>
-            <point key="canvasLocation" x="209" y="332.5"/>
+            <point key="canvasLocation" x="181" y="339.5"/>
         </tableViewCell>
     </objects>
 </document>
