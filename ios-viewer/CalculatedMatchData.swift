@@ -32,9 +32,9 @@ public final class CalculatedMatchData: NSObject {
   public var actualRedRPs: Int?
   public var predictedBlueAutoQuest: Bool? = false
   public var predictedBlueRPs: Float?
-  public var blueWinChance: Float?
+  public var blueWinChance: Float? = 0.5
   @objc public var predictedRedScore: Float = -1
-  public var redWinChance: Float?
+  public var redWinChance: Float? = 0.5
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.

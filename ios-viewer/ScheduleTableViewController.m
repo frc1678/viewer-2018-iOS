@@ -103,6 +103,7 @@
     
     //iterate thru 3 times
     for (int i = 0; i < 3; i++) {
+        //RED MATCH LABELS
         if(i < redTeams.count) {
             [cell setValue:[self textForScheduleLabelForType:1 forString:[NSString stringWithFormat:@"%ld", (long)((Team *)[redTeams objectAtIndex:i]).number]] forKeyPath:[NSString stringWithFormat:@"red%@Label.attributedText", [ScheduleTableViewController mappings][i]]];
             if(((Team *)[redTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0 && self.highlightDysfunc) {
@@ -128,6 +129,7 @@
             [cell setValue:[self textForScheduleLabelForType:1 forString:[NSString stringWithFormat:@"???"]] forKeyPath:[NSString stringWithFormat:@"red%@Label.attributedText", [ScheduleTableViewController mappings][i]]];
         }
         
+        //BLUE MATCH LABELS
         if(i < blueTeams.count) {
             [cell setValue:[self textForScheduleLabelForType:1 forString:[NSString stringWithFormat:@"%ld", (long)((Team *)[blueTeams objectAtIndex:i]).number]] forKeyPath:[NSString stringWithFormat:@"blue%@Label.attributedText", [ScheduleTableViewController mappings][i]]];
             if(((Team *)[blueTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0 && self.highlightDysfunc) {
@@ -154,6 +156,7 @@
         }
     }
     
+    //SETTING SCORE LABELS
     //if the red team has a valid score
     if (match.redScore != -1 && match.redScore != nil) {
         //set the red score
@@ -189,6 +192,8 @@
         }
         //NSLog([NSString stringWithFormat:@"%ld",(long)self.currentNumber]);
     }
+    
+    //EXTRA RP IMAGE VIEWS
     if(match.redDidAutoQuest) {
         matchCell.redAQ.alpha = 1.0;
     } else {
@@ -227,6 +232,7 @@
     MatchTableViewCell *matchCell = (MatchTableViewCell *)cell;
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
     NSNumber *myNumber = [formatter numberFromString:matchCell.matchLabel.text];
+    //Highlight starred matches
     if([self.firebaseFetcher.currentMatchManager.starredMatchesArray containsObject:myNumber]) {
         matchCell.backgroundColor = [UIColor colorWithRed:1.0 green:0.64 blue:1.0 alpha:0.6];
     }
