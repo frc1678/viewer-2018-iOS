@@ -698,10 +698,23 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     */
     @objc func filteredMatchesForMatchSearchString(_ searchString:String) -> [Match] {
         var filteredMatches = [Match]()
+        var searchArray: [String] = []
+        var tempWord = ""
+        for char in searchString {
+            if char != "," {
+                tempWord.append(char)
+            } else {
+                searchArray.append(tempWord)
+                tempWord = ""
+            }
+        }
+        searchArray.append(tempWord)
         for match in self.matches  {
-            //if the match contains the search field
-            if String(describing: match.number).range(of: searchString) != nil {
-                filteredMatches.append(match)
+            for i in searchArray {
+                //if the match contains the search field
+                if String(describing: match.number).range(of: i) != nil {
+                    filteredMatches.append(match)
+                }
             }
         }
         return filteredMatches
@@ -710,15 +723,32 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
     /** Filters matches according to the search string when set to teams. See filteredMatchesForMatchSearchString */
     @objc func filteredMatchesforTeamSearchString(_ searchString: String) -> [Match] {
         var filteredMatches = [Match]()
-        for match in self.matches  {
-            for teamNum in match.redAllianceTeamNumbers! {
-                if String(describing: teamNum).range(of: searchString) != nil {
-                    filteredMatches.append(match)
-                }
+        var searchArray: [String] = []
+        var tempWord = ""
+        for char in searchString {
+            if char != "," {
+                tempWord.append(char)
+            } else {
+                searchArray.append(tempWord)
+                tempWord = ""
             }
-            for teamNum in match.blueAllianceTeamNumbers! {
-                if String(describing: teamNum).range(of: searchString) != nil {
-                    filteredMatches.append(match)
+        }
+        searchArray.append(tempWord)
+        for match in self.matches  {
+            for i in searchArray {
+                for teamNum in match.redAllianceTeamNumbers! {
+                    if filteredMatches.contains(match) != true {
+                        if String(describing: teamNum).range(of: i) != nil || String(describing: getTeam(teamNum)?.name).range(of: i) != nil {
+                            filteredMatches.append(match)
+                        }
+                    }
+                }
+                for teamNum in match.blueAllianceTeamNumbers! {
+                    if filteredMatches.contains(match) != true {
+                        if String(describing: teamNum).range(of: i) != nil || String(describing: getTeam(teamNum)?.name).range(of: i) != nil {
+                            filteredMatches.append(match)
+                        }
+                    }
                 }
             }
         }

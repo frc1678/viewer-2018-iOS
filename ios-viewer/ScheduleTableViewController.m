@@ -62,6 +62,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollToCurrentMatch:) name:@"currentMatchUpdated" object:nil];
     self.highlightDysfunc = NO;
     UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    [self.searchController.searchBar setKeyboardType:UIKeyboardTypeDefault];
     [self.tableView addGestureRecognizer:pinchGestureRecognizer];
 }
 
