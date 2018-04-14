@@ -302,7 +302,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.avgNumAlliancePlatformIntakeTele",
             "calculatedData.avgNumOpponentPlatformIntakeTele",
             "calculatedData.avgCubesSpilledTele",
-            "calculatedData.totalCubesPlaced",
+            "calculatedData.avgTotalCubesPlaced",
         ]
         
         /** Dict translating a key for a teamDetails datapoint to the key for the respective TIMD datapoint. Does not include "calculatedData." in the keys. */
@@ -682,7 +682,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "calculatedData.pitAvgRampTime" : "Avg. Ramp Time",
         "pitHasCamera" : "Has Camera",
         "pitWheelDiameter" : "Wheel Diameter",
-        "calculatedData.totalCubesPlaced" : "Avg. Cubes Placed",
+        "calculatedData.avgTotalCubesPlaced" : "Avg. Cubes Placed",
     ]
     
     /**

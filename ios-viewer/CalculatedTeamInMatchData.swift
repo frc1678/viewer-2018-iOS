@@ -42,6 +42,7 @@ public final class CalculatedTeamInMatchData: NSObject {
     static let timeToOwnScaleAuto = "timeToOwnScaleAuto"
     static let numAlliancePlatformIntakeTele = "numAlliancePlatformIntakeTele"
     static let numOpponentPlatformIntakeTele = "numOpponentPlatformIntakeTele"
+    static let switchOwnership = "switchOwnership"
 }
 
   // MARK: Properties
@@ -75,6 +76,7 @@ public final class CalculatedTeamInMatchData: NSObject {
     public var timeToOwnScaleAuto: Float?
     public var numAlliancePlatformIntakeTele: Int?
     public var numOpponentPlatformIntakeTele: Int?
+    public var switchOwnership: Int?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -119,6 +121,7 @@ public final class CalculatedTeamInMatchData: NSObject {
     timeToOwnScaleAuto = json[SerializationKeys.timeToOwnScaleAuto].float
     numAlliancePlatformIntakeTele = json[SerializationKeys.numAlliancePlatformIntakeTele].int
     numOpponentPlatformIntakeTele = json[SerializationKeys.numOpponentPlatformIntakeTele].int
+    switchOwnership = json[SerializationKeys.switchOwnership].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -156,6 +159,7 @@ public final class CalculatedTeamInMatchData: NSObject {
     if let value = timeToOwnScaleAuto { dictionary[SerializationKeys.timeToOwnScaleAuto] = value }
     if let value = numAlliancePlatformIntakeTele { dictionary[SerializationKeys.numAlliancePlatformIntakeTele] = value }
     if let value = numOpponentPlatformIntakeTele { dictionary[SerializationKeys.numOpponentPlatformIntakeTele] = value }
+    if let value = switchOwnership { dictionary[SerializationKeys.switchOwnership] = value }
     return dictionary
   }
 
@@ -191,6 +195,7 @@ public final class CalculatedTeamInMatchData: NSObject {
     self.timeToOwnScaleAuto = aDecoder.decodeObject(forKey: SerializationKeys.timeToOwnScaleAuto) as? Float
     self.numAlliancePlatformIntakeTele = aDecoder.decodeObject(forKey: SerializationKeys.numAlliancePlatformIntakeTele) as? Int
     self.numOpponentPlatformIntakeTele = aDecoder.decodeObject(forKey: SerializationKeys.numOpponentPlatformIntakeTele) as? Int
+    self.switchOwnership = aDecoder.decodeObject(forKey: SerializationKeys.switchOwnership) as? Int
   }
 
   public func encode(with aCoder: NSCoder) {
@@ -224,6 +229,7 @@ public final class CalculatedTeamInMatchData: NSObject {
     aCoder.encode(timeToOwnScaleAuto, forKey: SerializationKeys.timeToOwnScaleAuto)
     aCoder.encode(numAlliancePlatformIntakeTele, forKey: SerializationKeys.numAlliancePlatformIntakeTele)
     aCoder.encode(numAlliancePlatformIntakeTele, forKey: SerializationKeys.numOpponentPlatformIntakeTele)
+    aCoder.encode(switchOwnership, forKey: SerializationKeys.switchOwnership)
   }
 
 }
