@@ -57,6 +57,7 @@
 		8C0200B52011987C00A75272 /* Attempt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0200B42011987B00A75272 /* Attempt.swift */; };
 		8C0200B72011988600A75272 /* Climb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0200B62011988600A75272 /* Climb.swift */; };
 		8C0A5D072082786800AC1BB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C0A5D062082786800AC1BB2 /* GoogleService-Info.plist */; };
+		8C0A5D092082A65600AC1BB2 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A5D082082A65500AC1BB2 /* OptionsViewController.swift */; };
 		8C10DE96206C0A670084DC25 /* MatchDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C10DE94206C0A670084DC25 /* MatchDetailsTableViewCell.swift */; };
 		8C10DE97206C0A670084DC25 /* MatchDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C10DE95206C0A670084DC25 /* MatchDetailsTableViewCell.xib */; };
 		8C25A7CC1E33F2790012A23E /* CalculatedTeamInMatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C25A7CB1E33F2790012A23E /* CalculatedTeamInMatchData.swift */; };
@@ -174,6 +175,7 @@
 		8C0200B42011987B00A75272 /* Attempt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attempt.swift; sourceTree = "<group>"; };
 		8C0200B62011988600A75272 /* Climb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Climb.swift; sourceTree = "<group>"; };
 		8C0A5D062082786800AC1BB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8C0A5D082082A65500AC1BB2 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		8C10DE94206C0A670084DC25 /* MatchDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		8C10DE95206C0A670084DC25 /* MatchDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		8C25A7CB1E33F2790012A23E /* CalculatedTeamInMatchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatedTeamInMatchData.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				19B037FF1E2C5891006E25A2 /* GraphViewController.swift */,
 				19B038001E2C5891006E25A2 /* CurrentMatchManager.swift */,
 				190DFE491E308B7700477B6D /* TIMDScheduleViewController.swift */,
+				8C0A5D082082A65500AC1BB2 /* OptionsViewController.swift */,
 				190DFE4B1E308BBD00477B6D /* TIMDDetailsViewController.swift */,
 				19B038031E2C5891006E25A2 /* SortedRankTableViewController.swift */,
 				19B038041E2C5891006E25A2 /* NotesTableViewController.swift */,
@@ -702,6 +705,7 @@
 				190DFE4C1E308BBD00477B6D /* TIMDDetailsViewController.swift in Sources */,
 				8C0200B72011988600A75272 /* Climb.swift in Sources */,
 				19B038261E2C58D3006E25A2 /* ResizableNotesTableViewCell.swift in Sources */,
+				8C0A5D092082A65600AC1BB2 /* OptionsViewController.swift in Sources */,
 				19B0382D1E2C58D3006E25A2 /* UINavigationController+SGProgress.m in Sources */,
 				19B037EC1E2C586C006E25A2 /* PredictedSeedTableViewController.m in Sources */,
 				19B038271E2C58D3006E25A2 /* UnrankedTableViewCell.swift in Sources */,
