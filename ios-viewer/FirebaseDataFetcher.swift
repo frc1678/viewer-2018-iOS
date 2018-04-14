@@ -709,9 +709,11 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         searchArray.append(tempWord)
         for match in self.matches  {
             for i in searchArray {
-                //if the match contains the search field
-                if String(describing: match.number).range(of: i) != nil {
-                    filteredMatches.append(match)
+                if !filteredMatches.contains(match) {
+                    //if the match contains the search field
+                    if String(describing: match.number).range(of: i) != nil {
+                        filteredMatches.append(match)
+                    }
                 }
             }
         }

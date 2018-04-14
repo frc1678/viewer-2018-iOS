@@ -293,21 +293,37 @@
 }
 
 - (NSAttributedString *)textForScheduleLabelForType:(NSInteger)type forString:(NSString *)string {
+    int bad = 0;
+    UIColor *thing;
+    NSArray *bois = [[self highlightedStringForScope] componentsSeparatedByString:@","];
+    NSAttributedString *highlighted = [[NSAttributedString alloc] initWithString:string];
     if (type != [self currentScope] && type == 1) {
-        return [self textForLabelForString:string highlightOccurencesOfString:[self highlightedStringForScope]];
-    } else if (type != [self currentScope] && type == 0) {
-        if ([string rangeOfString:[self highlightedStringForScope]].location == 0) {
-            return [self textForLabelForString:string highlightOccurencesOfString:[self highlightedStringForScope]];
+        for(NSString *boi in bois) {
+            if(![boi isEqual: @""]) {
+                if(bad==0) {thing=[UIColor greenColor];}else if(bad==1){thing=[UIColor yellowColor];} else if(bad==2) {thing=[UIColor orangeColor];} else {thing=[UIColor magentaColor];}
+                highlighted = [self textForLabelForString:highlighted highlightOccurencesOfString:boi color:thing];
+            }
+            bad += 1;
         }
+        return highlighted;
+    } else if (type != [self currentScope] && type == 0) {
+        for(NSString *boi in bois) {
+            if(![boi isEqual: @""]) {
+                if(bad==0) {thing=[UIColor greenColor];}else if(bad==1){thing=[UIColor yellowColor];} else if(bad==2) {thing=[UIColor orangeColor];} else {thing=[UIColor magentaColor];}
+                highlighted = [self textForLabelForString:highlighted highlightOccurencesOfString:boi color:thing];
+            }
+            bad += 1;
+        }
+        return highlighted;
     }
     
     return [[NSAttributedString alloc] initWithString:string];
 }
 
-- (NSAttributedString *)textForLabelForString:(NSString *)string highlightOccurencesOfString:(NSString *)highlightString {
-    NSMutableAttributedString *mutAttribString = [[NSMutableAttributedString alloc] initWithString:string];
+- (NSAttributedString *)textForLabelForString:(NSAttributedString *)string highlightOccurencesOfString:(NSString *)highlightString color:(UIColor *)color {
+    NSMutableAttributedString *mutAttribString = [[NSMutableAttributedString alloc] initWithAttributedString:string];
     if (highlightString) {
-        [mutAttribString addAttribute:NSBackgroundColorAttributeName value:[UIColor yellowColor] range:[string rangeOfString:highlightString]];
+        [mutAttribString addAttribute:NSBackgroundColorAttributeName value:color range:[[string string] rangeOfString:highlightString]];
     }
     
     return mutAttribString;
