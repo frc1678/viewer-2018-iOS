@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>1058293089807-c8b5dc3jm2sf944f4suui5fjjb0s4mtj.apps.googleusercontent.com</string>
+	<string>235945070178-skog6eq9f38ds01d79p124gbsurqkdbg.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1058293089807-c8b5dc3jm2sf944f4suui5fjjb0s4mtj</string>
+	<string>com.googleusercontent.apps.235945070178-skog6eq9f38ds01d79p124gbsurqkdbg</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCVfal0boG1pDlMzWrNjTOZoT6MRSGb1HQ</string>
+	<string>AIzaSyD23Sa_sbKppKhizs1EewobESBQ5dvsHAg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1058293089807</string>
+	<string>235945070178</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.citruscircuits.ios-viewer.Current-Match</string>
+	<string>org.citruscircuits.ios-viewer</string>
 	<key>PROJECT_ID</key>
-	<string>scouting-2018-9023a</string>
+	<string>scouting-2018-houston</string>
 	<key>STORAGE_BUCKET</key>
-	<string>scouting-2018-9023a.appspot.com</string>
+	<string>scouting-2018-houston.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1058293089807:ios:0404b137e07d2d1c</string>
+	<string>1:235945070178:ios:b14923feaeadec39</string>
 	<key>DATABASE_URL</key>
-	<string>https://scouting-2018-9023a.firebaseio.com</string>
+	<string>https://scouting-2018-houston.firebaseio.com</string>
 </dict>
 </plist>

@@ -56,13 +56,11 @@
 		20B97B0927CBDC12735F6F22 /* Pods_Current_Match.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0394ACA1B0BF4AF13EA11B /* Pods_Current_Match.framework */; };
 		8C0200B52011987C00A75272 /* Attempt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0200B42011987B00A75272 /* Attempt.swift */; };
 		8C0200B72011988600A75272 /* Climb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0200B62011988600A75272 /* Climb.swift */; };
-		8C0A5D072082786800AC1BB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C0A5D062082786800AC1BB2 /* GoogleService-Info.plist */; };
 		8C0A5D092082A65600AC1BB2 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A5D082082A65500AC1BB2 /* OptionsViewController.swift */; };
 		8C10DE96206C0A670084DC25 /* MatchDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C10DE94206C0A670084DC25 /* MatchDetailsTableViewCell.swift */; };
 		8C10DE97206C0A670084DC25 /* MatchDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C10DE95206C0A670084DC25 /* MatchDetailsTableViewCell.xib */; };
 		8C25A7CC1E33F2790012A23E /* CalculatedTeamInMatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C25A7CB1E33F2790012A23E /* CalculatedTeamInMatchData.swift */; };
 		8C5868711E34254E0056EA17 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C58686C1E34254E0056EA17 /* Storyboard.storyboard */; };
-		8C65E7921FD0FEA6000E71A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C65E7911FD0FEA6000E71A2 /* GoogleService-Info.plist */; };
 		8CA0E2102038A335002EFB02 /* SlackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0E20F2038A335002EFB02 /* SlackTableViewController.swift */; };
 		8CA0E2132038A5F3002EFB02 /* SlackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0E2112038A5F3002EFB02 /* SlackTableViewCell.swift */; };
 		8CA0E2142038A5F3002EFB02 /* SlackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CA0E2122038A5F3002EFB02 /* SlackTableViewCell.xib */; };
@@ -72,6 +70,8 @@
 		8CA2B7A3201E41510074DF21 /* PassiveClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A0201E41510074DF21 /* PassiveClimb.swift */; };
 		8CA2B7A4201E41510074DF21 /* AssistedLift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A1201E41510074DF21 /* AssistedLift.swift */; };
 		8CA2B7A6201E54FE0074DF21 /* ClimbParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A5201E54FD0074DF21 /* ClimbParent.swift */; };
+		8CB334E420841A2100AB66E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CB334E320841A2100AB66E3 /* GoogleService-Info.plist */; };
+		8CB334E620841A5C00AB66E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CB334E520841A5C00AB66E3 /* GoogleService-Info.plist */; };
 		8CBD712D1E354696009C0206 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD3CEA81E34074000B328A1 /* NotificationCenter.framework */; };
 		8CBD71301E354696009C0206 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBD712F1E354696009C0206 /* TodayViewController.swift */; };
 		8CBD71371E354696009C0206 /* Current Match.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8CBD712C1E354696009C0206 /* Current Match.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -174,7 +174,6 @@
 		763F6CE09D211CAEC3E4C000 /* Pods-CurrentMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrentMatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CurrentMatch/Pods-CurrentMatch.debug.xcconfig"; sourceTree = "<group>"; };
 		8C0200B42011987B00A75272 /* Attempt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attempt.swift; sourceTree = "<group>"; };
 		8C0200B62011988600A75272 /* Climb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Climb.swift; sourceTree = "<group>"; };
-		8C0A5D062082786800AC1BB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8C0A5D082082A65500AC1BB2 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		8C10DE94206C0A670084DC25 /* MatchDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		8C10DE95206C0A670084DC25 /* MatchDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchDetailsTableViewCell.xib; sourceTree = "<group>"; };
@@ -183,7 +182,6 @@
 		8C58687E1E3426200056EA17 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8C58688C1E3426970056EA17 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C58688E1E342EFE0056EA17 /* ExtensionPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionPrefixHeader.pch; sourceTree = "<group>"; };
-		8C65E7911FD0FEA6000E71A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8CA0E20F2038A335002EFB02 /* SlackTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackTableViewController.swift; sourceTree = "<group>"; };
 		8CA0E2112038A5F3002EFB02 /* SlackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackTableViewCell.swift; sourceTree = "<group>"; };
 		8CA0E2122038A5F3002EFB02 /* SlackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlackTableViewCell.xib; sourceTree = "<group>"; };
@@ -194,6 +192,8 @@
 		8CA2B7A0201E41510074DF21 /* PassiveClimb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassiveClimb.swift; sourceTree = "<group>"; };
 		8CA2B7A1201E41510074DF21 /* AssistedLift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistedLift.swift; sourceTree = "<group>"; };
 		8CA2B7A5201E54FD0074DF21 /* ClimbParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClimbParent.swift; sourceTree = "<group>"; };
+		8CB334E320841A2100AB66E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8CB334E520841A5C00AB66E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8CBD712C1E354696009C0206 /* Current Match.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Current Match.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBD712F1E354696009C0206 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8CBD71341E354696009C0206 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -303,7 +303,7 @@
 		19B038371E2DD70C006E25A2 /* Plists */ = {
 			isa = PBXGroup;
 			children = (
-				8C0A5D062082786800AC1BB2 /* GoogleService-Info.plist */,
+				8CB334E320841A2100AB66E3 /* GoogleService-Info.plist */,
 				19B037C41E2C5739006E25A2 /* Info.plist */,
 			);
 			name = Plists;
@@ -432,8 +432,8 @@
 			children = (
 				8CA2B79C201D13320074DF21 /* Current Match.entitlements */,
 				8CBD712F1E354696009C0206 /* TodayViewController.swift */,
+				8CB334E520841A5C00AB66E3 /* GoogleService-Info.plist */,
 				8CBD713B1E3546D1009C0206 /* MainInterface.storyboard */,
-				8C65E7911FD0FEA6000E71A2 /* GoogleService-Info.plist */,
 				8CBD71341E354696009C0206 /* Info.plist */,
 			);
 			path = "Current Match";
@@ -568,7 +568,7 @@
 				8C10DE97206C0A670084DC25 /* MatchDetailsTableViewCell.xib in Resources */,
 				8CBD71401E356CD1009C0206 /* CC 2017 Logo.png in Resources */,
 				8CA0E2142038A5F3002EFB02 /* SlackTableViewCell.xib in Resources */,
-				8C0A5D072082786800AC1BB2 /* GoogleService-Info.plist in Resources */,
+				8CB334E420841A2100AB66E3 /* GoogleService-Info.plist in Resources */,
 				19B037EA1E2C586C006E25A2 /* MatchTableViewCell.xib in Resources */,
 				19B037D31E2C581C006E25A2 /* FirstPick.storyboard in Resources */,
 				190DFE501E308BE300477B6D /* TIMDTableViewCell.xib in Resources */,
@@ -583,7 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CBD713C1E3546D1009C0206 /* MainInterface.storyboard in Resources */,
-				8C65E7921FD0FEA6000E71A2 /* GoogleService-Info.plist in Resources */,
+				8CB334E620841A5C00AB66E3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

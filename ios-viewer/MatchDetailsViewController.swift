@@ -26,7 +26,7 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
     let mapping = ["1", "2", "3"]
     
     //keys for the tables
-    let tableKeys = ["avgAllianceSwitchCubesAuto", "avgCubesPlacedInScaleAuto", "avgAllianceSwitchCubesTele","avgCubesPlacedInScaleTele", "autoRunPercentage", "avgVaultTime", "avgNumExchangeInputTele", "avgCubesSpilledTele", "dysfunctionalPercentage","avgScaleCubesBy100s"]
+    let tableKeys = ["avgAllianceSwitchCubesAuto", "avgCubesPlacedInScaleAuto", "avgAllianceSwitchCubesTele","avgCubesPlacedInScaleTele", "autoRunPercentage", "avgAllVaultTime", "avgNumExchangeInputTele", "avgCubesSpilledTele", "dysfunctionalPercentage","avgScaleCubesBy100s"]
     
     
     //score labels
@@ -467,7 +467,7 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         return nil
     }
     @objc func checkRes(_ notification:Notification) {
-        if notification.name._rawValue == "updateLeftTable" {
+        if notification.name.rawValue == "updateLeftTable" {
             if self.match == nil {
                 self.match = self.firebaseFetcher?.matches[self.matchNumber - 2] //Why the -2???
             }

@@ -683,7 +683,7 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "pitHasCamera" : "Has Camera",
         "pitWheelDiameter" : "Wheel Diameter",
         "calculatedData.avgTotalCubesPlaced" : "Avg. Cubes Placed",
-        "calculatedData.avgVaultTime" : "Time/Vault Cube",
+        "calculatedData.avgAllVaultTime" : "Time to fill Vault",
         "calculatedData.avgScaleCubesBy100s" : "Avg. Scale Cubes by 100"
     ]
     
