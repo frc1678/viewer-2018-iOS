@@ -107,7 +107,7 @@
         //RED MATCH LABELS
         if(i < redTeams.count) {
             [cell setValue:[self textForScheduleLabelForType:1 forString:[NSString stringWithFormat:@"%ld", (long)((Team *)[redTeams objectAtIndex:i]).number]] forKeyPath:[NSString stringWithFormat:@"red%@Label.attributedText", [ScheduleTableViewController mappings][i]]];
-            if(((Team *)[redTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0 && self.highlightDysfunc) {
+            if(((Team *)[redTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0 && self.firebaseFetcher.currentMatchManager.highlightDysfunc) {
                 switch(i) {
                     case 0:
                         matchCell.redOneLabel.backgroundColor = [UIColor colorWithRed:0.00 green:0.75 blue:0.00 alpha:0.5];
@@ -133,7 +133,7 @@
         //BLUE MATCH LABELS
         if(i < blueTeams.count) {
             [cell setValue:[self textForScheduleLabelForType:1 forString:[NSString stringWithFormat:@"%ld", (long)((Team *)[blueTeams objectAtIndex:i]).number]] forKeyPath:[NSString stringWithFormat:@"blue%@Label.attributedText", [ScheduleTableViewController mappings][i]]];
-            if(((Team *)[blueTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0 && self.highlightDysfunc) {
+            if(((Team *)[blueTeams objectAtIndex:i]).calculatedData.dysfunctionalPercentage > 0 && self.firebaseFetcher.currentMatchManager.highlightDysfunc) {
                 switch(i) {
                     case 0:
                         matchCell.blueOneLabel.backgroundColor = [UIColor colorWithRed:0.00 green:0.75 blue:0.00 alpha:0.5];

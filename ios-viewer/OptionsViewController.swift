@@ -14,6 +14,7 @@ class OptionsViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var scrollingMatchSwitch: UISwitch!
     @IBOutlet weak var showRPSwitch: UISwitch!
+    @IBOutlet weak var hiDysfuncSwitch: UISwitch!
     
     override func viewDidLoad() {
         firebaseFetcher = AppDelegate.getAppDelegate().firebaseFetcher
@@ -23,6 +24,9 @@ class OptionsViewController: UIViewController, UITableViewDelegate {
         if let scrollMatch = firebaseFetcher?.currentMatchManager.matchDetailsScroll {
             scrollingMatchSwitch.setOn(scrollMatch, animated: false)
         }
+        if let hiDysfunc = firebaseFetcher?.currentMatchManager.highlightDysfunc {
+            hiDysfuncSwitch.setOn(hiDysfunc, animated: false)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,7 +34,11 @@ class OptionsViewController: UIViewController, UITableViewDelegate {
             //actually need to do nothing
         }
     }
-
+    
+    @IBAction func hiDysfuncToggle(_ sender: Any) {
+        self.firebaseFetcher?.currentMatchManager.highlightDysfunc = (sender as! UISwitch).isOn
+    }
+    
     @IBAction func matchScrollToggle(_ sender: Any) {
         firebaseFetcher?.currentMatchManager.matchDetailsScroll = (sender as! UISwitch).isOn
     }

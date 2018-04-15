@@ -24,6 +24,7 @@ class CurrentMatchManager: NSObject {
         
         self.notificationManager = NotificationManager(secsBetweenUpdates: 5, notifications: [])
         self.showRP = false
+        self.highlightDysfunc = false
         super.init()
         self.notificationManager.notifications.append(NotificationManager.Notification(name: "currentMatchUpdated", selector: "notificationTriggeredCheckForNotification:", object: nil))
         firebase.child("currentMatchNum").observe(.value) { (snap) in
@@ -69,6 +70,15 @@ class CurrentMatchManager: NSObject {
                 self.matchDetailsScroll = false
             }
         }
+        cache.fetch(key: "highlightDysfunc").onSuccess { (d) -> () in
+            if let id = NSKeyedUnarchiver.unarchiveObject(with: d) as? Bool {
+                if self.highlightDysfunc != id {
+                    self.highlightDysfunc = id
+                }
+            } else {
+                self.highlightDysfunc = false
+            }
+        }
     }
     
     @objc var currentMatch = 0 {
@@ -92,6 +102,12 @@ class CurrentMatchManager: NSObject {
     @objc var showRP: Bool {
         didSet {
             cache.set(value: NSKeyedArchiver.archivedData(withRootObject: showRP), key: "showRP")
+        }
+    }
+    
+    @objc var highlightDysfunc: Bool {
+        didSet {
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: highlightDysfunc), key: "highlightDysfunc")
         }
     }
     

@@ -75,6 +75,8 @@ public final class CalculatedTeamData: NSObject {
     static let pitAvgRampTime = "pitAvgRampTime"
     static let avgTotalCubesPlaced = "avgTotalCubesPlaced"
     static let avgSwitchOwnership = "avgSwitchOwnership"
+    static let avgScaleCubesBy100s = "avgScaleCubesBy100s"
+    static let avgVaultTime = "avgVaultTime"
  }
 
   // MARK: Properties
@@ -141,6 +143,8 @@ public final class CalculatedTeamData: NSObject {
     @objc public var pitAvgRampTime: Float = -1.0
     @objc public var avgTotalCubesPlaced: Float = -1.0
     @objc public var avgSwitchOwnership: Int = -1
+    @objc public var avgScaleCubesBy100s: Float = -1.0
+    @objc public var avgVaultTime: Float = -1.0
     
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -222,6 +226,8 @@ public final class CalculatedTeamData: NSObject {
     pitAvgRampTime = json[SerializationKeys.pitAvgRampTime].floatValue
     avgTotalCubesPlaced = json[SerializationKeys.avgTotalCubesPlaced].floatValue
     avgSwitchOwnership = json[SerializationKeys.avgSwitchOwnership].intValue
+    avgScaleCubesBy100s = json[SerializationKeys.avgScaleCubesBy100s].floatValue
+    avgVaultTime = json[SerializationKeys.avgVaultTime].floatValue
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -293,6 +299,8 @@ public final class CalculatedTeamData: NSObject {
     dictionary[SerializationKeys.pitAvgRampTime] = pitAvgRampTime
     dictionary[SerializationKeys.avgTotalCubesPlaced] = avgTotalCubesPlaced
     dictionary[SerializationKeys.avgSwitchOwnership] = avgSwitchOwnership
+    dictionary[SerializationKeys.avgScaleCubesBy100s] = avgScaleCubesBy100s
+    dictionary[SerializationKeys.avgVaultTime] = avgVaultTime
     return dictionary
   }
 
@@ -361,6 +369,8 @@ public final class CalculatedTeamData: NSObject {
     self.pitAvgRampTime = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvgRampTime) as? Float)!
     self.avgTotalCubesPlaced = (aDecoder.decodeObject(forKey: SerializationKeys.avgTotalCubesPlaced) as? Float)!
     self.avgSwitchOwnership = (aDecoder.decodeObject(forKey: SerializationKeys.avgSwitchOwnership) as? Int)!
+    self.avgScaleCubesBy100s = (aDecoder.decodeObject(forKey: SerializationKeys.avgScaleCubesBy100s) as? Float)!
+    self.avgVaultTime = (aDecoder.decodeObject(forKey: SerializationKeys.avgScaleCubesBy100s) as? Float)!
   }
 
   public func encode(with aCoder: NSCoder) {
@@ -425,6 +435,8 @@ public final class CalculatedTeamData: NSObject {
     aCoder.encode(canPlaceHighLayerCube, forKey: SerializationKeys.canPlaceHighLayerCube)
     aCoder.encode(avgTotalCubesPlaced, forKey: SerializationKeys.avgTotalCubesPlaced)
     aCoder.encode(avgSwitchOwnership, forKey: SerializationKeys.avgSwitchOwnership)
+    aCoder.encode(avgScaleCubesBy100s, forKey: SerializationKeys.avgScaleCubesBy100s)
+    aCoder.encode(avgVaultTime, forKey: SerializationKeys.avgVaultTime)
   }
 
 }
