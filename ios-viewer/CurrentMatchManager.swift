@@ -23,6 +23,7 @@ class CurrentMatchManager: NSObject {
         firebase = Database.database().reference()
         
         self.notificationManager = NotificationManager(secsBetweenUpdates: 5, notifications: [])
+        self.showRP = false
         super.init()
         self.notificationManager.notifications.append(NotificationManager.Notification(name: "currentMatchUpdated", selector: "notificationTriggeredCheckForNotification:", object: nil))
         firebase.child("currentMatchNum").observe(.value) { (snap) in
@@ -50,6 +51,24 @@ class CurrentMatchManager: NSObject {
                 self.slackId = nil
             }
         }
+        cache.fetch(key: "showRP").onSuccess { (d) -> () in
+            if let id = NSKeyedUnarchiver.unarchiveObject(with: d) as? Bool {
+                if self.showRP != id {
+                    self.showRP = id
+                }
+            } else {
+                self.showRP = false
+            }
+        }
+        cache.fetch(key: "matchDetailsScroll").onSuccess { (d) -> () in
+            if let id = NSKeyedUnarchiver.unarchiveObject(with: d) as? Bool {
+                if self.matchDetailsScroll != id {
+                    self.matchDetailsScroll = id
+                }
+            } else {
+                self.matchDetailsScroll = false
+            }
+        }
     }
     
     @objc var currentMatch = 0 {
@@ -67,6 +86,18 @@ class CurrentMatchManager: NSObject {
     @objc var starredMatchesArray = [Int]() {
         didSet {
             cache.set(value: NSKeyedArchiver.archivedData(withRootObject: starredMatchesArray), key: "starredMatches")
+        }
+    }
+    
+    @objc var showRP: Bool {
+        didSet {
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: showRP), key: "showRP")
+        }
+    }
+    
+    var matchDetailsScroll: Bool? {
+        didSet {
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: matchDetailsScroll!), key: "matchDetailsScroll")
         }
     }
     

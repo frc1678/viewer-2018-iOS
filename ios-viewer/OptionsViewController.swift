@@ -8,14 +8,37 @@
 
 import UIKit
 
-class OptionsViewController: UIViewController {
-
+class OptionsViewController: UIViewController, UITableViewDelegate {
+    
+    var firebaseFetcher: FirebaseDataFetcher?
+    
+    @IBOutlet weak var scrollingMatchSwitch: UISwitch!
+    @IBOutlet weak var showRPSwitch: UISwitch!
+    
+    override func viewDidLoad() {
+        firebaseFetcher = AppDelegate.getAppDelegate().firebaseFetcher
+        if let showRPs = firebaseFetcher?.currentMatchManager.showRP {
+            showRPSwitch.setOn(showRPs, animated: false)
+        }
+        if let scrollMatch = firebaseFetcher?.currentMatchManager.matchDetailsScroll {
+            scrollingMatchSwitch.setOn(scrollMatch, animated: false)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? SlackTableViewController {
             //actually need to do nothing
         }
     }
 
+    @IBAction func matchScrollToggle(_ sender: Any) {
+        firebaseFetcher?.currentMatchManager.matchDetailsScroll = (sender as! UISwitch).isOn
+    }
+    
+    @IBAction func showRPToggled(_ sender: Any) {
+        firebaseFetcher?.currentMatchManager.showRP = (sender as! UISwitch).isOn
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

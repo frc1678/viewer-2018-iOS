@@ -70,11 +70,17 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         }
         
         //setup the label stuff
-        cell.datapointLabel.font = cell.datapointLabel.font.withSize(12)
-        cell.team1.font = cell.team1.font.withSize(12)
-        cell.team2.font = cell.team2.font.withSize(12)
-        cell.team3.font = cell.team3.font.withSize(12) // or NSLineBreakMode.ByWordWrapping
-        cell.datapointLabel.numberOfLines = 1
+        var size: CGFloat = CGFloat(12)
+        var numLines = 1
+        if (firebaseFetcher?.currentMatchManager.matchDetailsScroll ?? false) {
+            size = CGFloat(18)
+            numLines = 0
+        }
+        cell.datapointLabel.font = cell.datapointLabel.font.withSize(size)
+        cell.team1.font = cell.team1.font.withSize(size)
+        cell.team2.font = cell.team2.font.withSize(size)
+        cell.team3.font = cell.team3.font.withSize(size) // or NSLineBreakMode.ByWordWrapping
+        cell.datapointLabel.numberOfLines = numLines
         cell.team1.lineBreakMode = .byWordWrapping // or NSLineBreakMode.ByWordWrapping
         cell.team2.lineBreakMode = .byWordWrapping
         cell.team3.lineBreakMode = .byWordWrapping
@@ -202,11 +208,30 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
     
     //how many rows are there (all the keys and (currently not) future match status)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (firebaseFetcher?.currentMatchManager.matchDetailsScroll ?? false) {
+            tableView.isScrollEnabled = true
+        } else {
+            tableView.isScrollEnabled = false
+        }
         return tableKeys.count// + 1 (for future match status)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (firebaseFetcher?.currentMatchManager.matchDetailsScroll ?? false) {
+            return CGFloat(44)
+        } else {
+            return CGFloat(14)
+        }
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        redTableView.reloadData()
+        blueTableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -224,6 +249,8 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         self.redTableView.dataSource = self
         self.blueTableView.delegate = self
         self.blueTableView.dataSource = self
+        blueTableView.reloadData()
+        redTableView.reloadData()
     }
     
     fileprivate func updateUI() {

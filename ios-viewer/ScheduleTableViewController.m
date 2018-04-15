@@ -195,25 +195,32 @@
     }
     
     //EXTRA RP IMAGE VIEWS
-    if(match.redDidAutoQuest) {
-        matchCell.redAQ.alpha = 1.0;
-    } else {
-        matchCell.redAQ.alpha = 0.0;
-    }
-    if(match.blueDidAutoQuest) {
-        matchCell.blueAQ.alpha = 1.0;
+    if(self.firebaseFetcher.currentMatchManager.showRP) {
+        if(match.redDidAutoQuest) {
+            matchCell.redAQ.alpha = 1.0;
+        } else {
+            matchCell.redAQ.alpha = 0.0;
+        }
+        if(match.blueDidAutoQuest) {
+            matchCell.blueAQ.alpha = 1.0;
+        } else {
+            matchCell.blueAQ.alpha = 0.0;
+        }
+        if(match.redDidFaceBoss) {
+            matchCell.redFTB.alpha = 1.0;
+        } else {
+            matchCell.redFTB.alpha = 0.0;
+        }
+        if(match.blueDidFaceBoss) {
+            matchCell.blueFTB.alpha = 1.0;
+        } else {
+            matchCell.blueFTB.alpha = 0.0;
+        }
     } else {
         matchCell.blueAQ.alpha = 0.0;
-    }
-    if(match.redDidFaceBoss) {
-        matchCell.redFTB.alpha = 1.0;
-    } else {
-        matchCell.redFTB.alpha = 0.0;
-    }
-    if(match.blueDidFaceBoss) {
-        matchCell.blueFTB.alpha = 1.0;
-    } else {
         matchCell.blueFTB.alpha = 0.0;
+        matchCell.redAQ.alpha = 0.0;
+        matchCell.redFTB.alpha = 0.0;
     }
 }
 
