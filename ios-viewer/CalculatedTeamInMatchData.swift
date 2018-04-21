@@ -43,6 +43,8 @@ public final class CalculatedTeamInMatchData: NSObject {
     static let numAlliancePlatformIntakeTele = "numAlliancePlatformIntakeTele"
     static let numOpponentPlatformIntakeTele = "numOpponentPlatformIntakeTele"
     static let switchOwnership = "switchOwnership"
+    static let numCubesScaleAt100s = "numCubesScaleAt100s"
+    static let numCubesScaleAt110s = "numCubesScaleAt110s"
 }
 
   // MARK: Properties
@@ -77,6 +79,8 @@ public final class CalculatedTeamInMatchData: NSObject {
     public var numAlliancePlatformIntakeTele: Int?
     public var numOpponentPlatformIntakeTele: Int?
     public var switchOwnership: Int?
+    public var numCubesScaleAt100s: Int?
+    public var numCubesScaleAt110s: Int?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -122,6 +126,8 @@ public final class CalculatedTeamInMatchData: NSObject {
     numAlliancePlatformIntakeTele = json[SerializationKeys.numAlliancePlatformIntakeTele].int
     numOpponentPlatformIntakeTele = json[SerializationKeys.numOpponentPlatformIntakeTele].int
     switchOwnership = json[SerializationKeys.switchOwnership].int
+    numCubesScaleAt100s = json[SerializationKeys.numCubesScaleAt100s].int
+    numCubesScaleAt100s = json[SerializationKeys.numCubesScaleAt110s].int
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -160,6 +166,8 @@ public final class CalculatedTeamInMatchData: NSObject {
     if let value = numAlliancePlatformIntakeTele { dictionary[SerializationKeys.numAlliancePlatformIntakeTele] = value }
     if let value = numOpponentPlatformIntakeTele { dictionary[SerializationKeys.numOpponentPlatformIntakeTele] = value }
     if let value = switchOwnership { dictionary[SerializationKeys.switchOwnership] = value }
+    if let value = numCubesScaleAt100s { dictionary[SerializationKeys.numCubesScaleAt100s] = value }
+    if let value = numCubesScaleAt110s { dictionary[SerializationKeys.numCubesScaleAt110s] = value }
     return dictionary
   }
 
@@ -196,6 +204,8 @@ public final class CalculatedTeamInMatchData: NSObject {
     self.numAlliancePlatformIntakeTele = aDecoder.decodeObject(forKey: SerializationKeys.numAlliancePlatformIntakeTele) as? Int
     self.numOpponentPlatformIntakeTele = aDecoder.decodeObject(forKey: SerializationKeys.numOpponentPlatformIntakeTele) as? Int
     self.switchOwnership = aDecoder.decodeObject(forKey: SerializationKeys.switchOwnership) as? Int
+    self.numCubesScaleAt100s = aDecoder.decodeObject(forKey: SerializationKeys.numCubesScaleAt100s) as? Int
+    self.numCubesScaleAt110s = aDecoder.decodeObject(forKey: SerializationKeys.numCubesScaleAt110s) as? Int
   }
 
   public func encode(with aCoder: NSCoder) {
@@ -230,6 +240,8 @@ public final class CalculatedTeamInMatchData: NSObject {
     aCoder.encode(numAlliancePlatformIntakeTele, forKey: SerializationKeys.numAlliancePlatformIntakeTele)
     aCoder.encode(numAlliancePlatformIntakeTele, forKey: SerializationKeys.numOpponentPlatformIntakeTele)
     aCoder.encode(switchOwnership, forKey: SerializationKeys.switchOwnership)
+    aCoder.encode(numCubesScaleAt100s, forKey: SerializationKeys.numCubesScaleAt100s)
+    aCoder.encode(numCubesScaleAt110s, forKey: SerializationKeys.numCubesScaleAt110s)
   }
 
 }
