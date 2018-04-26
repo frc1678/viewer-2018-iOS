@@ -73,7 +73,6 @@ class SlackTableViewController: ArrayTableViewController {
         }
         var newSlack: String? = ""
         if self.filteredArray != nil {
-            print(((self.firebaseFetcher?.slackProfiles as! NSDictionary)["U2VQ5NU83"] as? SlackProfile) == (self.filteredArray[indexPath.row] as? SlackProfile))
             newSlack = (self.firebaseFetcher?.slackProfiles as! NSDictionary).allKeys(for: self.filteredArray[indexPath.row])[0] as? String
         } else {
             newSlack = (self.firebaseFetcher?.slackProfiles as! NSDictionary).allKeys(for: Array(self.firebaseFetcher!.slackProfiles.values)[indexPath.row])[0] as? String

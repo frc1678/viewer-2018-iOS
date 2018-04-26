@@ -240,7 +240,6 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         NotificationCenter.default.addObserver(self, selector: #selector(MatchDetailsViewController.checkRes(_:)), name: NSNotification.Name(rawValue: "updateLeftTable"), object: nil)
         
         updateUI()
-       // print(self.match)
         //register table views
         self.redTableView.register(UINib(nibName: "MatchDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "MatchDetailsCell")
         self.blueTableView.register(UINib(nibName: "MatchDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "MatchDetailsCell")
@@ -339,7 +338,6 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
             if (blueTeams?.count)! > 0 {
                 for index in 1...(blueTeams?.count)! {
                     if index <= 3 {
-                        //print(blueTeams[index].number)
                         //setting team button titles
                         (value(forKey: "b\(mapping[index - 1])Button") as! UIButton).setTitle("\(match.blueAllianceTeamNumbers![index - 1])", for: UIControlState())
                     }

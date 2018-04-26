@@ -112,8 +112,6 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
             if let snappy = snapshot.childSnapshot(forPath: "activeSlackProfiles").value as? [String:[String:Any]] {
                 for i in snappy.values {
                     self.activeProfiles[(snappy as NSDictionary?)?.allKeys(for: i)[0] as! String] = SlackProfile(json: JSON(i))
-                    print(self.activeProfiles[(snappy as NSDictionary?)?.allKeys(for: i)[0] as! String])
-                    print("filler")
                     /*self.activeProfiles[(snappy as NSDictionary?)?.allKeys(for: i)[0] as! String]?.appToken = SlackProfile(json: JSON(snapshot.childSnapshot(forPath: "activeSlackProfiles").childSnapshot(forPath: (snapshot.childSnapshot(forPath: "activeSlackProfiles").value as? [String:[String:Any]] as NSDictionary?)?.allKeys(for: i)[0] as! String).value)).appToken
                     self.activeProfiles[(snappy as NSDictionary?)?.allKeys(for: i)[0] as! String]?.starredMatches = SlackProfile(json: JSON(snapshot.childSnapshot(forPath: "activeSlackProfiles").childSnapshot(forPath: (snapshot.childSnapshot(forPath: "activeSlackProfiles").value as? [String:[String:Any]] as NSDictionary?)?.allKeys(for: i)[0] as! String).value)).starredMatches
                     self.activeProfiles[(snappy as NSDictionary?)?.allKeys(for: i)[0] as! String]?.notifyInAdvance = SlackProfile(json: JSON(snapshot.childSnapshot(forPath: "activeSlackProfiles").childSnapshot(forPath: (snapshot.childSnapshot(forPath: "activeSlackProfiles").value as? [String:[String:Any]] as NSDictionary?)?.allKeys(for: i)[0] as! String).value)).notifyInAdvance*/
@@ -140,7 +138,6 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
                 for i in thingENum {
                     thingArray.append((i as! DataSnapshot).value as! Int)
                 }
-                print(thingArray)
                 self.firstPicklist = firstPicks
             } else {
                 for i in self.getFirstPickList() {
@@ -256,7 +253,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
             matchReference.observe(.childChanged, with: { [unowned self] snapshot in
                 //increase matchCounter
                 self.matchCounter += 1
-                print("Current Match: \(self.currentMatchManager.currentMatch)")
+                print("Current Match Updated. New: \(self.currentMatchManager.currentMatch)")
                 //once again, future me: test commenting out this line
                 self.currentMatchManager.currentMatch = self.currentMatchManager.currentMatch
                 //gets the match number

@@ -66,10 +66,10 @@
     [self.tableView addGestureRecognizer:pinchGestureRecognizer];
 }
 
+//This used to be used for Dysfunc Highlighting, but on options page now. I'll leave this here in case we want to pinch things in the future.
 - (void)handlePinch:(UIPinchGestureRecognizer*)recognizer {
     if(recognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"Ouch why did you pinch me");
-        [self toggleDysfuncHighlight];
     }
 }
 
@@ -191,7 +191,6 @@
         if ([matchCell.matchLabel.text integerValue] > self.currentNumber) {
             self.currentNumber = [matchCell.matchLabel.text integerValue];
         }
-        //NSLog([NSString stringWithFormat:@"%ld",(long)self.currentNumber]);
     }
     
     //EXTRA RP IMAGE VIEWS
@@ -231,7 +230,6 @@
 - (NSArray *)loadDataArray:(BOOL)shouldForce {
     NSArray *returnData = self.firebaseFetcher.matches;
     
-    //NSLog(@"%lu", (unsigned long)returnData.count);
     //[self.tableView setUserInteractionEnabled:YES];
     return returnData;
 }
@@ -264,7 +262,6 @@
     } else {
     MatchTableViewCell *cell = sender;
     MatchDetailsViewController *detailController = (MatchDetailsViewController *)segue.destinationViewController;
-    //NSLog([NSString stringWithFormat:@"%lu",(unsigned long)self.firebaseFetcher.matches.count]);
     detailController.match = [self.firebaseFetcher.matches objectAtIndex:cell.matchLabel.text.integerValue-1];
     detailController.matchNumber = cell.matchLabel.text.integerValue;
     }

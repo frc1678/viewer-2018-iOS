@@ -669,8 +669,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                     if altMapping != nil {
                     graphViewController.zeroAndOneReplacementValues = altMapping!
                     }
-                    } else {
-                    //print(values)*/
+                    } else {*/
                     var nilValueIndecies = [Int]()
                     //iterate thru all timd values
                     for i in 0..<values.count {
@@ -697,8 +696,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                     if altMapping != nil {
                         graphViewController.zeroAndOneReplacementValues = altMapping!
                     }
-                    //print("Here are the subValues \(graphViewController.values.count)::\(graphViewController.subValuesLeft.count)")
-                    //print(graphViewController.subValuesLeft)
+                    //print("Here are the subValues: \(graphViewController.values.count)::\(graphViewController.subValuesLeft.count)")
                     //}
                     /*if let d = data {
                     graphViewController.subValuesRight =

@@ -40,9 +40,6 @@ FIRDatabaseReference *firebase;
 
 - (NSArray *) loadDataArray:(BOOL)shouldForce {
     if (!inPicklist) {
-        if(self.firebaseFetcher == nil) {
-            NSLog(@"STUPID");
-        }
         NSArray *tempFirstPick = nil;
         tempFirstPick = [self.firebaseFetcher getFirstPickList];
         return tempFirstPick;
@@ -64,7 +61,6 @@ FIRDatabaseReference *firebase;
         
         TeamDetailsTableViewController *teamDetailsController = segue.destinationViewController;
         Team *team = [self.firebaseFetcher getTeam:[multiCell.teamLabel.text integerValue]];
-        NSLog(@"This is the passed team Number:");
         teamDetailsController.team = team;
     }
 }
@@ -84,8 +80,6 @@ FIRDatabaseReference *firebase;
     }
     if (inPicklist) {
         if ([self.firebaseFetcher.firstPicklist[path.row] intValue] < 0) {
-            NSLog(@"%ld",(long)path.row);
-            NSLog(@"%d",[self.firebaseFetcher.firstPicklist[path.row] intValue]);
             cell.backgroundColor = [UIColor colorWithRed: 1.0 green: 0.0 blue: 0.0 alpha: 1.0];
             cell.textLabel.backgroundColor = [UIColor clearColor];
             cell.detailTextLabel.backgroundColor = [UIColor clearColor];
@@ -122,16 +116,12 @@ FIRDatabaseReference *firebase;
             [[[[self.ref child:@"Teams"] child: [[NSNumber numberWithDouble:fabs([firstPicklist[j] doubleValue])] stringValue]] child:@"picklistPosition"] setValue:[NSNumber numberWithInteger:j]];
         }
     }
-    // NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(secondPicklist)")
     // To check for correctness enable: self.tableView.reloadData()
 }
 
 -(void)reloadTableView:(NSNotification *)note {
     NSLog(@"A little birdie told me that we reloading");
-    //NSLog(@"Picklist1: %@", self.firebaseFetcher.firstPicklist[0]);
     self.dataArray = [self loadDataArray:false];
-    //NSLog(@"Picklist2: %@", self.firebaseFetcher.firstPicklist[0]);
-    //NSLog(@"DataArray: %ld", (long)((Team *)self.dataArray[0]).number);
     [self.tableView reloadData];
 }
 
@@ -170,7 +160,6 @@ NSMutableArray<NSNumber *> *firstPicklist = nil;
             NSMutableArray *tempArray = [NSMutableArray arrayWithArray:self.firebaseFetcher.firstPicklist];
             tempArray[indexPath.row] = @(-1 * [self.firebaseFetcher.firstPicklist[indexPath.row] intValue]);
             self.firebaseFetcher.firstPicklist = tempArray;
-            NSLog(@"%@",tempArray[indexPath.row]);
             [[[firebase child:@"picklist"] child:[NSString stringWithFormat:@"%ld",(long)indexPath.row]] setValue:[NSNumber numberWithInt:([self.firebaseFetcher.firstPicklist[indexPath.row] intValue])]];
             firstPicklist[indexPath.row] = @(-1 * [firstPicklist[indexPath.row] intValue]);
         }
