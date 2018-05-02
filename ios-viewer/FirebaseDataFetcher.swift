@@ -234,7 +234,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         Retrieves many datas
     */
     func getAllTheData() {
-        self.firebase.observeSingleEvent(of: .value, with: { [unowned self] (snap) -> Void in
+        //self.firebase.observeSingleEvent(of: .value, with: { [unowned self] (snap) -> Void in
             //create a firebase reference that points to Matches
             let matchReference = self.firebase.child("Matches")
             
@@ -366,7 +366,7 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
             
             let m : [String: Any] = ["num":self.currentMatchManager.currentMatch, "redTeams": currentMatchFetch?.redAllianceTeamNumbers ?? [0,0,0], "blueTeams": currentMatchFetch?.blueAllianceTeamNumbers ?? [0,0,0]]
             UserDefaults.standard.set(m, forKey: "match")
-        })
+        //})
         
     }
     
