@@ -467,7 +467,7 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
     @objc func checkRes(_ notification:Notification) {
         if notification.name.rawValue == "updateLeftTable" {
             if self.match == nil {
-                self.match = self.firebaseFetcher?.matches[self.matchNumber - 2] //Why the -2???
+                self.match = self.firebaseFetcher?.currentMatchManager.matches[self.matchNumber - 2] //Why the -2???
             }
             self.updateUI()
         }

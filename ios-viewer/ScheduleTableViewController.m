@@ -228,7 +228,7 @@
 }
 
 - (NSArray *)loadDataArray:(BOOL)shouldForce {
-    NSArray *returnData = self.firebaseFetcher.matches;
+    NSArray *returnData = self.firebaseFetcher.currentMatchManager.matches;
     
     //[self.tableView setUserInteractionEnabled:YES];
     return returnData;
@@ -262,7 +262,7 @@
     } else {
     MatchTableViewCell *cell = sender;
     MatchDetailsViewController *detailController = (MatchDetailsViewController *)segue.destinationViewController;
-    detailController.match = [self.firebaseFetcher.matches objectAtIndex:cell.matchLabel.text.integerValue-1];
+    detailController.match = [self.firebaseFetcher.currentMatchManager.matches objectAtIndex:cell.matchLabel.text.integerValue-1];
     detailController.matchNumber = cell.matchLabel.text.integerValue;
     }
 }

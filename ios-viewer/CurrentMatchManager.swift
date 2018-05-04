@@ -79,6 +79,36 @@ class CurrentMatchManager: NSObject {
                 self.highlightDysfunc = false
             }
         }
+        cache.fetch(key: "teams").onSuccess { (d) -> () in
+            if let id = NSKeyedUnarchiver.unarchiveObject(with: d) as? [Team] {
+                if self.teams != id {
+                    self.teams = id
+                }
+            } else {
+                self.teams = []
+            }
+        }
+        cache.fetch(key: "matches").onSuccess { (d) -> () in
+            if let id = NSKeyedUnarchiver.unarchiveObject(with: d) as? [Match] {
+                if self.matches != id {
+                    self.matches = id
+                }
+            } else {
+                self.matches = []
+            }
+        }
+    }
+    
+    @objc var matches: [Match] = [] {
+        didSet {
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: matches), key: "matches")
+        }
+    }
+    
+    @objc var teams: [Team] = [] {
+        didSet {
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: teams), key: "teams")
+        }
     }
     
     @objc var currentMatch = 0 {
