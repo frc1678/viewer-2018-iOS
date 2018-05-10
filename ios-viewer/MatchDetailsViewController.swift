@@ -87,88 +87,6 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         cell.team1.numberOfLines = 0
         cell.team2.numberOfLines = 0
         cell.team3.numberOfLines = 0
-        //cell.datapointLabel.preferredMaxLayoutWidth = 50
-        //cell.valueLabel.preferredMaxLayoutWidth = 50
-        
-        //detect which tableView it is
-        /*switch tableView {
-        case r1TableView :
-            /* if indexPath.row == tableKeys.count {
-                //set final row to Future Match Status
-                cell.datapointLabel.text = "Future Match Status"
-                cell.valueLabel.attributedText = withAgainstAttributedStringForTeam(number: (redTeams?[0].number)!)
-            } else { */
-                //set valueLabel to the appropriate value
-                if Utils.teamDetailsKeys.percentageValues.contains("calculatedData.\(tableKeys[indexPath.row])") {
-                    //If the value is a percentage, multiply float by 100 and add %
-                    cell.valueLabel.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: redTeams?[0].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]!) as! Float) * 100), toDecimalPlaces: 2)))%"
-                } else {
-                    cell.valueLabel.text = String(describing: Utils.unwrap(any: redTeams?[0].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]!))
-                }
-            //}
-        case r2TableView :
-            /*if indexPath.row == tableKeys.count {
-                cell.datapointLabel.text = "Future Match Status"
-                cell.valueLabel.attributedText = withAgainstAttributedStringForTeam(number: (redTeams?[1].number)!)
-            } else { */
-                if Utils.teamDetailsKeys.percentageValues.contains("calculatedData.\(tableKeys[indexPath.row])") {
-                    //If the value is a percentage, multiply float by 100 and add %
-                    cell.valueLabel.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: redTeams?[1].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
-                } else {
-                    cell.valueLabel.text = String(describing: Utils.unwrap(any: redTeams?[1].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
-                }
-            //}
-        case r3TableView :
-            /*if indexPath.row == tableKeys.count {
-                cell.datapointLabel.text = "Future Match Status"
-                cell.valueLabel.attributedText = withAgainstAttributedStringForTeam(number: (redTeams?[2].number)!)
-            } else { */
-                if Utils.teamDetailsKeys.percentageValues.contains("calculatedData.\(tableKeys[indexPath.row])") {
-                    //If the value is a percentage, multiply float by 100 and add %
-                    cell.valueLabel.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: redTeams?[2].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
-                } else {
-                    cell.valueLabel.text = String(describing: Utils.unwrap(any: redTeams?[2].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
-                }
-            //}
-        case b1TableView :
-            /*if indexPath.row == tableKeys.count {
-                cell.datapointLabel.text = "Future Match Status"
-                cell.valueLabel.attributedText = withAgainstAttributedStringForTeam(number: (blueTeams?[0].number)!)
-            } else { */
-                if Utils.teamDetailsKeys.percentageValues.contains("calculatedData.\(tableKeys[indexPath.row])") {
-                    //If the value is a percentage, multiply float by 100 and add %
-                    cell.valueLabel.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: blueTeams?[0].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
-                } else {
-                    cell.valueLabel.text = String(describing: Utils.unwrap(any: blueTeams?[0].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
-                }
-            //}
-        case b2TableView :
-            /*if indexPath.row == tableKeys.count {
-                cell.datapointLabel.text = "Future Match Status"
-                cell.valueLabel.attributedText = withAgainstAttributedStringForTeam(number: (blueTeams?[1].number)!)
-            } else { */
-                if Utils.teamDetailsKeys.percentageValues.contains("calculatedData.\(tableKeys[indexPath.row])") {
-                    //If the value is a percentage, multiply float by 100 and add %
-                    cell.valueLabel.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: blueTeams?[1].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
-                } else {
-                    cell.valueLabel.text = String(describing: Utils.unwrap(any: blueTeams?[1].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
-                }
-            }
-        case b3TableView :
-            /*if indexPath.row == tableKeys.count {
-                cell.datapointLabel.text = "Future Match Status"
-                cell.valueLabel.attributedText = withAgainstAttributedStringForTeam(number: (blueTeams?[2].number)!)
-            } else { */
-                if Utils.teamDetailsKeys.percentageValues.contains("calculatedData.\(tableKeys[indexPath.row])") {
-                    //If the value is a percentage, multiply float by 100 and add %
-                    cell.valueLabel.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: blueTeams?[2].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
-                } else {
-                    cell.valueLabel.text = String(describing: Utils.unwrap(any: blueTeams?[2].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
-                }
-            //}
-        default :
-            break
-        }*/
         
         var teams: [Team]?
         
@@ -181,10 +99,6 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
             break
         }
         
-        /*if indexPath.row == tableKeys.count {
-            cell.datapointLabel.text = "Future Match Status"
-            cell.valueLabel.attributedText = withAgainstAttributedStringForTeam(number: (blueTeams?[2].number)!)
-        } else {*/
         if Utils.teamDetailsKeys.percentageValues.contains("calculatedData.\(tableKeys[indexPath.row])") {
             //If the value is a percentage, multiply float by 100 and add %
             cell.team1.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[0].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
@@ -266,30 +180,6 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
                 title = "???"
             }
             if let cd = match.calculatedData {
-               /*
-                //Remove Following Block to Enable Optimal Defenses
-                redDefenseOneLabel.isHidden = true
-                redDefenseTwoLabel.isHidden = true
-                redDefenseThreeLabel.isHidden = true
-                redDefenseFourLabel.isHidden = true
-                blueDefenseOneLabel.isHidden = true
-                blueDefenseTwoLabel.isHidden = true
-                blueDefenseThreeLabel.isHidden = true
-                blueDefenseFourLabel.isHidden = true
-                
-                if(match.calculatedData?.optimalBlueDefenses != nil) {
-                    redDefenseOneLabel.text = String(cd.optimalRedDefenses![0])
-                    redDefenseTwoLabel.text = String(cd.optimalRedDefenses![1])
-                    redDefenseThreeLabel.text = String(cd.optimalRedDefenses![2])
-                    redDefenseFourLabel.text = String(cd.optimalRedDefenses![3])
-                    blueDefenseOneLabel.text = String(cd.optimalBlueDefenses![0])
-                    blueDefenseTwoLabel.text = String(cd.optimalBlueDefenses![1])
-                    blueDefenseThreeLabel.text = String(cd.optimalBlueDefenses![2])
-                    blueDefenseFourLabel.text = String(cd.optimalBlueDefenses![3])
-                    
-                   
-                }
-                */
                 //setting labels
                 redOfficialScoreLabel.text = "Score: \(getLabelTitle(match.redScore))"
                 redPredictedScoreLabel.text = "Pred. Score: \(getLabelTitle(cd.predictedRedScore))"
@@ -317,7 +207,6 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
                                 self.r3Button.backgroundColor = UIColor.green
                             default:
                                 print("This is an executable statement")
-                                //heck
                             }
                         }
                         
@@ -351,7 +240,6 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
                             self.b3Button.backgroundColor = UIColor.green
                         default:
                             print("This is an executable statement")
-                            //heck
                         }
                     }
                 }
@@ -419,15 +307,8 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBAction func teamTapped(_ sender: UIButton) {
         print("WE STILL LOGGING")
-        //        if let teamNumTapped = Int((sender.titleLabel?.text)!) {
-        //            let match = firebaseFetcher.getTeamInMatchDataForTeam(firebaseFetcher.getTeam(teamNumTapped), inMatch: self.match!)
-        //            if match.matchNumber > 0 {
-        //                performSegueWithIdentifier("GoToTIMController", sender: sender)
-        //            } else {
         performSegue(withIdentifier: "GoToTeamController", sender: sender)
     }
-    //  }
-    //}
     fileprivate func getLabelTitle(_ value: Int?) -> String {
         let unknown = "???"
         if value != nil {

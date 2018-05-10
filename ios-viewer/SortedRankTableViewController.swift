@@ -93,7 +93,6 @@ class SortedRankTableViewController: ArrayTableViewController {
         }
     }
     
-    //Black magic to rotate the screen
     @objc func rotationDetected(_ recognizer: UIRotationGestureRecognizer) {
         //how much it rotated
         let rot = recognizer.rotation

@@ -104,14 +104,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.predictedNumRPs"
         ]
         
-        // Add carrying stability into stacking security
-        
-        /* let superKeys = [
-         "calculatedData.avgEvasion",
-         "calculatedData.avgDefense"
-         ]
-         */
-        
         /**
          Values that should not be graphed
          */
@@ -157,10 +149,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.switchFailPercentageTele",
             "calculatedData.autoRunPercentage"
         ]
-        
-        //let otherNoCalcDataValues = [
-        //
-        //]
         
         let addCommasBetweenCapitals : [String] = []
         
@@ -221,19 +209,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         
         /** Sections of teamDetails view. */
         func keySets(_ minimalist : Bool) -> [[String]] {
-            if minimalist {
-                return [
-                    defaultKeys,
-                    //highLevel,
-                    //autoKeysMini,
-                    teleKeysMini,
-                    siegeKeysMini,
-                    statusKeysMini,
-                    //superKeys,
-                    //pitKeys,
-                    //sealKeys
-                ]
-            }
             return [
                 defaultKeys,
                 highLevel,
@@ -261,9 +236,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
              "calculatedData.canPlaceHighLayerCube",
         ]
         
-        //let autoKeysMini = [
-        
-        //]
         /** Keys relating to autonomous to be displayed on teamDetails. */
         let autoKeys = [
         //Some stuff is not needed
@@ -276,15 +248,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.avgTimeToOwnScaleAuto",
             "calculatedData.allianceSwitchSuccessPercentageAuto",
             "calculatedData.autoRunPercentage",
-        ]
-        
-        let teleKeysMini : [String] = [
-            //"calculatedData.avgHighShotsTele",
-            //"calculatedData.sdHighShotsTele",
-            //"calculatedData.avgLowShotsTele",
-            //"calculatedData.sdLowShotsTele",
-            //"calculatedData.avgLowShotsAttemptedTele",
-            //"calculatedData.avgHighShotsAttemptedTele",
         ]
         
         /** Keys relating to Teleoperated to be displayed on teamDetails */
@@ -363,17 +326,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.avgNumRobotsLifted",
         ]
         
-        let siegeKeysMini : [String] = [
-            //"calculatedData.liftoffAbility",
-            //"calculatedData.sdLiftoffAbility"
-        ]
-        
-        let statusKeysMini = [
-            "calculatedData.dysfunctionalPercentage",
-            //"calculatedData.disabledPercentage",
-            //"calculatedData.incapacitatedPercentage",
-        ]
-        
         /** Keys relating to the status of a robot to be displayed on teamDetails */
         let statusKeys = [
             "calculatedData.dysfunctionalPercentage",
@@ -427,10 +379,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "calculatedData.avgDefense",
         "calculatedData.totalNumGoodDecisions",
         "calculatedData.totalNumBadDecisions"
-        
-        //"calculatedData.avgBallControl",
-        //"calculatedData.avgGearControl",
-        //"calculatedData.RScoreDrivingAbility"
     ]
     static let statusKeys = ["uploadedData.incapacitated", "uploadedData.disabled"]
     static let miscKeys = ["uploadedData.miscellaneousNotes"]
@@ -439,7 +387,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
     static let boolGraphs = [
         "calculatedData.climbPercentage",
         "calculatedData.dysfunctionalPercentage",
-        //"calculatedData.park", //FALSE doesn't exist
         "calculatedData.incapacitatedPercentage",
         "calculatedData.disabledPercentage",
         "calculatedData.autoRunPercentage"
@@ -463,7 +410,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "numGroundIntakeTele",
         "numHumanPortalIntakeTele",
         "climb",
-        //"calculatedData.didClimb",
         "didPark"
     ]
     
@@ -496,16 +442,9 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         
         "didBecomeIncapacitated" : "incapacitatedPercentage",
         "didStartDisabled" : "disabledPercentage",
-        //"numShotsBlockedTele" : "avgShotsBlocked",
-        //"didReachBaselineAuto" : "baselineReachedPercentage",
-        //"didLiftoff" : "liftoffPercentage",
-        //"calculatedData.liftoffAbility" : "liftoffAbility",
-        //"numLowShotsTele" : "avgLowShotsTele",
-        //"calculatedData.numHighShotsTele" : "avgHighShotsTele",
         "calculatedData.RScoreSpeed" : "calculatedData.avgSpeed",
         "calculatedData.RScoreEvasion" : "calculatedData.avgEvasion",
         "calculatedData.RScoreTorque" : "calculatedData.avgTorque",
-        //"rankBallControl" : "calculatedData.avgBallControl",
         "calculatedData.totalNumGoodDecisions" : "numGoodDecisions",
         "calculatedData.totalNumBadDecisions" : "numBadDecisions",
         "calculatedData.avgScaleCubesBy100s" : "calculatedData.numCubesScaleAt100s",
@@ -515,14 +454,9 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
     /** Team Details keys? */
     static let teamCalcKeys = [
         "actualSeed",
-        //"avgBallControl",
         "avgDefense",
         "avgEvasion",
         "avgGroundIntakes",
-        //"avgHighShotsAuto",
-        //"avgHighShotsTele",
-        //"avgLowShotsAuto",
-        //"avgLowShotsTele",
         "avgSpeed",
         "avgTorque",
         "disabledPercentage",
@@ -540,12 +474,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "sdLowShotsTele",
         "secondPickAbility",
         "secondPickAbility",
-        //"avgGearsFumbledTele",
-        //"avgGearsEjectedTele",
-        //"avgGearGroundInakesTele",
-        //"avgLoaderIntakesTele",
-        //"avgHoppersOpenedTele",
-        //"avgHoppersOpenedAuto"
     ]
     
     /** Calculated TIMD keys */
@@ -555,13 +483,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "calculatedData.secondPickAbility",
         "calculatedData.secondPickAbility",
         "calculatedData.scoreContribution",
-        //"calculatedData.hoppersOpenedAuto",
-        //"calculatedData.hoppersOpenedTele",
-        //"calculatedData.liftoffAbility",
-        //"calculatedData.numLowShotsAuto",
-        //"calculatedData.numHighShotsTele",
-        //"calculatedData.numLowShotsTele",
-        //"calculatedData.numHighShotsAuto"
     ]
     
     /** A dictionary with datapoints as keys and Human Readable versions as values */
@@ -664,7 +585,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "numExchangeInput" : "EX Inputs",
         "numCubesFumbledAuto" : "Auto Cubes Fumbled",
         "didCrossAutoZone" : "Crossed Auto Zone",
-        //"didMakeAutoRun" : "Made Auto Run",
         "calculatedData.numAllianceSwitchCubeSuccessAuto" : "Auto Successful SW Cubes",
         "calculatedData.numScaleSuccessAuto" : "Auto Successful SC Cubes",
         "calculatedData.numAllianceSwitchSuccessTele" : "Tele Successful SW Cubes",

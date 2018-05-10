@@ -46,7 +46,6 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
             if team?.number != nil {
                 tableView?.reloadData()
                 self.updateTitleAndTopInfo()
-                //tableViewHeightConstraint?.constant = (tableView.contentSize.height)
                 
                 self.reloadImage()
             }
@@ -113,7 +112,6 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                                 let selImage = MWPhoto(url: URL(string: (Array(Array(team.pitAllImageURLs!)).filter { $0.contains((team.pitSelectedImage!).replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "+", with: "%2B")) } )[0])!)
                                 selImage?.loadUnderlyingImageAndNotify()
                                 self.teamSelectedImageView.image = selImage?.underlyingImage
-                                //self.teamSelectedImageView.hnk_setImageFromURL(URL(string: (Array(Array(team.pitAllImageURLs!.values)).filter { $0.contains((team.pitSelectedImage!).replacingOccurrences(of: " ", with: "%20").replacingOccurrences(of: "+", with: "%2B")) } )[0])!)
                                 self.resetTableViewHeight()
                                
 
@@ -137,8 +135,6 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
             if self.scrollView != nil && self.tableView != nil {
                 //scrollview height is set correctly
                 self.scrollView.contentSize.height = self.tableViewHeightConstraint.constant + self.tableView.frame.origin.y
-                //self.tableView.setNeedsUpdateConstraints()
-                //self.scrollView.setNeedsUpdateConstraints()
                 self.scrollView.setNeedsDisplay()
                 self.tableView.setNeedsDisplay()
             }
@@ -164,8 +160,6 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
         //longpress recognizer
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(TeamDetailsTableViewController.rankingDetailsSegue(_:)))
         self.view.addGestureRecognizer(longPress)
-        //let longPressForMoreDetail = UILongPressGestureRecognizer(target: self, action: #selector(TeamDetailsTableViewController.didLongPressForMoreDetail(_:)))
-        //self.teamNumberLabel.addGestureRecognizer(longPressForMoreDetail)
         let tap = UITapGestureRecognizer(target: self, action: #selector(TeamDetailsTableViewController.didTapImage(_:)))
         self.teamSelectedImageView.addGestureRecognizer(tap)
         
@@ -210,52 +204,8 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
     }
     
     @IBAction func exportTeamPDFs(_ sender: UIBarButtonItem) {
-        //sender.isEnabled = false
-        //let pdfPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("team_cards.pdf")
         
-        //let pdfPath = dir.appendingPathComponent("team_cards.pdf")
-        //_ = URL(fileURLWithPath: pdfPath)
-        //print("Rendering PDF...")
-        
-        /*PDFRenderer.renderPDFToPath(pdfPath) {(progress: Float, done: Bool) -> () in
-        self.navigationController?.setSGProgressPercentage(progress * 100)
-        
-        if(done) {
-        print("Done rendering PDF")
-        
-        self.shareController = self.setupControllerWithURL(pdfURL, usingDelegate: self)
-        self.shareController.presentPreviewAnimated(true)
-        sender.enabled = true
-        }
-        }*/
     }
-    
-    /*func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if team == nil {
-            return 44
-        }
-        
-        //get key
-        let dataKey: String = Utils.teamDetailsKeys.keySets(self.showMinimalistTeamDetails)[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
-        
-        //no longTextCells
-        if Utils.teamDetailsKeys.TIMDLongTextCells.contains(dataKey) {
-            
-            var text = ""
-            for timd in (self.firebaseFetcher?.getTIMDataForTeam(self.team!))! {
-                if let data = timd.value(forKey: dataKey) {
-                    text.append("\nQ\(timd.matchNumber!): \(data)")
-                }
-            }
-            
-            let titleText = Utils.humanReadableNames[dataKey]
-            
-            let attrs = [NSFontAttributeName : UIFont.systemFont(ofSize: 16)]
-            return (titleText! as NSString).size(attributes: attrs).height + (text as NSString).size(attributes: attrs).height + 44
-        } else {
-            return 44
-        }
-    }*/
     
     //set title of section
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -411,34 +361,6 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                             multiCell.scoreLabel!.text = percentageValueOf(dataPoint!)
                         }
                         
-                        /*//Low Shots Attempted Tele
-                        if multiCell.teamLabel?.text?.rangeOfString("Accuracy") != nil && multiCell.teamLabel?.text?.rangeOfString("Low") != nil {
-                        var counter = 0
-                        for TIM in (data?.TeamInMatchDatas)! {
-                        if TIM.calculatedData?.lowShotsAttemptedTele != nil {
-                        counter += (TIM.calculatedData!.lowShotsAttemptedTele?.integerValue)!
-                        }
-                        }
-                        if counter == 0 {
-                        multiCell.scoreLabel!.text = "0 Attempted"
-                        }
-                        }
-                        if multiCell.teamLabel?.text?.rangeOfString("Accuracy") != nil && multiCell.teamLabel?.text?.rangeOfString("High") != nil {
-                        var counter = 0
-                        for TIM in (data?.TeamInMatchDatas)! {
-                        if TIM.calculatedData?.highShotsAttemptedTele != nil {
-                        counter += (TIM.calculatedData!.highShotsAttemptedTele?.integerValue)!
-                        }
-                        }
-                        if(counter == 0) {
-                        multiCell.scoreLabel!.text = "0 Attempted"
-                        }
-                        }*/
-                        
-                        
-                        
-                        //                multiCell.selectionStyle = UITableViewCellSelectionStyle.None
-                        
                     }
                     cell = multiCell
                     multiCell.rankLabel!.text = "\((firebaseFetcher?.rankOfTeam(team!, withCharacteristic: dataKey))! as Int)"
@@ -474,30 +396,6 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
         //
     }
     
-    /*func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        //
-    }*/
-    
-    /**
-     Translates numbers into what it actually means.
-     
-     - parameter numString: e.g. "0" -> "Terrible"
-     
-     - returns: A string with the human readable pit org
-     */
-    /*func pitOrgForNumberString(_ numString: String) -> String {
-        var translated = ""
-        switch numString {
-        case "0": translated = "Terrible"
-        case "1": translated = "Bad"
-        case "2": translated = "OK"
-        case "3": translated = "Good"
-        case "4": translated = "Great"
-        default: break
-        }
-        return translated
-
-    }*/ 
     /**
      Translates numbers into what it actually means.
      
@@ -592,8 +490,6 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
     //preparing to change viewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.teamSelectedImageView.isUserInteractionEnabled = true;
-        //        self.n
-        //navigationController?.setSGProgressPercentage(50.0)
         if segue.identifier == "sortedRankSegue" {
             if let dest = segue.destination as? SortedRankTableViewController {
                 dest.keyPath = sender as! String
@@ -662,14 +558,6 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                     if key?.range(of: "Accuracy") != nil {
                         graphViewController.isPercentageGraph = true
                     }
-                    /*if values.reduce(0, combine: +) == 0 || values.count == 0 {
-                    graphViewController.graphTitle = "Data Is All 0s"
-                    graphViewController.values = [CGFloat]()
-                    graphViewController.subValuesLeft = [CGFloat]()
-                    if altMapping != nil {
-                    graphViewController.zeroAndOneReplacementValues = altMapping!
-                    }
-                    } else {*/
                     var nilValueIndecies = [Int]()
                     //iterate thru all timd values
                     for i in 0..<values.count {
@@ -696,16 +584,6 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                     if altMapping != nil {
                         graphViewController.zeroAndOneReplacementValues = altMapping!
                     }
-                    //print("Here are the subValues: \(graphViewController.values.count)::\(graphViewController.subValuesLeft.count)")
-                    //}
-                    /*if let d = data {
-                    graphViewController.subValuesRight =
-                    nsNumArrayToIntArray(firebaseFetcher.ranksOfTeamInMatchDatasWithCharacteristic(keySets[indexPath.section][indexPath.row], forTeam:firebaseFetcher.fetchTeam(d.number!.integerValue)))
-                    
-                    let i = ((graphViewController.subValuesLeft as NSArray).indexOfObject("\(teamNum)"))
-                    graphViewController.highlightIndex = i
-                    
-                    }*/
                     //set title
                     graphViewController.subDisplayRightTitle = "Team: "
                     //set... something
@@ -723,54 +601,15 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
                 let cell = tableView.cellForRow(at: indexPath) as! MultiCellTableViewCell
                 graphViewController.graphTitle = "\(cell.teamLabel!.text!)"
                 graphViewController.displayTitle = "\(graphViewController.graphTitle): "
-                /*if let values = firebaseFetcher?.valuesInCompetitionOfPathForTeams(Utils.teamDetailsKeys.keySets(self.showMinimalistTeamDetails)[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]) as? [CGFloat] {
-                    graphViewController.values = values
-                    graphViewController.subValuesLeft = firebaseFetcher!.valuesInCompetitionOfPathForTeams("number") as [AnyObject]
-                    graphViewController.subDisplayLeftTitle = "Team "
-                    graphViewController.subValuesRight = nsNumArrayToIntArray(firebaseFetcher!.ranksOfTeamsWithCharacteristic(Utils.teamDetailsKeys.keySets(self.showMinimalistTeamDetails)[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row] as NSString) as [NSNumber] ) as [AnyObject]
-                    graphViewController.subDisplayRightTitle = "Rank: "
-                    if let i = ((graphViewController.subValuesLeft as! [Int]).index(of: teamNum)) {
-                        graphViewController.highlightIndex = i
-                    }
-                }*/
                 //keys that don't graph right: Incap, disabled, baseline, liftoff percentage, defense, agility, all super except driving ability- none of these are CTIMDs, but some normal timds work
                 var values: [Float]
                 let altMapping : [CGFloat: String]?
                 var key = Utils.getKeyForHumanReadableName(graphViewController.graphTitle)
                 key = Utils.teamDetailsKeys.teamDetailsToTIMD[key!]
                 (values, altMapping) = (firebaseFetcher?.getMatchValuesForTeamForPath(key!, forTeam: team!))!
-                //var nilValueIndecies = [Int]()
-                /* for i in 0..<values.count {
-                    if values[i] == -1111.1 {
-                        nilValueIndecies.append(i)
-                    }
-                }
-                for i in nilValueIndecies.reversed() {
-                    values.remove(at: i)
-                } */
                 graphViewController.values = (values as NSArray).map { CGFloat($0 as! Float) }
-                //                graphViewController.heights =]
-                //                graphViewController.teamNumber = Int32(teamNum)
-                //                graphViewController.graphInfo = nil;
             }
-        } /*else if segue.identifier == "NotesSegue" {
-            let notesTableViewController = segue.destination as! NotesTableViewController
-            if let teamNum = team?.number  {
-                if let p = team?.pitNotes {
-                    notesTableViewController.data.append(["Pit Notes: ": p])
-                } else {
-                    notesTableViewController.data.append(["Pit Notes: ": "None"])
-                }
-                for TIMD in (firebaseFetcher?.getTIMDataForTeam(team!))! {
-                    if let note = TIMD.superclass {
-                        notesTableViewController.data.append(["Match \(TIMD.matchNumber!.intValue)":"\(note)"])
-                    } else {
-                        notesTableViewController.data.append(["Match \(TIMD.matchNumber!.intValue)":"None"])
-                    }
-                }
-                notesTableViewController.title = "\(teamNum) Notes"
-            }
-        }*/ //Notes are integrated into view
+        }
     }
     
     /** 
@@ -791,14 +630,6 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
         
         return interactionController
     }
-    
-    //    - (UIDocumentInteractionController *) setupControllerWithURL: (NSURL *)fileURL usingDelegate: (id <UIDocumentInteractionControllerDelegate>) interactionDelegate {
-    //    
-    //    UIDocumentInteractionController *interactionController = [UIDocumentInteractionController interactionControllerWithURL: fileURL];
-    //    interactionController.delegate = interactionDelegate;
-    //    
-    //    return interactionController;
-    //    }
     
     //Row has been selected, perform segue to appropriate vc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

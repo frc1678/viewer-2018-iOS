@@ -48,9 +48,6 @@ class GraphViewController: UIViewController, JBBarChartViewDataSource, JBBarChar
     
     /// In Utils, we remap keys to nice titles. Use substitute keys in some cases to make the right titles come out.
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

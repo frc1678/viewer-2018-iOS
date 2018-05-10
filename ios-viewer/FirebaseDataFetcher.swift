@@ -82,7 +82,6 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         super.init()
         
         self.notificationManager.notifications.append(NotificationManager.Notification(name: "updateLeftTable"))
-        //self.notificationManager.notifications.append(NotificationManager.Notification(name: "currentMatchUpdated"))
         
         //retrieve data
         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
@@ -112,9 +111,6 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
             if let snappy = snapshot.childSnapshot(forPath: "activeSlackProfiles").value as? [String:[String:Any]] {
                 for i in snappy.values {
                     self.activeProfiles[(snappy as NSDictionary?)?.allKeys(for: i)[0] as! String] = SlackProfile(json: JSON(i))
-                    /*self.activeProfiles[(snappy as NSDictionary?)?.allKeys(for: i)[0] as! String]?.appToken = SlackProfile(json: JSON(snapshot.childSnapshot(forPath: "activeSlackProfiles").childSnapshot(forPath: (snapshot.childSnapshot(forPath: "activeSlackProfiles").value as? [String:[String:Any]] as NSDictionary?)?.allKeys(for: i)[0] as! String).value)).appToken
-                    self.activeProfiles[(snappy as NSDictionary?)?.allKeys(for: i)[0] as! String]?.starredMatches = SlackProfile(json: JSON(snapshot.childSnapshot(forPath: "activeSlackProfiles").childSnapshot(forPath: (snapshot.childSnapshot(forPath: "activeSlackProfiles").value as? [String:[String:Any]] as NSDictionary?)?.allKeys(for: i)[0] as! String).value)).starredMatches
-                    self.activeProfiles[(snappy as NSDictionary?)?.allKeys(for: i)[0] as! String]?.notifyInAdvance = SlackProfile(json: JSON(snapshot.childSnapshot(forPath: "activeSlackProfiles").childSnapshot(forPath: (snapshot.childSnapshot(forPath: "activeSlackProfiles").value as? [String:[String:Any]] as NSDictionary?)?.allKeys(for: i)[0] as! String).value)).notifyInAdvance*/
                 }
             } else {
                 print("Problem getting slack profiles: Profiles really not castable (probably nil)")
@@ -234,7 +230,6 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         Retrieves many datas
     */
     func getAllTheData() {
-        //self.firebase.observeSingleEvent(of: .value, with: { [unowned self] (snap) -> Void in
             //create a firebase reference that points to Matches
             let matchReference = self.firebase.child("Matches")
             
@@ -368,7 +363,6 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
             
             let m : [String: Any] = ["num":self.currentMatchManager.currentMatch, "redTeams": currentMatchFetch?.redAllianceTeamNumbers ?? [0,0,0], "blueTeams": currentMatchFetch?.blueAllianceTeamNumbers ?? [0,0,0]]
             UserDefaults.standard.set(m, forKey: "match")
-        //})
         
     }
     
@@ -535,21 +529,6 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         return self.currentMatchManager.teams.sorted { $0.calculatedData?.secondPickAbility > $1.calculatedData?.secondPickAbility }
     }
     
-    /*func getConditionalSecondPickList(_ teamNum: Int) -> [Team] {
-        var tupleArray = [(Team,Int)]()
-        for team in teams {
-            if(team.calculatedData?.secondPickAbility?.object(forKey: String(teamNum)) != nil) {
-                tupleArray.append(team, ((team.calculatedData!.secondPickAbility!.object(forKey: String(teamNum))) as? Int)!)
-            }
-        }
-        let sortedTuple = tupleArray.sorted { $0.1 > $1.1 }
-        var teamArray = [Team]()
-        for (k,_) in sortedTuple {
-            teamArray.append(k)
-        }
-        return teamArray
-    }*/
-    
     /** Get list of teams sorted by seed */
     @objc func seedList() -> [Team] {
         return (currentMatchManager.teams.sorted { $0.calculatedData!.actualSeed < $1.calculatedData!.actualSeed }).filter { $0.calculatedData?.actualSeed != 0 }
@@ -611,7 +590,6 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         return counter
     }
     
-    //
     func ranksOfTeamInMatchDatasWithCharacteristic(_ characteristic: NSString, forTeam: Team) -> [Int] {
         var array = [Int]()
         let TIMDatas = getTIMDataForTeam(forTeam)
@@ -665,28 +643,6 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
             return false
         })
     }
-    
-    
-    
-    // MARK: Getting Custom Objects From Dictionaries
-    
-    
-    
-    //deprecated
-    func getAverageDefenseValuesForDict(_ dict: NSDictionary) -> [Int] {
-        var valueArray = [Int]()
-        let keyArray = dict.allKeys as? [String]
-        for key in keyArray! {
-            let subDict = dict.object(forKey: key) as? NSDictionary
-            let subKeyArray = subDict?.allKeys
-            
-            for subKey in subKeyArray! {
-                valueArray.append((subDict!.object(forKey: subKey) as? Int)!)
-            }
-        }
-        return valueArray
-    }
-    
     
     // MARK: Search Bar
     /** 
@@ -903,10 +859,6 @@ class FirebaseDataFetcher: NSObject, UITableViewDelegate {
         content.title = "Upcoming Starred Match"
         let localNotification = UNNotificationRequest(identifier: "ViewerNotification", content: content, trigger: nil)
         UNUserNotificationCenter.current().add(localNotification, withCompletionHandler: nil)
-    }
-    
-    func didReceiveCurrentMatchNum (notificationObject : Notification) {
-        //no
     }
     
     /** 
