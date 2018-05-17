@@ -78,6 +78,10 @@ public final class CalculatedTeamData: NSObject, NSCoding {
     static let avgScaleCubesBy100s = "avgScaleCubesBy100s"
     static let avgScaleCubesBy110s = "avgScaleCubesBy110s"
     static let avgAllVaultTime = "avgAllVaultTime"
+    static let RScoreAgility = "RScoreAgility"
+    static let RScoreDefense = "RScoreDefense"
+    static let RScoreDrivingAbility = "RScoreDrivingAbility"
+    static let RScoreSpeed = "RScoreSpeed"
  }
 
   // MARK: Properties
@@ -147,6 +151,10 @@ public final class CalculatedTeamData: NSObject, NSCoding {
     @objc public var avgScaleCubesBy100s: Float = -1.0
     @objc public var avgScaleCubesBy110s: Float = -1.0
     @objc public var avgAllVaultTime: Float = -1.0
+    @objc public var RScoreAgility: Float = -1.0
+    @objc public var RScoreDefense: Float = -1.0
+    @objc public var RScoreDrivingAbility: Float = -1.0
+    @objc public var RScoreSpeed: Float = -1.0
     
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -231,6 +239,10 @@ public final class CalculatedTeamData: NSObject, NSCoding {
     avgScaleCubesBy100s = json[SerializationKeys.avgScaleCubesBy100s].floatValue
     avgScaleCubesBy110s = json[SerializationKeys.avgScaleCubesBy110s].floatValue
     avgAllVaultTime = json[SerializationKeys.avgAllVaultTime].floatValue
+    RScoreAgility = json[SerializationKeys.RScoreAgility].floatValue
+    RScoreDefense = json[SerializationKeys.RScoreDefense].floatValue
+    RScoreDrivingAbility = json[SerializationKeys.RScoreDrivingAbility].floatValue
+    RScoreSpeed = json[SerializationKeys.RScoreSpeed].floatValue
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -277,6 +289,7 @@ public final class CalculatedTeamData: NSObject, NSCoding {
     dictionary[SerializationKeys.canScoreBothSwitchSidesAuto] = canScoreBothSwitchSidesAuto
     dictionary[SerializationKeys.avgNumGroundPortalIntakeTele] = avgNumGroundPortalIntakeTele
     dictionary[SerializationKeys.avgNumElevatedPyramidIntakeAuto] = avgNumElevatedPyramidIntakeAuto
+    dictionary[SerializationKeys.avgNumElevatedPyramidIntakeTele] = avgNumElevatedPyramidIntakeTele
     dictionary[SerializationKeys.avgNumGroundPyramidIntakeTele] = avgNumGroundPyramidIntakeTele
     if let value = numMatchesPlayed { dictionary[SerializationKeys.numMatchesPlayed] = value }
     dictionary[SerializationKeys.avgNumGroundPyramidIntakeAuto] = avgNumGroundPyramidIntakeAuto
@@ -305,6 +318,10 @@ public final class CalculatedTeamData: NSObject, NSCoding {
     dictionary[SerializationKeys.avgScaleCubesBy100s] = avgScaleCubesBy100s
     dictionary[SerializationKeys.avgScaleCubesBy110s] = avgScaleCubesBy110s
     dictionary[SerializationKeys.avgAllVaultTime] = avgAllVaultTime
+    dictionary[SerializationKeys.RScoreAgility] = RScoreAgility
+    dictionary[SerializationKeys.RScoreDefense] = RScoreDefense
+    dictionary[SerializationKeys.RScoreDrivingAbility] = RScoreDrivingAbility
+    dictionary[SerializationKeys.RScoreSpeed] = RScoreSpeed
     return dictionary
   }
 
@@ -375,7 +392,11 @@ public final class CalculatedTeamData: NSObject, NSCoding {
     self.avgSwitchOwnership = aDecoder.decodeInteger(forKey: SerializationKeys.avgSwitchOwnership)
     self.avgScaleCubesBy100s = aDecoder.decodeFloat(forKey: SerializationKeys.avgScaleCubesBy100s)
     self.avgScaleCubesBy110s = aDecoder.decodeFloat(forKey: SerializationKeys.avgScaleCubesBy110s)
-    self.avgAllVaultTime = aDecoder.decodeFloat(forKey: SerializationKeys.avgScaleCubesBy100s) 
+    self.avgAllVaultTime = aDecoder.decodeFloat(forKey: SerializationKeys.avgScaleCubesBy100s)
+    self.RScoreAgility = aDecoder.decodeFloat(forKey: SerializationKeys.RScoreAgility)
+    self.RScoreDefense = aDecoder.decodeFloat(forKey: SerializationKeys.RScoreDefense)
+    self.RScoreDrivingAbility = aDecoder.decodeFloat(forKey: SerializationKeys.RScoreDrivingAbility)
+    self.RScoreSpeed = aDecoder.decodeFloat(forKey: SerializationKeys.RScoreSpeed)
   }
 
   public func encode(with aCoder: NSCoder) {
@@ -443,6 +464,9 @@ public final class CalculatedTeamData: NSObject, NSCoding {
     aCoder.encode(avgScaleCubesBy100s, forKey: SerializationKeys.avgScaleCubesBy100s)
     aCoder.encode(avgScaleCubesBy110s, forKey: SerializationKeys.avgScaleCubesBy110s)
     aCoder.encode(avgAllVaultTime, forKey: SerializationKeys.avgAllVaultTime)
+    aCoder.encode(RScoreAgility, forKey: SerializationKeys.RScoreAgility)
+    aCoder.encode(RScoreDefense, forKey: SerializationKeys.RScoreDefense)
+    aCoder.encode(RScoreDrivingAbility, forKey: SerializationKeys.RScoreDrivingAbility)
+    aCoder.encode(RScoreSpeed, forKey: SerializationKeys.RScoreSpeed)
   }
-
 }

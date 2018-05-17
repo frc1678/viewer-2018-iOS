@@ -48,7 +48,6 @@
             [[[[[[FIRDatabase database] reference] child: @"activeSlackProfiles"] child:slackId] child: @"starredMatches"] setValue:intMatches];
         }
     }
-
 }
 
 -(void) viewDidLayoutSubviews {
@@ -101,6 +100,15 @@
     MatchTableViewCell *matchCell = (MatchTableViewCell *)cell;
     //set matchNum label
     matchCell.matchLabel.attributedText = [self textForScheduleLabelForType:0 forString:[NSString stringWithFormat:@"%ld", (long)match.number]];
+    
+    matchCell.redOneLabel.font = [matchCell.redOneLabel.font fontWithSize:self.firebaseFetcher.currentMatchManager.textSize];
+    matchCell.redTwoLabel.font = [matchCell.redTwoLabel.font fontWithSize:self.firebaseFetcher.currentMatchManager.textSize];
+    matchCell.redThreeLabel.font = [matchCell.redThreeLabel.font fontWithSize:self.firebaseFetcher.currentMatchManager.textSize];
+    matchCell.blueOneLabel.font = [matchCell.blueOneLabel.font fontWithSize:self.firebaseFetcher.currentMatchManager.textSize];
+    matchCell.blueTwoLabel.font = [matchCell.blueTwoLabel.font fontWithSize:self.firebaseFetcher.currentMatchManager.textSize];
+    matchCell.blueThreeLabel.font = [matchCell.blueThreeLabel.font fontWithSize:self.firebaseFetcher.currentMatchManager.textSize];
+    
+    // = (2 * self.firebaseFetcher.currentMatchManager.textSize) + 12;
     
     //iterate thru 3 times
     for (int i = 0; i < 3; i++) {
@@ -223,6 +231,10 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return (CGFloat)((self.firebaseFetcher.currentMatchManager.textSize * 2.0) + 12.0);
+}
+
 - (NSString *)cellIdentifier {
     return MATCH_CELL_IDENTIFIER;
 }
@@ -230,7 +242,6 @@
 - (NSArray *)loadDataArray:(BOOL)shouldForce {
     NSArray *returnData = self.firebaseFetcher.currentMatchManager.matches;
     
-    //[self.tableView setUserInteractionEnabled:YES];
     return returnData;
 }
 
@@ -327,7 +338,6 @@
     return @[@"One", @"Two", @"Three"];
 }
 
-//aha! new system is better
 -(void)handleLongPressGesture:(UILongPressGestureRecognizer *)sender {
     if(UIGestureRecognizerStateBegan == sender.state) {
         

@@ -97,6 +97,30 @@ class CurrentMatchManager: NSObject {
                 self.matches = []
             }
         }
+        cache.fetch(key: "matchDetailsDatapoints").onSuccess { (d) -> () in
+            if let id = NSKeyedUnarchiver.unarchiveObject(with: d) as? [String] {
+                if self.matchDetailsDatapoints != id {
+                    self.matchDetailsDatapoints = id
+                }
+            } else {
+                self.matchDetailsDatapoints = self.defaultMatchDetailsDatapoints
+            }
+        }
+        cache.fetch(key: "textSize").onSuccess { (d) -> () in
+            if let id = NSKeyedUnarchiver.unarchiveObject(with: d) as? Int {
+                if self.textSize != id {
+                    self.textSize = id
+                }
+            } else {
+                self.textSize = 8
+            }
+        }
+    }
+    
+    @objc var textSize: Int = 8 {
+        didSet {
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: textSize), key: "textSize")
+        }
     }
     
     @objc var matches: [Match] = [] {
@@ -120,6 +144,25 @@ class CurrentMatchManager: NSObject {
                     notifyIfNeeded()
                 }
             }
+        }
+    }
+    
+    var defaultMatchDetailsDatapoints: [String] = [
+        "calculatedData.avgAllianceSwitchCubesAuto",
+        "calculatedData.avgCubesPlacedInScaleAuto",
+        "calculatedData.avgAllianceSwitchCubesTele",
+        "calculatedData.avgCubesPlacedInScaleTele",
+        "calculatedData.autoRunPercentage",
+        "calculatedData.avgAllVaultTime",
+        "calculatedData.avgNumExchangeInputTele",
+        "calculatedData.avgCubesSpilledTele",
+        "calculatedData.dysfunctionalPercentage",
+        "calculatedData.avgScaleCubesBy100s",
+    ]
+    
+    @objc var matchDetailsDatapoints = [String]() {
+        didSet {
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: matchDetailsDatapoints), key: "matchDetailsDatapoints")
         }
     }
     

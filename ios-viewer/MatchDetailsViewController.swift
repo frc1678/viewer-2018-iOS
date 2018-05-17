@@ -26,8 +26,7 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
     let mapping = ["1", "2", "3"]
     
     //keys for the tables
-    let tableKeys = ["avgAllianceSwitchCubesAuto", "avgCubesPlacedInScaleAuto", "avgAllianceSwitchCubesTele","avgCubesPlacedInScaleTele", "autoRunPercentage", "avgAllVaultTime", "avgNumExchangeInputTele", "avgCubesSpilledTele", "dysfunctionalPercentage","avgScaleCubesBy100s"]
-    
+    var tableKeys: [String] = []
     
     //score labels
     @IBOutlet weak var redOfficialScoreLabel: UILabel!
@@ -66,14 +65,13 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         
         //set datapointLabel to tableKeys
         if indexPath.row != tableKeys.count {
-            cell.datapointLabel.text = Utils.humanReadableNames["calculatedData.\(tableKeys[indexPath.row])"]
+            cell.datapointLabel.text = Utils.humanReadableNames[tableKeys[indexPath.row]]
         }
         
         //setup the label stuff
-        var size: CGFloat = CGFloat(12)
+        var size: CGFloat = CGFloat((firebaseFetcher?.currentMatchManager.textSize)!)
         var numLines = 1
         if (firebaseFetcher?.currentMatchManager.matchDetailsScroll ?? false) {
-            size = CGFloat(18)
             numLines = 0
         }
         cell.datapointLabel.font = cell.datapointLabel.font.withSize(size)
@@ -99,21 +97,38 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
             break
         }
         
-        if Utils.teamDetailsKeys.percentageValues.contains("calculatedData.\(tableKeys[indexPath.row])") {
-            //If the value is a percentage, multiply float by 100 and add %
-            cell.team1.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[0].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
-            cell.team2.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[1].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
-            cell.team3.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[2].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
+        if tableKeys[indexPath.row].contains("calculatedData.") {
+            if Utils.teamDetailsKeys.percentageValues.contains(tableKeys[indexPath.row]) {
+                //If the value is a percentage, multiply float by 100 and add %
+                cell.team1.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[0].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row].replacingOccurrences(of: "calculatedData.", with: "")]) as! Float) * 100), toDecimalPlaces: 2)))%"
+                cell.team2.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[1].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row].replacingOccurrences(of: "calculatedData.", with: "")]) as! Float) * 100), toDecimalPlaces: 2)))%"
+                cell.team3.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[2].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row].replacingOccurrences(of: "calculatedData.", with: "")]) as! Float) * 100), toDecimalPlaces: 2)))%"
+            } else {
+                cell.team1.text = String(describing: Utils.unwrap(any: teams?[0].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row].replacingOccurrences(of: "calculatedData.", with: "")]))
+                cell.team2.text = String(describing: Utils.unwrap(any: teams?[1].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row].replacingOccurrences(of: "calculatedData.", with: "")]))
+                cell.team3.text = String(describing: Utils.unwrap(any: teams?[2].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row].replacingOccurrences(of: "calculatedData.", with: "")]))
+            }
         } else {
-            cell.team1.text = String(describing: Utils.unwrap(any: teams?[0].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
-            cell.team2.text = String(describing: Utils.unwrap(any: teams?[1].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
-            cell.team3.text = String(describing: Utils.unwrap(any: teams?[2].calculatedData?.dictionaryRepresentation()[tableKeys[indexPath.row]]))
+            if Utils.teamDetailsKeys.percentageValues.contains(tableKeys[indexPath.row]) {
+                //If the value is a percentage, multiply float by 100 and add %
+                cell.team1.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[0].dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
+                cell.team2.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[1].dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
+                cell.team3.text = "\(String(describing: Utils.roundValue(((Utils.unwrap(any: teams?[2].dictionaryRepresentation()[tableKeys[indexPath.row]]) as! Float) * 100), toDecimalPlaces: 2)))%"
+            } else {
+                cell.team1.text = String(describing: Utils.unwrap(any: teams?[0].dictionaryRepresentation()[tableKeys[indexPath.row]]))
+                cell.team2.text = String(describing: Utils.unwrap(any: teams?[1].dictionaryRepresentation()[tableKeys[indexPath.row]]))
+                cell.team3.text = String(describing: Utils.unwrap(any: teams?[2].dictionaryRepresentation()[tableKeys[indexPath.row]]))
+            }
         }
         
         //if it's a float, round to the nearest hundreth
-        if let valueLabelFloat = Float(cell.team1.text!) {
+        if Float(cell.team1.text!) != nil {
             cell.team1.text = Utils.roundValue(Float(cell.team1.text!)!, toDecimalPlaces: 2)
+        }
+        if Float(cell.team2.text!) != nil {
             cell.team2.text = Utils.roundValue(Float(cell.team2.text!)!, toDecimalPlaces: 2)
+        }
+        if Float(cell.team3.text!) != nil {
             cell.team3.text = Utils.roundValue(Float(cell.team3.text!)!, toDecimalPlaces: 2)
         }
         
@@ -151,6 +166,7 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        tableKeys = (firebaseFetcher?.currentMatchManager.matchDetailsDatapoints)!
         NotificationCenter.default.addObserver(self, selector: #selector(MatchDetailsViewController.checkRes(_:)), name: NSNotification.Name(rawValue: "updateLeftTable"), object: nil)
         
         updateUI()

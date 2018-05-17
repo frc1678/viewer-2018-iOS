@@ -35,6 +35,10 @@ class OptionsViewController: UIViewController, UITableViewDelegate {
         }
     }
     
+    @IBAction func textSizeSliderChanged(_ sender: Any) {
+        firebaseFetcher?.currentMatchManager.textSize = Int((sender as! UISlider).value.rounded())
+    }
+    
     @IBAction func hiDysfuncToggle(_ sender: Any) {
         self.firebaseFetcher?.currentMatchManager.highlightDysfunc = (sender as! UISwitch).isOn
     }
