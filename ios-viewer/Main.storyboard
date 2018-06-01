@@ -923,6 +923,7 @@
                         <outlet property="hiDysfuncSwitch" destination="VNe-fx-Nip" id="vyt-oJ-oZD"/>
                         <outlet property="scrollingMatchSwitch" destination="TjC-Nn-6eU" id="gM1-gJ-OBh"/>
                         <outlet property="showRPSwitch" destination="2b2-c2-YLd" id="gtL-YY-Fvr"/>
+                        <outlet property="textSizeSlider" destination="DzK-wn-nMO" id="zcf-Hz-v8J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1h-2k-LPg" userLabel="First Responder" sceneMemberID="firstResponder"/>

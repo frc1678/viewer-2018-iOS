@@ -30,6 +30,9 @@ public final class Team: NSObject, NSCoding {
     static let pitDriveTimes = "pitDriveTimes"
     static let pitWheelDiameter = "pitWheelDiameter"
     static let pitHasCamera = "pitHasCamera"
+    static let pitCanDoPIDOnDriveTrain = "pitCanDoPIDOnDriveTrain"
+    static let pitHasGyro = "pitHasGyro"
+    static let pitHasEncodersOnBothSides = "pitHasEncodersOnBothSides"
   }
 
   // MARK: Properties
@@ -49,6 +52,9 @@ public final class Team: NSObject, NSCoding {
     public var picklistPosition: Int = -1
     public var pitWheelDiameter: String?
     public var pitHasCamera: Bool? = false
+    public var pitCanDoPIDOnDriveTrain: Bool? = false
+    public var pitHasGyro: Bool? = false
+    public var pitHasEncodersOnBothSides: Bool? = false
     
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -81,6 +87,9 @@ public final class Team: NSObject, NSCoding {
     picklistPosition = json[SerializationKeys.picklistPosition].intValue
     pitWheelDiameter = json[SerializationKeys.pitWheelDiameter].string
     pitHasCamera = json[SerializationKeys.pitHasCamera].boolValue
+    pitCanDoPIDOnDriveTrain = json[SerializationKeys.pitCanDoPIDOnDriveTrain].boolValue
+    pitHasGyro = json[SerializationKeys.pitHasGyro].boolValue
+    pitHasEncodersOnBothSides = json[SerializationKeys.pitHasEncodersOnBothSides].boolValue
 }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -104,6 +113,9 @@ public final class Team: NSObject, NSCoding {
     dictionary[SerializationKeys.picklistPosition] = picklistPosition
     if let value = pitWheelDiameter { dictionary[SerializationKeys.pitWheelDiameter] = value }
     dictionary[SerializationKeys.pitHasCamera] = pitHasCamera
+    dictionary[SerializationKeys.pitCanDoPIDOnDriveTrain] = pitCanDoPIDOnDriveTrain
+    dictionary[SerializationKeys.pitHasGyro] = pitHasGyro
+    dictionary[SerializationKeys.pitHasEncodersOnBothSides] = pitHasEncodersOnBothSides
     return dictionary
   }
 
@@ -125,7 +137,10 @@ public final class Team: NSObject, NSCoding {
     self.picklistPosition = aDecoder.decodeInteger(forKey: SerializationKeys.picklistPosition)
     self.pitWheelDiameter = aDecoder.decodeObject(forKey: SerializationKeys.pitWheelDiameter) as? String
     self.pitHasCamera = aDecoder.decodeObject(forKey: SerializationKeys.pitHasCamera) as? Bool
-  }
+    self.pitCanDoPIDOnDriveTrain = aDecoder.decodeObject(forKey: SerializationKeys.pitCanDoPIDOnDriveTrain) as? Bool
+    self.pitHasGyro = aDecoder.decodeObject(forKey: SerializationKeys.pitHasGyro) as? Bool
+    self.pitHasEncodersOnBothSides = aDecoder.decodeObject(forKey: SerializationKeys.pitHasEncodersOnBothSides) as? Bool
+    }
 
   public func encode(with aCoder: NSCoder) {
     aCoder.encode(name, forKey: SerializationKeys.name)
@@ -144,5 +159,8 @@ public final class Team: NSObject, NSCoding {
     aCoder.encode(picklistPosition, forKey: SerializationKeys.picklistPosition)
     aCoder.encode(pitWheelDiameter, forKey: SerializationKeys.pitWheelDiameter)
     aCoder.encode(pitHasCamera, forKey: SerializationKeys.pitHasCamera)
+    aCoder.encode(pitCanDoPIDOnDriveTrain, forKey: SerializationKeys.pitCanDoPIDOnDriveTrain)
+    aCoder.encode(pitHasGyro, forKey: SerializationKeys.pitHasGyro)
+    aCoder.encode(pitHasEncodersOnBothSides, forKey: SerializationKeys.pitHasEncodersOnBothSides)
   }
 }

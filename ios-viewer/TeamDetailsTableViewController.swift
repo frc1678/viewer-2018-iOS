@@ -177,7 +177,7 @@ class TeamDetailsTableViewController: UIViewController, UITableViewDataSource, U
     
     
     
-    //Not used in 2017
+    //Not used
     func didLongPressForMoreDetail(_ recognizer: UIGestureRecognizer) {
         if recognizer.state == UIGestureRecognizerState.recognized {
             self.showMinimalistTeamDetails = !self.showMinimalistTeamDetails

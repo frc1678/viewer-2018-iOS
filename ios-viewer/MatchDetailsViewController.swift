@@ -135,19 +135,23 @@ class MatchDetailsViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
-    //how many rows are there (all the keys and (currently not) future match status)
+    //how many rows are there (all the keys)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (firebaseFetcher?.currentMatchManager.matchDetailsScroll ?? false) {
             tableView.isScrollEnabled = true
         } else {
             tableView.isScrollEnabled = false
         }
-        return tableKeys.count// + 1 (for future match status)
+        return tableKeys.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (firebaseFetcher?.currentMatchManager.matchDetailsScroll ?? false) {
-            return CGFloat(44)
+            let boi = CGFloat(Double((firebaseFetcher?.currentMatchManager.textSize)!) * (Double((firebaseFetcher?.currentMatchManager.matchDetailsDatapoints[indexPath.row].count)!)/10.0))
+            if boi <= CGFloat(20) {
+                return CGFloat(20)
+            }
+            return boi
         } else {
             return CGFloat(14)
         }
