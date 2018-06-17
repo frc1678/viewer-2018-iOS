@@ -25,6 +25,7 @@ class CurrentMatchManager: NSObject {
         self.notificationManager = NotificationManager(secsBetweenUpdates: 5, notifications: [])
         self.showRP = false
         self.highlightDysfunc = false
+        self.matchDetailsDatapoints = self.defaultMatchDetailsDatapoints
         super.init()
         self.notificationManager.notifications.append(NotificationManager.Notification(name: "currentMatchUpdated", selector: "notificationTriggeredCheckForNotification:", object: nil))
         firebase.child("currentMatchNum").observe(.value) { (snap) in
