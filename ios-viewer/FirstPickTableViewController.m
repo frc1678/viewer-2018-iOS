@@ -50,7 +50,7 @@ FIRDatabaseReference *firebase;
     }
     return (NSArray *)sortedTeams;
 }
-//[[]]
+
 - (NSString *)cellIdentifier {
     return MULTI_CELL_IDENTIFIER;
 }

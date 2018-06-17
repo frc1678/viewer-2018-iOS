@@ -25,6 +25,7 @@ class CurrentMatchManager: NSObject {
         self.notificationManager = NotificationManager(secsBetweenUpdates: 5, notifications: [])
         self.showRP = false
         self.highlightDysfunc = false
+        self.matchDetailsDatapoints = self.defaultMatchDetailsDatapoints
         super.init()
         self.notificationManager.notifications.append(NotificationManager.Notification(name: "currentMatchUpdated", selector: "notificationTriggeredCheckForNotification:", object: nil))
         firebase.child("currentMatchNum").observe(.value) { (snap) in
@@ -79,6 +80,60 @@ class CurrentMatchManager: NSObject {
                 self.highlightDysfunc = false
             }
         }
+        cache.fetch(key: "teams").onSuccess { (d) -> () in
+            if let id = NSKeyedUnarchiver.unarchiveObject(with: d) as? [Team] {
+                if self.teams != id {
+                    self.teams = id
+                }
+            } else {
+                self.teams = []
+            }
+        }
+        cache.fetch(key: "matches").onSuccess { (d) -> () in
+            if let id = NSKeyedUnarchiver.unarchiveObject(with: d) as? [Match] {
+                if self.matches != id {
+                    self.matches = id
+                }
+            } else {
+                self.matches = []
+            }
+        }
+        cache.fetch(key: "matchDetailsDatapoints").onSuccess { (d) -> () in
+            if let id = NSKeyedUnarchiver.unarchiveObject(with: d) as? [String] {
+                if self.matchDetailsDatapoints != id {
+                    self.matchDetailsDatapoints = id
+                }
+            } else {
+                self.matchDetailsDatapoints = self.defaultMatchDetailsDatapoints
+            }
+        }
+        cache.fetch(key: "textSize").onSuccess { (d) -> () in
+            if let id = NSKeyedUnarchiver.unarchiveObject(with: d) as? Int {
+                if self.textSize != id {
+                    self.textSize = id
+                }
+            } else {
+                self.textSize = 8
+            }
+        }
+    }
+    
+    @objc var textSize: Int = 8 {
+        didSet {
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: textSize), key: "textSize")
+        }
+    }
+    
+    @objc var matches: [Match] = [] {
+        didSet {
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: matches), key: "matches")
+        }
+    }
+    
+    @objc var teams: [Team] = [] {
+        didSet {
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: teams), key: "teams")
+        }
     }
     
     @objc var currentMatch = 0 {
@@ -90,6 +145,25 @@ class CurrentMatchManager: NSObject {
                     notifyIfNeeded()
                 }
             }
+        }
+    }
+    
+    var defaultMatchDetailsDatapoints: [String] = [
+        "calculatedData.avgAllianceSwitchCubesAuto",
+        "calculatedData.avgCubesPlacedInScaleAuto",
+        "calculatedData.avgAllianceSwitchCubesTele",
+        "calculatedData.avgCubesPlacedInScaleTele",
+        "calculatedData.autoRunPercentage",
+        "calculatedData.avgAllVaultTime",
+        "calculatedData.avgNumExchangeInputTele",
+        "calculatedData.avgCubesSpilledTele",
+        "calculatedData.dysfunctionalPercentage",
+        "calculatedData.avgScaleCubesBy100s",
+    ]
+    
+    @objc var matchDetailsDatapoints = [String]() {
+        didSet {
+            cache.set(value: NSKeyedArchiver.archivedData(withRootObject: matchDetailsDatapoints), key: "matchDetailsDatapoints")
         }
     }
     

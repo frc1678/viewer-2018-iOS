@@ -104,13 +104,126 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.predictedNumRPs"
         ]
         
-        // Add carrying stability into stacking security
-        
-        /* let superKeys = [
-         "calculatedData.avgEvasion",
-         "calculatedData.avgDefense"
-         ]
-         */
+        let allTeamKeys = [
+            "name",
+            "number",
+            "pitAvailableWeight",
+            "pitDriveTrain",
+            "pitSEALsNotes",
+            "pitProgrammingLanguage",
+            "pitClimberType",
+            "pitRobotWidth",
+            "pitRobotLength",
+            "pitHasCamera",
+            "pitWheelDiameter",
+            "pitCanDoPIDOnDriveTrain",
+            "pitHasGyro",
+            "pitHasEncodersOnBothSides",
+            "calculatedData.firstPickAbility",
+            "calculatedData.secondPickAbility",
+            "calculatedData.disabledPercentage",
+            "calculatedData.incapacitatedPercentage",
+            "calculatedData.dysfunctionalPercentage",
+            "calculatedData.numMatchesPlayed",
+            "calculatedData.avgNumRobotsLifted",
+            "calculatedData.avgNumCubesPlacedAuto",
+            "calculatedData.avgNumCubesPlacedTele",
+            "calculatedData.avgNumAlliancePlatformIntakeAuto",
+            "calculatedData.avgNumAlliancePlatformIntakeTele",
+            "calculatedData.avgNumOpponentPlatformIntakeTele",
+            "calculatedData.avgNumCubesFumbledAuto",
+            "calculatedData.avgNumCubesFumbledTele",
+            "calculatedData.avgNumElevatedPyramidIntakeAuto",
+            "calculatedData.avgNumElevatedPyramidIntakeTele",
+            "calculatedData.avgNumGroundPyramidIntakeAuto",
+            "calculatedData.avgNumGroundPyramidIntakeTele",
+            "calculatedData.avgNumGroundIntakeTele",
+            "calculatedData.avgNumGroundPortalIntakeTele",
+            "calculatedData.avgNumHumanPortalIntakeTele",
+            "calculatedData.avgNumExchangeInputTele",
+            "calculatedData.avgNumReturnIntakeTele",
+            "calculatedData.avgNumGoodDecisions",
+            "calculatedData.avgNumBadDecisions",
+            "calculatedData.avgCubesSpilledAuto",
+            "calculatedData.avgCubesSpilledTele",
+            "calculatedData.avgCubesPlacedInScaleAuto",
+            "calculatedData.avgCubesPlacedInScaleTele",
+            "calculatedData.avgAllianceSwitchCubesAuto",
+            "calculatedData.avgAllianceSwitchCubesTele",
+            "calculatedData.avgOpponentSwitchCubesTele",
+            "calculatedData.avgScaleTimeAuto",
+            "calculatedData.avgScaleTimeTele",
+            "calculatedData.avgTimeToOwnAllianceSwitchAuto",
+            "calculatedData.avgTimeToOwnScaleAuto",
+            "calculatedData.avgAllianceSwitchTimeAuto",
+            "calculatedData.avgAllianceSwitchTimeTele",
+            "calculatedData.avgOpponentSwitchTimeTele",
+            "calculatedData.avgScaleCubesBy100s",
+            "calculatedData.avgScaleCubesBy110s",
+            "calculatedData.avgAllVaultTime",
+            "calculatedData.avgClimbTime",
+            "calculatedData.avgAgility",
+            "calculatedData.avgSpeed",
+            "calculatedData.avgDefense",
+            "calculatedData.avgDrivingAbility",
+            "calculatedData.totalNumGoodDecisions",
+            "calculatedData.totalNumBadDecisions",
+            "calculatedData.totalNumParks",
+            "calculatedData.totalNumRobotsLifted",
+            "calculatedData.totalNumRobotLiftAttempts",
+            "calculatedData.totalNumRobotsGroundLifted",
+            "calculatedData.totalNumRobotGroundLiftAttempts",
+            "calculatedData.totalNumHighLayerScaleCubes",
+            "calculatedData.totalSuperNotes",
+            "calculatedData.avgTotalCubesPlaced",
+            "calculatedData.numSuccessfulClimbs",
+            "calculatedData.predictedClimb",
+            "calculatedData.climbPercentage",
+            "calculatedData.soloClimbPercentage",
+            "calculatedData.activeAssistClimbPercentage",
+            "calculatedData.activeLiftClimbPercentage",
+            "calculatedData.activeNoClimbLiftClimbPercentage",
+            "calculatedData.assistedClimbPercentage",
+            "calculatedData.parkPercentage",
+            "calculatedData.predictedSeed",
+            "calculatedData.actualSeed",
+            "calculatedData.predictedNumAllianceSwitchCubesAuto",
+            "calculatedData.predictedNumScaleCubesAuto",
+            "calculatedData.predictedPark",
+            "calculatedData.predictedNumRPs",
+            "calculatedData.predictedTotalNumRPs",
+            "calculatedData.totalNumRPs",
+            "calculatedData.actualNumRPs",
+            "calculatedData.autoRunPercentage",
+            "calculatedData.allianceSwitchSuccessPercentageAuto",
+            "calculatedData.allianceSwitchSuccessPercentageTele",
+            "calculatedData.opponentSwitchSuccessPercentageTele",
+            "calculatedData.scaleSuccessPercentageAuto",
+            "calculatedData.scaleSuccessPercentageTele",
+            "calculatedData.allianceSwitchFailPercentageAuto",
+            "calculatedData.allianceSwitchFailPercentageTele",
+            "calculatedData.opponentSwitchFailPercentageTele",
+            "calculatedData.scaleFailPercentageAuto",
+            "calculatedData.scaleFailPercentageTele",
+            "calculatedData.canScoreBothSwitchSidesAuto",
+            "calculatedData.canPlaceHighLayerCube",
+            "calculatedData.didThreeExchangeInputPercentage",
+            "calculatedData.percentSuccessOppositeSwitchSideAuto",
+            "calculatedData.canGroundIntake",
+            "calculatedData.teleopExchangeAbility",
+            "calculatedData.teleopScaleAbility",
+            "calculatedData.teleopAllianceSwitchAbility",
+            "calculatedData.teleopOpponentSwitchAbility",
+            "calculatedData.pitAvgDriveTime",
+            "calculatedData.pitAvgRampTime",
+            "calculatedData.maxScaleCubes",
+            "calculatedData.maxExchangeCubes",
+            "calculatedData.avgSwitchOwnership",
+            "calculatedData.RScoreDefense",
+            "calculatedData.RScoreSpeed",
+            "calculatedData.RScoreAgility",
+            "calculatedData.RScoreDrivingAbility",
+        ]
         
         /**
          Values that should not be graphed
@@ -157,10 +270,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.switchFailPercentageTele",
             "calculatedData.autoRunPercentage"
         ]
-        
-        //let otherNoCalcDataValues = [
-        //
-        //]
         
         let addCommasBetweenCapitals : [String] = []
         
@@ -221,19 +330,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         
         /** Sections of teamDetails view. */
         func keySets(_ minimalist : Bool) -> [[String]] {
-            if minimalist {
-                return [
-                    defaultKeys,
-                    //highLevel,
-                    //autoKeysMini,
-                    teleKeysMini,
-                    siegeKeysMini,
-                    statusKeysMini,
-                    //superKeys,
-                    //pitKeys,
-                    //sealKeys
-                ]
-            }
             return [
                 defaultKeys,
                 highLevel,
@@ -261,9 +357,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
              "calculatedData.canPlaceHighLayerCube",
         ]
         
-        //let autoKeysMini = [
-        
-        //]
         /** Keys relating to autonomous to be displayed on teamDetails. */
         let autoKeys = [
         //Some stuff is not needed
@@ -276,15 +369,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.avgTimeToOwnScaleAuto",
             "calculatedData.allianceSwitchSuccessPercentageAuto",
             "calculatedData.autoRunPercentage",
-        ]
-        
-        let teleKeysMini : [String] = [
-            //"calculatedData.avgHighShotsTele",
-            //"calculatedData.sdHighShotsTele",
-            //"calculatedData.avgLowShotsTele",
-            //"calculatedData.sdLowShotsTele",
-            //"calculatedData.avgLowShotsAttemptedTele",
-            //"calculatedData.avgHighShotsAttemptedTele",
         ]
         
         /** Keys relating to Teleoperated to be displayed on teamDetails */
@@ -363,17 +447,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
             "calculatedData.avgNumRobotsLifted",
         ]
         
-        let siegeKeysMini : [String] = [
-            //"calculatedData.liftoffAbility",
-            //"calculatedData.sdLiftoffAbility"
-        ]
-        
-        let statusKeysMini = [
-            "calculatedData.dysfunctionalPercentage",
-            //"calculatedData.disabledPercentage",
-            //"calculatedData.incapacitatedPercentage",
-        ]
-        
         /** Keys relating to the status of a robot to be displayed on teamDetails */
         let statusKeys = [
             "calculatedData.dysfunctionalPercentage",
@@ -427,10 +500,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "calculatedData.avgDefense",
         "calculatedData.totalNumGoodDecisions",
         "calculatedData.totalNumBadDecisions"
-        
-        //"calculatedData.avgBallControl",
-        //"calculatedData.avgGearControl",
-        //"calculatedData.RScoreDrivingAbility"
     ]
     static let statusKeys = ["uploadedData.incapacitated", "uploadedData.disabled"]
     static let miscKeys = ["uploadedData.miscellaneousNotes"]
@@ -439,7 +508,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
     static let boolGraphs = [
         "calculatedData.climbPercentage",
         "calculatedData.dysfunctionalPercentage",
-        //"calculatedData.park", //FALSE doesn't exist
         "calculatedData.incapacitatedPercentage",
         "calculatedData.disabledPercentage",
         "calculatedData.autoRunPercentage"
@@ -463,7 +531,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "numGroundIntakeTele",
         "numHumanPortalIntakeTele",
         "climb",
-        //"calculatedData.didClimb",
         "didPark"
     ]
     
@@ -496,16 +563,9 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         
         "didBecomeIncapacitated" : "incapacitatedPercentage",
         "didStartDisabled" : "disabledPercentage",
-        //"numShotsBlockedTele" : "avgShotsBlocked",
-        //"didReachBaselineAuto" : "baselineReachedPercentage",
-        //"didLiftoff" : "liftoffPercentage",
-        //"calculatedData.liftoffAbility" : "liftoffAbility",
-        //"numLowShotsTele" : "avgLowShotsTele",
-        //"calculatedData.numHighShotsTele" : "avgHighShotsTele",
         "calculatedData.RScoreSpeed" : "calculatedData.avgSpeed",
         "calculatedData.RScoreEvasion" : "calculatedData.avgEvasion",
         "calculatedData.RScoreTorque" : "calculatedData.avgTorque",
-        //"rankBallControl" : "calculatedData.avgBallControl",
         "calculatedData.totalNumGoodDecisions" : "numGoodDecisions",
         "calculatedData.totalNumBadDecisions" : "numBadDecisions",
         "calculatedData.avgScaleCubesBy100s" : "calculatedData.numCubesScaleAt100s",
@@ -515,14 +575,9 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
     /** Team Details keys? */
     static let teamCalcKeys = [
         "actualSeed",
-        //"avgBallControl",
         "avgDefense",
         "avgEvasion",
         "avgGroundIntakes",
-        //"avgHighShotsAuto",
-        //"avgHighShotsTele",
-        //"avgLowShotsAuto",
-        //"avgLowShotsTele",
         "avgSpeed",
         "avgTorque",
         "disabledPercentage",
@@ -540,12 +595,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "sdLowShotsTele",
         "secondPickAbility",
         "secondPickAbility",
-        //"avgGearsFumbledTele",
-        //"avgGearsEjectedTele",
-        //"avgGearGroundInakesTele",
-        //"avgLoaderIntakesTele",
-        //"avgHoppersOpenedTele",
-        //"avgHoppersOpenedAuto"
     ]
     
     /** Calculated TIMD keys */
@@ -555,13 +604,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "calculatedData.secondPickAbility",
         "calculatedData.secondPickAbility",
         "calculatedData.scoreContribution",
-        //"calculatedData.hoppersOpenedAuto",
-        //"calculatedData.hoppersOpenedTele",
-        //"calculatedData.liftoffAbility",
-        //"calculatedData.numLowShotsAuto",
-        //"calculatedData.numHighShotsTele",
-        //"calculatedData.numLowShotsTele",
-        //"calculatedData.numHighShotsAuto"
     ]
     
     /** A dictionary with datapoints as keys and Human Readable versions as values */
@@ -664,7 +706,6 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "numExchangeInput" : "EX Inputs",
         "numCubesFumbledAuto" : "Auto Cubes Fumbled",
         "didCrossAutoZone" : "Crossed Auto Zone",
-        //"didMakeAutoRun" : "Made Auto Run",
         "calculatedData.numAllianceSwitchCubeSuccessAuto" : "Auto Successful SW Cubes",
         "calculatedData.numScaleSuccessAuto" : "Auto Successful SC Cubes",
         "calculatedData.numAllianceSwitchSuccessTele" : "Tele Successful SW Cubes",
@@ -694,6 +735,65 @@ func nsNumArrayToIntArray(_ nsNumberArray: [NSNumber]) -> [Int] {
         "calculatedData.avgScaleCubesBy110s" : "Avg. Scale Cubes by 110",
         "calculatedData.numCubesScaleAt100s" : "Scale Cubes by 100",
         "calculatedData.numCubesScaleAt110s" : "Scale Cubes by 110",
+        "name" : "Name",
+        "number" : "Number",
+        "calculatedData" : "Calculated Data",
+        "pitSelectedImage" : "Selected Image",
+        "pitAllImageURLs" : "All Image URLs",
+        "pitImageKeys" : "Image Keys",
+        "pitCanDoPIDOnDriveTrain" : "PID On Drive Train",
+        "pitHasGyro" : "Has Gyro",
+        "pitHasEncodersOnBothSides" : "Encoders On Both Sides",
+        "calculatedData.numMatchesPlayed" : "Matches Played",
+        "calculatedData.avgNumCubesPlacedAuto" : "Auto Cubes Placed",
+        "calculatedData.avgNumCubesPlacedTele" : "Tele Cubes Placed",
+        "calculatedData.avgNumReturnIntakeTele" : "Tele Return Intakes",
+        "calculatedData.avgNumGoodDecisions" : "Avg. Good Decisions",
+        "calculatedData.avgNumBadDecisions" : "Avg. Bad Decisions",
+        "calculatedData.avgCubesSpilledAuto" : "Auto Cubes Spilled",
+        "calculatedData.avgScaleTimeAuto" : "Auto Avg. Scale Time",
+        "calculatedData.avgScaleTimeTele" : "Tele Avg. Scale Time",
+        "calculatedData.avgAllianceSwitchTimeAuto" : "Auto Avg. SW Time",
+        "calculatedData.avgAllianceSwitchTimeTele" : "Tele Avg. SW Time",
+        "calculatedData.avgOpponentSwitchTimeTele" : "Tele Avg. SWO Time",
+        
+        "calculatedData.totalNumParks" : "Num. Parks",
+        "calculatedData.totalNumRobotsLifted" : "Num. Robots Lifted",
+        "calculatedData.totalNumRobotLiftAttempts" : "Lift Attempts",
+        "calculatedData.totalNumRobotsGroundLifted" : "Ground Lifts",
+        "calculatedData.totalNumRobotGroundLiftAttempts" : "Ground Lift Attempts",
+        "calculatedData.totalNumHighLayerScaleCubes" : "High Layer SC Cubes",
+        "calculatedData.totalSuperNotes" : "Super Notes",
+        "calculatedData.numSuccessfulClimbs" : "Num. Successful Climbs",
+        "calculatedData.predictedClimb" : "Predicted Climb",
+        "calculatedData.soloClimbPercentage" : "Solo Climb %",
+        "calculatedData.activeAssistClimbPercentage" : "Assisted Climb %",
+        "calculatedData.activeLiftClimbPercentage" : "Active Climb %",
+        "calculatedData.activeNoClimbLiftClimbPercentage" : "Ground Lift %",
+        "calculatedData.assistedClimbPercentage" : "Assisted Climb %",
+        "calculatedData.parkPercentage" : "Park %",
+        "calculatedData.predictedNumAllianceSwitchCubesAuto" : "Auto Predicted SW Cubes",
+        "calculatedData.predictedNumScaleCubesAuto" : "Auto Predicted SC Cubes",
+        "calculatedData.predictedPark" : "Predicted Park",
+        "calculatedData.predictedTotalNumRPs" : "Predicted RPs",
+        "calculatedData.totalNumRPs" : "Total RPs",
+        "calculatedData.allianceSwitchSuccessPercentageTele" : "Tele SW Success %",
+        "calculatedData.opponentSwitchSuccessPercentageTele" : "Tele SWO Success %",
+        "calculatedData.scaleSuccessPercentageAuto" : "Auto SC  Success %",
+        "calculatedData.scaleSuccessPercentageTele" : "Tele SC Success %",
+        "calculatedData.allianceSwitchFailPercentageAuto" : "Auto SW Fail %",
+        "calculatedData.allianceSwitchFailPercentageTele" : "Tele SW Fail %",
+        "calculatedData.opponentSwitchFailPercentageTele" : "Tele SWO Fail %",
+        "calculatedData.didThreeExchangeInputPercentage" : "3 EX Input %",
+        "calculatedData.percentSuccessOppositeSwitchSideAuto" : "Opposite Side SW Auto %",
+        "calculatedData.canGroundIntake" : "Can Ground Intake",
+        "calculatedData.teleopExchangeAbility" : "Tele EX Ability",
+        "calculatedData.teleopScaleAbility" : "Tele SC Ability",
+        "calculatedData.teleopAllianceSwitchAbility" : "Tele SW Ability",
+        "calculatedData.teleopOpponentSwitchAbility" : "Tele SWO Ability",
+        "calculatedData.maxScaleCubes" : "Max SC Cubes",
+        "calculatedData.maxExchangeCubes" : "Max EX Cubes",
+        "calculatedData.avgSwitchOwnership" : "Avg. Switch Ownership",
     ]
     
     /**

@@ -48,7 +48,6 @@
             [[[[[[FIRDatabase database] reference] child: @"activeSlackProfiles"] child:slackId] child: @"starredMatches"] setValue:intMatches];
         }
     }
-
 }
 
 -(void) viewDidLayoutSubviews {
@@ -101,6 +100,15 @@
     MatchTableViewCell *matchCell = (MatchTableViewCell *)cell;
     //set matchNum label
     matchCell.matchLabel.attributedText = [self textForScheduleLabelForType:0 forString:[NSString stringWithFormat:@"%ld", (long)match.number]];
+    
+    matchCell.redOneLabel.font = [matchCell.redOneLabel.font fontWithSize:self.firebaseFetcher.currentMatchManager.textSize];
+    matchCell.redTwoLabel.font = [matchCell.redTwoLabel.font fontWithSize:self.firebaseFetcher.currentMatchManager.textSize];
+    matchCell.redThreeLabel.font = [matchCell.redThreeLabel.font fontWithSize:self.firebaseFetcher.currentMatchManager.textSize];
+    matchCell.blueOneLabel.font = [matchCell.blueOneLabel.font fontWithSize:self.firebaseFetcher.currentMatchManager.textSize];
+    matchCell.blueTwoLabel.font = [matchCell.blueTwoLabel.font fontWithSize:self.firebaseFetcher.currentMatchManager.textSize];
+    matchCell.blueThreeLabel.font = [matchCell.blueThreeLabel.font fontWithSize:self.firebaseFetcher.currentMatchManager.textSize];
+    
+    // = (2 * self.firebaseFetcher.currentMatchManager.textSize) + 12;
     
     //iterate thru 3 times
     for (int i = 0; i < 3; i++) {
@@ -223,14 +231,17 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return (CGFloat)((self.firebaseFetcher.currentMatchManager.textSize * 2.0) + 12.0);
+}
+
 - (NSString *)cellIdentifier {
     return MATCH_CELL_IDENTIFIER;
 }
 
 - (NSArray *)loadDataArray:(BOOL)shouldForce {
-    NSArray *returnData = self.firebaseFetcher.matches;
+    NSArray *returnData = self.firebaseFetcher.currentMatchManager.matches;
     
-    //[self.tableView setUserInteractionEnabled:YES];
     return returnData;
 }
 
@@ -262,7 +273,7 @@
     } else {
     MatchTableViewCell *cell = sender;
     MatchDetailsViewController *detailController = (MatchDetailsViewController *)segue.destinationViewController;
-    detailController.match = [self.firebaseFetcher.matches objectAtIndex:cell.matchLabel.text.integerValue-1];
+    detailController.match = [self.firebaseFetcher.currentMatchManager.matches objectAtIndex:cell.matchLabel.text.integerValue-1];
     detailController.matchNumber = cell.matchLabel.text.integerValue;
     }
 }
@@ -275,20 +286,6 @@
         return [self.firebaseFetcher filteredMatchesforTeamSearchString:searchString];
     }
     return @[@"ERROR"];
-    
-//    return [firebaseFetcher.matches filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(Match *match, NSDictionary *bindings) {
-//        if (scope == 0) {
-//            return ([match.matchName rangeOfString:searchString].location == 0 || [match.matchName rangeOfString:searchString].location == 1);
-//        } else if (scope == 1) {
-//            for (Team *team in [firebaseFetcher allTeamsInMatch:match]) {
-//                NSString *numberText = [NSString stringWithFormat:@"%ld", (long)team.number];
-//                if ([numberText rangeOfString:searchString].location == 0) {
-//                    return YES;
-//                }
-//            }
-//        }
-//        return NO;
-//    }]];
 
 }
 
@@ -335,17 +332,12 @@
 
 - (IBAction)cachePhotos:(UIBarButtonItem *)sender {
     sender.enabled = NO;
-
-
-    // Prepare PDF file
-    //[self.firebaseFetcher downloadAllImages];
 }
 
 + (NSArray *)mappings {
     return @[@"One", @"Two", @"Three"];
 }
 
-//aha! new system is better
 -(void)handleLongPressGesture:(UILongPressGestureRecognizer *)sender {
     if(UIGestureRecognizerStateBegan == sender.state) {
         
@@ -382,36 +374,6 @@
             }]];
             [self presentViewController:ac animated:YES completion:nil];
         }
-        /*if([self.firebaseFetcher.currentMatchManager.starredMatchesArray containsObject:cell.matchLabel.text]) {
-            NSMutableArray *a = [NSMutableArray arrayWithArray:self.firebaseFetcher.currentMatchManager.starredMatchesArray];
-    
-            [a removeObject:cell.matchLabel.text];
-            self.firebaseFetcher.currentMatchManager.starredMatchesArray = a;
-            cell.backgroundColor = [UIColor whiteColor];
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            NSString *token = [defaults valueForKey:@"NotificationToken"];
-            //NSPredicate *isStarred = [NSPredicate predicateWithFormat:@"self.firebaseFetcher.currentMatchManager.starredMatchesArray contains[c] 'SELF'"];
-            NSMutableArray *starredMatches = [[NSMutableArray alloc] init];
-            [[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:token] child:@"starredMatches"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-                for (FIRDataSnapshot *item in [snapshot children]) {
-                    if ([self.firebaseFetcher.currentMatchManager.starredMatchesArray containsObject: [NSString stringWithFormat: @"%@",item.value]]) {
-                        [starredMatches addObject: [NSNumber numberWithInt:[(NSString *)item.value integerValue]]];
-                    }
-                }
-                [[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:token] child:@"starredMatches"] setValue:nil];
-                for (NSNumber *item in starredMatches) {
-                    [[[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:token] child:@"starredMatches"] childByAutoId] setValue:item];
-                }
-            }];
-            
-            
-        } else {
-            cell.backgroundColor = [UIColor colorWithRed:1.0 green:0.64 blue:1.0 alpha:0.6];
-            self.firebaseFetcher.currentMatchManager.starredMatchesArray = [self.firebaseFetcher.currentMatchManager.starredMatchesArray arrayByAddingObjectsFromArray:@[cell.matchLabel.text]];
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            NSString *token = [defaults valueForKey:@"NotificationToken"];
-            [[[[[[[FIRDatabase database] reference] child:@"AppTokens"] child:token] child:@"starredMatches"] childByAutoId] setValue: [NSNumber numberWithInt:[cell.matchLabel.text integerValue]]];
-        }*/
     }
 }
 

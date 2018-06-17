@@ -15,6 +15,7 @@ class OptionsViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var scrollingMatchSwitch: UISwitch!
     @IBOutlet weak var showRPSwitch: UISwitch!
     @IBOutlet weak var hiDysfuncSwitch: UISwitch!
+    @IBOutlet weak var textSizeSlider: UISlider!
     
     override func viewDidLoad() {
         firebaseFetcher = AppDelegate.getAppDelegate().firebaseFetcher
@@ -27,12 +28,19 @@ class OptionsViewController: UIViewController, UITableViewDelegate {
         if let hiDysfunc = firebaseFetcher?.currentMatchManager.highlightDysfunc {
             hiDysfuncSwitch.setOn(hiDysfunc, animated: false)
         }
+        if let textSize = firebaseFetcher?.currentMatchManager.textSize {
+            self.textSizeSlider.value = Float(textSize)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? SlackTableViewController {
             //actually need to do nothing
         }
+    }
+    
+    @IBAction func textSizeSliderChanged(_ sender: Any) {
+        firebaseFetcher?.currentMatchManager.textSize = Int((sender as! UISlider).value.rounded())
     }
     
     @IBAction func hiDysfuncToggle(_ sender: Any) {

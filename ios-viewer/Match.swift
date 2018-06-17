@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public final class Match: NSObject {
+public final class Match: NSObject, NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
@@ -123,7 +123,7 @@ public final class Match: NSObject {
     self.blueCubesInVaultFinal = aDecoder.decodeObject(forKey: SerializationKeys.blueCubesInVaultFinal) as? [String:Int]
     self.redSwitch = aDecoder.decodeObject(forKey: SerializationKeys.redSwitch) as? [String:String]
     self.redDidFaceBoss = aDecoder.decodeBool(forKey: SerializationKeys.redDidFaceBoss)
-    self.number = (aDecoder.decodeObject(forKey: SerializationKeys.number) as? Int)!
+    self.number = aDecoder.decodeInteger(forKey: SerializationKeys.number)
     self.calculatedData = aDecoder.decodeObject(forKey: SerializationKeys.calculatedData) as? CalculatedMatchData
     self.foulPointsGainedRed = aDecoder.decodeObject(forKey: SerializationKeys.foulPointsGainedRed) as? Int
     self.blueDidAutoQuest = aDecoder.decodeBool(forKey: SerializationKeys.blueDidAutoQuest)
@@ -132,10 +132,10 @@ public final class Match: NSObject {
     self.blueAllianceTeamNumbers = aDecoder.decodeObject(forKey: SerializationKeys.blueAllianceTeamNumbers) as? [Int]
     self.redCubesForPowerup = aDecoder.decodeObject(forKey: SerializationKeys.redCubesForPowerup) as? [String:Int]
     self.scale = aDecoder.decodeObject(forKey: SerializationKeys.scale) as? [String:String]
-    self.blueScore = (aDecoder.decodeObject(forKey: SerializationKeys.blueScore) as? Int)!
+    self.blueScore = aDecoder.decodeInteger(forKey: SerializationKeys.blueScore)
     self.blueSwitch = aDecoder.decodeObject(forKey: SerializationKeys.blueSwitch) as? [String:String]
     self.foulPointsGainedBlue = aDecoder.decodeObject(forKey: SerializationKeys.foulPointsGainedBlue) as? Int
-    self.redScore = (aDecoder.decodeObject(forKey: SerializationKeys.redScore) as? Int)!
+    self.redScore = aDecoder.decodeInteger(forKey: SerializationKeys.redScore)
   }
 
   public func encode(with aCoder: NSCoder) {
