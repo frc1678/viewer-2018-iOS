@@ -88,7 +88,6 @@ class TIMDDetailsViewController: UITableViewController {
                     }
                 } else {
                     //problems
-                    print("AHHH")
                 }
                 
             } else {
