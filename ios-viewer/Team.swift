@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public final class Team: NSObject {
+public final class Team: NSObject, NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
@@ -30,6 +30,9 @@ public final class Team: NSObject {
     static let pitDriveTimes = "pitDriveTimes"
     static let pitWheelDiameter = "pitWheelDiameter"
     static let pitHasCamera = "pitHasCamera"
+    static let pitCanDoPIDOnDriveTrain = "pitCanDoPIDOnDriveTrain"
+    static let pitHasGyro = "pitHasGyro"
+    static let pitHasEncodersOnBothSides = "pitHasEncodersOnBothSides"
   }
 
   // MARK: Properties
@@ -49,6 +52,9 @@ public final class Team: NSObject {
     public var picklistPosition: Int = -1
     public var pitWheelDiameter: String?
     public var pitHasCamera: Bool? = false
+    public var pitCanDoPIDOnDriveTrain: Bool? = false
+    public var pitHasGyro: Bool? = false
+    public var pitHasEncodersOnBothSides: Bool? = false
     
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -81,6 +87,9 @@ public final class Team: NSObject {
     picklistPosition = json[SerializationKeys.picklistPosition].intValue
     pitWheelDiameter = json[SerializationKeys.pitWheelDiameter].string
     pitHasCamera = json[SerializationKeys.pitHasCamera].boolValue
+    pitCanDoPIDOnDriveTrain = json[SerializationKeys.pitCanDoPIDOnDriveTrain].boolValue
+    pitHasGyro = json[SerializationKeys.pitHasGyro].boolValue
+    pitHasEncodersOnBothSides = json[SerializationKeys.pitHasEncodersOnBothSides].boolValue
 }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -90,6 +99,7 @@ public final class Team: NSObject {
     var dictionary: [String: Any] = [:]
     if let value = name { dictionary[SerializationKeys.name] = value }
     if let value = pitDriveTrain { dictionary[SerializationKeys.pitDriveTrain] = value }
+    dictionary[SerializationKeys.number] = number
     if let value = calculatedData { dictionary[SerializationKeys.calculatedData] = value.dictionaryRepresentation() }
     if let value = pitAllImageURLs { dictionary[SerializationKeys.pitAllImageURLs] = value }
     if let value = pitSEALsNotes { dictionary[SerializationKeys.pitSEALsNotes] = value }
@@ -103,14 +113,18 @@ public final class Team: NSObject {
     dictionary[SerializationKeys.picklistPosition] = picklistPosition
     if let value = pitWheelDiameter { dictionary[SerializationKeys.pitWheelDiameter] = value }
     dictionary[SerializationKeys.pitHasCamera] = pitHasCamera
+    dictionary[SerializationKeys.pitCanDoPIDOnDriveTrain] = pitCanDoPIDOnDriveTrain
+    dictionary[SerializationKeys.pitHasGyro] = pitHasGyro
+    dictionary[SerializationKeys.pitHasEncodersOnBothSides] = pitHasEncodersOnBothSides
     return dictionary
   }
 
   // MARK: NSCoding Protocol
-  required public init(coder aDecoder: NSCoder) {
+  required public init?(coder aDecoder: NSCoder) {
     self.name = aDecoder.decodeObject(forKey: SerializationKeys.name) as? String
     self.pitDriveTrain = aDecoder.decodeObject(forKey: SerializationKeys.pitDriveTrain) as? String
-    self.number = (aDecoder.decodeObject(forKey: SerializationKeys.number) as? Int)!
+    self.pitAvailableWeight = aDecoder.decodeFloat(forKey: SerializationKeys.pitAvailableWeight)
+    self.number = aDecoder.decodeInteger(forKey: SerializationKeys.number)
     self.calculatedData = aDecoder.decodeObject(forKey: SerializationKeys.calculatedData) as? CalculatedTeamData
     self.pitAllImageURLs = aDecoder.decodeObject(forKey: SerializationKeys.pitAllImageURLs) as? [String]
     self.pitSEALsNotes = aDecoder.decodeObject(forKey: SerializationKeys.pitSEALsNotes) as? String
@@ -118,12 +132,14 @@ public final class Team: NSObject {
     self.numMatchesPlayed = aDecoder.decodeObject(forKey: SerializationKeys.numMatchesPlayed) as? Int
     self.pitClimberType = aDecoder.decodeObject(forKey: SerializationKeys.pitClimberType) as? String
     self.pitProgrammingLanguage = aDecoder.decodeObject(forKey: SerializationKeys.pitProgrammingLanguage) as? String
-    self.pitAvailableWeight = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvailableWeight) as? Float)!
     self.pitRobotWidth = aDecoder.decodeObject(forKey: SerializationKeys.pitRobotWidth) as? Float
     self.pitRobotLength = aDecoder.decodeObject(forKey: SerializationKeys.pitRobotLength) as? Float
-    self.picklistPosition = (aDecoder.decodeObject(forKey: SerializationKeys.picklistPosition) as? Int)!
+    self.picklistPosition = aDecoder.decodeInteger(forKey: SerializationKeys.picklistPosition)
     self.pitWheelDiameter = aDecoder.decodeObject(forKey: SerializationKeys.pitWheelDiameter) as? String
     self.pitHasCamera = aDecoder.decodeObject(forKey: SerializationKeys.pitHasCamera) as? Bool
+    self.pitCanDoPIDOnDriveTrain = aDecoder.decodeObject(forKey: SerializationKeys.pitCanDoPIDOnDriveTrain) as? Bool
+    self.pitHasGyro = aDecoder.decodeObject(forKey: SerializationKeys.pitHasGyro) as? Bool
+    self.pitHasEncodersOnBothSides = aDecoder.decodeObject(forKey: SerializationKeys.pitHasEncodersOnBothSides) as? Bool
     }
 
   public func encode(with aCoder: NSCoder) {
@@ -143,6 +159,8 @@ public final class Team: NSObject {
     aCoder.encode(picklistPosition, forKey: SerializationKeys.picklistPosition)
     aCoder.encode(pitWheelDiameter, forKey: SerializationKeys.pitWheelDiameter)
     aCoder.encode(pitHasCamera, forKey: SerializationKeys.pitHasCamera)
+    aCoder.encode(pitCanDoPIDOnDriveTrain, forKey: SerializationKeys.pitCanDoPIDOnDriveTrain)
+    aCoder.encode(pitHasGyro, forKey: SerializationKeys.pitHasGyro)
+    aCoder.encode(pitHasEncodersOnBothSides, forKey: SerializationKeys.pitHasEncodersOnBothSides)
   }
-
 }

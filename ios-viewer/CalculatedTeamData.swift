@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public final class CalculatedTeamData: NSObject {
+public final class CalculatedTeamData: NSObject, NSCoding {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
@@ -78,6 +78,49 @@ public final class CalculatedTeamData: NSObject {
     static let avgScaleCubesBy100s = "avgScaleCubesBy100s"
     static let avgScaleCubesBy110s = "avgScaleCubesBy110s"
     static let avgAllVaultTime = "avgAllVaultTime"
+    static let RScoreAgility = "RScoreAgility"
+    static let RScoreDefense = "RScoreDefense"
+    static let RScoreDrivingAbility = "RScoreDrivingAbility"
+    static let RScoreSpeed = "RScoreSpeed"
+    //MARK
+    static let avgNumCubesPlacedAuto = "avgNumCubesPlacedAuto"
+    static let avgNumCubesPlacedTele = "avgNumCubesPlacedTele"
+    static let avgScaleTimeAuto = "avgScaleTimeAuto"
+    static let avgScaleTimeTele = "avgScaleTimeTele"
+    static let avgAllianceSwitchTimeAuto = "avgAllianceSwitchTimeAuto"
+    static let avgAllianceSwitchTimeTele = "avgAllianceSwitchTimeTele"
+    static let avgOpponentSwitchTimeTele = "avgOpponentSwitchTimeTele"
+    static let totalNumParks = "totalNumParks"
+    static let totalNumRobotsLifted = "totalNumRobotsLifted"
+    static let totalNumRobotLiftAttempts = "totalNumRobotLiftAttempts"
+    static let totalNumRobotsGroundLifted = "totalNumRobotsGroundLifted"
+    static let totalNumRobotGroundLiftAttempts = "totalNumRobotGroundLiftAttempts"
+    static let totalNumHighLayerScaleCubes = "totalNumHighLayerScaleCubes"
+    static let totalSuperNotes = "totalSuperNotes"
+    static let numSuccessfulClimbs = "numSuccessfulClimbs"
+    static let soloClimbPercentage = "soloClimbPercentage"
+    static let activeAssistClimbPercentage = "activeAssistClimbPercentage"
+    static let activeLiftClimbPercentage = "activeLiftClimbPercentage"
+    static let activeNoClimbLiftClimbPercentage = "activeNoClimbLiftClimbPercentage"
+    static let assistedClimbPercentage = "assistedClimbPercentage"
+    static let predictedPark = "predictedPark"
+    static let predictedTotalNumRPs = "predictedTotalNumRPs"
+    static let totalNumRPs = "totalNumRPs"
+    static let allianceSwitchSuccessPercentageTele = "allianceSwitchSuccessPercentageTele"
+    static let opponentSwitchSuccessPercentageTele = "opponentSwitchSuccessPercentageTele"
+    static let scaleSuccessPercentageAuto = "scaleSuccessPercentageAuto"
+    static let scaleSuccessPercentageTele = "scaleSuccessPercentageTele"
+    static let allianceSwitchFailPercentageAuto = "allianceSwitchFailPercentageAuto"
+    static let allianceSwitchFailPercentageTele = "allianceSwitchFailPercentageTele"
+    static let opponentSwitchFailPercentageTele = "opponentSwitchFailPercentageTele"
+    static let didThreeExchangeInputPercentage = "didThreeExchangeInputPercentage"
+    static let canGroundIntake = "canGroundIntake"
+    static let teleopExchangeAbility = "teleopExchangeAbility"
+    static let teleopScaleAbility = "teleopScaleAbility"
+    static let teleopAllianceSwitchAbility = "teleopAllianceSwitchAbility"
+    static let teleopOpponentSwitchAbility = "teleopOpponentSwitchAbility"
+    static let maxScaleCubes = "maxScaleCubes"
+    static let maxExchangeCubes = "maxExchangeCubes"
  }
 
   // MARK: Properties
@@ -147,7 +190,49 @@ public final class CalculatedTeamData: NSObject {
     @objc public var avgScaleCubesBy100s: Float = -1.0
     @objc public var avgScaleCubesBy110s: Float = -1.0
     @objc public var avgAllVaultTime: Float = -1.0
-    
+    @objc public var RScoreAgility: Float = -1.0
+    @objc public var RScoreDefense: Float = -1.0
+    @objc public var RScoreDrivingAbility: Float = -1.0
+    @objc public var RScoreSpeed: Float = -1.0
+    @objc public var avgNumCubesPlacedAuto: Float = -1.0
+    @objc public var avgNumCubesPlacedTele: Float = -1.0
+    @objc public var avgScaleTimeAuto: Float = -1.0
+    @objc public var avgScaleTimeTele: Float = -1.0
+    @objc public var avgAllianceSwitchTimeAuto: Float = -1.0
+    @objc public var avgAllianceSwitchTimeTele: Float = -1.0
+    @objc public var avgOpponentSwitchTimeTele: Float = -1.0
+    @objc public var totalNumParks: Int = -1
+    @objc public var totalNumRobotsLifted: Int = -1
+    @objc public var totalNumRobotLiftAttempts: Int = -1
+    @objc public var totalNumRobotsGroundLifted: Int = -1
+    @objc public var totalNumRobotGroundLiftAttempts: Int = -1
+    @objc public var totalNumHighLayerScaleCubes: Int = -1
+    @objc public var totalSuperNotes: String = "-1"
+    @objc public var numSuccessfulClimbs: Int = -1
+    @objc public var soloClimbPercentage: Float = -1.0
+    @objc public var activeAssistClimbPercentage: Float = -1.0
+    @objc public var activeLiftClimbPercentage: Float = -1.0
+    @objc public var activeNoClimbLiftClimbPercentage: Float = -1.0
+    @objc public var assistedClimbPercentage: Float = -1.0
+    @objc public var predictedPark: Float = -1.0
+    @objc public var predictedTotalNumRPs: Int = -1
+    @objc public var totalNumRPs: Int = -1
+    @objc public var allianceSwitchSuccessPercentageTele: Float = -1.0
+    @objc public var opponentSwitchSuccessPercentageTele: Float = -1.0
+    @objc public var scaleSuccessPercentageAuto: Float = -1.0
+    @objc public var scaleSuccessPercentageTele: Float = -1.0
+    @objc public var allianceSwitchFailPercentageAuto: Float = -1.0
+    @objc public var allianceSwitchFailPercentageTele: Float = -1.0
+    @objc public var opponentSwitchFailPercentageTele: Float = -1.0
+    @objc public var didThreeExchangeInputPercentage: Float = -1.0
+    @objc public var canGroundIntake: Float = -1.0
+    @objc public var teleopExchangeAbility: Float = -1.0
+    @objc public var teleopScaleAbility: Float = -1.0
+    @objc public var teleopAllianceSwitchAbility: Float = -1.0
+    @objc public var teleopOpponentSwitchAbility: Float = -1.0
+    @objc public var maxScaleCubes: Int = -1
+    @objc public var maxExchangeCubes: Int = -1
+
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
   ///
@@ -231,6 +316,48 @@ public final class CalculatedTeamData: NSObject {
     avgScaleCubesBy100s = json[SerializationKeys.avgScaleCubesBy100s].floatValue
     avgScaleCubesBy110s = json[SerializationKeys.avgScaleCubesBy110s].floatValue
     avgAllVaultTime = json[SerializationKeys.avgAllVaultTime].floatValue
+    RScoreAgility = json[SerializationKeys.RScoreAgility].floatValue
+    RScoreDefense = json[SerializationKeys.RScoreDefense].floatValue
+    RScoreDrivingAbility = json[SerializationKeys.RScoreDrivingAbility].floatValue
+    RScoreSpeed = json[SerializationKeys.RScoreSpeed].floatValue
+       avgNumCubesPlacedAuto = json[SerializationKeys.avgNumCubesPlacedAuto].floatValue
+       avgNumCubesPlacedTele = json[SerializationKeys.avgNumCubesPlacedTele].floatValue
+       avgScaleTimeAuto = json[SerializationKeys.avgScaleTimeAuto].floatValue
+       avgScaleTimeTele = json[SerializationKeys.avgScaleTimeTele].floatValue
+       avgAllianceSwitchTimeAuto = json[SerializationKeys.avgAllianceSwitchTimeAuto].floatValue
+       avgAllianceSwitchTimeTele = json[SerializationKeys.avgAllianceSwitchTimeTele].floatValue
+       avgOpponentSwitchTimeTele = json[SerializationKeys.avgOpponentSwitchTimeTele].floatValue
+       totalNumParks = json[SerializationKeys.totalNumParks].intValue
+       totalNumRobotsLifted = json[SerializationKeys.totalNumRobotsLifted].intValue
+       totalNumRobotLiftAttempts = json[SerializationKeys.totalNumRobotLiftAttempts].intValue
+       totalNumRobotsGroundLifted = json[SerializationKeys.totalNumRobotsGroundLifted].intValue
+       totalNumRobotGroundLiftAttempts = json[SerializationKeys.totalNumRobotGroundLiftAttempts].intValue
+       totalNumHighLayerScaleCubes = json[SerializationKeys.totalNumHighLayerScaleCubes].intValue
+       totalSuperNotes = json[SerializationKeys.totalSuperNotes].stringValue
+       numSuccessfulClimbs = json[SerializationKeys.numSuccessfulClimbs].intValue
+       soloClimbPercentage = json[SerializationKeys.soloClimbPercentage].floatValue
+       activeAssistClimbPercentage = json[SerializationKeys.activeAssistClimbPercentage].floatValue
+       activeLiftClimbPercentage = json[SerializationKeys.activeLiftClimbPercentage].floatValue
+       activeNoClimbLiftClimbPercentage = json[SerializationKeys.activeNoClimbLiftClimbPercentage].floatValue
+       assistedClimbPercentage = json[SerializationKeys.assistedClimbPercentage].floatValue
+       predictedPark = json[SerializationKeys.predictedPark].floatValue
+       predictedTotalNumRPs = json[SerializationKeys.predictedTotalNumRPs].intValue
+       totalNumRPs = json[SerializationKeys.totalNumRPs].intValue
+       allianceSwitchSuccessPercentageTele = json[SerializationKeys.allianceSwitchSuccessPercentageTele].floatValue
+       opponentSwitchSuccessPercentageTele = json[SerializationKeys.opponentSwitchSuccessPercentageTele].floatValue
+       scaleSuccessPercentageAuto = json[SerializationKeys.scaleSuccessPercentageAuto].floatValue
+       scaleSuccessPercentageTele = json[SerializationKeys.scaleSuccessPercentageTele].floatValue
+       allianceSwitchFailPercentageAuto = json[SerializationKeys.allianceSwitchFailPercentageAuto].floatValue
+       allianceSwitchFailPercentageTele = json[SerializationKeys.allianceSwitchFailPercentageTele].floatValue
+       opponentSwitchFailPercentageTele = json[SerializationKeys.opponentSwitchFailPercentageTele].floatValue
+       didThreeExchangeInputPercentage = json[SerializationKeys.didThreeExchangeInputPercentage].floatValue
+       canGroundIntake = json[SerializationKeys.canGroundIntake].floatValue
+       teleopExchangeAbility = json[SerializationKeys.teleopExchangeAbility].floatValue
+       teleopScaleAbility = json[SerializationKeys.teleopScaleAbility].floatValue
+       teleopAllianceSwitchAbility = json[SerializationKeys.teleopAllianceSwitchAbility].floatValue
+       teleopOpponentSwitchAbility = json[SerializationKeys.teleopOpponentSwitchAbility].floatValue
+       maxScaleCubes = json[SerializationKeys.maxScaleCubes].intValue
+       maxExchangeCubes = json[SerializationKeys.maxExchangeCubes].intValue
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -277,6 +404,7 @@ public final class CalculatedTeamData: NSObject {
     dictionary[SerializationKeys.canScoreBothSwitchSidesAuto] = canScoreBothSwitchSidesAuto
     dictionary[SerializationKeys.avgNumGroundPortalIntakeTele] = avgNumGroundPortalIntakeTele
     dictionary[SerializationKeys.avgNumElevatedPyramidIntakeAuto] = avgNumElevatedPyramidIntakeAuto
+    dictionary[SerializationKeys.avgNumElevatedPyramidIntakeTele] = avgNumElevatedPyramidIntakeTele
     dictionary[SerializationKeys.avgNumGroundPyramidIntakeTele] = avgNumGroundPyramidIntakeTele
     if let value = numMatchesPlayed { dictionary[SerializationKeys.numMatchesPlayed] = value }
     dictionary[SerializationKeys.avgNumGroundPyramidIntakeAuto] = avgNumGroundPyramidIntakeAuto
@@ -305,77 +433,161 @@ public final class CalculatedTeamData: NSObject {
     dictionary[SerializationKeys.avgScaleCubesBy100s] = avgScaleCubesBy100s
     dictionary[SerializationKeys.avgScaleCubesBy110s] = avgScaleCubesBy110s
     dictionary[SerializationKeys.avgAllVaultTime] = avgAllVaultTime
+    dictionary[SerializationKeys.RScoreAgility] = RScoreAgility
+    dictionary[SerializationKeys.RScoreDefense] = RScoreDefense
+    dictionary[SerializationKeys.RScoreDrivingAbility] = RScoreDrivingAbility
+    dictionary[SerializationKeys.RScoreSpeed] = RScoreSpeed
+    dictionary[SerializationKeys.avgNumCubesPlacedAuto] = avgNumCubesPlacedAuto
+        dictionary[SerializationKeys.avgNumCubesPlacedTele] = avgNumCubesPlacedTele
+        dictionary[SerializationKeys.avgScaleTimeAuto] = avgScaleTimeAuto
+        dictionary[SerializationKeys.avgScaleTimeTele] = avgScaleTimeTele
+        dictionary[SerializationKeys.avgAllianceSwitchTimeAuto] = avgAllianceSwitchTimeAuto
+        dictionary[SerializationKeys.avgAllianceSwitchTimeTele] = avgAllianceSwitchTimeTele
+        dictionary[SerializationKeys.avgOpponentSwitchTimeTele] = avgOpponentSwitchTimeTele
+        dictionary[SerializationKeys.totalNumParks] = totalNumParks
+        dictionary[SerializationKeys.totalNumRobotsLifted] = totalNumRobotsLifted
+        dictionary[SerializationKeys.totalNumRobotLiftAttempts] = totalNumRobotLiftAttempts
+        dictionary[SerializationKeys.totalNumRobotsGroundLifted] = totalNumRobotsGroundLifted
+        dictionary[SerializationKeys.totalNumRobotGroundLiftAttempts] = totalNumRobotGroundLiftAttempts
+        dictionary[SerializationKeys.totalNumHighLayerScaleCubes] = totalNumHighLayerScaleCubes
+        dictionary[SerializationKeys.totalSuperNotes] = totalSuperNotes
+        dictionary[SerializationKeys.numSuccessfulClimbs] = numSuccessfulClimbs
+        dictionary[SerializationKeys.soloClimbPercentage] = soloClimbPercentage
+        dictionary[SerializationKeys.activeAssistClimbPercentage] = activeAssistClimbPercentage
+        dictionary[SerializationKeys.activeLiftClimbPercentage] = activeLiftClimbPercentage
+        dictionary[SerializationKeys.activeNoClimbLiftClimbPercentage] = activeNoClimbLiftClimbPercentage
+        dictionary[SerializationKeys.assistedClimbPercentage] = assistedClimbPercentage
+        dictionary[SerializationKeys.predictedPark] = predictedPark
+        dictionary[SerializationKeys.predictedTotalNumRPs] = predictedTotalNumRPs
+        dictionary[SerializationKeys.totalNumRPs] = totalNumRPs
+        dictionary[SerializationKeys.allianceSwitchSuccessPercentageTele] = allianceSwitchSuccessPercentageTele
+        dictionary[SerializationKeys.opponentSwitchSuccessPercentageTele] = opponentSwitchSuccessPercentageTele
+        dictionary[SerializationKeys.scaleSuccessPercentageAuto] = scaleSuccessPercentageAuto
+        dictionary[SerializationKeys.scaleSuccessPercentageTele] = scaleSuccessPercentageTele
+        dictionary[SerializationKeys.allianceSwitchFailPercentageAuto] = allianceSwitchFailPercentageAuto
+    dictionary[SerializationKeys.allianceSwitchFailPercentageTele] = allianceSwitchFailPercentageTele
+        dictionary[SerializationKeys.opponentSwitchFailPercentageTele] = opponentSwitchFailPercentageTele
+        dictionary[SerializationKeys.didThreeExchangeInputPercentage] = didThreeExchangeInputPercentage
+        dictionary[SerializationKeys.canGroundIntake] = canGroundIntake
+        dictionary[SerializationKeys.teleopExchangeAbility] = teleopExchangeAbility
+        dictionary[SerializationKeys.teleopScaleAbility] = teleopScaleAbility
+        dictionary[SerializationKeys.teleopAllianceSwitchAbility] = teleopAllianceSwitchAbility
+        dictionary[SerializationKeys.teleopOpponentSwitchAbility] = teleopOpponentSwitchAbility
+        dictionary[SerializationKeys.maxScaleCubes] = maxScaleCubes
+        dictionary[SerializationKeys.maxExchangeCubes] = maxExchangeCubes
     return dictionary
   }
 
   // MARK: NSCoding Protocol
   required public init(coder aDecoder: NSCoder) {
-    self.avgNumCubesFumbledAuto = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumCubesFumbledAuto) as? Float)!
-    self.avgNumHumanPortalIntakeTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumHumanPortalIntakeTele) as? Float)!
-    self.switchFailPercentageAuto = (aDecoder.decodeObject(forKey: SerializationKeys.switchFailPercentageAuto) as? Float)!
-    self.avgNumElevatedPyramidIntakeAuto = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumElevatedPyramidIntakeAuto) as? Float)!
-    self.avgAllianceSwitchCubesTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgAllianceSwitchCubesTele) as? Float)!
-    self.avgAllianceSwitchCubesAuto = (aDecoder.decodeObject(forKey: SerializationKeys.avgAllianceSwitchCubesAuto) as? Float)!
-    self.avgOpponentSwitchCubesTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgOpponentSwitchCubesTele) as? Float)!
-    self.avgOpponentSwitchCubesAuto = (aDecoder.decodeObject(forKey: SerializationKeys.avgOpponentSwitchCubesAuto) as? Float)!
-    self.avgAgility = (aDecoder.decodeObject(forKey: SerializationKeys.avgAgility) as? Float)!
-    self.secondPickAbility = (aDecoder.decodeObject(forKey: SerializationKeys.secondPickAbility) as? Float)!
-    self.avgNumGoodDecisions = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumGoodDecisions) as? Float)!
-    self.avgNumAlliancePlatformIntakeAuto = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumAlliancePlatformIntakeAuto) as? Float)!
-    self.avgNumReturnIntakeTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumReturnIntakeTele) as? Float)!
-    self.avgNumOpponentPlatformIntakeTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumOpponentPlatformIntakeTele) as? Float)!
-    self.avgNumBadDecisions = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumBadDecisions) as? Float)!
-    self.avgClimbTime = (aDecoder.decodeObject(forKey: SerializationKeys.avgClimbTime) as? Float)!
-    self.predictedClimb = (aDecoder.decodeObject(forKey: SerializationKeys.predictedClimb) as? Float)!
-    self.avgDrivingAbility = (aDecoder.decodeObject(forKey: SerializationKeys.avgDrivingAbility) as? Float)!
-    self.avgNumExchangeInputTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumExchangeInputTele) as? Float)!
-    self.avgDefense = (aDecoder.decodeObject(forKey: SerializationKeys.avgDefense) as? Float)!
-    self.avgCubesPlacedInScaleAuto = (aDecoder.decodeObject(forKey: SerializationKeys.avgCubesPlacedInScaleAuto) as? Float)!
-    self.disabledPercentage = (aDecoder.decodeObject(forKey: SerializationKeys.disabledPercentage) as? Float)!
-    self.predictedNumScaleCubesAuto = (aDecoder.decodeObject(forKey: SerializationKeys.predictedNumScaleCubesAuto) as? Float)!
-    self.scaleFailPercentageTele = (aDecoder.decodeObject(forKey: SerializationKeys.scaleFailPercentageTele) as? Float)!
-    self.incapacitatedPercentage = (aDecoder.decodeObject(forKey: SerializationKeys.incapacitatedPercentage) as? Float)!
-    self.predictedNumAllianceSwitchCubesAuto = (aDecoder.decodeObject(forKey: SerializationKeys.predictedNumAllianceSwitchCubesAuto) as? Float)!
-    self.autoRunPercentage = (aDecoder.decodeObject(forKey: SerializationKeys.autoRunPercentage) as? Float)!
-    self.avgNumCubesFumbledTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumCubesFumbledTele) as? Float)!
-    self.scaleFailPercentageAuto = (aDecoder.decodeObject(forKey: SerializationKeys.scaleFailPercentageAuto) as? Float)!
-    self.avgCubesSpilledAuto = (aDecoder.decodeObject(forKey: SerializationKeys.avgCubesSpilledAuto) as? Float)!
-    self.avgCubesSpilledTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgCubesSpilledTele) as? Float)!
-    self.switchFailPercentageTele = (aDecoder.decodeObject(forKey: SerializationKeys.switchFailPercentageTele) as? Float)!
-    self.avgNumAlliancePlatformIntakeTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumAlliancePlatformIntakeTele) as? Float)!
-    self.avgNumGroundIntakeTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumGroundIntakeTele) as? Float)!
-    self.climbPercentage = (aDecoder.decodeObject(forKey: SerializationKeys.climbPercentage) as? Float)!
-    self.avgNumOpponentPlatformIntakeAuto = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumOpponentPlatformIntakeAuto) as? Float)!
+    self.avgNumCubesFumbledAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumCubesFumbledAuto)
+    self.avgNumHumanPortalIntakeTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumHumanPortalIntakeTele)
+    self.switchFailPercentageAuto = aDecoder.decodeFloat(forKey: SerializationKeys.switchFailPercentageAuto)
+    self.avgNumElevatedPyramidIntakeAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumElevatedPyramidIntakeAuto)
+    self.avgAllianceSwitchCubesTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgAllianceSwitchCubesTele)
+    self.avgAllianceSwitchCubesAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgAllianceSwitchCubesAuto)
+    self.avgOpponentSwitchCubesTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgOpponentSwitchCubesTele)
+    self.avgOpponentSwitchCubesAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgOpponentSwitchCubesAuto)
+    self.avgAgility = aDecoder.decodeFloat(forKey: SerializationKeys.avgAgility)
+    self.secondPickAbility = aDecoder.decodeFloat(forKey: SerializationKeys.secondPickAbility)
+    self.avgNumGoodDecisions = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumGoodDecisions)
+    self.avgNumAlliancePlatformIntakeAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumAlliancePlatformIntakeAuto)
+    self.avgNumReturnIntakeTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumReturnIntakeTele)
+    self.avgNumOpponentPlatformIntakeTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumOpponentPlatformIntakeTele)
+    self.avgNumBadDecisions = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumBadDecisions)
+    self.avgClimbTime = aDecoder.decodeFloat(forKey: SerializationKeys.avgClimbTime)
+    self.predictedClimb = aDecoder.decodeFloat(forKey: SerializationKeys.predictedClimb)
+    self.avgDrivingAbility = aDecoder.decodeFloat(forKey: SerializationKeys.avgDrivingAbility)
+    self.avgNumExchangeInputTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumExchangeInputTele)
+    self.avgDefense = aDecoder.decodeFloat(forKey: SerializationKeys.avgDefense)
+    self.avgCubesPlacedInScaleAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgCubesPlacedInScaleAuto)
+    self.disabledPercentage = aDecoder.decodeFloat(forKey: SerializationKeys.disabledPercentage)
+    self.predictedNumScaleCubesAuto = aDecoder.decodeFloat(forKey: SerializationKeys.predictedNumScaleCubesAuto)
+    self.scaleFailPercentageTele = aDecoder.decodeFloat(forKey: SerializationKeys.scaleFailPercentageTele)
+    self.incapacitatedPercentage = aDecoder.decodeFloat(forKey: SerializationKeys.incapacitatedPercentage)
+    self.predictedNumAllianceSwitchCubesAuto = aDecoder.decodeFloat(forKey: SerializationKeys.predictedNumAllianceSwitchCubesAuto)
+    self.autoRunPercentage = aDecoder.decodeFloat(forKey: SerializationKeys.autoRunPercentage)
+    self.avgNumCubesFumbledTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumCubesFumbledTele)
+    self.scaleFailPercentageAuto = aDecoder.decodeFloat(forKey: SerializationKeys.scaleFailPercentageAuto)
+    self.avgCubesSpilledAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgCubesSpilledAuto)
+    self.avgCubesSpilledTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgCubesSpilledTele)
+    self.switchFailPercentageTele = aDecoder.decodeFloat(forKey: SerializationKeys.switchFailPercentageTele)
+    self.avgNumAlliancePlatformIntakeTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumAlliancePlatformIntakeTele)
+    self.avgNumGroundIntakeTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumGroundIntakeTele)
+    self.climbPercentage = aDecoder.decodeFloat(forKey: SerializationKeys.climbPercentage)
+    self.avgNumOpponentPlatformIntakeAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumOpponentPlatformIntakeAuto)
     self.canScoreBothSwitchSidesAuto = aDecoder.decodeBool(forKey: SerializationKeys.canScoreBothSwitchSidesAuto)
-    self.avgNumGroundPortalIntakeTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumGroundPortalIntakeTele) as? Float)!
-    self.avgNumElevatedPyramidIntakeTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumElevatedPyramidIntakeTele) as? Float)!
-    self.avgNumGroundPyramidIntakeTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumGroundPyramidIntakeTele) as? Float)!
+    self.avgNumGroundPortalIntakeTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumGroundPortalIntakeTele)
+    self.avgNumElevatedPyramidIntakeTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumElevatedPyramidIntakeTele)
+    self.avgNumGroundPyramidIntakeTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumGroundPyramidIntakeTele)
     self.numMatchesPlayed = aDecoder.decodeObject(forKey: SerializationKeys.numMatchesPlayed) as? Int
-    self.avgNumGroundPyramidIntakeAuto = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumGroundPyramidIntakeAuto) as? Float)!
-    self.avgSpeed = (aDecoder.decodeObject(forKey: SerializationKeys.avgSpeed) as? Float)!
-    self.firstPickAbility = (aDecoder.decodeObject(forKey: SerializationKeys.firstPickAbility) as? Float)!
-    self.actualSeed = (aDecoder.decodeObject(forKey: SerializationKeys.actualSeed) as? Int)!
-     self.predictedSeed = (aDecoder.decodeObject(forKey: SerializationKeys.predictedSeed) as? Int)!
-    self.predictedNumRPs = (aDecoder.decodeObject(forKey: SerializationKeys.predictedNumRPs) as? Float)!
-    self.actualNumRPs = (aDecoder.decodeObject(forKey: SerializationKeys.actualNumRPs) as? Float)!
-    self.dysfunctionalPercentage = (aDecoder.decodeObject(forKey: SerializationKeys.dysfunctionalPercentage) as? Float)!
-    self.avgCubesPlacedInScaleTele = (aDecoder.decodeObject(forKey: SerializationKeys.avgCubesPlacedInScaleTele) as? Float)!
-    self.totalNumGoodDecisions = (aDecoder.decodeObject(forKey: SerializationKeys.totalNumGoodDecisions) as? Int)!
-    self.totalNumBadDecisions = (aDecoder.decodeObject(forKey: SerializationKeys.totalNumBadDecisions) as? Int)!
-    self.avgNumRobotsLifted = (aDecoder.decodeObject(forKey: SerializationKeys.avgNumRobotsLifted) as? Float)!
-    self.avgTimeToOwnAllianceSwitchAuto = (aDecoder.decodeObject(forKey: SerializationKeys.avgTimeToOwnAllianceSwitchAuto) as? Float)!
-    self.avgTimeToOwnScaleAuto = (aDecoder.decodeObject(forKey: SerializationKeys.avgTimeToOwnScaleAuto) as? Float)!
-    self.parkPercentage = (aDecoder.decodeObject(forKey: SerializationKeys.parkPercentage) as? Float)!
-    self.percentSuccessOppositeSwitchSideAuto = (aDecoder.decodeObject(forKey: SerializationKeys.percentSuccessOppositeSwitchSideAuto) as? Float)!
-    self.allianceSwitchSuccessPercentageAuto = (aDecoder.decodeObject(forKey: SerializationKeys.percentSuccessOppositeSwitchSideAuto) as? Float)!
-    self.canPlaceHighLayerCube = (aDecoder.decodeObject(forKey: SerializationKeys.canPlaceHighLayerCube) as? Bool)!
-    self.pitAvgDriveTime = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvgDriveTime) as? Float)!
-    self.pitAvgRampTime = (aDecoder.decodeObject(forKey: SerializationKeys.pitAvgRampTime) as? Float)!
-    self.avgTotalCubesPlaced = (aDecoder.decodeObject(forKey: SerializationKeys.avgTotalCubesPlaced) as? Float)!
-    self.avgSwitchOwnership = (aDecoder.decodeObject(forKey: SerializationKeys.avgSwitchOwnership) as? Int)!
-    self.avgScaleCubesBy100s = (aDecoder.decodeObject(forKey: SerializationKeys.avgScaleCubesBy100s) as? Float)!
-    self.avgScaleCubesBy110s = (aDecoder.decodeObject(forKey: SerializationKeys.avgScaleCubesBy110s) as? Float)!
-    self.avgAllVaultTime = (aDecoder.decodeObject(forKey: SerializationKeys.avgScaleCubesBy100s) as? Float)!
+    self.avgNumGroundPyramidIntakeAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumGroundPyramidIntakeAuto)
+    self.avgSpeed = aDecoder.decodeFloat(forKey: SerializationKeys.avgSpeed)
+    self.firstPickAbility = aDecoder.decodeFloat(forKey: SerializationKeys.firstPickAbility)
+    self.actualSeed = aDecoder.decodeInteger(forKey: SerializationKeys.actualSeed)
+     self.predictedSeed = aDecoder.decodeInteger(forKey: SerializationKeys.predictedSeed)
+    self.predictedNumRPs = aDecoder.decodeFloat(forKey: SerializationKeys.predictedNumRPs)
+    self.actualNumRPs = aDecoder.decodeFloat(forKey: SerializationKeys.actualNumRPs)
+    self.dysfunctionalPercentage = aDecoder.decodeFloat(forKey: SerializationKeys.dysfunctionalPercentage)
+    self.avgCubesPlacedInScaleTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgCubesPlacedInScaleTele)
+    self.totalNumGoodDecisions = aDecoder.decodeInteger(forKey: SerializationKeys.totalNumGoodDecisions)
+    self.totalNumBadDecisions = aDecoder.decodeInteger(forKey: SerializationKeys.totalNumBadDecisions)
+    self.avgNumRobotsLifted = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumRobotsLifted)
+    self.avgTimeToOwnAllianceSwitchAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgTimeToOwnAllianceSwitchAuto)
+    self.avgTimeToOwnScaleAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgTimeToOwnScaleAuto)
+    self.parkPercentage = aDecoder.decodeFloat(forKey: SerializationKeys.parkPercentage)
+    self.percentSuccessOppositeSwitchSideAuto = aDecoder.decodeFloat(forKey: SerializationKeys.percentSuccessOppositeSwitchSideAuto)
+    self.allianceSwitchSuccessPercentageAuto = aDecoder.decodeFloat(forKey: SerializationKeys.percentSuccessOppositeSwitchSideAuto)
+    self.canPlaceHighLayerCube = aDecoder.decodeBool(forKey: SerializationKeys.canPlaceHighLayerCube)
+    self.pitAvgDriveTime = aDecoder.decodeFloat(forKey: SerializationKeys.pitAvgDriveTime)
+    self.pitAvgRampTime = aDecoder.decodeFloat(forKey: SerializationKeys.pitAvgRampTime)
+    self.avgTotalCubesPlaced = aDecoder.decodeFloat(forKey: SerializationKeys.avgTotalCubesPlaced)
+    self.avgSwitchOwnership = aDecoder.decodeInteger(forKey: SerializationKeys.avgSwitchOwnership)
+    self.avgScaleCubesBy100s = aDecoder.decodeFloat(forKey: SerializationKeys.avgScaleCubesBy100s)
+    self.avgScaleCubesBy110s = aDecoder.decodeFloat(forKey: SerializationKeys.avgScaleCubesBy110s)
+    self.avgAllVaultTime = aDecoder.decodeFloat(forKey: SerializationKeys.avgScaleCubesBy100s)
+    self.RScoreAgility = aDecoder.decodeFloat(forKey: SerializationKeys.RScoreAgility)
+    self.RScoreDefense = aDecoder.decodeFloat(forKey: SerializationKeys.RScoreDefense)
+    self.RScoreDrivingAbility = aDecoder.decodeFloat(forKey: SerializationKeys.RScoreDrivingAbility)
+    self.RScoreSpeed = aDecoder.decodeFloat(forKey: SerializationKeys.RScoreSpeed)
+    self.avgNumCubesPlacedAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumCubesPlacedAuto)
+    self.avgNumCubesPlacedTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgNumCubesPlacedTele)
+    self.avgScaleTimeAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgScaleTimeAuto)
+    self.avgScaleTimeTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgScaleTimeTele)
+    self.avgAllianceSwitchTimeAuto = aDecoder.decodeFloat(forKey: SerializationKeys.avgAllianceSwitchTimeAuto)
+    self.avgAllianceSwitchTimeTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgAllianceSwitchTimeTele)
+    self.avgOpponentSwitchTimeTele = aDecoder.decodeFloat(forKey: SerializationKeys.avgOpponentSwitchTimeTele)
+    self.totalNumParks = aDecoder.decodeInteger(forKey: SerializationKeys.totalNumParks)
+    self.totalNumRobotsLifted = aDecoder.decodeInteger(forKey: SerializationKeys.totalNumRobotsLifted)
+    self.totalNumRobotLiftAttempts = aDecoder.decodeInteger(forKey: SerializationKeys.totalNumRobotLiftAttempts)
+    self.totalNumRobotsGroundLifted = aDecoder.decodeInteger(forKey: SerializationKeys.totalNumRobotsGroundLifted)
+    self.totalNumRobotGroundLiftAttempts = aDecoder.decodeInteger(forKey: SerializationKeys.totalNumRobotGroundLiftAttempts)
+    self.totalNumHighLayerScaleCubes = aDecoder.decodeInteger(forKey: SerializationKeys.totalNumHighLayerScaleCubes)
+    //self.totalSuperNotes = aDecoder.decodeObject(forKey: SerializationKeys.totalSuperNotes) as? String
+    self.numSuccessfulClimbs = aDecoder.decodeInteger(forKey: SerializationKeys.numSuccessfulClimbs)
+    self.soloClimbPercentage = aDecoder.decodeFloat(forKey: SerializationKeys.soloClimbPercentage)
+    self.activeAssistClimbPercentage = aDecoder.decodeFloat(forKey: SerializationKeys.activeAssistClimbPercentage)
+    self.activeLiftClimbPercentage = aDecoder.decodeFloat(forKey: SerializationKeys.activeLiftClimbPercentage)
+    self.activeNoClimbLiftClimbPercentage = aDecoder.decodeFloat(forKey: SerializationKeys.activeNoClimbLiftClimbPercentage)
+    self.assistedClimbPercentage = aDecoder.decodeFloat(forKey: SerializationKeys.assistedClimbPercentage)
+    self.predictedPark = aDecoder.decodeFloat(forKey: SerializationKeys.predictedPark)
+    self.predictedTotalNumRPs = aDecoder.decodeInteger(forKey: SerializationKeys.predictedTotalNumRPs)
+    self.totalNumRPs = aDecoder.decodeInteger(forKey: SerializationKeys.totalNumRPs)
+    self.allianceSwitchSuccessPercentageTele = aDecoder.decodeFloat(forKey: SerializationKeys.allianceSwitchSuccessPercentageTele)
+    self.opponentSwitchSuccessPercentageTele = aDecoder.decodeFloat(forKey: SerializationKeys.opponentSwitchSuccessPercentageTele)
+    self.scaleSuccessPercentageAuto = aDecoder.decodeFloat(forKey: SerializationKeys.scaleSuccessPercentageAuto)
+    self.scaleSuccessPercentageTele = aDecoder.decodeFloat(forKey: SerializationKeys.scaleSuccessPercentageTele)
+    self.allianceSwitchFailPercentageAuto = aDecoder.decodeFloat(forKey: SerializationKeys.allianceSwitchFailPercentageAuto)
+    self.allianceSwitchFailPercentageTele = aDecoder.decodeFloat(forKey: SerializationKeys.allianceSwitchFailPercentageTele)
+    self.opponentSwitchFailPercentageTele = aDecoder.decodeFloat(forKey: SerializationKeys.opponentSwitchFailPercentageTele)
+    self.didThreeExchangeInputPercentage = aDecoder.decodeFloat(forKey: SerializationKeys.didThreeExchangeInputPercentage)
+    self.canGroundIntake = aDecoder.decodeFloat(forKey: SerializationKeys.canGroundIntake)
+    self.teleopExchangeAbility = aDecoder.decodeFloat(forKey: SerializationKeys.teleopExchangeAbility)
+    self.teleopScaleAbility = aDecoder.decodeFloat(forKey: SerializationKeys.teleopScaleAbility)
+    self.teleopAllianceSwitchAbility = aDecoder.decodeFloat(forKey: SerializationKeys.teleopAllianceSwitchAbility)
+    self.teleopOpponentSwitchAbility = aDecoder.decodeFloat(forKey: SerializationKeys.teleopOpponentSwitchAbility)
+    self.maxScaleCubes = aDecoder.decodeInteger(forKey: SerializationKeys.maxScaleCubes)
+    self.maxExchangeCubes = aDecoder.decodeInteger(forKey: SerializationKeys.maxExchangeCubes)
   }
 
   public func encode(with aCoder: NSCoder) {
@@ -443,6 +655,46 @@ public final class CalculatedTeamData: NSObject {
     aCoder.encode(avgScaleCubesBy100s, forKey: SerializationKeys.avgScaleCubesBy100s)
     aCoder.encode(avgScaleCubesBy110s, forKey: SerializationKeys.avgScaleCubesBy110s)
     aCoder.encode(avgAllVaultTime, forKey: SerializationKeys.avgAllVaultTime)
+    aCoder.encode(RScoreAgility, forKey: SerializationKeys.RScoreAgility)
+    aCoder.encode(RScoreDefense, forKey: SerializationKeys.RScoreDefense)
+    aCoder.encode(RScoreDrivingAbility, forKey: SerializationKeys.RScoreDrivingAbility)
+    aCoder.encode(RScoreSpeed, forKey: SerializationKeys.RScoreSpeed)
+    aCoder.encode(avgNumCubesPlacedAuto, forKey: SerializationKeys.avgNumCubesPlacedAuto)
+    aCoder.encode(avgNumCubesPlacedTele, forKey: SerializationKeys.avgNumCubesPlacedTele)
+    aCoder.encode(avgScaleTimeAuto, forKey: SerializationKeys.avgScaleTimeAuto)
+    aCoder.encode(avgScaleTimeTele, forKey: SerializationKeys.avgScaleTimeTele)
+    aCoder.encode(avgAllianceSwitchTimeAuto , forKey: SerializationKeys.avgAllianceSwitchTimeAuto)
+    aCoder.encode(avgAllianceSwitchTimeTele, forKey: SerializationKeys.avgAllianceSwitchTimeTele)
+    aCoder.encode(totalNumParks, forKey: SerializationKeys.totalNumParks)
+    aCoder.encode(totalNumRobotsLifted, forKey: SerializationKeys.totalNumRobotsLifted)
+    aCoder.encode(totalNumRobotLiftAttempts, forKey: SerializationKeys.totalNumRobotLiftAttempts)
+    aCoder.encode(totalNumRobotsGroundLifted, forKey: SerializationKeys.totalNumRobotsGroundLifted)
+    aCoder.encode(totalNumRobotGroundLiftAttempts, forKey: SerializationKeys.totalNumRobotGroundLiftAttempts)
+    aCoder.encode(totalNumHighLayerScaleCubes, forKey: SerializationKeys.totalNumHighLayerScaleCubes)
+    aCoder.encode(totalSuperNotes, forKey: SerializationKeys.totalSuperNotes)
+    aCoder.encode(numSuccessfulClimbs, forKey: SerializationKeys.numSuccessfulClimbs)
+    aCoder.encode(soloClimbPercentage, forKey: SerializationKeys.soloClimbPercentage)
+    aCoder.encode(activeAssistClimbPercentage, forKey: SerializationKeys.activeAssistClimbPercentage)
+    aCoder.encode(activeLiftClimbPercentage, forKey: SerializationKeys.activeLiftClimbPercentage)
+    aCoder.encode(activeNoClimbLiftClimbPercentage, forKey: SerializationKeys.activeNoClimbLiftClimbPercentage)
+    aCoder.encode(assistedClimbPercentage, forKey: SerializationKeys.assistedClimbPercentage)
+    aCoder.encode(predictedPark, forKey: SerializationKeys.predictedPark)
+    aCoder.encode(predictedTotalNumRPs, forKey: SerializationKeys.predictedTotalNumRPs)
+    aCoder.encode(totalNumRPs, forKey: SerializationKeys.totalNumRPs)
+    aCoder.encode(allianceSwitchSuccessPercentageTele, forKey: SerializationKeys.allianceSwitchSuccessPercentageTele)
+    aCoder.encode(opponentSwitchSuccessPercentageTele, forKey: SerializationKeys.opponentSwitchSuccessPercentageTele)
+    aCoder.encode(scaleSuccessPercentageAuto, forKey: SerializationKeys.scaleSuccessPercentageAuto)
+    aCoder.encode(scaleSuccessPercentageTele, forKey: SerializationKeys.scaleSuccessPercentageTele)
+    aCoder.encode(allianceSwitchFailPercentageAuto, forKey: SerializationKeys.allianceSwitchFailPercentageAuto)
+    aCoder.encode(allianceSwitchFailPercentageTele, forKey: SerializationKeys.allianceSwitchFailPercentageTele)
+    aCoder.encode(opponentSwitchFailPercentageTele, forKey: SerializationKeys.opponentSwitchFailPercentageTele)
+    aCoder.encode(didThreeExchangeInputPercentage, forKey: SerializationKeys.didThreeExchangeInputPercentage)
+    aCoder.encode(canGroundIntake, forKey: SerializationKeys.canGroundIntake)
+    aCoder.encode(teleopExchangeAbility, forKey: SerializationKeys.teleopExchangeAbility)
+    aCoder.encode(teleopScaleAbility, forKey: SerializationKeys.teleopScaleAbility)
+    aCoder.encode(teleopAllianceSwitchAbility, forKey: SerializationKeys.teleopAllianceSwitchAbility)
+    aCoder.encode(teleopOpponentSwitchAbility, forKey: SerializationKeys.teleopOpponentSwitchAbility)
+    aCoder.encode(maxScaleCubes, forKey: SerializationKeys.maxScaleCubes)
+    aCoder.encode(maxExchangeCubes, forKey: SerializationKeys.maxExchangeCubes)
   }
-
 }

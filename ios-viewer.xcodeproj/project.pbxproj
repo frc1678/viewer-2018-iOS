@@ -70,8 +70,9 @@
 		8CA2B7A3201E41510074DF21 /* PassiveClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A0201E41510074DF21 /* PassiveClimb.swift */; };
 		8CA2B7A4201E41510074DF21 /* AssistedLift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A1201E41510074DF21 /* AssistedLift.swift */; };
 		8CA2B7A6201E54FE0074DF21 /* ClimbParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B7A5201E54FD0074DF21 /* ClimbParent.swift */; };
-		8CB334E420841A2100AB66E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CB334E320841A2100AB66E3 /* GoogleService-Info.plist */; };
-		8CB334E620841A5C00AB66E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CB334E520841A5C00AB66E3 /* GoogleService-Info.plist */; };
+		8CB334E8209BF25D00AB66E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CB334E7209BF25C00AB66E3 /* GoogleService-Info.plist */; };
+		8CB334EA209BF26400AB66E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CB334E9209BF26400AB66E3 /* GoogleService-Info.plist */; };
+		8CB334EC20A3E3A100AB66E3 /* MatchDatapointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB334EB20A3E3A100AB66E3 /* MatchDatapointsViewController.swift */; };
 		8CBD712D1E354696009C0206 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD3CEA81E34074000B328A1 /* NotificationCenter.framework */; };
 		8CBD71301E354696009C0206 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBD712F1E354696009C0206 /* TodayViewController.swift */; };
 		8CBD71371E354696009C0206 /* Current Match.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8CBD712C1E354696009C0206 /* Current Match.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -192,8 +193,9 @@
 		8CA2B7A0201E41510074DF21 /* PassiveClimb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassiveClimb.swift; sourceTree = "<group>"; };
 		8CA2B7A1201E41510074DF21 /* AssistedLift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistedLift.swift; sourceTree = "<group>"; };
 		8CA2B7A5201E54FD0074DF21 /* ClimbParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClimbParent.swift; sourceTree = "<group>"; };
-		8CB334E320841A2100AB66E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8CB334E520841A5C00AB66E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8CB334E7209BF25C00AB66E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8CB334E9209BF26400AB66E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8CB334EB20A3E3A100AB66E3 /* MatchDatapointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDatapointsViewController.swift; sourceTree = "<group>"; };
 		8CBD712C1E354696009C0206 /* Current Match.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Current Match.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBD712F1E354696009C0206 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8CBD71341E354696009C0206 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				19B038391E2DD75B006E25A2 /* Seed */,
 				19B0383A1E2DD76E006E25A2 /* Picklists */,
 				19B037F01E2C5891006E25A2 /* FirebaseDataFetcher.swift */,
+				8CB334EB20A3E3A100AB66E3 /* MatchDatapointsViewController.swift */,
 				19B037F11E2C5891006E25A2 /* TeamDetailsTableViewController.swift */,
 				19B037F31E2C5891006E25A2 /* MatchDetailsViewController.swift */,
 				8CA0E20F2038A335002EFB02 /* SlackTableViewController.swift */,
@@ -303,8 +306,8 @@
 		19B038371E2DD70C006E25A2 /* Plists */ = {
 			isa = PBXGroup;
 			children = (
-				8CB334E320841A2100AB66E3 /* GoogleService-Info.plist */,
 				19B037C41E2C5739006E25A2 /* Info.plist */,
+				8CB334E9209BF26400AB66E3 /* GoogleService-Info.plist */,
 			);
 			name = Plists;
 			sourceTree = "<group>";
@@ -432,7 +435,7 @@
 			children = (
 				8CA2B79C201D13320074DF21 /* Current Match.entitlements */,
 				8CBD712F1E354696009C0206 /* TodayViewController.swift */,
-				8CB334E520841A5C00AB66E3 /* GoogleService-Info.plist */,
+				8CB334E7209BF25C00AB66E3 /* GoogleService-Info.plist */,
 				8CBD713B1E3546D1009C0206 /* MainInterface.storyboard */,
 				8CBD71341E354696009C0206 /* Info.plist */,
 			);
@@ -568,7 +571,7 @@
 				8C10DE97206C0A670084DC25 /* MatchDetailsTableViewCell.xib in Resources */,
 				8CBD71401E356CD1009C0206 /* CC 2017 Logo.png in Resources */,
 				8CA0E2142038A5F3002EFB02 /* SlackTableViewCell.xib in Resources */,
-				8CB334E420841A2100AB66E3 /* GoogleService-Info.plist in Resources */,
+				8CB334EA209BF26400AB66E3 /* GoogleService-Info.plist in Resources */,
 				19B037EA1E2C586C006E25A2 /* MatchTableViewCell.xib in Resources */,
 				19B037D31E2C581C006E25A2 /* FirstPick.storyboard in Resources */,
 				190DFE501E308BE300477B6D /* TIMDTableViewCell.xib in Resources */,
@@ -583,7 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CBD713C1E3546D1009C0206 /* MainInterface.storyboard in Resources */,
-				8CB334E620841A5C00AB66E3 /* GoogleService-Info.plist in Resources */,
+				8CB334E8209BF25D00AB66E3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +686,7 @@
 				8CA0E2132038A5F3002EFB02 /* SlackTableViewCell.swift in Sources */,
 				190DFE4A1E308B7700477B6D /* TIMDScheduleViewController.swift in Sources */,
 				8CA2B79E201E41360074DF21 /* SoloClimb.swift in Sources */,
+				8CB334EC20A3E3A100AB66E3 /* MatchDatapointsViewController.swift in Sources */,
 				190DFE481E3079D000477B6D /* Team.swift in Sources */,
 				8CA0E2102038A335002EFB02 /* SlackTableViewController.swift in Sources */,
 				8CA2B7A3201E41510074DF21 /* PassiveClimb.swift in Sources */,

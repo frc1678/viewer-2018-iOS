@@ -10,7 +10,6 @@
 
 @interface ScheduleTableViewController : ArrayTableViewController
 
-//@property (assign, nonatomic) NSInteger teamNumber;
 @property (nonatomic) BOOL highlightDysfunc;
 
 @end
